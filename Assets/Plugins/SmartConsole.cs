@@ -173,11 +173,11 @@ public class SmartConsole : MonoBehaviour
 				return; // SE: can't do anything meaningful here, probably the user recompiled things
 			}
 
-			SetTopDrawOrderOnGUIText( s_fps.guiText );
-			SetTopDrawOrderOnGUIText( s_textInput.guiText );
+			SetTopDrawOrderOnGUIText( s_fps.GetComponent<GUIText>() );
+			SetTopDrawOrderOnGUIText( s_textInput.GetComponent<GUIText>() );
 			foreach( GameObject historyLine in s_historyDisplay )
 			{
-				SetTopDrawOrderOnGUIText( historyLine.guiText );
+				SetTopDrawOrderOnGUIText( historyLine.GetComponent<GUIText>() );
 			}
 
 			s_first = false;
@@ -200,9 +200,9 @@ public class SmartConsole : MonoBehaviour
 		transform.localScale = k_scale;
 
 		if( ( s_textInput != null )
-		   && ( s_textInput.guiText != null ) )
+		   && ( s_textInput.GetComponent<GUIText>() != null ) )
 		{
-			s_textInput.guiText.text = ">" + s_currentInputLine + ( ( s_blink ) ? "_" : "" );
+			s_textInput.GetComponent<GUIText>().text = ">" + s_currentInputLine + ( ( s_blink ) ? "_" : "" );
 		}
 
 		++s_flippy;
@@ -214,7 +214,7 @@ public class SmartConsole : MonoBehaviour
 
 		if( s_drawFPS )
 		{
-			s_fps.guiText.text = "" + ( 1.0f / Time.deltaTime ) + " fps ";
+			s_fps.GetComponent<GUIText>().text = "" + ( 1.0f / Time.deltaTime ) + " fps ";
 			s_fps.transform.position = new Vector3( 0.8f, 1.0f, 0.0f );
 		}
 		else
@@ -724,8 +724,8 @@ public class SmartConsole : MonoBehaviour
 	private static void LayoutTextAtY( GameObject o, float y )
 	{
 		o.transform.localPosition = new Vector3( 0.0f, y, 0.0f );
-		o.guiText.fontStyle = FontStyle.Normal;
-		o.guiText.font = s_font;
+		o.GetComponent<GUIText>().fontStyle = FontStyle.Normal;
+		o.GetComponent<GUIText>().font = s_font;
 	}
 
 	private static void SetStringsOnHistoryElements()
@@ -735,11 +735,11 @@ public class SmartConsole : MonoBehaviour
 			int historyIndex = s_outputHistory.Count - 1 - i;
 			if( historyIndex >= 0 )
 			{
-				s_historyDisplay[ i ].guiText.text = s_outputHistory[ s_outputHistory.Count - 1 - i ];
+				s_historyDisplay[ i ].GetComponent<GUIText>().text = s_outputHistory[ s_outputHistory.Count - 1 - i ];
 			}
 			else
 			{
-				s_historyDisplay[ i ].guiText.text = "";
+				s_historyDisplay[ i ].GetComponent<GUIText>().text = "";
 			}
 		}
 	}

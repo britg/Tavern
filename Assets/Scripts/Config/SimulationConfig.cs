@@ -6,23 +6,27 @@ using Newtonsoft.Json;
 
 public class SimulationConfig {
 
-  const string CONFIG_PATH = "Assets/Scripts/Config/config.json";
+  const string CONFIG_PATH = "Assets/Scripts/Config/";
 
   static SimulationConfig _simulationConfig;
   public static SimulationConfig Instance {
     get {
       if (_simulationConfig == null) {
-        string jsonstring = System.IO.File.ReadAllText(CONFIG_PATH);
-        _simulationConfig = JsonConvert.DeserializeObject<SimulationConfig>(jsonstring);
+        _simulationConfig = new SimulationConfig();
       }
       return _simulationConfig;
     }
   }
 
-  public TimeConfig TimeConfig;
-  public PlayerConfig PlayerConfig;
-  public BuildingConfig BuildingConfig;
-  public CommodityConfig CommodityConfig;
+  public static T ReadConfig<T> (string filename) {
+    string jsonstring = System.IO.File.ReadAllText(CONFIG_PATH + filename);
+    return (T)JsonConvert.DeserializeObject<T>(jsonstring);
+  }
+
+  public TimeConfig TimeConfig { get { return ReadConfig<TimeConfig>("time_config.json"); } }
+  public PlayerConfig PlayerConfig { get { return ReadConfig<PlayerConfig>("player_config.json"); } }
+  public BuildingConfig BuildingConfig { get { return ReadConfig<BuildingConfig>("building_config.json"); } }
+  public CommodityConfig CommodityConfig { get { return ReadConfig<CommodityConfig>("commodity_config.json"); } }
 
   public override string ToString () {
     return JsonConvert.SerializeObject(this);

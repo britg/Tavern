@@ -1,0 +1,37 @@
+{
+  "Templates": [
+
+    // Tavern
+    {
+      "Name": "Tavern",
+      "Prerequisites": [
+      ],
+      "Cost": 100,
+      "HourlyExpenses": 10,
+      "BuildTime": 300,
+      "Commodities": [
+        {
+          "Name": "Food",
+          "Amount": 100
+        }
+      ]
+    },
+
+    // Blacksmith
+    {
+      "Name": "Blacksmith",
+      "Prerequisites": [
+        { "Name": "Tavern" }
+      ],
+      "Cost": 100,
+      "HourlyExpenses": 10,
+      "BuildTime": 300,
+      "Commodities": [
+        {
+          "Name": "Repair",
+          "Amount": 100
+        }
+      ]
+    },
+  ]
+}

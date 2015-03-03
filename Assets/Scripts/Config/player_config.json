@@ -1,0 +1,4 @@
+{
+  "start_gold": 100,
+  "start_buildings": [ "Tavern", "Blacksmith" ]
+}
