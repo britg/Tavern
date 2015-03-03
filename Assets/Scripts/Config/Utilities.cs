@@ -16,4 +16,8 @@ class Utilities {
     return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(source));
   }
 
+  public static string dump (object obj) {
+    return JsonConvert.SerializeObject(obj);
+  }
+
 }

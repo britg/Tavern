@@ -5,9 +5,9 @@ public interface IProcessor {
 
   void Start (Simulation _sim);
 	void Update (float deltaTime);
-  void StartSecond();
-  void StartMinute();
-  void StartHour();
-  void StartDay();
-  void StartNight();
+  void OnSecond();
+  void OnMinute();
+  void OnHour();
+  void OnDay();
+  void OnNight();
 }

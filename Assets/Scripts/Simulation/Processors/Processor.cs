@@ -11,10 +11,10 @@ public abstract class Processor : IProcessor {
   }
 
   public virtual void Update (float deltaTime) {}
-  public virtual void StartSecond () {}
-  public virtual void StartMinute () {}
-  public virtual void StartHour () {}
-  public virtual void StartDay () {}
-  public virtual void StartNight () {}
+  public virtual void OnSecond () {}
+  public virtual void OnMinute () {}
+  public virtual void OnHour () {}
+  public virtual void OnDay () {}
+  public virtual void OnNight () {}
 
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SimulationRunner : MonoBehaviour {
 
-  Simulation sim;
+  public Simulation sim;
 
   void Awake () {
     GetSim();

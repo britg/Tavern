@@ -7,6 +7,7 @@ public class Simulation {
 
   SimulationConfig config;
 
+  float previousSpeed;
   public float CurrentSpeed { get; set; }
   public GameTime GameTime { get; set; }
   public float UpdateDelta { get; set; }
@@ -29,12 +30,16 @@ public class Simulation {
 
   public void Start () {
     StartProcessors();
+    SmartConsole.ExecuteLine("show.fps True");
   }
 
   void SetupTime () {
-    CurrentSpeed = Config.StartSpeed;
-    GameTime = new GameTime();
-    GameTime.AddTime(Config.StartSeconds);
+    CurrentSpeed = config.TimeConfig.start_speed;
+    GameTime = new GameTime(config.TimeConfig);
+    GameTime.MinuteChange += OnMinute;
+    GameTime.HourChange += OnHour;
+    GameTime.DayChange += OnDay;
+    GameTime.NightChange += OnNight;
   }
 
   void SetupBuildings () {
@@ -49,6 +54,8 @@ public class Simulation {
     Building tavern = Building.FromTemplate(Building.Type.Tavern);
     tavern.CompleteNow();
     Player.Buildings.Add(tavern);
+
+    Simulation.Log(Player.Buildings[0]);
   }
 
   void SetupProcessorRegistry () {
@@ -71,8 +78,49 @@ public class Simulation {
     }
   }
 
+  public void OnSecond () {
+    foreach (IProcessor processor in processorRegistry) {
+      processor.OnSecond();
+    }
+  }
+
+  public void OnMinute () {
+    foreach (IProcessor processor in processorRegistry) {
+      processor.OnMinute();
+    }
+  }
+
+  public void OnHour () {
+    foreach (IProcessor processor in processorRegistry) {
+      processor.OnHour();
+    }
+  }
+
+  public void OnDay () {
+    Simulation.Log("Day starting");
+    foreach (IProcessor processor in processorRegistry) {
+      processor.OnDay();
+    }
+  }
+
+  public void OnNight () {
+    Simulation.Log("Night starting");
+    foreach (IProcessor processor in processorRegistry) {
+      processor.OnDay();
+    }
+  }
+
   public void Pause () {
+    previousSpeed = CurrentSpeed;
     CurrentSpeed = 0f;
+  }
+
+  public void Resume () {
+    CurrentSpeed = previousSpeed;
+  }
+
+  public static void Log (object obj) {
+    Debug.Log(Utilities.dump(obj));
   }
 
 }
