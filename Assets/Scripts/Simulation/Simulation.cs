@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Simulation {
+
+  SimulationConfig config;
 
   public float CurrentSpeed { get; set; }
   public GameTime GameTime { get; set; }
@@ -14,6 +17,9 @@ public class Simulation {
   List<IProcessor> processorRegistry;
 
   public void Setup () {
+    config = SimulationConfig.Instance;
+    Debug.Log(config);
+
     World = new World();
     SetupTime();
     SetupBuildings();
@@ -32,7 +38,7 @@ public class Simulation {
   }
 
   void SetupBuildings () {
-    Building.Templates = BuildingSetup.BuildingTemplates();
+    Building.Templates = config.BuildingConfig.Templates;
   }
 
   void SetupPlayer () {

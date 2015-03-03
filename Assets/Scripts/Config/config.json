@@ -1,0 +1,51 @@
+{
+
+  "TimeConfig": {
+    "start_speed": 50,
+    "start_seconds": 115200,
+  },
+
+  "PlayerConfig": {
+    "start_gold": 100,
+    "start_buildings": [ "Tavern" ]
+  },
+
+  "BuildingConfig": {
+    "Templates": [
+
+      // Tavern
+      {
+        "BuildingType": "Tavern",
+        "Prerequisites": [
+        ],
+        "Cost": 100,
+        "HourlyExpenses": 10,
+        "BuildTime": 300,
+        "Services": [
+          {
+            "commodity": "Repair",
+            "amount": 100
+          }
+        ]
+      },
+
+      // Blacksmith
+      {
+        "BuildingType": "Tavern",
+        "Prerequisites": [
+          { "BuildingType": "Tavern" }
+        ],
+        "Cost": 100,
+        "HourlyExpenses": 10,
+        "BuildTime": 300,
+        "Services": [
+          {
+            "commodity": "Repair",
+            "amount": 100
+          }
+        ]
+      },
+    ]
+  }
+
+}

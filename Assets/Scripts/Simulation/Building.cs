@@ -39,7 +39,7 @@ public class Building {
   public float PercentComplete { get; set; }
   public Tier CurrentTier { get; set; }
 
-  public List<Building> Prerequisites { get; set; }
+  public List<BuildingPrerequisite> Prerequisites { get; set; }
   public int Cost { get; set; }
   public float HourlyExpenses { get; set; }
   public float BuildTime { get; set; }
