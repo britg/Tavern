@@ -5,14 +5,6 @@ using System.Linq;
 
 public class Building {
 
-  public enum Type {
-    Tavern,
-    Provisions,
-    Blacksmith,
-    Healer,
-    Alchemist
-  }
-
   public enum State {
     Building,
     Complete
@@ -26,15 +18,14 @@ public class Building {
 
   public static List<Building> Templates { get; set; }
 
-  public static Building FromTemplate (Type type) {
-    Building template = Templates.First( t => t.BuildingType == type );
+  public static Building FromTemplate (string name) {
+    Building template = Templates.First( t => t.Name == name );
 
     Building newBuilding = (Building)Utilities.Copy<Building>(template);
     return newBuilding;
   }
 
   public string Name { get; set; }
-  public Type BuildingType { get; set; }
   public State CurrentState { get; set; }
   public float PercentComplete { get; set; }
   public Tier CurrentTier { get; set; }
@@ -43,7 +34,7 @@ public class Building {
   public int Cost { get; set; }
   public float HourlyExpenses { get; set; }
   public float BuildTime { get; set; }
-  public List<Service> Services { get; set; }
+  public List<Commodity> Commodities { get; set; }
 
   public void CompleteNow () {
     CurrentState = State.Complete;

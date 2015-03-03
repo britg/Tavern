@@ -4,5 +4,5 @@ using System.Collections.Generic;
 
 public struct PlayerConfig {
   public int start_gold;
-  public List<Building.Type> start_buildings;
+  public List<string> start_buildings;
 }

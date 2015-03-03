@@ -24,7 +24,7 @@ public class BuildingList : BaseBehaviour {
     labels = new List<GameObject>();
     foreach (Building bldg in sim.Player.Buildings) {
       GameObject lblObj = (GameObject)Instantiate(labelPrefab);
-      lblObj.GetComponent<Text>().text = bldg.BuildingType.ToString();
+      lblObj.GetComponent<Text>().text = bldg.Name.ToString();
       lblObj.transform.SetParent(transform, false);
       lblObj.transform.localPosition = offset * labels.Count;
       labels.Add(lblObj);

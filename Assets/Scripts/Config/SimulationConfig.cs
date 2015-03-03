@@ -22,6 +22,7 @@ public class SimulationConfig {
   public TimeConfig TimeConfig;
   public PlayerConfig PlayerConfig;
   public BuildingConfig BuildingConfig;
+  public CommodityConfig CommodityConfig;
 
   public override string ToString () {
     return JsonConvert.SerializeObject(this);

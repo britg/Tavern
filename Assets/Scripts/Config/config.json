@@ -17,33 +17,33 @@
 
       // Tavern
       {
-        "BuildingType": "Tavern",
+        "Name": "Tavern",
         "Prerequisites": [
         ],
         "Cost": 100,
         "HourlyExpenses": 10,
         "BuildTime": 300,
-        "Services": [
+        "Commodities": [
           {
-            "commodity": "Repair",
-            "amount": 100
+            "Name": "Food",
+            "Amount": 100
           }
         ]
       },
 
       // Blacksmith
       {
-        "BuildingType": "Blacksmith",
+        "Name": "Blacksmith",
         "Prerequisites": [
-          { "BuildingType": "Tavern" }
+          { "Name": "Tavern" }
         ],
         "Cost": 100,
         "HourlyExpenses": 10,
         "BuildTime": 300,
-        "Services": [
+        "Commodities": [
           {
-            "commodity": "Repair",
-            "amount": 100
+            "Name": "Repair",
+            "Amount": 100
           }
         ]
       },

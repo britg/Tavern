@@ -1,3 +1,3 @@
 public class BuildingPrerequisite {
-  public Building.Type BuildingType;
+  public string Name;
 }

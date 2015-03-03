@@ -18,12 +18,12 @@ public class Player {
   }
 
   void SetupStartBuildings () {
-    foreach (Building.Type buildingType in config.start_buildings) {
+    foreach (string buildingType in config.start_buildings) {
       CreateBuilding(buildingType);
     }
   }
 
-  void CreateBuilding (Building.Type buildingType) {
+  void CreateBuilding (string buildingType) {
     Building bldg = Building.FromTemplate(buildingType);
     bldg.CompleteNow();
     Buildings.Add(bldg);
