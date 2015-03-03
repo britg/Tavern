@@ -23,11 +23,19 @@ public class SimulationRunner : MonoBehaviour {
     sim.Pause();
   }
 
+  public void Resume () {
+    sim.Resume();
+  }
+
   public Simulation GetSim() {
     if (sim == null) {
       sim = new Simulation();
       sim.Setup();
     }
     return sim;
+  }
+
+  public void AdjustCurrentSpeed (float value) {
+    sim.AdjustCurrentSpeed(Mathf.Floor(value));
   }
 }

@@ -119,6 +119,10 @@ public class Simulation {
     CurrentSpeed = previousSpeed;
   }
 
+  public void AdjustCurrentSpeed (float value) {
+    CurrentSpeed = value;
+  }
+
   public static void Log (object obj) {
     Debug.Log(Utilities.dump(obj));
   }
