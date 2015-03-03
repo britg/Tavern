@@ -12,13 +12,11 @@ public class GameTime {
   int HOUR_SECONDS = 60 * 60;
   int MINUTE_SECONDS = 60;
 
-  float currentSecondProgress = 0f;
   float currentMinuteProgress = 0f;
   float currentHourProgress = 0f;
 
   public delegate void ChangeEventHandler ();
 
-  public event ChangeEventHandler SecondChange;
   public event ChangeEventHandler MinuteChange;
   public event ChangeEventHandler HourChange;
   public event ChangeEventHandler DayChange;

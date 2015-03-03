@@ -9,7 +9,7 @@
 
   "PlayerConfig": {
     "start_gold": 100,
-    "start_buildings": [ "Tavern" ]
+    "start_buildings": [ "Tavern", "Blacksmith" ]
   },
 
   "BuildingConfig": {
@@ -33,7 +33,7 @@
 
       // Blacksmith
       {
-        "BuildingType": "Tavern",
+        "BuildingType": "Blacksmith",
         "Prerequisites": [
           { "BuildingType": "Tavern" }
         ],

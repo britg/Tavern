@@ -1,4 +1,8 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
 public struct PlayerConfig {
   public int start_gold;
-  public string[] start_buildings;
+  public List<Building.Type> start_buildings;
 }

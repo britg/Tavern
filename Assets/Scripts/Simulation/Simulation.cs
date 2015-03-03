@@ -14,6 +14,7 @@ public class Simulation {
 
   public World World { get; private set; }
   public Player Player { get; private set; }
+  public Population Population { get; private set; }
 
   List<IProcessor> processorRegistry;
 
@@ -47,14 +48,7 @@ public class Simulation {
   }
 
   void SetupPlayer () {
-    Player = new Player();
-    Player.Gold = Config.StartGold;
-    Player.Buildings = new List<Building>();
-    // start with a tavern
-    Building tavern = Building.FromTemplate(Building.Type.Tavern);
-    tavern.CompleteNow();
-    Player.Buildings.Add(tavern);
-
+    Player = new Player(config.PlayerConfig);
     Simulation.Log(Player.Buildings[0]);
   }
 
