@@ -14,7 +14,7 @@ public class Simulation {
 
   public World World { get; private set; }
   public Player Player { get; private set; }
-  public Population Population { get; private set; }
+  public Economy Economy { get; private set; }
 
   List<IProcessor> processorRegistry;
 

@@ -9,7 +9,8 @@ public class AttributeReader : BaseBehaviour {
     Income,
     Expenses,
     CurrentSpeed,
-    CurrentTime
+    CurrentTime,
+    NetIncome
   }
 
   public float updateInterval = 1f;
@@ -21,15 +22,17 @@ public class AttributeReader : BaseBehaviour {
     get {
       switch(attribute) {
         case Attribute.Gold:
-          return sim.Player.Gold.ToString();
+          return sim.Player.Gold.ToString("F0");
         case Attribute.Income:
-          return sim.Player.Income.ToString();
+          return sim.Player.Income.ToString("F0");
         case Attribute.Expenses:
-          return sim.Player.Expenses.ToString();
+          return sim.Player.Expenses.ToString("F0");
         case Attribute.CurrentSpeed:
           return sim.CurrentSpeed.ToString();
         case Attribute.CurrentTime:
           return sim.GameTime.ToString();
+        case Attribute.NetIncome:
+          return sim.Player.NetIncome.ToString();
       }
       return "[Not Found]";
     }

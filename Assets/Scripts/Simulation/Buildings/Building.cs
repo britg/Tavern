@@ -31,9 +31,10 @@ public class Building {
   public Tier CurrentTier { get; set; }
 
   public List<BuildingPrerequisite> Prerequisites { get; set; }
-  public int Cost { get; set; }
-  public float HourlyExpenses { get; set; }
+  public int BuildCost { get; set; }
   public float BuildTime { get; set; }
+  public float HourlyMaintenanceCost { get; set; }
+
   public List<Commodity> Commodities { get; set; }
 
   public void CompleteNow () {

@@ -6,8 +6,7 @@
       "Name": "Tavern",
       "Prerequisites": [
       ],
-      "Cost": 100,
-      "HourlyExpenses": 10,
+      "BuildCost": 100,
       "BuildTime": 300,
       "Commodities": [
         {
@@ -23,8 +22,7 @@
       "Prerequisites": [
         { "Name": "Tavern" }
       ],
-      "Cost": 100,
-      "HourlyExpenses": 10,
+      "BuildCost": 100,
       "BuildTime": 300,
       "Commodities": [
         {

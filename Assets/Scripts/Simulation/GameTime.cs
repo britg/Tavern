@@ -6,14 +6,14 @@ public class GameTime {
 
   TimeConfig config;
 
-  float CurrentSeconds { get; set; }
-
-  int DAY_SECONDS = 60 * 60 * 24;
-  int HOUR_SECONDS = 60 * 60;
-  int MINUTE_SECONDS = 60;
-
   float currentMinuteProgress = 0f;
   float currentHourProgress = 0f;
+
+  public float CurrentSeconds { get; set; }
+
+  public const int DAY_SECONDS = 60 * 60 * 24;
+  public const int HOUR_SECONDS = 60 * 60;
+  public const int MINUTE_SECONDS = 60;
 
   public delegate void ChangeEventHandler ();
 

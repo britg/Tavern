@@ -1,4 +1,5 @@
 {
-  "start_gold": 100,
-  "start_buildings": [ "Tavern", "Blacksmith" ]
+  "start_gold": 10000,
+  "base_hourly_income": 0,
+  "start_buildings": [ "Tavern" ]
 }
