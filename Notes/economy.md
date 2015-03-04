@@ -32,5 +32,16 @@ Trading Post
 
 Thieves Guild
 
-- Basic Ranged Weaposn
+- Basic Ranged Weapons
 - Basic Lockpicking
+
+Mage Tower
+
+- Basic reagents
+- Basic scrolls
+
+Potion Shop
+
+- Basic Health Potion
+- Basic Mana Potion
+- Basic Stamina Potion

@@ -8,5 +8,9 @@ public class EconomyProcessor : Processor {
     CalculateDemand();
   }
 
+  void CalculateDemand() {
+
+  }
+
 
 }

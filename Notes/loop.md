@@ -1,5 +1,7 @@
 # Main game loop
 
+World's End Tavern
+
 ## Early Game
 
 - Everyone starts with a Tavern
