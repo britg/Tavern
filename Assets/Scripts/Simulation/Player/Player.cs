@@ -15,7 +15,7 @@ public class Player {
     }
   }
 
-  public PlayerLevel CurrentLevel { get; set; }
+  public int CurrentLevel { get; set; }
 
   PlayerConfig config;
   public Player (PlayerConfig _config) {

@@ -5,7 +5,7 @@ using System.Linq;
 
 public class Simulation {
 
-  SimulationConfig config;
+  public SimulationConfig config;
 
   float previousSpeed;
   public float CurrentSpeed { get; set; }
@@ -30,6 +30,7 @@ public class Simulation {
   }
 
   public void Start () {
+    InitProcessors();
     StartProcessors();
     SmartConsole.ExecuteLine("show.fps True");
   }
@@ -55,11 +56,18 @@ public class Simulation {
   void SetupProcessorRegistry () {
     processorRegistry = new List<IProcessor>();
     processorRegistry.Add(new CashflowProcessor());
+    processorRegistry.Add(new EconomyProcessor());
+  }
+
+  void InitProcessors () {
+    foreach (IProcessor proc in processorRegistry) {
+      proc.Init(this);
+    }
   }
 
   void StartProcessors () {
     foreach (IProcessor proc in processorRegistry) {
-      proc.Start(this);
+      proc.Start();
     }
   }
 

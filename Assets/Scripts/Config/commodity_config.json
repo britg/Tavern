@@ -1,3 +1,8 @@
 {
-
+  "Templates": [
+    {
+      "Name": "Food",
+      "CurrentPrice": 10
+    }
+  ]
 }

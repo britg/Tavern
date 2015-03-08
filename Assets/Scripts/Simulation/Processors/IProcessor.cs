@@ -3,7 +3,8 @@ using System.Collections;
 
 public interface IProcessor {
 
-  void Start (Simulation _sim);
+  void Init (Simulation _sim);
+  void Start ();
 	void Update (float deltaTime);
   void OnSecond();
   void OnMinute();

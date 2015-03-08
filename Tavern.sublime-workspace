@@ -4,6 +4,66 @@
 		"selected_items":
 		[
 			[
+				"total",
+				"totalHourlyExpenses"
+			],
+			[
+				"current",
+				"currentHourProgress"
+			],
+			[
+				"totalh",
+				"totalHourlyIncome"
+			],
+			[
+				"totalHo",
+				"totalHourlyExpenses"
+			],
+			[
+				"Bui",
+				"Buildings"
+			],
+			[
+				"Si",
+				"SimulationRunner"
+			],
+			[
+				"proces",
+				"processorRegistry"
+			],
+			[
+				"Sim",
+				"SimulationConfig"
+			],
+			[
+				"player",
+				"playerInitJSON"
+			],
+			[
+				"Curren",
+				"CurrentTime"
+			],
+			[
+				"Update",
+				"UpdateDelta"
+			],
+			[
+				"M",
+				"MINUTE_SECONDS"
+			],
+			[
+				"GetComp",
+				"GetComponent	Component.*<T>()"
+			],
+			[
+				"Fi",
+				"File	[class]"
+			],
+			[
+				"Lerp",
+				"Lerp	Vector3.*(from, to, t)"
+			],
+			[
 				"favor",
 				"favorited_retailer_ids"
 			],
@@ -88,17 +148,130 @@
 	"buffers":
 	[
 		{
+			"file": "Assets/Scripts/Simulation/Simulation.cs",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 2932,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Config/PlayerInitializer.cs",
+			"file": "Assets/Scripts/Simulation/Player.cs",
 			"settings":
 			{
-				"buffer_size": 349,
+				"buffer_size": 970,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Config/TimeConfig.cs",
+			"settings":
+			{
+				"buffer_size": 141,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Simulation/Economy/Economy.cs",
+			"settings":
+			{
+				"buffer_size": 219,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Config/AdventurerConfig.cs",
+			"settings":
+			{
+				"buffer_size": 101,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Config/adventurer_config.json",
+			"settings":
+			{
+				"buffer_size": 43,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Simulation/Economy/Commodity.cs",
+			"settings":
+			{
+				"buffer_size": 96,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Simulation/Economy/Demand.cs",
+			"settings":
+			{
+				"buffer_size": 150,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Simulation/Buildings/Building.cs",
+			"settings":
+			{
+				"buffer_size": 1027,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Simulation/Processors/EconomyProcessor.cs",
+			"settings":
+			{
+				"buffer_size": 228,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Simulation/Processors/AdventurerProcessor.cs",
+			"settings":
+			{
+				"buffer_size": 382,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Simulation/Processors/CashflowProcessor.cs",
+			"settings":
+			{
+				"buffer_size": 1243,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Simulation/Processors/Processor.cs",
+			"settings":
+			{
+				"buffer_size": 491,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Config/commodity_config.json",
+			"settings":
+			{
+				"buffer_size": 83,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Config/CommodityConfig.cs",
+			"settings":
+			{
+				"buffer_size": 148,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Simulation/GameTime.cs",
+			"settings":
+			{
+				"buffer_size": 2272,
 				"line_ending": "Unix"
 			}
 		}
@@ -106,9 +279,25 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 391.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"markd",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"install pack",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				"github",
 				"GitHub: View"
@@ -126,15 +315,11 @@
 				"Package Control: List Packages"
 			],
 			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
 				"package",
 				"Package Control: Install Package"
 			]
 		],
-		"width": 503.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -155,11 +340,104 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/Eezo/games/Tavern"
+		"/Users/Eezo/games/Tavern/Assets/Scripts",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Behaviours",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Adventurers",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Economy",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Player",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Processors",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/UI",
+		"/Users/Eezo/games/Tavern/Notes"
 	],
 	"file_history":
 	[
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Player/PlayerLevel.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Player/PlayerLevel",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Adventurers/Adventurer.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Adventurers/AdventurerLevel.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Processors/Processor.cs",
+		"/Users/Eezo/games/Tavern/Assets/Plugins/SimpleJSON.cs",
+		"/Users/Eezo/games/Tavern/Notes/adventurers.md",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/UI/AttributeReader.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/SimulationConfig.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/time_config.json",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Processors/IProcessor.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/CommodityConfig.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/commodity_config.json",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Economy/Commodity.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Processors/CashflowProcessor.cs",
+		"/Users/Eezo/games/Tavern/Notes/economy.md",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Economy/Economy.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/simulation.json",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/supplies_config.js",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/player_config.json",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Buildings/Building.cs",
+		"/Users/Eezo/games/Tavern/Notes/loop.md",
+		"/Users/Eezo/games/Tavern/Notes/multiplayer.md",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Notes/quests.md",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Notes/economy.md",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Notes/loop.md",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Dungeons/Dungeon.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/building_config.json",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Population/Adventurer.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/PlayerConfig.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Population/Population.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Buildings/Commodity.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Buildings/PurchaseOrder.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Buildings/Supply.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/BuildingConfig.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/notes.md",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Behaviours/BaseBehaviour.cs",
+		"/Users/Eezo/games/Tavern/Assets/Standard Assets/Image Effects (Pro Only)/TiltShiftHdr.js",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Player.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/Config.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/config.json",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/UI/Debug/BuildingList.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Buildings/BuildingPrerequisite.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Buildings/Service.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/TimeConfig.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Simulation.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/GameTime.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/Utilities.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Behaviours/SimulationRunner.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/BuildingUpgrade.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Building.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Adventurer.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Commodity.cs",
+		"/Users/Eezo/games/Tavern/Assets/Add-Ons/Unishell/Editor/CommandEvaluator.cs",
+		"/Users/Eezo/games/Tavern/Assets/SmartConsole/readme.txt",
+		"/Users/Eezo/games/Tavern/Assets/SmartConsole/Code/SmartConsole.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Service.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/BuildingPrerequisite.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/BuildingSetup.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/TimeSetup.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/World.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Dungeon.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Simulation/Processors/UpkeepProcessor.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/player.json",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/SimulationInitializer.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Behaviours/GameLoop.cs",
+		"/Users/Eezo/.bash_profile",
+		"/Users/Eezo/games/Tavern/Tavern.sublime-project",
+		"/Users/Eezo/games/Tavern/Library/guidmapper",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Game/World.cs",
 		"/Users/Eezo/games/Tavern/Assets/Scripts/Game/GameLoop.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Game/Player.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Game/BaseBehaviour.cs",
+		"/Users/Eezo/games/Tavern/Assets/Quantum Theory/PolyWorld Skies/SkyI.mat",
+		"/Users/Eezo/games/Tavern/Library/ScriptMapper",
+		"/Users/Eezo/games/Tavern/Assets/Quantum Theory/PolyWorld Skies/Textures/SkyA_UP.bmp",
+		"/Users/Eezo/games/Tavern/Assets/Standard Assets/Image Effects (Pro Only)/SunShafts.js",
+		"/Users/Eezo/games/Tavern/Assets/Quantum Theory/Polyworld/Woodland/Prefabs/Props/Prefab-StreetLamp-Lit_A.prefab",
+		"/Users/Eezo/games/Tavern/Assets/Quantum Theory/Polyworld/Woodland/Prefabs/Architecture/Prefab_Archway-Large.prefab",
+		"/Users/Eezo/games/Tavern/ProjectSettings/Physics2DSettings.asset",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Game/Dungeon.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/PlayerInitializer.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Game/Simulation.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Game/Building.cs",
+		"/Users/Eezo/games/Tavern/Assets/Scripts/Config/PlayerInit.json",
 		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/sessions_controller.rb",
 		"/Users/Eezo/Projects/KeyRing/v2/app/models/simple_email_service.rb",
 		"/Users/Eezo/Projects/KeyRing/v2/config/shards.yml",
@@ -202,95 +480,11 @@
 		"/Users/Eezo/Projects/KeyRing/v2/lib/generators/concern/concern_generator.rb",
 		"/Users/Eezo/Projects/KeyRing/v2/config.ru",
 		"/Users/Eezo/Projects/KeyRing/v2/app/models/card_observer.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/config/database.yml",
-		"/Users/Eezo/Projects/KeyRing/v2/test/fixtures/devices.yml",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/mongo/session.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/services/staples_email_sending_service.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/config/schedule.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/lib/s3_copy.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/views/users/show.html.haml",
-		"/Users/Eezo/Projects/KeyRing/v2/test/functional/mobile_users/user_sessions_controller_test.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/Gemfile",
-		"/Users/Eezo/Projects/KeyRing/v2/app/helpers/barcodes_helper.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/config/deploy/production.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/config/newrelic.yml",
-		"/Users/Eezo/Projects/KeyRing/v2/app/views/mobile_coupons/coupons/show.html.haml",
-		"/Users/Eezo/Projects/KeyRing/v2/app/views/mobile_coupons/coupons/_barcode_display.html.haml",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/mobile_coupons/coupons_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/mobile_cards_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/public/js/mobile/in_app.js",
-		"/Users/Eezo/Projects/KeyRing/v2/app/assets/stylesheets/mobile/mobile_destinations.css.scss",
-		"/Users/Eezo/Projects/KeyRing/v2/app/assets/stylesheets/mobile/mobile_home.css.sass",
-		"/Users/Eezo/Projects/KeyRing/v2/app/assets/javascripts/mobile/coupons.js.coffee",
-		"/Users/Eezo/Projects/KeyRing/v2/app/assets/javascripts/mobile/cards.js.coffee",
-		"/Users/Eezo/Projects/KeyRing/v2/config/mongoid.yml",
-		"/Users/Eezo/Projects/KeyRing/v2/app/mailers/user_mailer.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/mobile_users/user_sessions_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/mobile_users/users_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/mobile_users/location_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/mobile_users_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/views/custom_list_mailer/mommy_blogger_email.html.erb",
-		"/Users/Eezo/Projects/KeyRing/v2/test/functional/user_sessions_controller_test.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/user_sessions_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/config/deploy/photos.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/concerns/deploy_with_barcodes.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/views/users/_consumer_messages.html.haml",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/users_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/test/unit/services/reminder_service_test.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/views/business_mailer/newsletter_email.html.haml",
-		"/Users/Eezo/Projects/KeyRing/v2/config/environment.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/coupon_deployment.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/config/unicorn_site.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/concerns/coupon_copy.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/vendor/gems/jasmine/copy_examples.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/coupon_program.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/coupon_campaign.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/coupon.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/admin/coupons_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/card_groups_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/admin_apps/client_outreaches_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/concerns/deploy_trigger.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/api/circulars_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/link_views_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/push_notification.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/push_campaign.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/concerns/tracks_link_trails.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/concerns/grouped.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/views/admin/cards/show.html.erb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/views/admin/cards/_table.html.erb",
-		"/Users/Eezo/Projects/KeyRing/v2/config/routes.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/test/fixtures/link_views.yml",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/link_view.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/link_conversion.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/link.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/public/js/partners/lead_in_form.js",
-		"/Users/Eezo/Projects/KeyRing/v2/vendor/apn_on_rails/LICENSE",
-		"/Users/Eezo/Projects/KeyRing/v2/app/views/admin/cards/search.html.erb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/admin/cards_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/admin/affiliate_links_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/admin.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/config/apple_push_notification_development.pem",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/program.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/views/mobile_cards/cards/show.html.haml",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/concerns/geofence_tracker.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/models/card_spring/deployment.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/Procfile",
-		"/Users/Eezo/Projects/KeyRing/v2/config/environments/development.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/views/mobile_users/user_sessions/new.html.haml",
-		"/Users/Eezo/Projects/KeyRing/v2/app/views/mobile_users/user_sessions/_form.html.haml",
-		"/Users/Eezo/Projects/KeyRing/v2/config/locales/en.yml",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/concerns/coupon_context.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/lib/barcode_generator.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/app/views/mobile_coupons/shared/_coupon.html.haml",
-		"/Users/Eezo/Projects/KeyRing/v2/placeholders/mobile_coupons.html",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/mobile_cards/cards_controller.rb",
-		"/Users/Eezo/Projects/KeyRing/v2/public/stylesheets/compiled/mobile_optimized.css",
-		"/Users/Eezo/Projects/KeyRing/v2/app/views/mobile/offers/_mooyah_burger.html.haml",
-		"/Users/Eezo/Projects/KeyRing/v2/app/controllers/mobile_coupons/promos_controller.rb"
+		"/Users/Eezo/Projects/KeyRing/v2/config/database.yml"
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -307,6 +501,30 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"sim",
+			"Config",
+			"Service",
+			"Commodity",
+			"BuildingType",
+			"Commodity",
+			"OnGUI",
+			"showConsole",
+			"toggle",
+			"Input",
+			"back",
+			"`",
+			"show.fps",
+			"showFPS",
+			"Clear()",
+			"show.fps",
+			"BuildingSetup",
+			"Completed",
+			"Upkeep",
+			"JSONArray",
+			"SimulationInitializer",
+			"GameLoop",
+			"PlayerInit",
+			"Floor(",
 			"def trim!",
 			"trim",
 			"device.update",
@@ -410,38 +628,16 @@
 			"create_email_record",
 			"create_with_device",
 			"then_to",
-			"capistra",
-			"multi",
-			"active",
-			"supports_na",
-			"barcode",
-			"def campaign",
-			"campaign",
-			"barcode",
-			"Shop",
-			"shoplocal",
-			"shop",
-			"def show",
-			"pull",
-			"phone_number",
-			"for_api",
-			"allows_printing?",
-			"print",
-			"coupon",
-			"/c",
-			"promo",
-			"paid",
-			"logo_editor",
-			"has_reminder",
-			"send_reset",
-			"Password"
+			"capistra"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
+			"Config",
+			"FloorToInt(",
 			"\\n",
 			"#{TEST_ID}",
 			"fay",
@@ -463,10 +659,450 @@
 			[
 				{
 					"buffer": 0,
+					"file": "Assets/Scripts/Simulation/Simulation.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 2932,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								96,
+								96
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Scripts/Simulation/Player.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 970,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								373,
+								373
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/Scripts/Config/TimeConfig.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 141,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								141,
+								141
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Assets/Scripts/Simulation/Economy/Economy.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 219,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								214,
+								214
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Assets/Scripts/Config/AdventurerConfig.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 101,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								101,
+								101
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Assets/Scripts/Config/adventurer_config.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 43,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								43,
+								43
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Assets/Scripts/Simulation/Economy/Commodity.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 96,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								27,
+								27
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Assets/Scripts/Simulation/Economy/Demand.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 150,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								20,
+								20
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 8,
+					"file": "Assets/Scripts/Simulation/Buildings/Building.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1027,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								193,
+								193
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "Assets/Scripts/Simulation/Processors/EconomyProcessor.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 228,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								188,
+								188
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "Assets/Scripts/Simulation/Processors/AdventurerProcessor.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 382,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								225,
+								225
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "Assets/Scripts/Simulation/Processors/CashflowProcessor.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1243,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1168,
+								1168
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "Assets/Scripts/Simulation/Processors/Processor.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 491,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								257,
+								257
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Assets/Scripts/Config/adventurer_config.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 43,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								42,
+								42
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "Assets/Scripts/Config/commodity_config.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 83,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								76,
+								76
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "Assets/Scripts/Config/CommodityConfig.cs",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 148,
 						"regions":
 						{
 						},
@@ -479,41 +1115,133 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"history_list_is_closing": true,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "Assets/Scripts/Config/PlayerInitializer.cs",
+					"buffer": 0,
+					"file": "Assets/Scripts/Simulation/Simulation.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 349,
+						"buffer_size": 2932,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								348,
-								348
+								419,
+								419
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C#/C#.tmLanguage"
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Assets/Scripts/Simulation/Economy/Economy.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 219,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								216,
+								216
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Scripts/Simulation/Player.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 970,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								235,
+								235
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "Assets/Scripts/Simulation/GameTime.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2272,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								101,
+								101
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
 					"type": "text"
 				}
 			]
@@ -521,7 +1249,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 35.0
 	},
 	"input":
 	{
@@ -536,11 +1264,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -561,7 +1296,7 @@
 	"project": "Tavern.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -569,6 +1304,198 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"player",
+				"Scripts/Simulation/Player.cs"
+			],
+			[
+				"adv_con",
+				"Scripts/Config/adventurer_config.json"
+			],
+			[
+				"timeconfig",
+				"Scripts/Config/TimeConfig.cs"
+			],
+			[
+				"advconfi",
+				"Scripts/Config/AdventurerConfig.js"
+			],
+			[
+				"iproces",
+				"Scripts/Simulation/Processors/IProcessor.cs"
+			],
+			[
+				"processor",
+				"Scripts/Simulation/Processors/Processor.cs"
+			],
+			[
+				"proces",
+				"Scripts/Simulation/Processors/Processor.cs"
+			],
+			[
+				"cas",
+				"Scripts/Simulation/Processors/CashflowProcessor.cs"
+			],
+			[
+				"comodity",
+				"Scripts/Simulation/Economy/Commodity.cs"
+			],
+			[
+				"economy.cs",
+				"Scripts/Simulation/Economy/Economy.cs"
+			],
+			[
+				"simulation.cs",
+				"Scripts/Simulation/Simulation.cs"
+			],
+			[
+				"commodi",
+				"Scripts/Simulation/Economy/Commodity.cs"
+			],
+			[
+				"player_conf",
+				"Scripts/Config/player_config.json"
+			],
+			[
+				"building",
+				"Scripts/Simulation/Buildings/Building.cs"
+			],
+			[
+				"commodity",
+				"Scripts/Simulation/Buildings/Commodity.cs"
+			],
+			[
+				"player.cs",
+				"Scripts/Simulation/Player.cs"
+			],
+			[
+				"attribute",
+				"Scripts/UI/AttributeReader.cs"
+			],
+			[
+				"gametime",
+				"Scripts/Simulation/GameTime.cs"
+			],
+			[
+				"playerconfig",
+				"Scripts/Config/PlayerConfig.cs"
+			],
+			[
+				"cashf",
+				"Scripts/Simulation/Processors/CashflowProcessor.cs"
+			],
+			[
+				"player_config",
+				"Scripts/Config/player_config.json"
+			],
+			[
+				"config.cjson",
+				"Scripts/Config/config.json"
+			],
+			[
+				"building.cs",
+				"Scripts/Simulation/Buildings/Building.cs"
+			],
+			[
+				"commod",
+				"Scripts/Simulation/Buildings/Commodity.cs"
+			],
+			[
+				"advent",
+				"Scripts/Simulation/Population/Adventurer.cs"
+			],
+			[
+				"basebeh",
+				"Scripts/Behaviours/BaseBehaviour.cs"
+			],
+			[
+				"config.js",
+				"Scripts/Config/config.json"
+			],
+			[
+				"cashfl",
+				"Scripts/Simulation/Processors/CashflowProcessor.cs"
+			],
+			[
+				"buildingpre",
+				"Scripts/Simulation/BuildingPrerequisite.cs"
+			],
+			[
+				"buidlingcon",
+				"Scripts/Config/BuildingConfig.cs"
+			],
+			[
+				"bul",
+				"Scripts/Simulation/Building.cs"
+			],
+			[
+				"utili",
+				"Scripts/Config/Utilities.cs"
+			],
+			[
+				"buiu",
+				"Scripts/Config/BuildingSetup.cs"
+			],
+			[
+				"cash",
+				"Scripts/Simulation/Processors/CashflowProcessor.cs"
+			],
+			[
+				"simrunn",
+				"Scripts/Behaviours/SimulationRunner.cs"
+			],
+			[
+				"iprocess",
+				"Scripts/Simulation/Processors/IProcessor.cs"
+			],
+			[
+				"world",
+				"Scripts/Simulation/World.cs"
+			],
+			[
+				"simp",
+				"Plugins/SimpleJSON.cs"
+			],
+			[
+				"config.cs",
+				"Scripts/Config/Config.cs"
+			],
+			[
+				"simulat",
+				"Scripts/Config/simulation.json"
+			],
+			[
+				"baseb",
+				"Scripts/Behaviours/BaseBehaviour.cs"
+			],
+			[
+				"iproc",
+				"Scripts/Simulation/Processors/IProcessor.cs"
+			],
+			[
+				"comod",
+				"Scripts/Simulation/Commodity.cs"
+			],
+			[
+				"upkeep",
+				"Scripts/Simulation/Processors/UpkeepProcessor.cs"
+			],
+			[
+				"simulationrunner",
+				"Scripts/Behaviours/SimulationRunner.cs"
+			],
+			[
+				"gamelo",
+				"Assets/Scripts/Behaviours/GameLoop.cs"
+			],
+			[
+				"simul",
+				"Assets/Scripts/Simulation/Simulation.cs"
+			],
+			[
+				"gameloo",
+				"Assets/Scripts/Game/GameLoop.cs"
+			],
 			[
 				"session-",
 				"Key-Ring-Web.wiki/Session-POST.md"
@@ -888,198 +1815,6 @@
 			[
 				"coupon_program.rb",
 				"v2/app/models/coupon_program.rb"
-			],
-			[
-				"cellfire_enab",
-				"v2/app/models/concerns/cellfire_enabled.rb"
-			],
-			[
-				"gift_card.rb",
-				"v2/app/models/concerns/gift_card.rb"
-			],
-			[
-				"card_info_ena",
-				"v2/app/models/concerns/card_info_enabled.rb"
-			],
-			[
-				"mobile_card/cards_con",
-				"v2/app/controllers/mobile_cards/cards_controller.rb"
-			],
-			[
-				"mobilecards/card/points",
-				"v2/app/views/mobile_cards/cards/_points.html.haml"
-			],
-			[
-				"mobile_card/adsp",
-				"v2/app/views/mobile_cards/cards/_adspot.html.erb"
-			],
-			[
-				"mobile_card",
-				"v2/app/controllers/mobile_cards_controller.rb"
-			],
-			[
-				"invoice.rb",
-				"v2/app/models/invoice.rb"
-			],
-			[
-				"invoice_mailer",
-				"v2/app/mailers/invoice_mailer.rb"
-			],
-			[
-				"mobilecards/stub",
-				"v2/app/views/mobile_cards/cards/_circular_stub.html.haml"
-			],
-			[
-				"api/circulars_con",
-				"v2/app/controllers/api/circulars_controller.rb"
-			],
-			[
-				"ap/circulars_con",
-				"v2/app/controllers/circulars_controller.rb"
-			],
-			[
-				"process_unsent",
-				"v2/app/models/jobs/process_unsent_push_notifications_job.rb"
-			],
-			[
-				"push_notification",
-				"v2/app/models/push_notification.rb"
-			],
-			[
-				"push_cam",
-				"v2/app/models/push_campaign.rb"
-			],
-			[
-				"manageable",
-				"v2/app/models/concerns/manageable.rb"
-			],
-			[
-				"progra",
-				"v2/app/models/program.rb"
-			],
-			[
-				"database.",
-				"v2/config/database.yml"
-			],
-			[
-				"kroger_stub",
-				"v2/app/views/mobile_cards/cards/_kroger_stub.html.haml"
-			],
-			[
-				"mobilecards/circular_stub",
-				"v2/app/views/mobile_cards/cards/_circular_stub.html.haml"
-			],
-			[
-				"mobile/cards/show",
-				"v2/app/views/mobile_cards/cards/show.html.haml"
-			],
-			[
-				"api/circular/show",
-				"v2/app/views/api/circulars/show.json.jbuilder"
-			],
-			[
-				"api/circular/in",
-				"v2/app/views/api/circulars/index.json.jbuilder"
-			],
-			[
-				"circular.rb",
-				"v2/app/models/circular.rb"
-			],
-			[
-				"circularcaching",
-				"v2/app/services/circular_caching_service.rb"
-			],
-			[
-				"circular_promoser",
-				"v2/app/services/circular_promo_service.rb"
-			],
-			[
-				"partners_con",
-				"v2/app/controllers/partners_controller.rb"
-			],
-			[
-				"cards_con",
-				"v2/app/controllers/cards_controller.rb"
-			],
-			[
-				"passbook",
-				"v2/config/initializers/passbook.rb"
-			],
-			[
-				"user.rb",
-				"v2/app/models/user.rb"
-			],
-			[
-				"api/circularet",
-				"v2/app/controllers/api/circular_retailer_interests_controller.rb"
-			],
-			[
-				"circularetailerinet",
-				"v2/app/models/circular_retailer_interest.rb"
-			],
-			[
-				"has_circular",
-				"v2/app/models/concerns/has_circulars.rb"
-			],
-			[
-				"api/circular_listings_con",
-				"v2/app/controllers/api/circular_listings_controller.rb"
-			],
-			[
-				"groceryserverapiser",
-				"v2/app/services/grocery_server_api_service.rb"
-			],
-			[
-				"shoplocalapiserver",
-				"v2/app/services/shoplocal_api_service.rb"
-			],
-			[
-				"api/circular/feed",
-				"v2/app/views/api/circulars/feed.json.jbuilder"
-			],
-			[
-				"api/circular/ind",
-				"v2/app/views/api/circulars/index.json.jbuilder"
-			],
-			[
-				"circularpromoser",
-				"v2/app/services/circular_promo_service.rb"
-			],
-			[
-				"partner_controller",
-				"v2/app/controllers/partners_controller.rb"
-			],
-			[
-				"nginx_si",
-				"v2/config/nginx_site.conf"
-			],
-			[
-				"circular_page",
-				"v2/app/models/circular_page.rb"
-			],
-			[
-				"mobile_programs/latest",
-				"v2/app/controllers/mobile_programs/latest_controller.rb"
-			],
-			[
-				"users_con",
-				"v2/app/controllers/users_controller.rb"
-			],
-			[
-				"route",
-				"v2/config/routes.rb"
-			],
-			[
-				"static.rb",
-				"v2/app/models/static.rb"
-			],
-			[
-				"download_text",
-				"v2/app/views/user_mailer/download_text_email.text.erb"
-			],
-			[
-				"user_mailer",
-				"v2/app/mailers/user_mailer.rb"
 			]
 		],
 		"width": 0.0
@@ -1091,7 +1826,7 @@
 		[
 			[
 				"",
-				"~/Documents/Sublime/keyring.sublime-project"
+				"~/games/bossbattles/bossbattles.sublime-project"
 			]
 		],
 		"width": 380.0

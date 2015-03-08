@@ -4,6 +4,6 @@ using System.Collections.Generic;
 
 public class Adventurer {
 
-  public List<Commodity> Commodities;
+  public List<Demand> Demands;
 
 }

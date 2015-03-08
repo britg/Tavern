@@ -5,10 +5,10 @@ using System.Collections.Generic;
 public class EconomyProcessor : Processor {
 
   public override void OnMinute () {
-    CalculateDemand();
+    CalculateDemands();
   }
 
-  void CalculateDemand() {
+  void CalculateDemands() {
 
   }
 

@@ -27,6 +27,7 @@ public class SimulationConfig {
   public PlayerConfig PlayerConfig { get { return ReadConfig<PlayerConfig>("player_config.json"); } }
   public BuildingConfig BuildingConfig { get { return ReadConfig<BuildingConfig>("building_config.json"); } }
   public CommodityConfig CommodityConfig { get { return ReadConfig<CommodityConfig>("commodity_config.json"); } }
+  public AdventurerConfig AdventurerConfig { get { return ReadConfig<AdventurerConfig>("adventurer_config.json"); } }
 
   public override string ToString () {
     return JsonConvert.SerializeObject(this);
