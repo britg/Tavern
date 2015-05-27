@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 
 class Utilities {
 
@@ -13,11 +13,9 @@ class Utilities {
       return default(T);
     }
 
-    return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(source));
-  }
+    return default(T);
 
-  public static string dump (object obj) {
-    return JsonConvert.SerializeObject(obj);
+//    return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(source));
   }
 
 }

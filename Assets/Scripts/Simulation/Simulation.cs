@@ -5,7 +5,7 @@ using System.Linq;
 
 public class Simulation {
 
-  public SimulationConfig config;
+//  public SimulationConfig config;
 
   float previousSpeed;
   public float CurrentSpeed { get; set; }
@@ -19,8 +19,8 @@ public class Simulation {
   List<IProcessor> processorRegistry;
 
   public void Setup () {
-    config = SimulationConfig.Instance;
-    Debug.Log(config);
+//    config = SimulationConfig.Instance;
+//    Debug.Log(config);
 
     World = new World();
     SetupTime();
@@ -36,21 +36,21 @@ public class Simulation {
   }
 
   void SetupTime () {
-    CurrentSpeed = config.TimeConfig.start_speed;
-    GameTime = new GameTime(config.TimeConfig);
-    GameTime.MinuteChange += OnMinute;
-    GameTime.HourChange += OnHour;
-    GameTime.DayChange += OnDay;
-    GameTime.NightChange += OnNight;
+//    CurrentSpeed = config.TimeConfig.start_speed;
+//    GameTime = new GameTime(config.TimeConfig);
+//    GameTime.MinuteChange += OnMinute;
+//    GameTime.HourChange += OnHour;
+//    GameTime.DayChange += OnDay;
+//    GameTime.NightChange += OnNight;
   }
 
   void SetupBuildings () {
-    Building.Templates = config.BuildingConfig.Templates;
+//    Building.Templates = config.BuildingConfig.Templates;
   }
 
   void SetupPlayer () {
-    Player = new Player(config.PlayerConfig);
-    Simulation.Log(Player.Buildings[0]);
+//    Player = new Player(config.PlayerConfig);
+//    Simulation.Log(Player.Buildings[0]);
   }
 
   void SetupProcessorRegistry () {
@@ -72,12 +72,12 @@ public class Simulation {
   }
 
   public void Update (float deltaTime) {
-    UpdateDelta = deltaTime * CurrentSpeed;
-    GameTime.AddTime(UpdateDelta);
-
-    foreach (IProcessor processor in processorRegistry) {
-      processor.Update(UpdateDelta);
-    }
+//    UpdateDelta = deltaTime * CurrentSpeed;
+//    GameTime.AddTime(UpdateDelta);
+//
+//    foreach (IProcessor processor in processorRegistry) {
+//      processor.Update(UpdateDelta);
+//    }
   }
 
   public void OnSecond () {
@@ -126,7 +126,7 @@ public class Simulation {
   }
 
   public static void Log (object obj) {
-    Debug.Log(Utilities.dump(obj));
+    Debug.Log(obj);
   }
 
 }

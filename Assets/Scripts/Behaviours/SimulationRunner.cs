@@ -10,7 +10,8 @@ public class SimulationRunner : MonoBehaviour {
   }
 
 	// Use this for initialization
-	void Start () {
+  void Start () {
+    Application.targetFrameRate = 60;
     sim.Start();
 	}
 
