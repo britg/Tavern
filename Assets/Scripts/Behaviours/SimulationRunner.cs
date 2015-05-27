@@ -10,7 +10,7 @@ public class SimulationRunner : MonoBehaviour {
   }
 
 	// Use this for initialization
-	void Start () {
+  void Start () {
     sim.Start();
 	}
 
