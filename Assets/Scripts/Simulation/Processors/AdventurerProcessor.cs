@@ -13,7 +13,8 @@ public class AdventurerProcessore : Processor {
     }
   }
 
-  void CreateAdventurer (int level) {
+  void CreateAdventurer (PlayerLevel level) {
+
   }
 
 }
