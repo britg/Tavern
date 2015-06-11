@@ -6,7 +6,6 @@ public class showfps : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
     Application.targetFrameRate = 60;
-    SmartConsole.ExecuteLine("show.fps True");
 	}
 	
 	// Update is called once per frame

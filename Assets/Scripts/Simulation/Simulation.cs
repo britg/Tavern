@@ -32,7 +32,6 @@ public class Simulation {
   public void Start () {
     InitProcessors();
     StartProcessors();
-    SmartConsole.ExecuteLine("show.fps True");
   }
 
   void SetupTime () {
