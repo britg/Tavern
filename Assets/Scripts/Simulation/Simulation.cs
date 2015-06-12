@@ -5,9 +5,9 @@ public class Simulation {
 
   public Player player;
 
-  public void Setup () {
-    var config = new SimulationConfig();
-    config.LoadAll();
+  public void Setup (SimulationConfig config) {
+    config.LoadModels();
+    player = config.LoadPlayer();
   }
 
   public void Start () {
