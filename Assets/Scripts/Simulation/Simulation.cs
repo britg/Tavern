@@ -3,7 +3,11 @@ using System.Collections;
 
 public class Simulation {
 
+  public Player player;
+
   public void Setup () {
+    var config = new SimulationConfig();
+    config.LoadAll();
   }
 
   public void Start () {
