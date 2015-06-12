@@ -9,11 +9,15 @@ public class SimulationConfig {
 
   public const string type = "Simulation";
 
+  // Core Config
   public float updateIntervalSeconds;
+  public int startSeconds;
+  public int dayStartHour;
+  public int nightStartHour;
   public float initialSpeed;
   public int initialGold;
   public List<String> startBuildings = new List<String>();
-  
+
   const string CONFIG_PATH = "Assets/Scripts/Simulation/Config";
   const string EXT = ".json";
 
