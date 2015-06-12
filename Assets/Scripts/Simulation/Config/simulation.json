@@ -1,0 +1,7 @@
+{
+  "type": "Simulation",
+  "updateIntervalSeconds": 1,
+  "initialSpeed": 1,
+  "initialGold": 1000,
+  "startBuildings": ["tavern"]
+}

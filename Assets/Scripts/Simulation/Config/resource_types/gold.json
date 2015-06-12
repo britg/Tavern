@@ -1,5 +1,5 @@
 {
-  "type": "Resource",
+  "type": "ResourceType",
   "key": "gold",
   "name": "Gold"
 }

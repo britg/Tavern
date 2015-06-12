@@ -4,7 +4,6 @@ using System.Collections;
 public class SimulationRunner : MonoBehaviour {
 
   public Simulation sim;
-  public SimulationConfig config;
 
   void Awake () {
     GetSim();
@@ -32,7 +31,7 @@ public class SimulationRunner : MonoBehaviour {
   public Simulation GetSim() {
     if (sim == null) {
       sim = new Simulation();
-      sim.Setup(config);
+      sim.Setup();
     }
     return sim;
   }
