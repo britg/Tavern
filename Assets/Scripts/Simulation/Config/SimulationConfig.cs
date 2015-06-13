@@ -26,6 +26,7 @@ public class SimulationConfig {
     updateIntervalSeconds = json["updateIntervalSeconds"].AsFloat;
     initialSpeed = json["initialSpeed"].AsFloat;
     initialGold = json["initialGold"].AsInt;
+    startSeconds = json["startSeconds"].AsInt;
     foreach(JSONNode arrItem in json["startBuildings"].AsArray) {
       startBuildings.Add(arrItem.Value);
     }

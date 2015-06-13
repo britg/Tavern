@@ -1,10 +1,10 @@
 {
   "type": "Simulation",
   "updateIntervalSeconds": 1,
-  "startSeconds": 0,
+  "startSeconds": 28800,
   "dayStartHour": 7,
   "nightStartHour": 22,
-  "initialSpeed": 1,
+  "initialSpeed": 60,
   "initialGold": 1000,
   "startBuildings": ["tavern"]
 }

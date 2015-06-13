@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AdventurerManager : Processor {
+public class AdventurerProcessor : Processor {
+
+
 
 }

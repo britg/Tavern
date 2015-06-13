@@ -13,17 +13,22 @@ public class Simulation {
   public GameTime GameTime { get; set; }
   public float UpdateDelta { get; set; }
 
-  public void Setup () {
-    config = new SimulationConfig();
-    config.LoadModels();
+  public void Setup() {
+    SetupConfig();
     player = config.LoadPlayer();
-
     SetupGameTime();
+    SetupProcessors();
 
-    Debug.Log ("initial gold is " + config.initialGold);
+    Debug.Log("initial gold is " + config.initialGold);
   }
 
-  void SetupGameTime () {
+  void SetupConfig () {
+    config = new SimulationConfig();
+    config.LoadModels();
+  }
+
+  void SetupGameTime() {
+    CurrentSpeed = config.initialSpeed;
     GameTime = new GameTime(config);
     GameTime.MinuteChange += OnMinute;
     GameTime.HourChange += OnHour;
@@ -31,73 +36,62 @@ public class Simulation {
     GameTime.NightChange += OnNight;
   }
 
-  public void Start () {
+  void SetupProcessors () {
+    processorRegistry = new List<IProcessor>();
   }
 
-  public void Update(float deltaTime)
-  {
+  public void Start() {
+  }
+
+  public void Update(float deltaTime) {
     UpdateDelta = deltaTime * CurrentSpeed;
     GameTime.AddTime(UpdateDelta);
 
-    foreach (IProcessor processor in processorRegistry)
-    {
+    foreach (IProcessor processor in processorRegistry) {
       processor.Update(UpdateDelta);
     }
   }
 
-  public void OnSecond()
-  {
-    foreach (IProcessor processor in processorRegistry)
-    {
+  public void OnSecond() {
+    foreach (IProcessor processor in processorRegistry) {
       processor.OnSecond();
     }
   }
 
-  public void OnMinute()
-  {
-    foreach (IProcessor processor in processorRegistry)
-    {
+  public void OnMinute() {
+    foreach (IProcessor processor in processorRegistry) {
       processor.OnMinute();
     }
   }
 
-  public void OnHour()
-  {
-    foreach (IProcessor processor in processorRegistry)
-    {
+  public void OnHour() {
+    foreach (IProcessor processor in processorRegistry) {
       processor.OnHour();
     }
   }
 
-  public void OnDay()
-  {
-    foreach (IProcessor processor in processorRegistry)
-    {
+  public void OnDay() {
+    foreach (IProcessor processor in processorRegistry) {
       processor.OnDay();
     }
   }
 
-  public void OnNight()
-  {
-    foreach (IProcessor processor in processorRegistry)
-    {
+  public void OnNight() {
+    foreach (IProcessor processor in processorRegistry) {
       processor.OnDay();
     }
   }
 
-  public void Pause()
-  {
+  public void Pause() {
     previousSpeed = CurrentSpeed;
     CurrentSpeed = 0f;
   }
 
-  public void Resume()
-  {
+  public void Resume() {
     CurrentSpeed = previousSpeed;
   }
 
-  public void AdjustCurrentSpeed(float value)
-  {
+  public void AdjustCurrentSpeed(float value) {
     CurrentSpeed = value;
   }
 
