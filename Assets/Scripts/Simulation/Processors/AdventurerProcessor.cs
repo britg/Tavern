@@ -4,7 +4,6 @@ using System.Collections;
 public class AdventurerProcessor : Processor {
 
   Adventurer adv;
-  Simulation sim;
 
   public AdventurerProcessor (Adventurer _adv, Simulation _sim) {
     adv = _adv;
@@ -18,7 +17,6 @@ public class AdventurerProcessor : Processor {
   }
 
   void ProcessState () {
-    var hour = sim.GameTime.Hour;
   }
 
 }

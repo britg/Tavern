@@ -21,3 +21,10 @@ World's End Tavern
 - Day:
 	- Go out questing
 	- Resupply when needed
+
+## Primary Player Resources
+
+- Gold
+- Adventure Rating
+	- attracts more questers
+- 

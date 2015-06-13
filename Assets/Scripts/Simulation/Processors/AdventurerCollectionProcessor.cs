@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class AdventurerCollectionProcessor : Processor {
 
-  Simulation sim;
-
   public AdventurerCollectionProcessor (Simulation _sim) {
     sim = _sim;
   }
