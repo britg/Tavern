@@ -10,6 +10,7 @@ public class Adventurer {
   public string Name { get; set; }
   public int Level { get; set; }
   public int Experience { get; set; }
+  public Vector3 Location { get; set; }
 
   public Adventurer (string className) {
     Class = AdventurerClass.all[className];
@@ -17,9 +18,10 @@ public class Adventurer {
     Level = 1;
     Experience = 0;
     State = AdventurerState.Idle;
+    Location = Vector3.zero;
   }
 
   public override string ToString () {
-    return string.Format("Adventurer: {0} {1}, {2}", Class.Name, Name, State);
+    return string.Format("Adventurer: {0} {1}, {2} @ {3}", Class.Name, Name, State, Location);
   }
 }

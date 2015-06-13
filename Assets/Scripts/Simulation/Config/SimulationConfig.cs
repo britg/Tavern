@@ -95,9 +95,11 @@ public class SimulationConfig {
 
   }
 
-  public void LoadOrCreatePlayer () {
-    // If we have a persisted player, load that
-    // otherwise, create a new player:
+  public void LoadExistingPlayer () {
+    
+  }
+
+  public void CreatePlayer () {
     var playerCreator = new PlayerCreator(sim);
     playerCreator.Create();
   }

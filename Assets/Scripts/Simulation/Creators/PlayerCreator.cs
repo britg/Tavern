@@ -41,6 +41,8 @@ public class PlayerCreator {
   }
 
   void CreateBuilding (string buildingKey) {
+    var buildingCreator = new BuildingCreator(sim);
+    buildingCreator.Create(buildingKey);
   }
 
 }

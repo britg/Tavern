@@ -6,6 +6,7 @@ public class Simulation {
 
   public SimulationConfig config;
 
+  public Map map;
   public Player player;
   List<IProcessor> processorRegistry;
   float previousSpeed;
@@ -16,6 +17,8 @@ public class Simulation {
   public void Setup() {
     SetupConfig();
     SetupGameTime();
+    SetupMap();
+    SetupPlayer();
     SetupProcessors();
 
     Debug.Log("initial gold is " + config.initialGold);
@@ -24,7 +27,6 @@ public class Simulation {
   void SetupConfig () {
     config = new SimulationConfig(this);
     config.LoadModels();
-    config.LoadOrCreatePlayer();
   }
 
   void SetupGameTime() {
@@ -34,6 +36,14 @@ public class Simulation {
     GameTime.HourChange += OnHour;
     GameTime.DayChange += OnDay;
     GameTime.NightChange += OnNight;
+  }
+
+  void SetupMap () {
+    map = new Map();
+  }
+
+  void SetupPlayer () {
+    config.CreatePlayer();
   }
 
   void SetupProcessors () {

@@ -13,6 +13,7 @@ public class AdventurerCreator {
     var adventurer = new Adventurer(classKey);
     adventurer.Name = Name.Generate();
     sim.player.Adventurers[adventurer.id] = adventurer;
+    adventurer.Location = sim.map.TavernLocation;
     return adventurer;
   }
 }
