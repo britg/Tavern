@@ -13,12 +13,10 @@ public class SimulationRunner : MonoBehaviour {
     return sim;
   }
 
-  void Awake () {
-    GetSim();
-  }
 
 	// Use this for initialization
   void Start () {
+    GetSim();
     Application.targetFrameRate = 60;
     sim.Start();
 	}

@@ -19,8 +19,8 @@ public class PlayerCreator {
 
   public void Bootstrap () {
     BootstrapResources();
-    BootstrapAdventurers();
     BootstrapBuildings();
+    BootstrapAdventurers();
   }
 
   void BootstrapResources () {
@@ -38,6 +38,9 @@ public class PlayerCreator {
     foreach (string buildingKey in sim.config.startBuildings) {
       CreateBuilding(buildingKey);
     }
+
+    // Player always starts with a tavern
+    NotificationCenter.PostNotification(Constants.OnTavernCreated);
   }
 
   void CreateBuilding (string buildingKey) {
