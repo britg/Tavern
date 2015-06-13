@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AdventurerCreator : MonoBehaviour {
+public class AdventurerCreator {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+  Simulation sim;
+
+  public AdventurerCreator (Simulation _sim) {
+    sim = _sim;
+  }
+
+  public Adventurer Create (string classKey) {
+    var adventurer = new Adventurer(classKey);
+    sim.player.Adventurers[adventurer.id] = adventurer;
+    return adventurer;
+  }
 }

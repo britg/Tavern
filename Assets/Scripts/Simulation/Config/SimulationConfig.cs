@@ -9,6 +9,8 @@ public class SimulationConfig {
 
   public const string type = "Simulation";
 
+  Simulation sim;
+
   // Core Config
   public float updateIntervalSeconds;
   public int startSeconds;
@@ -20,6 +22,10 @@ public class SimulationConfig {
 
   const string CONFIG_PATH = "Assets/Scripts/Simulation/Config";
   const string EXT = ".json";
+
+  public SimulationConfig (Simulation _sim) {
+    sim = _sim;
+  }
 
   public void LoadSelf (JSONNode json) {
     Debug.Log ("Loading self " + json.ToString());
@@ -79,6 +85,9 @@ public class SimulationConfig {
       case SimulationConfig.type:
         LoadSelf(parsed);
       break;
+      case Name.type:
+        Name.Cache(parsed);
+        break;
       default:
         Debug.LogWarning(string.Format("Failed to load {0} {1}", parsed["type"], parsed["key"]));
       break;
@@ -86,9 +95,11 @@ public class SimulationConfig {
 
   }
 
-  public Player LoadPlayer () {
-    var playerCreator = new PlayerCreator(this);
-    return playerCreator.Create();
+  public void LoadOrCreatePlayer () {
+    // If we have a persisted player, load that
+    // otherwise, create a new player:
+    var playerCreator = new PlayerCreator(sim);
+    playerCreator.Create();
   }
 
 }

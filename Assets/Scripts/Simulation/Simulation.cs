@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Simulation {
 
-  SimulationConfig config;
+  public SimulationConfig config;
 
   public Player player;
   List<IProcessor> processorRegistry;
@@ -15,16 +15,17 @@ public class Simulation {
 
   public void Setup() {
     SetupConfig();
-    player = config.LoadPlayer();
     SetupGameTime();
     SetupProcessors();
 
     Debug.Log("initial gold is " + config.initialGold);
+    Debug.Log("Random name is " + Name.Generate());
   }
 
   void SetupConfig () {
-    config = new SimulationConfig();
+    config = new SimulationConfig(this);
     config.LoadModels();
+    config.LoadOrCreatePlayer();
   }
 
   void SetupGameTime() {
