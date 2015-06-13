@@ -4,6 +4,7 @@ using System.Collections;
 public class Adventurer {
 
   public AdventurerClass Class { get; set; }
+  public AdventurerState State { get; set; }
 
   public string id { get; set; }
   public string Name { get; set; }
@@ -15,6 +16,10 @@ public class Adventurer {
     id = System.Guid.NewGuid().ToString();
     Level = 1;
     Experience = 0;
+    State = AdventurerState.Idle;
   }
 
+  public override string ToString () {
+    return string.Format("Adventurer: {0} {1}, {2}", Class.Name, Name, State);
+  }
 }

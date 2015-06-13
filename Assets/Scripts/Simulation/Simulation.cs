@@ -19,7 +19,6 @@ public class Simulation {
     SetupProcessors();
 
     Debug.Log("initial gold is " + config.initialGold);
-    Debug.Log("Random name is " + Name.Generate());
   }
 
   void SetupConfig () {

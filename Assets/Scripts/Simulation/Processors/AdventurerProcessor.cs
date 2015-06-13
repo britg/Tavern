@@ -12,7 +12,7 @@ public class AdventurerProcessor : Processor {
   }
 
   public override void OnMinute() {
-    Debug.Log("On minute for adv " + adv.id);
+    Debug.Log(adv.ToString());
     base.OnMinute();
   }
 
