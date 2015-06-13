@@ -13,7 +13,12 @@ public class AdventurerProcessor : Processor {
 
   public override void OnMinute() {
     Debug.Log(adv.ToString());
+    ProcessState();
     base.OnMinute();
+  }
+
+  void ProcessState () {
+    var hour = sim.GameTime.Hour;
   }
 
 }
