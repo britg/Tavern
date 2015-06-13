@@ -8,7 +8,9 @@ public class Simulation {
 
   public Map map;
   public Player player;
+
   List<IProcessor> processorRegistry;
+
   float previousSpeed;
   public float CurrentSpeed { get; set; }
   public GameTime GameTime { get; set; }
