@@ -38,6 +38,8 @@ public class Simulation {
 
   void SetupProcessors () {
     processorRegistry = new List<IProcessor>();
+    var adventurerCollectionProcessor = new AdventurerCollectionProcessor(this);
+    processorRegistry.Add(adventurerCollectionProcessor);
   }
 
   public void Start() {

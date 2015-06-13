@@ -13,8 +13,8 @@ public class PlayerCreator {
   public Player Create () {
     player = new Player();
 
-    var resourceAmount = new Resource("gold", config.initialGold);
-    player.Resources["gold"] = resourceAmount;
+    var resource = new Resource("gold", config.initialGold);
+    player.Resources["gold"] = resource;
 
     var adventurer = new Adventurer("warrior");
     player.Adventurers[adventurer.id] = adventurer;
