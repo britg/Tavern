@@ -17,7 +17,7 @@ public class SimulationRepresenter : BaseBehaviour {
 
 
   void OnAdventurerCreated (Notification n) {
-    Debug.Log("Receiving adventurer created " + n);
+    //Debug.Log("Receiving adventurer created " + n);
     Adventurer adv = (Adventurer)n.data["adventurer"];
     GameObject advObj = (GameObject)Instantiate(adventurerPrefab);
     advObj.transform.SetParent(transform);
@@ -26,7 +26,7 @@ public class SimulationRepresenter : BaseBehaviour {
 
   void OnTavernCreated (Notification n) {
     Building tavern = (Building)n.data["tavern"];
-    Debug.Log("On Tavern created " + tavern);
+    //Debug.Log("On Tavern created " + tavern);
     GameObject tavernObj = (GameObject)Instantiate(tavernPrefab);
     tavernObj.transform.SetParent(transform);
     tavernObj.GetComponent<TavernView>().SetTavern(tavern);
