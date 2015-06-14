@@ -14,7 +14,9 @@ public class AdventurerCreator {
     adventurer.Name = Name.Generate();
     sim.player.Adventurers[adventurer.id] = adventurer;
     adventurer.Location = sim.map.TavernLocation;
-    NotificationCenter.PostNotification(Constants.OnAdventurerCreated);
+    var data = new Hashtable();
+    data["adventurer"] = adventurer;
+    NotificationCenter.PostNotification(Constants.OnAdventurerCreated, data);
     return adventurer;
   }
 }

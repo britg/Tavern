@@ -30,8 +30,9 @@ public class PlayerCreator {
 
   void BootstrapAdventurers () {
     var adventurerCreator = new AdventurerCreator(sim);
-    adventurerCreator.Create("warrior");
-    adventurerCreator.Create("warrior");
+    for (int i = 0; i < 2; i++) {
+      adventurerCreator.Create("warrior");
+    }
   }
 
   void BootstrapBuildings () {
@@ -40,7 +41,9 @@ public class PlayerCreator {
     }
 
     // Player always starts with a tavern
-    NotificationCenter.PostNotification(Constants.OnTavernCreated);
+    Hashtable data = new Hashtable();
+    data["tavern"] = sim.player.Buildings["tavern"];
+    NotificationCenter.PostNotification(Constants.OnTavernCreated, data);
   }
 
   void CreateBuilding (string buildingKey) {

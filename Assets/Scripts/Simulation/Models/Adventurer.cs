@@ -10,7 +10,13 @@ public class Adventurer {
   public string Name { get; set; }
   public int Level { get; set; }
   public int Experience { get; set; }
+
   public Vector3 Location { get; set; }
+  public Vector3 Destination { get; set; }
+  public float Speed { get; set; } // units/hour
+  public float SpeedPerSecond { get {
+      return Speed / 3600f;
+    } }
 
   public Adventurer (string className) {
     Class = AdventurerClass.all[className];
@@ -19,6 +25,7 @@ public class Adventurer {
     Experience = 0;
     State = AdventurerState.Idle;
     Location = Vector3.zero;
+    Speed = 100f;
   }
 
   public override string ToString () {
