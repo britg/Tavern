@@ -45,7 +45,7 @@ public class MouseKeyboardCameraBehaviour : MonoBehaviour {
 
   void ZoomCamera (float amount) {
     var pos = transform.position;
-    var newZ = pos.z + amount * (reverseZoom ? -1 : 1);
+    var newZ = pos.z + amount * (reverseZoom ? -1 : 1) * zoomMultiplier;
     newZ = Mathf.Clamp(newZ, maxZoom, minZoom);
     pos.z = newZ;
     transform.position = pos;
