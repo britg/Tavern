@@ -15,17 +15,14 @@ public class Adventurer {
   public Vector3 Destination { get; set; }
   public float Speed { get; set; } // units/hour
   public float SpeedPerSecond { get {
-      return Speed / 3600f;
+      return Speed / Constants.SecondsPerHour;
     } }
 
   public Adventurer (string className) {
     Class = AdventurerClass.all[className];
     id = System.Guid.NewGuid().ToString();
-    Level = 1;
-    Experience = 0;
     State = AdventurerState.Idle;
     Location = Vector3.zero;
-    Speed = 100f;
   }
 
   public override string ToString () {

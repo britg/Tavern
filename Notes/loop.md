@@ -27,4 +27,6 @@ World's End Tavern
 - Gold
 - Adventure Rating
 	- attracts more questers
-- 
+	- loot contributes
+	- discoveries contribute
+	

@@ -12,14 +12,25 @@ public class SimulationConfig {
   Simulation sim;
 
   // Core Config
+
+  // Time
   public float updateIntervalSeconds;
   public int startSeconds;
   public int dayStartHour;
   public int nightStartHour;
   public float initialSpeed;
+
+  // Player
   public int initialGold;
   public List<String> startBuildings = new List<String>();
 
+  // Adventurer
+  public int adventurerDefaultLevel;
+  public int adventurerDefaultExp;
+  public float adventurerDefaultSpeed;
+
+
+  // Model config
   const string CONFIG_PATH = "Assets/Scripts/Simulation/Config";
   const string EXT = ".json";
 
@@ -36,6 +47,10 @@ public class SimulationConfig {
     foreach(JSONNode arrItem in json["startBuildings"].AsArray) {
       startBuildings.Add(arrItem.Value);
     }
+
+    adventurerDefaultLevel = json["adventurerDefaultLevel"].AsInt;
+    adventurerDefaultExp = json["adventurerDefaultExp"].AsInt;
+    adventurerDefaultSpeed = json["adventurerDefaultSpeed"].AsFloat;
   }
 
   public void LoadModels () {

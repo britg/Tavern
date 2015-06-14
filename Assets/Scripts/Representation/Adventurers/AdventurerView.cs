@@ -19,6 +19,7 @@ public class AdventurerView : BaseBehaviour {
 
   public void SetAdventurer (Adventurer _adv) {
     adventurer = _adv;
+    gameObject.name = string.Format("Adventurer: {0}", adventurer.Name);
 
     // Load the correct view for this Class
     // tmp for just warrior

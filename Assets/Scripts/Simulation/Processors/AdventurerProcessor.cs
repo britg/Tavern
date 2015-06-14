@@ -16,7 +16,9 @@ public class AdventurerProcessor : Processor {
   }
 
   public override void Update (float deltaTime) {
-    UpdateLocation(deltaTime);
+    if (adv.State == AdventurerState.Travelling) {
+      UpdateLocation(deltaTime);
+    }
     base.Update(deltaTime);
   }
 
@@ -27,6 +29,9 @@ public class AdventurerProcessor : Processor {
   }
 
   void ProcessState () {
+  }
+
+  void SetRandomDestination () {
     var dest = new Vector3(Random.Range(-1f, 1f) * Random.Range(0f, 100f),Random.Range(-1f, 1f) *  Random.Range(0f, 100f), 0f);
     adv.Destination = dest;
   }
