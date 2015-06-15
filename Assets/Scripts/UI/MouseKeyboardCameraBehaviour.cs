@@ -11,6 +11,7 @@ public class MouseKeyboardCameraBehaviour : MonoBehaviour {
   public float zoomMultiplier = 0.1f;
   public bool reverseZoom = false;
 
+  public float defaultZoom = -50f;
   public float minZoom = -10f;
   public float maxZoom = -50f;
 
