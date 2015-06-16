@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6a5cc7a7fb6e347b560c79ba927d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  warriorPrefab: {fileID: 125002, guid: db56f17bfb8a75047a769380556a8268, type: 2}
+  warriorPrefab: {fileID: 179032, guid: f7efc60fed04c417699cc0cd692d9877, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -50,7 +50,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: warriorPrefab
       value: 
-      objectReference: {fileID: 125002, guid: db56f17bfb8a75047a769380556a8268, type: 2}
+      objectReference: {fileID: 179032, guid: f7efc60fed04c417699cc0cd692d9877, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 104526}
