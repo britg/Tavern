@@ -3,10 +3,12 @@ using System.Collections;
 
 public class MouseKeyboardCameraBehaviour : MonoBehaviour {
 
+  public Transform cameraTransform;
+
   Vector3 lastFramePosition;
   public float moveMultiplier = 0.1f;
   public bool reverseX = false;
-  public bool reverseY = false;
+  public bool reverseZ = false;
 
   public float zoomMultiplier = 0.1f;
   public bool reverseZoom = false;
@@ -17,7 +19,7 @@ public class MouseKeyboardCameraBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+    cameraTransform = Camera.main.transform;
 	}
 	
 	// Update is called once per frame
@@ -38,17 +40,17 @@ public class MouseKeyboardCameraBehaviour : MonoBehaviour {
 	}
 
   void MoveCamera (Vector3 amount) {
-    var pos = transform.position;
+    var pos = cameraTransform.position;
     pos.x += amount.x * (reverseX ? -1 : 1) * moveMultiplier;
-    pos.y += amount.y * (reverseY ? -1 : 1) * moveMultiplier;
-    transform.position = pos;
+    pos.z += amount.y * (reverseZ ? -1 : 1) * moveMultiplier;
+    cameraTransform.position = pos;
   }
 
   void ZoomCamera (float amount) {
-    var pos = transform.position;
-    var newZ = pos.z + amount * (reverseZoom ? -1 : 1) * zoomMultiplier;
-    newZ = Mathf.Clamp(newZ, maxZoom, minZoom);
-    pos.z = newZ;
-    transform.position = pos;
+    var pos = cameraTransform.position;
+    var newY = pos.y + amount * (reverseZoom ? -1 : 1) * zoomMultiplier;
+    newY = Mathf.Clamp(newY, minZoom, maxZoom);
+    pos.y = newY;
+    cameraTransform.position = pos;
   }
 }
