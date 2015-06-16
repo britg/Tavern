@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Resource {
 
+  public const string Gold = "gold";
+
   public ResourceType ResourceType { get; set; }
   public float Amount { get; set; }
 

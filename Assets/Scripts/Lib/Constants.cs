@@ -7,4 +7,7 @@ public class Constants {
 
   public const string OnTavernCreated = "OnTavernCreated";
   public const string OnAdventurerCreated = "OnAdventurerCreated";
+
+  // Layers
+  public const string GroundLayer = "Ground";
 }
