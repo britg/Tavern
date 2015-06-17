@@ -24,7 +24,6 @@ public class ExplorationQuestController : BaseBehaviour {
   }
 
   public void OnActivateQuestPlacer () {
-    Debug.Log("On activate quest placer");
     CreateQuestMarker();
     EnterPendingSelectionState();
   }
