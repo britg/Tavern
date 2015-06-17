@@ -8,6 +8,7 @@ public class Simulation {
 
   public Map map;
   public Player player;
+  public List<Quest> questList = new List<Quest>();
 
   List<IProcessor> processorRegistry;
 
@@ -107,6 +108,11 @@ public class Simulation {
 
   public void AdjustCurrentSpeed(float value) {
     CurrentSpeed = value;
+  }
+
+  public void CreateExplorationQuest (Vector3 location) {
+    var explorationQuestCreator = new ExplorationQuestCreator(this);
+    explorationQuestCreator.Create(location);
   }
 
 }

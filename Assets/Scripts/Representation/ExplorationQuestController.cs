@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ExplorationQuestController : MonoBehaviour {
+public class ExplorationQuestController : BaseBehaviour {
 
   enum InputState {
     Default,
@@ -63,6 +63,7 @@ public class ExplorationQuestController : MonoBehaviour {
   }
 
   void DropQuestMarker () {
+    sim.CreateExplorationQuest(currentQuestMarker.transform.position);
     currentQuestMarker = null;
   }
 
