@@ -9,10 +9,16 @@ public class MouseKeyboardCameraBehaviour : MonoBehaviour {
     UI
   }
 
+  enum InputState {
+    Default,
+    PendingSelection
+  }
+
   public CameraController cameraController;
 
   public float sessionTravel = 1f;
   SessionType sessionType;
+  InputState inputState = InputState.Default;
 
   Vector3 lastFramePosition;
   float sessionDistance = 0f;
@@ -21,6 +27,7 @@ public class MouseKeyboardCameraBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+    NotificationCenter.AddObserver(this, Constants.OnEnterPendingSelection);
 	}
 	
 	// Update is called once per frame
@@ -54,12 +61,17 @@ public class MouseKeyboardCameraBehaviour : MonoBehaviour {
   }
 
   void CaptureMouseDown () {
+
+    if (inputState == InputState.PendingSelection) {
+      NotifySelection();
+      return;
+    }
+
     StartSession();
 
     if (sessionType == SessionType.World) {
       CaptureWorldDown();
     }
-
   }
 
   void CaptureWorldDown () {
@@ -120,6 +132,17 @@ public class MouseKeyboardCameraBehaviour : MonoBehaviour {
   void CaptureGameScroll () {
     var scrollAmount = Input.GetAxis("Mouse ScrollWheel");
     cameraController.Zoom(scrollAmount);
+  }
+
+  // Selection management
+
+  void NotifySelection () {
+    NotificationCenter.PostNotification(Constants.OnWorldSelection);
+    inputState = InputState.Default;
+  }
+
+  void OnEnterPendingSelection () {
+    inputState = InputState.PendingSelection;
   }
 
 }

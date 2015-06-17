@@ -3,13 +3,19 @@ using System.Collections;
 
 public class ExplorationQuestController : MonoBehaviour {
 
+  enum InputState {
+    Default,
+    PendingSelection
+  }
+
   public GameObject questMarkerPrefab;
 
   GameObject currentQuestMarker;
+  InputState inputState = InputState.Default;
 
   // Use this for initialization
   void Start () {
-
+    NotificationCenter.AddObserver(this, Constants.OnWorldSelection);
   }
 
   // Update is called once per frame
@@ -20,6 +26,19 @@ public class ExplorationQuestController : MonoBehaviour {
   public void OnActivateQuestPlacer () {
     Debug.Log("On activate quest placer");
     CreateQuestMarker();
+    EnterPendingSelectionState();
+  }
+
+  void EnterPendingSelectionState () {
+    inputState = InputState.PendingSelection;
+    NotificationCenter.PostNotification(Constants.OnEnterPendingSelection);
+  }
+
+  void OnWorldSelection () {
+    if (inputState == InputState.PendingSelection) {
+      DropQuestMarker();
+      inputState = InputState.Default;
+    }
   }
 
   void CreateQuestMarker () {
@@ -41,6 +60,10 @@ public class ExplorationQuestController : MonoBehaviour {
         return;
       }
     }
+  }
+
+  void DropQuestMarker () {
+    currentQuestMarker = null;
   }
 
 
