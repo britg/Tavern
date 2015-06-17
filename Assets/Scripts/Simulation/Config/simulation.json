@@ -13,5 +13,7 @@
 
   "adventurerDefaultLevel": 1,
   "adventurerDefaultExp": 0,
-  "adventurerDefaultSpeed": 100.0
+  "adventurerDefaultSpeed": 100.0,
+
+  "defaultExplorationRadius": 50
 }

@@ -29,6 +29,9 @@ public class SimulationConfig {
   public int adventurerDefaultExp;
   public float adventurerDefaultSpeed;
 
+  // Exploration Quests
+  public float defaultExplorationRadius;
+
 
   // Model config
   const string CONFIG_PATH = "Assets/Scripts/Simulation/Config";
@@ -51,6 +54,8 @@ public class SimulationConfig {
     adventurerDefaultLevel = json["adventurerDefaultLevel"].AsInt;
     adventurerDefaultExp = json["adventurerDefaultExp"].AsInt;
     adventurerDefaultSpeed = json["adventurerDefaultSpeed"].AsFloat;
+
+    defaultExplorationRadius = json["defaultExplorationRadius"].AsFloat;
   }
 
   public void LoadModels () {
