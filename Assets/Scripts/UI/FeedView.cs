@@ -15,7 +15,6 @@ public class FeedView : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
     words = LoremIpsum.Split(new string[]{" "}, System.StringSplitOptions.RemoveEmptyEntries);
-    Debug.Log ("Words count" + words.Length);
     for (int i = 0; i < numEvents; i++) {
       CreateText();
     }

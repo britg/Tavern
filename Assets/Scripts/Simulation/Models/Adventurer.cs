@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Adventurer {
 
@@ -10,6 +11,8 @@ public class Adventurer {
   public string Name { get; set; }
   public int Level { get; set; }
   public int Experience { get; set; }
+
+  public Dictionary<string, Stat> Stats { get; set; }
 
   public Vector3 Location { get; set; }
   public Vector3 Destination { get; set; }

@@ -1,0 +1,6 @@
+{
+  "type": "EquipmentType",
+  "key": "cloth_robe",
+  "name": "Cloth Robe",
+  "slots": ["chest"]
+}

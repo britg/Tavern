@@ -23,8 +23,6 @@ public class Simulation {
     SetupMap();
     SetupPlayer();
     SetupProcessors();
-
-    Debug.Log("initial gold is " + config.initialGold);
   }
 
   void SetupConfig () {

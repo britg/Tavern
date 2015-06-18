@@ -92,7 +92,7 @@ public class NotificationCenter : MonoBehaviour {
     ArrayList notifyList = (ArrayList)Instance.notifications[aNotification.name];
 
     if (notifyList == null) {
-      Debug.Log("Notify list not found in PostNotification.");
+      Debug.Log("Notify list not found in PostNotification for " + aNotification.name);
       return;
     }
 

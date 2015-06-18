@@ -10,6 +10,7 @@ public class SimulationConfig {
   public const string type = "Simulation";
 
   Simulation sim;
+  Dictionary<string, List<JSONNode>> jsonCache = new Dictionary<string, List<JSONNode>>();
 
   // Core Config
 
@@ -42,7 +43,6 @@ public class SimulationConfig {
   }
 
   public void LoadSelf (JSONNode json) {
-    Debug.Log ("Loading self " + json.ToString());
     updateIntervalSeconds = json["updateIntervalSeconds"].AsFloat;
     initialSpeed = json["initialSpeed"].AsFloat;
     initialGold = json["initialGold"].AsInt;
@@ -60,6 +60,7 @@ public class SimulationConfig {
 
   public void LoadModels () {
     LoadDirectory(CONFIG_PATH);
+    ParseLoadedConfigs();
   }
 
   public void LoadDirectory (string dir) {
@@ -88,28 +89,72 @@ public class SimulationConfig {
   public void ParseContents (string json) {
     var parsed = JSON.Parse(json);
     var type = parsed["type"].Value;
+    if (!jsonCache.ContainsKey(type)) {
+      jsonCache[type] = new List<JSONNode>();
+    }
+    jsonCache[type].Add(parsed);
+  }
 
+  List<string> parseOrder = new List<string>() {
+    // Tier 1
+    ResourceType.type,
+    AdventurerClass.type,
+    BuildingType.type,
+    QuestType.type,
+    StatType.type,
+    SlotType.type,
+    Name.type,
+
+    // Tier 2
+    EquipmentType.type,
+    SimulationConfig.type
+  };
+  void ParseLoadedConfigs () {
+    foreach (string type in parseOrder) {
+      ParseLoadedType(type);
+    }
+  }
+
+  void ParseLoadedType (string type) {
+    var configs = jsonCache[type];
+    foreach (JSONNode config in configs) {
+      ParseSingleConfig(config);
+    }
+  }
+
+  void ParseSingleConfig (JSONNode config) {
+
+    var type = config["type"].Value;
     switch (type) {
       case ResourceType.type:
-        ResourceType.Cache(parsed);
+        ResourceType.Cache(config);
       break;
       case AdventurerClass.type:
-        AdventurerClass.Cache(parsed);
+        AdventurerClass.Cache(config);
       break;
       case BuildingType.type:
-        BuildingType.Cache(parsed);
+        BuildingType.Cache(config);
       break;
       case QuestType.type:
-        QuestType.Cache(parsed);
+        QuestType.Cache(config);
+      break;
+      case StatType.type:
+        StatType.Cache(config);
+      break;
+      case SlotType.type:
+        SlotType.Cache(config);
+      break;
+      case EquipmentType.type:
+        EquipmentType.Cache(config);
       break;
       case SimulationConfig.type:
-        LoadSelf(parsed);
+        LoadSelf(config);
       break;
       case Name.type:
-        Name.Cache(parsed);
+        Name.Cache(config);
         break;
       default:
-        Debug.LogWarning(string.Format("Failed to load {0} {1}", parsed["type"], parsed["key"]));
+        Debug.LogWarning(string.Format("Failed to load {0} {1}", config["type"], config["key"]));
       break;
     }
 
