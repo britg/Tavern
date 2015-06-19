@@ -7,7 +7,8 @@ public class ScrollView : BaseBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
   enum State {
     Reset,
-    Pulling
+    Pulling,
+    Refreshing
   }
 
   public GameObject eventList;
@@ -16,7 +17,7 @@ public class ScrollView : BaseBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
   float initialY = 0f;
   float currentDelta = 0f;
-  public float pullTrigger = 150f;
+  public float pullTrigger = 0.1f;
   State state = State.Reset;
 
 	// Use this for initialization
@@ -31,7 +32,7 @@ public class ScrollView : BaseBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 	}
 
   public void OnBeginDrag (PointerEventData data) {
-    if (scrollRect.verticalNormalizedPosition >= 1f) {
+    if (scrollRect.verticalNormalizedPosition >= 1f && state != State.Refreshing) {
       initialY = eventList.transform.position.y;
       state = State.Pulling;
     }
@@ -39,16 +40,19 @@ public class ScrollView : BaseBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
   public void OnDrag (PointerEventData data) {
     currentDelta = initialY - eventList.transform.position.y;
+    var currentRatio = currentDelta / Screen.height;
 
-    if (currentDelta >= pullTrigger) {
-      feedView.OnPull();
-      AnimateBack();
-      Reset();
+    if (currentRatio >= pullTrigger && state == State.Pulling) {
+//      scrollRect.vertical = false;
+//      feedView.OnPull();
+//      Reset();
+      InitiateRefresh();
     }
   }
 
   public void OnEndDrag (PointerEventData data) {
-    if (state != State.Reset) {
+//    scrollRect.vertical = true;
+    if (state == State.Pulling) {
       Reset();
     }
   }
@@ -57,11 +61,26 @@ public class ScrollView : BaseBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     state = State.Reset;
     initialY = 0f;
     currentDelta = 0f;
+    scrollRect.vertical = true;
+    Invoke("MakeElastic", 0.1f);
   }
 
-  void AnimateBack () {
-    iTween.MoveTo(eventList, iTween.Hash(
-      "y", initialY
-      ));
+  void MakeElastic () {
+    scrollRect.movementType = ScrollRect.MovementType.Elastic;
   }
+
+  void InitiateRefresh () {
+    Debug.Log ("Initiating refresh...");
+    state = State.Refreshing;
+    scrollRect.movementType = ScrollRect.MovementType.Clamped;
+    scrollRect.vertical = false;
+    feedView.BeginRefresh(OnRefreshFinished);
+  }
+
+  void OnRefreshFinished () {
+    Debug.Log ("Refresh finished");
+    Reset();
+  }
+
+
 }

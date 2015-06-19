@@ -13,17 +13,20 @@ public class SimulationRunner : MonoBehaviour {
     return sim;
   }
 
+  void Awake () {
+    QualitySettings.vSyncCount = 0;
+    Application.targetFrameRate = 60;
+  }
 
 	// Use this for initialization
   void Start () {
     GetSim();
-    Application.targetFrameRate = 60;
     sim.Start();
 	}
 
 	// Update is called once per frame
 	void Update () {
-    sim.Update(Time.deltaTime);
+//    sim.Update(Time.deltaTime);
 	}
 
   public void Pause () {
