@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EventEngine {
 
@@ -9,7 +10,11 @@ public class EventEngine {
     sim = _sim;
   }
 
-  public void Input () {
-    Debug.Log ("Pulled to quest: generating events");
+  public List<PlayerEvent> Input () {
+    var list = new List<PlayerEvent>();
+    list.Add(new PlayerEvent());
+
+    return list;
   }
+
 }

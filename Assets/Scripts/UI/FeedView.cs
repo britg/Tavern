@@ -11,44 +11,34 @@ public class FeedView : BaseBehaviour {
   public GameObject pullAnchor;
   public GameObject eventPrefab;
   public int numEvents = 20;
-  public Vector2 wordRange = new Vector2(2, 50);
-
-  const string LoremIpsum = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-  string[] words;
-
 
 	// Use this for initialization
 	void Start () {
-    words = LoremIpsum.Split(new string[]{" "}, System.StringSplitOptions.RemoveEmptyEntries);
-    BatchCreateEvent(3);
 	}
 
-  void RandomList () {
-    for (int i = 0; i < numEvents; i++) {
-      CreateText(i);
-    }
-  }
-	
 	// Update is called once per frame
 	void Update () {
-    if (Input.GetMouseButtonDown(1)) {
-      BatchCreateEvent(Random.Range (1, 10));
-    }
 
-    if (Input.GetMouseButtonDown(0)) {
-    }
 	}
 
   public void BeginRefresh (RefreshFinishedHandler handler) {
     refreshFinishedHandler = handler;
     pullAnchor.transform.Find("Title").GetComponent<Text>().text = "Questing...";
     // Async here
-    Invoke("DoRefresh", 3f);
+    Invoke("DoRefresh", 1f);
   }
 
   void DoRefresh () {
-    int rand = Random.Range(1, 10);
-    BatchCreateEvent(rand);
+    List<PlayerEvent> newEvents = sim.eventEngine.Input();
+//    int rand = Random.Range(1, 10);
+//    BatchCreateEvent(rand);
+
+    List<GameObject> eventObjs = new List<GameObject>();
+    foreach (var playerEvent in newEvents) {
+      eventObjs.Add(CreatePlayerEventView(playerEvent));
+    }
+    DisplayNewEvents(eventObjs);
+
     EndRefresh();
   }
 
@@ -57,40 +47,16 @@ public class FeedView : BaseBehaviour {
     refreshFinishedHandler();
   }
 
-  string partialString () {
-    var r = Random.Range((int)wordRange.x, (int)wordRange.y);
-    string[] result = new string[r];
-    System.Array.Copy(words, 0, result, 0, r);
-    string partial = System.String.Join(" ", result);
-    return partial;
+  GameObject CreatePlayerEventView (PlayerEvent playerEvent) {
+    var eventObj = (GameObject)Instantiate (eventPrefab);
+    return eventObj;
   }
 
-  void BatchCreateEvent (int count) {
-    List<GameObject> eventObjects = new List<GameObject>();
-    for (int i = 0; i < count; i++) {
-      eventObjects.Add(CreateText(transform.childCount + i));
-    }
-
-    foreach (GameObject eventObj in eventObjects) {
+  void DisplayNewEvents (List<GameObject> newEvents) {
+    foreach (GameObject eventObj in newEvents) {
       eventObj.transform.SetParent(transform, false);
       eventObj.transform.SetSiblingIndex(1);
-      if (transform.childCount > numEvents) {
-        var lastEventTrans = transform.GetChild(transform.childCount-1);
-        Destroy(lastEventTrans.gameObject);
-      }
     }
-
-  }
-
-  GameObject CreateText (int i) {
-    var eventObj = (GameObject)Instantiate (eventPrefab);
-
-    var title = eventObj.transform.FindChild("Title");
-    title.GetComponent<Text>().text += ("" + i);
-    var desc = eventObj.transform.FindChild("Description");
-    desc.GetComponent<Text>().text = partialString();
-
-    return eventObj;
   }
 
 }

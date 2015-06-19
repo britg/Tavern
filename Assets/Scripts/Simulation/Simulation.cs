@@ -20,6 +20,7 @@ public class Simulation {
 
   public void Setup() {
     SetupConfig();
+    eventEngine = new EventEngine(this);
     SetupGameTime();
     SetupMap();
     SetupPlayer();
