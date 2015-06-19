@@ -13,13 +13,6 @@ public class FeedView : BaseBehaviour {
   public int numEvents = 20;
   public Vector2 wordRange = new Vector2(2, 50);
 
-  Transform formerTopEvent;
-  float formerTopEventInitialY;
-  bool isReflowing = false;
-
-  float lastRevolveY = 0f;
-  float heightOfLastItem = 0f;
-
   const string LoremIpsum = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
   string[] words;
 
@@ -27,11 +20,7 @@ public class FeedView : BaseBehaviour {
 	// Use this for initialization
 	void Start () {
     words = LoremIpsum.Split(new string[]{" "}, System.StringSplitOptions.RemoveEmptyEntries);
-    BatchCreateEvent(20);
-    var last = transform.GetChild(transform.childCount-1);
-    heightOfLastItem =last.GetComponent<RectTransform>().rect.height; 
-    lastRevolveY = transform.position.y;
-    Debug.Log ("Initial revolve y is " + lastRevolveY);
+    BatchCreateEvent(3);
 	}
 
   void RandomList () {
@@ -47,17 +36,6 @@ public class FeedView : BaseBehaviour {
     }
 
     if (Input.GetMouseButtonDown(0)) {
-//      Revolve();
-    }
-
-    var offset = lastRevolveY - transform.position.y;
-//    Debug.Log ("Offset is " + offset);
-    if (offset >= heightOfLastItem) {
-//      Revolve();
-    }
-
-    if (isReflowing) {
-      TopEvent();
     }
 	}
 
@@ -79,17 +57,6 @@ public class FeedView : BaseBehaviour {
     refreshFinishedHandler();
   }
 
-  void Revolve () {
-    var last = transform.GetChild(transform.childCount-1);
-    var height = last.GetComponent<RectTransform>().rect.height;
-    Debug.Log ("height is " + height);
-    var listPos = transform.position;
-//    listPos.y += height;
-//    transform.position = listPos;
-    last.SetSiblingIndex(1);
-    lastRevolveY = transform.position.y;
-  }
-
   string partialString () {
     var r = Random.Range((int)wordRange.x, (int)wordRange.y);
     string[] result = new string[r];
@@ -104,38 +71,16 @@ public class FeedView : BaseBehaviour {
       eventObjects.Add(CreateText(transform.childCount + i));
     }
 
-//    formerTopEvent = transform.GetChild(1);
-//    formerTopEventInitialY = formerTopEvent.position.y;
-
     foreach (GameObject eventObj in eventObjects) {
       eventObj.transform.SetParent(transform, false);
       eventObj.transform.SetSiblingIndex(1);
-//      eventObj.SetActive(false);
-      if (transform.childCount > 20) {
+      if (transform.childCount > numEvents) {
         var lastEventTrans = transform.GetChild(transform.childCount-1);
         Destroy(lastEventTrans.gameObject);
       }
     }
 
-//    isReflowing = true;
   }
-
-  void TopEvent () {
-    if (formerTopEvent == null) {
-      return;
-    }
-    float formerTopEventNewY = formerTopEvent.position.y;
-    float diff = formerTopEventInitialY - formerTopEventNewY;
-
-    Debug.Log ("Top event diff is " + diff);
-    if (diff > 0f) {
-      Vector3 listPos = transform.position;
-      listPos.y += diff;
-      transform.position = listPos;
-      isReflowing = false;
-    }
-  }
-
 
   GameObject CreateText (int i) {
     var eventObj = (GameObject)Instantiate (eventPrefab);
