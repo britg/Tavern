@@ -5,13 +5,19 @@ using System.Collections;
 
 public class ScrollView : BaseBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
 
+  enum State {
+    Reset,
+    Pulling
+  }
+
   public GameObject eventList;
   FeedView feedView;
   ScrollRect scrollRect;
 
   float initialY = 0f;
   float currentDelta = 0f;
-  public float pullTrigger = 100f;
+  public float pullTrigger = 150f;
+  State state = State.Reset;
 
 	// Use this for initialization
 	void Start () {
@@ -25,25 +31,37 @@ public class ScrollView : BaseBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 	}
 
   public void OnBeginDrag (PointerEventData data) {
-    initialY = eventList.transform.position.y;
+    if (scrollRect.verticalNormalizedPosition >= 1f) {
+      initialY = eventList.transform.position.y;
+      state = State.Pulling;
+    }
   }
 
   public void OnDrag (PointerEventData data) {
-    Debug.Log ("On drag " + scrollRect.verticalNormalizedPosition + " " + eventList.transform.position.y);
     currentDelta = initialY - eventList.transform.position.y;
 
     if (currentDelta >= pullTrigger) {
       feedView.OnPull();
+      AnimateBack();
       Reset();
     }
   }
 
   public void OnEndDrag (PointerEventData data) {
-    Reset();
+    if (state != State.Reset) {
+      Reset();
+    }
   }
 
   void Reset () {
+    state = State.Reset;
     initialY = 0f;
     currentDelta = 0f;
+  }
+
+  void AnimateBack () {
+    iTween.MoveTo(eventList, iTween.Hash(
+      "y", initialY
+      ));
   }
 }

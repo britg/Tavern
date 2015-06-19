@@ -32,7 +32,10 @@ public class FeedView : BaseBehaviour {
 	}
 
   public void OnPull () {
-    CreateText(transform.childCount);
+    int rand = Random.Range(1, 10);
+    for (int i = 0; i < rand; i++) {
+      CreateText(transform.childCount);
+    }
   }
 
   string partialString () {
