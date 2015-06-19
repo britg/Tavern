@@ -30,7 +30,7 @@ GameObject:
   - 222: {fileID: 22232116}
   - 114: {fileID: 11410410}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ GameObject:
   - 222: {fileID: 22225952}
   - 114: {fileID: 11422444}
   m_Layer: 5
-  m_Name: Text2
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,11 +85,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: .323583484, g: .772058845, b: .363791615, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 12
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 28
     m_MaxSize: 28
@@ -98,11 +98,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'The black maw of an large abandoned mine is visible over the crest of a
-    small cliff face.
-
-
-    Discovered: Abandoned Mine'
+  m_Text: Glorious Chest Plate of the Whale
 --- !u!114 &11422444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,11 +124,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'The black maw of an large abandoned mine is visible over the crest of a
-    small cliff face.
-
-
-    Discovered: Abandoned Mine'
+  m_Text: 24str 100stam
 --- !u!114 &11457370
 MonoBehaviour:
   m_ObjectHideFlags: 1

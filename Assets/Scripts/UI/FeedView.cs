@@ -15,15 +15,16 @@ public class FeedView : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
     words = LoremIpsum.Split(new string[]{" "}, System.StringSplitOptions.RemoveEmptyEntries);
-    for (int i = 0; i < numEvents; i++) {
-      CreateText();
-    }
-
 	}
+
+  void RandomList () {
+    for (int i = 0; i < numEvents; i++) {
+      CreateText(i);
+    }
+  }
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
   string partialString () {
@@ -34,16 +35,16 @@ public class FeedView : MonoBehaviour {
     return partial;
   }
 
-  void CreateText () {
+  void CreateText (int i) {
     var eventObj = (GameObject)Instantiate (eventPrefab);
 
-    var textObj = eventObj.transform.FindChild("Text");
-    var textObj2 = eventObj.transform.FindChild("Text2");
-
-    textObj.GetComponent<Text>().text = partialString();
-    textObj2.GetComponent<Text>().text = partialString();
+    var title = eventObj.transform.FindChild("Title");
+    title.GetComponent<Text>().text += ("" + i);
+    var desc = eventObj.transform.FindChild("Description");
+    desc.GetComponent<Text>().text = partialString();
 
     eventObj.transform.SetParent(transform, false);
+    eventObj.transform.SetAsFirstSibling();
 
   }
 }
