@@ -37,4 +37,7 @@ public class SimulationRunner : MonoBehaviour {
   public void AdjustCurrentSpeed (float value) {
     sim.AdjustCurrentSpeed(Mathf.Floor(value));
   }
+
+  public void PullToQuest () {
+  }
 }

@@ -2,8 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class FeedView : MonoBehaviour {
+public class FeedView : BaseBehaviour {
 
+  public GameObject pullAnchor;
   public GameObject eventPrefab;
   public int numEvents = 20;
   public Vector2 wordRange = new Vector2(2, 50);
@@ -25,7 +26,14 @@ public class FeedView : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+    if (Input.GetMouseButtonDown(1)) {
+      CreateText (transform.childCount);
+    }
 	}
+
+  public void OnPull () {
+    CreateText(transform.childCount);
+  }
 
   string partialString () {
     var r = Random.Range((int)wordRange.x, (int)wordRange.y);
@@ -45,6 +53,7 @@ public class FeedView : MonoBehaviour {
 
     eventObj.transform.SetParent(transform, false);
     eventObj.transform.SetAsFirstSibling();
+    pullAnchor.transform.SetAsFirstSibling();
 
   }
 }

@@ -11,6 +11,7 @@ public class Simulation {
   public List<Quest> questList = new List<Quest>();
 
   List<IProcessor> processorRegistry;
+  public EventEngine eventEngine;
 
   float previousSpeed;
   public float CurrentSpeed { get; set; }
