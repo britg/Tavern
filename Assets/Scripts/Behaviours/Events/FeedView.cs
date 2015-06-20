@@ -12,6 +12,7 @@ public class FeedView : BaseBehaviour {
   public GameObject eventPrefab;
   public GameObject eventInfoPrefab;
   public GameObject eventTransitionPrefab;
+  public GameObject eventEquipmentPrefab;
   public int numEvents = 20;
 
 	// Use this for initialization
@@ -57,7 +58,10 @@ public class FeedView : BaseBehaviour {
       prefab = eventInfoPrefab;
     } else if (playerEvent.type == PlayerEvent.Type.Transition) {
       prefab = eventTransitionPrefab;
-    } 
+    } else if (playerEvent.type == PlayerEvent.Type.Equipment) {
+      prefab = eventEquipmentPrefab;
+    }
+
 
     eventObj = (GameObject)Instantiate(prefab);
     eventObj.GetComponent<EventView>().playerEvent = playerEvent;

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerEvent {
 
@@ -14,16 +15,29 @@ public class PlayerEvent {
   public string Content { get; set; }
   public Type type = Type.Info;
 
+  public Equipment Equipment { get; set; }
+  public List<Trigger> Triggers = new List<Trigger>();
+
   public PlayerEvent (string content) {
     Content = content;
     type = Type.Info;
   }
 
   public static PlayerEvent Transition (string name) {
-    PlayerEvent e = new PlayerEvent(name);
-    e.type = Type.Transition;
+    PlayerEvent ev = new PlayerEvent(name);
+    ev.type = Type.Transition;
 
-    return e;
+    return ev;
+  }
+
+  public static PlayerEvent Loot (Equipment e) {
+    PlayerEvent ev = new PlayerEvent(e.Name);
+    ev.type = Type.Equipment;
+    return ev;
+  }
+
+  public void Trigger () {
+    Debug.Log("This event triggered" + Content);
   }
 
 }

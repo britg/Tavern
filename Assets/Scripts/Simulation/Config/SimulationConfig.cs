@@ -95,6 +95,7 @@ public class SimulationConfig {
 
   List<string> parseOrder = new List<string>() {
     // Tier 1
+    Rarity.type,
     ResourceType.type,
     AdventurerClass.type,
     BuildingType.type,
@@ -150,6 +151,9 @@ public class SimulationConfig {
       break;
       case Name.type:
         Name.Cache(config);
+        break;
+      case Rarity.type:
+        Rarity.Cache(config);
         break;
       default:
         Debug.LogWarning(string.Format("Failed to load {0} {1}", config["type"], config["key"]));

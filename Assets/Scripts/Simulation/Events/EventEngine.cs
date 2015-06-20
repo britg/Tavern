@@ -18,7 +18,7 @@ public class EventEngine {
 
     var list = new List<PlayerEvent>();
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 1; i++) {
       list.Add(new PlayerEvent("hello"));
     }
 
@@ -37,6 +37,34 @@ public class EventEngine {
     var transitionJson = intro["transition"];
     var transitionName = transitionJson.Value;
     list.Add(PlayerEvent.Transition(transitionName));
+
+    var eqMsgs = intro["equipmentMessages"].AsArray;
+    foreach (JSONNode node in eqMsgs) {
+      var eventStr = node.Value;
+      list.Add(new PlayerEvent(eventStr));
+    }
+
+    var equipmentTypes = intro["equipmentTypes"].AsArray;
+
+    var eqGen = new EquipmentGenerator(sim);
+    foreach (JSONNode node in equipmentTypes) {
+      var eqTypeKey = node.Value;
+      var eq = eqGen.Generate(eqTypeKey);
+      var e = PlayerEvent.Loot(eq);
+      list.Add(e);
+    }
+
+    var exitMsgs = intro["exitMessages"].AsArray;
+    foreach (JSONNode node in exitMsgs) {
+      var eventStr = node.Value;
+      list.Add(new PlayerEvent(eventStr));
+    }
+
+    transitionJson = intro["levelTransition"];
+    transitionName = transitionJson.Value;
+    var floorChange = PlayerEvent.Transition(transitionName);
+    floorChange.Triggers.Add(new Trigger(Trigger.Type.NewFloor));
+    list.Add(floorChange);
 
 
     return list;
