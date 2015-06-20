@@ -10,7 +10,7 @@ public class SimulationConfig {
   public const string type = "Simulation";
 
   Simulation sim;
-  Dictionary<string, List<JSONNode>> jsonCache = new Dictionary<string, List<JSONNode>>();
+  public Dictionary<string, List<JSONNode>> jsonCache = new Dictionary<string, List<JSONNode>>();
 
   // Core Config
 
@@ -22,7 +22,6 @@ public class SimulationConfig {
   public float initialSpeed;
 
   // Player
-  public int initialGold;
   public List<String> startBuildings = new List<String>();
 
   // Adventurer
@@ -45,7 +44,6 @@ public class SimulationConfig {
   public void LoadSelf (JSONNode json) {
     updateIntervalSeconds = json["updateIntervalSeconds"].AsFloat;
     initialSpeed = json["initialSpeed"].AsFloat;
-    initialGold = json["initialGold"].AsInt;
     startSeconds = json["startSeconds"].AsInt;
     foreach(JSONNode arrItem in json["startBuildings"].AsArray) {
       startBuildings.Add(arrItem.Value);

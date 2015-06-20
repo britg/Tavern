@@ -7,8 +7,6 @@
   "nightStartHour": 22,
   "initialSpeed": 60,
 
-  "initialGold": 1000,
-
   "startBuildings": ["tavern"],
 
   "adventurerDefaultLevel": 1,

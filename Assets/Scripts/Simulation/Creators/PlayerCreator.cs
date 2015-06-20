@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using SimpleJSON;
 
 public class PlayerCreator {
+
+  public const string PlayerStatType = "PlayerStat";
+  public const string PlayerResourceType = "PlayerResource";
 
   Simulation sim;
   Player player;
@@ -19,31 +24,37 @@ public class PlayerCreator {
 
   public void Bootstrap () {
     BootstrapResources();
-    BootstrapBuildings();
-    BootstrapAdventurers();
+    //BootstrapBuildings();
+    //BootstrapAdventurers();
+    BootstrapStats();
   }
 
   void BootstrapResources () {
-    var resource = new Resource("gold", sim.config.initialGold);
-    player.Resources["gold"] = resource;
+    List<JSONNode> resourcesToLoad = sim.config.jsonCache[PlayerResourceType];
+    foreach (JSONNode playerResource in resourcesToLoad) {
+      var resourceKey = playerResource["resource_key"].Value;
+      var amount = playerResource["amount"].AsFloat;
+      var resource = new Resource(resourceKey, amount);
+      player.Resources[resourceKey] = resource;
+    }
   }
 
   void BootstrapAdventurers () {
-    var adventurerCreator = new AdventurerCreator(sim);
-    for (int i = 0; i < 2; i++) {
-      adventurerCreator.Create("warrior");
-    }
+   
   }
 
   void BootstrapBuildings () {
-    foreach (string buildingKey in sim.config.startBuildings) {
-      CreateBuilding(buildingKey);
-    }
+    // to be implemented in a similar manner to others.
+  }
 
-    // Player always starts with a tavern
-    Hashtable data = new Hashtable();
-    data["tavern"] = sim.player.Buildings["tavern"];
-    NotificationCenter.PostNotification(Constants.OnTavernCreated, data);
+  void BootstrapStats () {
+    List<JSONNode> statsToLoad = sim.config.jsonCache[PlayerStatType];
+    foreach (JSONNode playerStat in statsToLoad) {
+      var statKey = playerStat["stat_key"].Value;
+      var value = playerStat["value"].AsFloat;
+      var stat = new Stat(statKey, value);
+      player.Stats[statKey] = stat;
+    }
   }
 
   void CreateBuilding (string buildingKey) {

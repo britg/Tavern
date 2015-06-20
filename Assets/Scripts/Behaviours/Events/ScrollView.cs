@@ -32,7 +32,14 @@ public class ScrollView : BaseBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 	}
 
   public void OnBeginDrag (PointerEventData data) {
-    if (scrollRect.verticalNormalizedPosition >= 1f && state != State.Refreshing) {
+
+    if (state != State.Reset) {
+      return;
+    }
+
+    float vPos = scrollRect.verticalNormalizedPosition;
+
+    if (vPos >= 1f || vPos == 0f) {
       initialY = eventList.transform.position.y;
       state = State.Pulling;
     }
