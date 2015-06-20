@@ -10,6 +10,7 @@ public class FeedView : BaseBehaviour {
 
   public GameObject pullAnchor;
   public GameObject eventPrefab;
+  public GameObject eventInfoPrefab;
   public int numEvents = 20;
 
 	// Use this for initialization
@@ -48,7 +49,14 @@ public class FeedView : BaseBehaviour {
   }
 
   GameObject CreatePlayerEventView (PlayerEvent playerEvent) {
-    var eventObj = (GameObject)Instantiate (eventPrefab);
+    GameObject eventObj;
+    
+    if (playerEvent.type == PlayerEvent.Type.Info) {
+      eventObj = (GameObject)Instantiate(eventInfoPrefab);
+      eventObj.GetComponent<EventInfoView>().playerEvent = playerEvent;
+    } else {
+      eventObj = (GameObject)Instantiate (eventPrefab);
+    }
     return eventObj;
   }
 

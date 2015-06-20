@@ -12,7 +12,10 @@ public class EventEngine {
 
   public List<PlayerEvent> Input () {
     var list = new List<PlayerEvent>();
-    list.Add(new PlayerEvent());
+
+    for (int i = 0; i < 10; i++) {
+      list.Add(new PlayerEvent("hello"));
+    }
 
     return list;
   }
