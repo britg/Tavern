@@ -2,9 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class EventInfoView : BaseBehaviour {
+public class EventInfoView : EventView {
 
-  public PlayerEvent playerEvent;
   Text description;
 
 	// Use this for initialization

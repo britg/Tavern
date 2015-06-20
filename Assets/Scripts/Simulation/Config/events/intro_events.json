@@ -1,0 +1,12 @@
+{
+	"type": "IntroEvents",
+	"events": [
+		"This all looks so familiar...",
+		"You get the eerie feeling that you've been in this tower before",
+		"but you can't remember when or why.",
+		"In fact you can't remember why you're here now...",
+		"The tower doors shut behind you but you don't notice or care.",
+		"There is a hallway ahead."
+	],
+	"transition": "Hallway"
+}

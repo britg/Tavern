@@ -5,7 +5,8 @@ public class PlayerEvent {
 
   public enum Type {
     Info,
-    Equipment
+    Equipment,
+    Transition
   }
 
   public int Id { get; set; }
@@ -16,6 +17,13 @@ public class PlayerEvent {
   public PlayerEvent (string content) {
     Content = content;
     type = Type.Info;
+  }
+
+  public static PlayerEvent Transition (string name) {
+    PlayerEvent e = new PlayerEvent(name);
+    e.type = Type.Transition;
+
+    return e;
   }
 
 }

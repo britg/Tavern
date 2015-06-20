@@ -22,6 +22,8 @@ public class SimulationRunner : MonoBehaviour {
   void Start () {
     GetSim();
     sim.Start();
+
+    Debug.Log("Player tower floor is " + sim.player.Stats["tower_floor"].Value);
 	}
 
 	// Update is called once per frame
