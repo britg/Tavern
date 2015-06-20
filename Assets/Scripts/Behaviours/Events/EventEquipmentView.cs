@@ -13,8 +13,4 @@ public class EventEquipmentView : EventView {
     title.text = str;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

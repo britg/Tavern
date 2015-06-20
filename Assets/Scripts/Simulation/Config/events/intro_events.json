@@ -11,7 +11,7 @@
 	"transition": "Hallway",
 	"equipmentMessages": [
 		"Rudimentary weapons and armor stand on racks along the walls of the corridor.",
-		"(Swipe left on loot to immediately equip it, swipe right to add it to your inventory. You have limited inventory space.)"
+		"(Swipe left on loot to equip immediately, swipe right to add it to your inventory. You have limited inventory space.)"
 	],
 	"equipmentTypes": [
 		"one_handed_sword",
