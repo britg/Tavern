@@ -34,8 +34,8 @@ public class EventEngine {
     }
   }
 
-  public void TriggerAction (PlayerEvent ev) {
-    Debug.Log ("Trigger action for event " + ev.Content);
+  public void TriggerAction (PlayerEvent ev, string actionName) {
+    Debug.Log ("Trigger action " + actionName + " for event " + ev.Content);
   }
 
   List<PlayerEvent> IntroSequence () {

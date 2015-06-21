@@ -9,6 +9,10 @@
 		"There is a hallway ahead."
 	],
 	"transition": "Hallway",
+	"equipmentMessages": [
+		"Rudimentary weapons and armor stand on racks along the walls of the corridor.",
+		"(Swipe left on loot to pick it up. Continue swiping to equip immediately.)"
+	],
 	"equipmentTypes": [
 		"one_handed_sword",
 		"leather_tunic"
