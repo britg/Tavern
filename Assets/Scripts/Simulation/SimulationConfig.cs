@@ -34,7 +34,8 @@ public class SimulationConfig {
 
 
   // Model config
-  const string CONFIG_PATH = "Assets/Scripts/Simulation/Config";
+//  const string CONFIG_PATH = "Assets/Scripts/Simulation/Config";
+  string CONFIG_PATH = Application.streamingAssetsPath + "/Config";
   const string EXT = ".json";
 
   public SimulationConfig (Simulation _sim) {

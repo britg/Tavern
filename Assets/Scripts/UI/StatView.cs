@@ -10,6 +10,7 @@ public class StatView : BaseBehaviour {
   Stat stat {
     get {
       if (_stat == null) {
+        Debug.Log ("Attempting to load stat " + statKey);
         _stat = sim.player.Stats[statKey];
       }
       return _stat;
