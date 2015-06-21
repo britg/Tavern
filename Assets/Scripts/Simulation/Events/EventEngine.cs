@@ -34,18 +34,22 @@ public class EventEngine {
     }
   }
 
+  public void TriggerAction (PlayerEvent ev) {
+    Debug.Log ("Trigger action for event " + ev.Content);
+  }
+
   List<PlayerEvent> IntroSequence () {
     var list = new List<PlayerEvent>();
     var intro = sim.config.jsonCache["IntroEvents"][0];
-    var eventsJson = intro["events"];
-    foreach (JSONNode node in eventsJson.AsArray) {
-      var eventStr = node.Value;
-      list.Add(new PlayerEvent(eventStr));
-    }
-
-    var transitionJson = intro["transition"];
-    var transitionName = transitionJson.Value;
-    list.Add(PlayerEvent.Transition(transitionName));
+//    var eventsJson = intro["events"];
+//    foreach (JSONNode node in eventsJson.AsArray) {
+//      var eventStr = node.Value;
+//      list.Add(new PlayerEvent(eventStr));
+//    }
+//
+//    var transitionJson = intro["transition"];
+//    var transitionName = transitionJson.Value;
+//    list.Add(PlayerEvent.Transition(transitionName));
 
     var eqMsgs = intro["equipmentMessages"].AsArray;
     foreach (JSONNode node in eqMsgs) {
@@ -69,11 +73,11 @@ public class EventEngine {
       list.Add(new PlayerEvent(eventStr));
     }
 
-    transitionJson = intro["levelTransition"];
-    transitionName = transitionJson.Value;
-    var floorChange = PlayerEvent.Transition(transitionName);
-    floorChange.Triggers.Add(new Trigger(Trigger.Type.NewFloor));
-    list.Add(floorChange);
+//    transitionJson = intro["levelTransition"];
+//    transitionName = transitionJson.Value;
+//    var floorChange = PlayerEvent.Transition(transitionName);
+//    floorChange.Triggers.Add(new Trigger(Trigger.Type.NewFloor));
+//    list.Add(floorChange);
 
 
     return list;

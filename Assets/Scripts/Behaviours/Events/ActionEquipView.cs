@@ -1,27 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EventView : BaseBehaviour {
+public class ActionEquipView : BaseBehaviour {
 
-  public PlayerEvent playerEvent { get; set; }
+  public PlayerEvent playerEvent {get; set;}
   bool hasTriggered = false;
   Rect screenRect;
 
-  void Awake () {
+	// Use this for initialization
+	void Start () {
     screenRect = new Rect(0f, 0f, Screen.width + 1, Screen.height + 1);
-  }
-
-  // Update is called once per frame
-  void Update () {
+	}
+	
+	// Update is called once per frame
+	void Update () {
     DetectVisibleTrigger();
-  }
+	}
 
   void DetectVisibleTrigger () {
 
     if (hasTriggered) {
       return;
     } else {
-      if (playerEvent == null || playerEvent.Triggers.Count < 1) {
+      if (playerEvent == null) {
         hasTriggered = true;
         return;
       }
@@ -38,7 +39,6 @@ public class EventView : BaseBehaviour {
     }
 
     hasTriggered = true;
-    sim.eventEngine.TriggerEvent(playerEvent);
+    sim.eventEngine.TriggerAction(playerEvent);
   }
-
 }
