@@ -18,6 +18,8 @@ public class PlayerEvent {
   public Equipment Equipment { get; set; }
   public List<Trigger> Triggers = new List<Trigger>();
 
+  public bool hasTriggered = false;
+
   public PlayerEvent (string content) {
     Content = content;
     type = Type.Info;
@@ -36,8 +38,8 @@ public class PlayerEvent {
     return ev;
   }
 
-  public void Trigger () {
-    Debug.Log("This event triggered" + Content);
+  public void Update () {
+    // shim for when this gets persisted....
   }
 
 }

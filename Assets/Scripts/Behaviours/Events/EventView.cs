@@ -37,11 +37,8 @@ public class EventView : BaseBehaviour {
       }
     }
 
-    // we made it through each corner visible, so we should
-    // trigger visibility.
-
     hasTriggered = true;
-    playerEvent.Trigger();
+    sim.eventEngine.TriggerEvent(playerEvent);
   }
 
 }

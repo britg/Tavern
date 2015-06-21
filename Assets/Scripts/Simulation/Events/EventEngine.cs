@@ -25,6 +25,15 @@ public class EventEngine {
     return list;
   }
 
+  public void TriggerEvent (PlayerEvent ev) {
+    var triggerProcessor = new TriggerProcessor(sim);
+    foreach (Trigger trigger in ev.Triggers) {
+      triggerProcessor.Process(trigger);
+      ev.hasTriggered = true;
+      ev.Update();
+    }
+  }
+
   List<PlayerEvent> IntroSequence () {
     var list = new List<PlayerEvent>();
     var intro = sim.config.jsonCache["IntroEvents"][0];
