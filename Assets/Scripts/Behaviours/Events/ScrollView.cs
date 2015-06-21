@@ -8,7 +8,8 @@ public class ScrollView : BaseBehaviour, IEndDragHandler {
   enum State {
     Reset,
     Pulling,
-    Refreshing
+    Refreshing,
+    Paused
   }
 
   public GameObject eventList;
@@ -83,7 +84,7 @@ public class ScrollView : BaseBehaviour, IEndDragHandler {
 
   void OnRefreshFinished () {
     Debug.Log ("Refresh finished");
-    Reset();
+    Invoke ("Reset", 0.1f);
   }
 
 
