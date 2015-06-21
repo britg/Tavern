@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: eff57a4259680422080cf6ab6f1bec3b, type: 3}
-    m_FontSize: 12
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 28
@@ -189,7 +189,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_FontData.m_FontSize
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_FontData.m_Font

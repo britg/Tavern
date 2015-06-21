@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class ScrollView : BaseBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
+public class ScrollView : BaseBehaviour, IEndDragHandler {
 
   enum State {
     Reset,
@@ -12,53 +12,52 @@ public class ScrollView : BaseBehaviour, IDragHandler, IBeginDragHandler, IEndDr
   }
 
   public GameObject eventList;
+  public GameObject pullTriggerView;
   FeedView feedView;
   ScrollRect scrollRect;
+  Rect screenRect;
 
-  float initialY = 0f;
-  float currentDelta = 0f;
-  public float pullTrigger = 0.1f;
+  public float pullTriggerMargin = 0.1f;
   State state = State.Reset;
 
 	// Use this for initialization
 	void Start () {
     scrollRect = GetComponent<ScrollRect>();
     feedView = eventList.GetComponent<FeedView>();
+    screenRect = new Rect(0f, 0f, 
+                          Screen.width + 1, 
+                          Screen.height - Screen.height*pullTriggerMargin);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
-  public void OnBeginDrag (PointerEventData data) {
+  void LateUpdate () {
+    DetectVisibleTrigger();
+  }
+
+  void DetectVisibleTrigger () {
 
     if (state != State.Reset) {
       return;
+    } 
+
+    Vector3[] corners = new Vector3[4];
+
+    pullTriggerView.GetComponent<RectTransform>().GetWorldCorners(corners);
+
+    foreach (Vector3 corner in corners) {
+      if (!screenRect.Contains(corner)) {
+        return;
+      }
     }
 
-    float vPos = scrollRect.verticalNormalizedPosition;
-
-    if (vPos >= 1f || vPos == 0f) {
-      initialY = eventList.transform.position.y;
-      state = State.Pulling;
-    }
+    InitiateRefresh();
   }
 
-  public void OnDrag (PointerEventData data) {
-    currentDelta = initialY - eventList.transform.position.y;
-    var currentRatio = currentDelta / Screen.height;
-
-    if (currentRatio >= pullTrigger && state == State.Pulling) {
-//      scrollRect.vertical = false;
-//      feedView.OnPull();
-//      Reset();
-      InitiateRefresh();
-    }
-  }
 
   public void OnEndDrag (PointerEventData data) {
-//    scrollRect.vertical = true;
     if (state == State.Pulling) {
       Reset();
     }
@@ -66,8 +65,6 @@ public class ScrollView : BaseBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
   void Reset () {
     state = State.Reset;
-    initialY = 0f;
-    currentDelta = 0f;
     scrollRect.vertical = true;
     Invoke("MakeElastic", 0.1f);
   }
