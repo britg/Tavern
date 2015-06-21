@@ -5,6 +5,9 @@ using System.Collections;
 public class StatView : BaseBehaviour {
 
   public string statKey;
+  public string prefix = "";
+  public string suffix = "";
+  public bool includeMax = false;
 
   Stat _stat;
   Stat stat {
@@ -34,6 +37,10 @@ public class StatView : BaseBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-    text.text = string.Format("{0}", stat.Value);
+    var val = stat.Value.ToString();
+    if (includeMax) {
+      val = string.Format("{0}/{1}", stat.Value, stat.MaxValue);
+    }
+    text.text = string.Format("{0}{1}{2}", prefix, val, suffix);
 	}
 }

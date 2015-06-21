@@ -1,5 +1,5 @@
 {
 	"type": "PlayerStat",
-	"stat_key": "stam",
+	"stat_key": "ap",
 	"value": 100
 }
