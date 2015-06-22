@@ -18,8 +18,8 @@ public class EventEquipmentView : EventView, IDragHandler, IEndDragHandler {
     }
     actionPickUpView.playerEvent = playerEvent;
     actionEquipView.playerEvent = playerEvent;
-    var str = string.Format("[{0}]", playerEvent.Content);
-    title.text = str;
+    UpdateEquipment();
+    NotificationCenter.AddObserver(this, Constants.OnUpdateEvents);
 	}
 
   public void OnDrag (PointerEventData data) {
@@ -35,6 +35,19 @@ public class EventEquipmentView : EventView, IDragHandler, IEndDragHandler {
   public void OnEndDrag (PointerEventData data) {
     actionPickUpView.transform.localPosition = Vector3.zero;
     actionEquipView.transform.localPosition = Vector3.zero;
+  }
+
+  public void UpdateEquipment () {
+    if (playerEvent.Equipment == null) {
+      title.text = "[Empty]";
+    } else {
+      var str = string.Format("[{0}]", playerEvent.Content); 
+      title.text = str;
+    }
+  }
+
+  void OnUpdateEvents (Notification n) {
+    UpdateEquipment();
   }
 	
 }

@@ -10,7 +10,10 @@ public class Constants {
   public const string OnAdventurerCreated = "OnAdventurerCreated";
   public const string OnEnterPendingSelection = "OnEnterPendingSelection";
   public const string OnWorldSelection = "OnWorldSelection";
+  public const string OnUpdateEvents = "OnUpdateEvents";
 
   // Layers
   public const string GroundLayer = "Ground";
+
+
 }

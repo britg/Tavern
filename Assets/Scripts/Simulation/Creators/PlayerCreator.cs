@@ -6,6 +6,7 @@ using SimpleJSON;
 public class PlayerCreator {
 
   public const string PlayerStatType = "PlayerStat";
+  public const string PlayerSlotType = "PlayerSlot";
   public const string PlayerResourceType = "PlayerResource";
 
   Simulation sim;
@@ -27,6 +28,7 @@ public class PlayerCreator {
     //BootstrapBuildings();
     //BootstrapAdventurers();
     BootstrapStats();
+    BootstrapSlots();
   }
 
   void BootstrapResources () {
@@ -54,6 +56,16 @@ public class PlayerCreator {
       var value = playerStat["value"].AsFloat;
       var stat = new Stat(statKey, value);
       player.Stats[statKey] = stat;
+    }
+  }
+
+  void BootstrapSlots () {
+    List<JSONNode> slotsToLoad = sim.config.jsonCache[PlayerSlotType];
+    foreach (JSONNode playerSlot in slotsToLoad) {
+      var slotKey = playerSlot["slot_key"].Value;
+      var value = playerSlot["value"].AsFloat;
+      var slot = new Slot(slotKey);
+      player.Slots[slotKey] = slot;
     }
   }
 

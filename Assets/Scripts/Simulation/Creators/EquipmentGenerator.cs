@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EquipmentGenerator {
 
@@ -18,6 +19,11 @@ public class EquipmentGenerator {
     var e = new Equipment();
     e.Type = type;
     e.Name = type.Name;
+
+    foreach (string k in type.SlotTypes.Keys) {
+      e.SlotType = type.SlotTypes[k];
+      break;
+    }
 
     return e;
   }

@@ -14,8 +14,7 @@
 		"(Swipe left on loot to pick it up. Continue swiping to equip immediately.)"
 	],
 	"equipmentTypes": [
-		"one_handed_sword",
-		"leather_tunic"
+		"one_handed_sword"
 	],
 	"exitMessages": [
 		"The hallway leads to a flight of stairs rising into darkness.",
