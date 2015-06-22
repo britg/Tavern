@@ -14,9 +14,16 @@ public class FeedView : BaseBehaviour {
   public GameObject eventTransitionPrefab;
   public GameObject eventEquipmentPrefab;
   public int numEvents = 20;
+  public float refreshDelay = 1f;
+  public string pullAnchorDefaultText = "Pull to Quest";
+  public string pullAnchorWorkingText = "Questing...";
+
+  Text pullAnchorTitle;
 
 	// Use this for initialization
 	void Start () {
+    pullAnchorTitle = pullAnchor.transform.Find("Title").GetComponent<Text>();
+    pullAnchorTitle.text = pullAnchorDefaultText;
 	}
 
 	// Update is called once per frame
@@ -26,27 +33,23 @@ public class FeedView : BaseBehaviour {
 
   public void BeginRefresh (RefreshFinishedHandler handler) {
     refreshFinishedHandler = handler;
-    pullAnchor.transform.Find("Title").GetComponent<Text>().text = "Questing...";
-    // Async here
-    Invoke("DoRefresh", 1f);
+    pullAnchorTitle.text = pullAnchorWorkingText;
+    CullOldEvents();
+    Invoke("DoRefresh", refreshDelay);
   }
 
   void DoRefresh () {
     List<PlayerEvent> newEvents = sim.eventEngine.Input();
-//    int rand = Random.Range(1, 10);
-//    BatchCreateEvent(rand);
-
     List<GameObject> eventObjs = new List<GameObject>();
     foreach (var playerEvent in newEvents) {
       eventObjs.Add(CreatePlayerEventView(playerEvent));
     }
     DisplayNewEvents(eventObjs);
-
     EndRefresh();
   }
 
   void EndRefresh () {
-    pullAnchor.transform.Find("Title").GetComponent<Text>().text = "Pull to Quest";
+    pullAnchorTitle.text = pullAnchorDefaultText;
     refreshFinishedHandler();
   }
 
@@ -73,6 +76,39 @@ public class FeedView : BaseBehaviour {
       eventObj.transform.SetParent(transform, false);
       eventObj.transform.SetSiblingIndex(1);
     }
+  }
+
+  void CullOldEvents () {
+    var toCull = transform.childCount - numEvents;
+    Debug.Log ("Events to cull " + toCull);
+    if (toCull < 1) {
+      return;
+    }
+
+    for (int i = 0; i < toCull; i++) {
+      CullEventFromLast(i);
+    }
+  }
+
+  void CullEventFromLast (int fromLast) {
+
+    // 1. Get current height with content.
+    // 2. Remove content, and set preferred height to true and to the previous height
+    // 3. Disable Vertical layout group and remove the component
+
+    var lastEventTrans = transform.GetChild(transform.childCount - (1 + fromLast));
+    lastEventTrans.name = "Culled";
+    var height = lastEventTrans.GetComponent<RectTransform>().sizeDelta.y;
+    for (int i = 0; i < lastEventTrans.childCount; i++) {
+      var child = lastEventTrans.GetChild(i);
+      Destroy(child.gameObject);
+    }
+
+    var layoutElem = lastEventTrans.GetComponent<LayoutElement>();
+    layoutElem.preferredHeight = height;
+
+    var eventInfoView = lastEventTrans.GetComponent<EventInfoView>();
+    Destroy(eventInfoView);
   }
 
 }
