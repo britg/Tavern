@@ -36,6 +36,12 @@ public class EventEngine {
 
   public void TriggerAction (PlayerEvent ev, string actionName) {
     Debug.Log ("Trigger action " + actionName + " for event " + ev.Content);
+    var lootProcessor = new LootProcessor(sim);
+    if (actionName == "pickUp") {
+      lootProcessor.PickUp(ev);
+    } else if (actionName == "equip") {
+      lootProcessor.Equip(ev);
+    }
   }
 
   List<PlayerEvent> IntroSequence () {

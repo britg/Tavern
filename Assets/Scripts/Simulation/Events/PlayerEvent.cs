@@ -35,6 +35,7 @@ public class PlayerEvent {
   public static PlayerEvent Loot (Equipment e) {
     PlayerEvent ev = new PlayerEvent(e.Name);
     ev.type = Type.Equipment;
+    ev.Equipment = e;
     return ev;
   }
 
