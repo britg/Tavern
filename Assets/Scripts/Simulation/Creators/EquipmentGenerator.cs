@@ -10,6 +10,13 @@ public class EquipmentGenerator {
     sim = _sim;
   }
 
+  public Equipment Generate () {
+    List<string> keyList = new List<string>(EquipmentType.all.Keys);
+    var randInt = Random.Range(0, keyList.Count - 1);
+    var eqTypeKey = keyList[randInt];
+    return Generate(eqTypeKey);
+  }
+
   public Equipment Generate (string eqTypeKey) {
     var eqType = EquipmentType.all[eqTypeKey];
     return Generate(eqType);

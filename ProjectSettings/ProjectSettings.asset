@@ -154,6 +154,20 @@ PlayerSettings:
       m_Size: 72
     - m_Icon: {fileID: 2800000, guid: 58317994d91514ce5a9f4bdd5e375c37, type: 3}
       m_Size: 57
+  - m_BuildTarget: Android
+    m_Icons:
+    - m_Icon: {fileID: 2800000, guid: 51c3c79823bb44288aa1c5ec67b731a2, type: 3}
+      m_Size: 192
+    - m_Icon: {fileID: 2800000, guid: 1d4a0237e44e54eb0acbaf5d1c53152c, type: 3}
+      m_Size: 144
+    - m_Icon: {fileID: 2800000, guid: 7613f9354216649808ed1c5183ff17b1, type: 3}
+      m_Size: 96
+    - m_Icon: {fileID: 2800000, guid: a4b8db9647c23484dbd45f0e725a410c, type: 3}
+      m_Size: 72
+    - m_Icon: {fileID: 0}
+      m_Size: 48
+    - m_Icon: {fileID: 0}
+      m_Size: 36
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: AndroidPlayer
