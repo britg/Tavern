@@ -134,8 +134,26 @@ PlayerSettings:
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: d067b221f63d94881a1666ba08498434, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 9f15dc529456e4002a28074a829aa3d6, type: 3}
       m_Size: 128
+  - m_BuildTarget: iPhone
+    m_Icons:
+    - m_Icon: {fileID: 2800000, guid: 5d875391991d242ce9ed61f277cf5c42, type: 3}
+      m_Size: 180
+    - m_Icon: {fileID: 2800000, guid: d0c85c4b8758042a8954c77fb845e663, type: 3}
+      m_Size: 152
+    - m_Icon: {fileID: 2800000, guid: 1d4a0237e44e54eb0acbaf5d1c53152c, type: 3}
+      m_Size: 144
+    - m_Icon: {fileID: 2800000, guid: 1b70e2aa8c9ce481191404074f95dfbe, type: 3}
+      m_Size: 120
+    - m_Icon: {fileID: 2800000, guid: f7a36d5ac5aef45f48e1f832306e1dee, type: 3}
+      m_Size: 114
+    - m_Icon: {fileID: 2800000, guid: b93f0211c9aa5443c91e6682db65dd7c, type: 3}
+      m_Size: 76
+    - m_Icon: {fileID: 2800000, guid: a4b8db9647c23484dbd45f0e725a410c, type: 3}
+      m_Size: 72
+    - m_Icon: {fileID: 2800000, guid: 58317994d91514ce5a9f4bdd5e375c37, type: 3}
+      m_Size: 57
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: AndroidPlayer
