@@ -1,19 +1,56 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class EventView : BaseBehaviour {
 
-  public PlayerEvent playerEvent { get; set; }
+  public bool enableLeftAction = false;
+  public bool enableRightAction = false;
+  public float swipeFactor = 0.5f;
+
+  public ActionView leftAction;
+  public ActionView rightAction;
+
+  PlayerEvent _playerEvent;
+  public PlayerEvent playerEvent {
+    get {
+      return _playerEvent;
+    }
+    set {
+      SetPlayerEvent(value);
+    }
+  }
+
   bool hasTriggered = false;
   Rect screenRect;
+  RectTransform rectTrans;
 
   void Awake () {
     screenRect = new Rect(0f, 0f, Screen.width + 1, Screen.height + 1);
+    rectTrans = GetComponent<RectTransform>();
+  }
+
+  protected void SetActionOffset () {
+    var pos = rectTrans.localPosition;
+    float w = leftAction.gameObject.GetComponent<LayoutElement>().preferredWidth;
+    pos.x -= w;
+    rectTrans.localPosition = pos;
+  }
+
+  void SetPlayerEvent (PlayerEvent ev) {
+    _playerEvent = ev;
+    if (leftAction != null) {
+      leftAction.playerEvent = ev;
+    }
+    if (rightAction != null) {
+      rightAction.playerEvent = ev;
+    }
   }
 
   // Update is called once per frame
   void Update () {
     DetectVisibleTrigger();
+    DetectHorizontalSwipe();
   }
 
   void DetectVisibleTrigger () {
@@ -21,6 +58,11 @@ public class EventView : BaseBehaviour {
     if (hasTriggered) {
       return;
     } else {
+
+      if (enableLeftAction) {
+        SetActionOffset();
+      }
+
       if (playerEvent == null || playerEvent.Triggers.Count < 1) {
         hasTriggered = true;
         return;
@@ -39,6 +81,74 @@ public class EventView : BaseBehaviour {
 
     hasTriggered = true;
     sim.eventEngine.TriggerEvent(playerEvent);
+  }
+
+  
+  void DetectHorizontalSwipe () {
+
+    if (!enableLeftAction && !enableRightAction) {
+      return;
+    }
+    
+    var inbounds = false;
+    
+    if (Input.GetMouseButtonDown(0) && DetectInBounds()) {
+      CaptureStartOfHorizontalSwipe(Input.mousePosition);
+    }
+    
+    if (Input.GetMouseButton(0) && isSwiping) {
+      CaptureHorizontalSwipe(Input.mousePosition);
+    }
+    
+    if (Input.GetMouseButtonUp(0) && isSwiping) {
+      ResetHorizontalSwipe();
+    }
+  }
+  
+  bool DetectInBounds () {
+    Vector3[] corners = new Vector3[4];
+    rectTrans.GetWorldCorners(corners);
+
+    var pos = Input.mousePosition;
+    return (pos.y > corners[0].y && pos.y < corners[1].y);
+  }
+  
+  Vector3 hSwipeStart;
+  Vector3 originalPos;
+  bool isSwiping = false;
+  void CaptureStartOfHorizontalSwipe (Vector3 startPos) {
+    if (isSwiping) {
+      return;
+    }
+    hSwipeStart = startPos;
+    originalPos = rectTrans.localPosition;
+    isSwiping = true;
+  }
+  
+  void CaptureHorizontalSwipe (Vector3 currPosition) {
+    var delta = currPosition - hSwipeStart;
+    var pos = rectTrans.localPosition;
+
+    bool rightAllowed = (delta.x < 0 && enableRightAction);
+    bool leftAllowed = (delta.x > 0 && enableLeftAction);
+
+    if (rightAllowed || leftAllowed) {
+      pos.x += delta.x * swipeFactor;
+      rectTrans.localPosition = pos;
+      hSwipeStart = currPosition;
+    }
+  }
+  
+  void ResetHorizontalSwipe () {
+    iTween.MoveTo(gameObject, iTween.Hash (
+      "position", originalPos, 
+      "isLocal", true,
+      "oncomplete", "EndHorizontalSwipe"
+    ));
+  }
+
+  void EndHorizontalSwipe () {
+    isSwiping = false;
   }
 
 }

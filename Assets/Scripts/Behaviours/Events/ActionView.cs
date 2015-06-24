@@ -1,21 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ActionEquipView : BaseBehaviour {
+public class ActionView : BaseBehaviour {
 
-  public PlayerEvent playerEvent {get; set;}
+  public string actionName;
+
+	public PlayerEvent playerEvent {get; set;}
   bool hasTriggered = false;
   Rect screenRect;
 
-	// Use this for initialization
-	void Start () {
+  // Use this for initialization
+  void Start () {
     screenRect = new Rect(0f, 0f, Screen.width + 1, Screen.height + 1);
-	}
-	
-	// Update is called once per frame
-	void Update () {
+  }
+  
+  // Update is called once per frame
+  void Update () {
     DetectVisibleTrigger();
-	}
+  }
 
   void DetectVisibleTrigger () {
 
@@ -39,6 +41,6 @@ public class ActionEquipView : BaseBehaviour {
     }
 
     hasTriggered = true;
-    sim.eventEngine.TriggerAction(playerEvent, "equip");
+    sim.eventEngine.TriggerAction(playerEvent, actionName);
   }
 }
