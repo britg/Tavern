@@ -18,13 +18,17 @@ public class EventEngine {
 
     var list = new List<PlayerEvent>();
     var eqGen = new EquipmentGenerator(sim);
-
-    for (int i = 0; i < Random.Range(0, 5); i++) {
+    var rand = Random.Range(7, 15);
+    var eRand = Random.Range (1, 4);
+    for (int i = 0; i < rand; i++) {
       var eq = eqGen.Generate();
       var ev = PlayerEvent.Loot(eq);
       var fill = new PlayerEvent("Killed [Giant Rat]");
+
+      for (int j = 0; j < eRand; j++) {
+        list.Add(fill);
+      }
       list.Add(ev);
-      list.Add(fill);
     }
 
     return list;

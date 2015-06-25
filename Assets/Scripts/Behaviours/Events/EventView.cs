@@ -30,13 +30,6 @@ public class EventView : BaseBehaviour {
     rectTrans = GetComponent<RectTransform>();
   }
 
-  protected void SetActionOffset () {
-    var pos = rectTrans.localPosition;
-    float w = leftAction.gameObject.GetComponent<LayoutElement>().preferredWidth;
-    pos.x -= w;
-    rectTrans.localPosition = pos;
-  }
-
   void SetPlayerEvent (PlayerEvent ev) {
     _playerEvent = ev;
     if (leftAction != null) {
@@ -58,10 +51,6 @@ public class EventView : BaseBehaviour {
     if (hasTriggered) {
       return;
     } else {
-
-      if (enableLeftAction) {
-        SetActionOffset();
-      }
 
       if (playerEvent == null || playerEvent.Triggers.Count < 1) {
         hasTriggered = true;
