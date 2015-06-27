@@ -156,24 +156,20 @@ public class EventView : BaseBehaviour {
   }
 
   void TriggerLeftAction () {
-    originalPos = rectTrans.localPosition;
     ResetHorizontalSwipe();
     if (leftActionConfirmation != null) {
       leftActionConfirmation.SetActive(true);
       enableLeftAction = false;
       enableRightAction = false;
-      Destroy(leftAction.gameObject);
     }
   }
 
   void TriggerRightAction () {
-    originalPos = rectTrans.localPosition;
     ResetHorizontalSwipe();
     if (rightActionConfirmation != null) {
       rightActionConfirmation.SetActive(true);
       enableLeftAction = false;
       enableRightAction = false;
-      Destroy(leftAction.gameObject);
     }
   }
 }
