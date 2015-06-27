@@ -6,7 +6,7 @@ public class ActionView : BaseBehaviour {
   public string actionName;
 
 	public PlayerEvent playerEvent {get; set;}
-  bool hasTriggered = false;
+  public bool hasTriggered = false;
   Rect screenRect;
 
   // Use this for initialization

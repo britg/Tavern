@@ -11,6 +11,9 @@ public class EventView : BaseBehaviour {
   public ActionView leftAction;
   public ActionView rightAction;
 
+  public GameObject leftActionConfirmation;
+  public GameObject rightActionConfirmation;
+
   PlayerEvent _playerEvent;
   public PlayerEvent playerEvent {
     get {
@@ -125,6 +128,8 @@ public class EventView : BaseBehaviour {
       pos.x += delta.x * swipeFactor;
       rectTrans.localPosition = pos;
       hSwipeStart = currPosition;
+
+      HandleActionTrigger();
     }
   }
   
@@ -140,4 +145,35 @@ public class EventView : BaseBehaviour {
     isSwiping = false;
   }
 
+  void HandleActionTrigger () {
+    if (enableLeftAction && leftAction.hasTriggered) {
+      TriggerLeftAction();
+    }
+
+    if (enableRightAction && rightAction.hasTriggered) {
+      TriggerRightAction();
+    }
+  }
+
+  void TriggerLeftAction () {
+    originalPos = rectTrans.localPosition;
+    ResetHorizontalSwipe();
+    if (leftActionConfirmation != null) {
+      leftActionConfirmation.SetActive(true);
+      enableLeftAction = false;
+      enableRightAction = false;
+      Destroy(leftAction.gameObject);
+    }
+  }
+
+  void TriggerRightAction () {
+    originalPos = rectTrans.localPosition;
+    ResetHorizontalSwipe();
+    if (rightActionConfirmation != null) {
+      rightActionConfirmation.SetActive(true);
+      enableLeftAction = false;
+      enableRightAction = false;
+      Destroy(leftAction.gameObject);
+    }
+  }
 }
