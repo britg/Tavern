@@ -22,10 +22,7 @@ public class EventEquipmentView : EventView {
 
   public void UpdateEquipment () {
     if (playerEvent.Equipment == null) {
-      title.text = "Equipped...";
       title.color = Color.gray;
-      enableLeftAction = false;
-      enableRightAction = false;
     } else {
       var str = string.Format("[{0}]", playerEvent.Content); 
       title.text = str;

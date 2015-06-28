@@ -18,10 +18,10 @@ public class LootProcessor {
     var eq = ev.Equipment;
     SlotType slotType = eq.SlotType;
     Slot playerSlot = sim.player.Slots[slotType.Key];
-//    var prevEquipment = playerSlot.Equipment;
+    var prevEquipment = playerSlot.Equipment;
     playerSlot.Equipment = eq;
     sim.player.UpdateStats();
-//    ev.Equipment = prevEquipment;
+    ev.Equipment = prevEquipment;
     NotificationCenter.PostNotification(Constants.OnUpdateEvents);
   }
 
