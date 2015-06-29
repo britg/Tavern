@@ -26,7 +26,7 @@ public class EventEngine {
       var fill = new PlayerEvent("Killed [Giant Rat]");
 
       for (int j = 0; j < eRand; j++) {
-        list.Add(fill);
+//        list.Add(fill);
       }
       list.Add(ev);
     }

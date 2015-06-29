@@ -9,6 +9,8 @@ public class Rarity {
 
   public string Key { get; set; }
   public string Name { get; set; }
+  public float Chance { get; set; }
+  public Color Color { get; set; }
 
   public static Dictionary<string, Rarity> all = new Dictionary<string, Rarity>();
 
@@ -25,6 +27,8 @@ public class Rarity {
   public Rarity (JSONNode json) {
     Key = json["key"].Value;
     Name = json["name"].Value;
+    Chance = json["chance"].AsFloat;
+    Color = ColorUtilities.HexToColor(json["color"].Value);
   }
 
 }

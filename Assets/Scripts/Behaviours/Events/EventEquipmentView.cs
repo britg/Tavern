@@ -9,6 +9,12 @@ public class EventEquipmentView : EventView {
   public Text title;
   public Text description;
 
+  public Equipment eq {
+    get {
+      return playerEvent.Equipment;
+    }
+  }
+
 	// Use this for initialization
 	void Start () {
     if (playerEvent == null) {
@@ -26,6 +32,7 @@ public class EventEquipmentView : EventView {
     } else {
       var str = string.Format("[{0}]", playerEvent.Content); 
       title.text = str;
+      title.color = eq.Rarity.Color;
     }
   }
 

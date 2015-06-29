@@ -1,5 +1,7 @@
 {
 	"type": "Rarity",
 	"key": "common",
-	"name": "Common"
+	"name": "Common",
+  "chance": 100,
+  "color": "CCCCCC"
 }

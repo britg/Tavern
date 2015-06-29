@@ -1,5 +1,7 @@
 {
 	"type": "Rarity",
 	"key": "epic",
-	"name": "Epic"
+	"name": "Epic",
+  "chance": 0.5,
+  "color": "A23788"
 }

@@ -25,14 +25,17 @@ public class EquipmentGenerator {
   public Equipment Generate (EquipmentType type) {
     var e = new Equipment();
     e.Type = type;
+    e.SlotType = type.PrimarySlotType;
     e.Name = type.Name;
-
-    foreach (string k in type.SlotTypes.Keys) {
-      e.SlotType = type.SlotTypes[k];
-      break;
-    }
+    var rarityGen = new RarityGenerator(sim);
+    e.Rarity = rarityGen.Roll();
+    AssignAttributes(e);
 
     return e;
+  }
+
+  void AssignAttributes (Equipment e) {
+    // Based on rarity, assign stat bonuses
   }
 
 }

@@ -10,6 +10,11 @@ public class EquipmentType {
   public string Key { get; set; }
   public string Name { get; set; }
   public Dictionary<string, SlotType> SlotTypes { get; set; }
+  public SlotType PrimarySlotType {
+    get {
+      return FirstSlotType();
+    }
+  }
 
   public static Dictionary<string, EquipmentType> all = new Dictionary<string, EquipmentType>();
 
@@ -34,5 +39,13 @@ public class EquipmentType {
       var key = slotType.Value;
       SlotTypes.Add(key, SlotType.all[key]);
     }
+  }
+
+  public SlotType FirstSlotType () {
+    foreach (KeyValuePair<string, SlotType> p in SlotTypes) {
+      return p.Value;
+    }
+
+    return null;
   }
 }
