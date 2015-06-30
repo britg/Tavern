@@ -11,6 +11,7 @@ public class Constants {
   public const string OnEnterPendingSelection = "OnEnterPendingSelection";
   public const string OnWorldSelection = "OnWorldSelection";
   public const string OnUpdateEvents = "OnUpdateEvents";
+  public const string OnUpdateStats = "OnUpdateStats";
 
   // Layers
   public const string GroundLayer = "Ground";

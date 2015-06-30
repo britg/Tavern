@@ -36,6 +36,8 @@ public class EquipmentGenerator {
 
   void AssignAttributes (Equipment e) {
     // Based on rarity, assign stat bonuses
+    var stat = new Stat("phys_atk", 1f);
+    e.Stats[stat.Type.Key] = stat;
   }
 
 }

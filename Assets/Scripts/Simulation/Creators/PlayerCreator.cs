@@ -28,7 +28,7 @@ public class PlayerCreator {
     //BootstrapBuildings();
     //BootstrapAdventurers();
     BootstrapStats();
-    BootstrapSlots();
+    BootstrapAllSlots();
   }
 
   void BootstrapResources () {
@@ -63,9 +63,15 @@ public class PlayerCreator {
     List<JSONNode> slotsToLoad = sim.config.jsonCache[PlayerSlotType];
     foreach (JSONNode playerSlot in slotsToLoad) {
       var slotKey = playerSlot["slot_key"].Value;
-      var value = playerSlot["value"].AsFloat;
       var slot = new Slot(slotKey);
       player.Slots[slotKey] = slot;
+    }
+  }
+
+  void BootstrapAllSlots () {
+    foreach (KeyValuePair<string, SlotType> p in SlotType.all) {
+      var slot = new Slot(p.Key);
+      player.Slots[p.Key] = slot;
     }
   }
 

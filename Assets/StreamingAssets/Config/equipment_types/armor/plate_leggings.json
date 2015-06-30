@@ -1,5 +1,6 @@
 {
   "type": "EquipmentType",
   "key": "plate_leggings",
-  "name": "Plate Leggings"
+  "name": "Plate Leggings",
+  "slots": ["legs"]
 }

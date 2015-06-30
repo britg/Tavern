@@ -1,5 +1,6 @@
 {
   "type": "EquipmentType",
   "key": "bow",
-  "name": "Bow"
+  "name": "Bow",
+  "slots": ["main_hand"]
 }

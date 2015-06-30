@@ -18,8 +18,32 @@ public class Player {
     Slots = new Dictionary<string, Slot>();
   }
 
-  public void UpdateStats () {
-    Debug.Log ("Updating player stats");
+  public Stat GetStat (string key) {
+    var playerStat = new Stat(key, 0f);
+    if (Stats.ContainsKey(key)) {
+      playerStat = Stats[key];
+    } else {
+      Stats[key] = playerStat;
+    }
+
+    return playerStat;
+  }
+
+  public float GetStatValue (string key) {
+    var stat = GetStat(key);
+    return stat.Value + StatAdditionsFromEquipment(key);
+  }
+
+  public float StatAdditionsFromEquipment (string key) {
+    float sum = 0f;
+    foreach (KeyValuePair<string, Slot> p in Slots) {
+      var e = p.Value.Equipment;
+      if (e != null) {
+        sum += e.StatValue(key);
+      }
+    }
+
+    return sum;
   }
 
 }

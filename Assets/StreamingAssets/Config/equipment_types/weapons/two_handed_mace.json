@@ -1,5 +1,6 @@
 {
   "type": "EquipmentType",
   "key": "two_handed_mace",
-  "name": "Two Handed Mace"
+  "name": "Two Handed Mace",
+  "slots": ["main_hand"]
 }

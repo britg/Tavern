@@ -33,14 +33,26 @@ public class StatView : BaseBehaviour {
 
   // Use this for initialization
   void Start () {
+    Display();
+    NotificationCenter.AddObserver(this, Constants.OnUpdateStats);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-    var val = stat.Value.ToString();
-    if (includeMax) {
-      val = string.Format("{0}/{1}", stat.Value, stat.MaxValue);
-    }
-    text.text = string.Format("{0}{1}{2}", prefix, val, suffix);
 	}
+
+  void OnUpdateStats () {
+    Display();
+  }
+
+  void Display () {
+    var val = sim.player.GetStatValue(statKey);
+    string txt = "";
+    if (includeMax) {
+      txt = string.Format("{0}/{1}", val, stat.MaxValue);
+    } else {
+      txt = val.ToString();
+    }
+    text.text = string.Format("{0}{1}{2}", prefix, txt, suffix);
+  }
 }

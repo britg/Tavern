@@ -1,0 +1,7 @@
+{
+  "type": "Rarity",
+  "key": "trash",
+  "name": "Trash",
+  "chance": 30,
+  "color": "CCCCCC"
+}

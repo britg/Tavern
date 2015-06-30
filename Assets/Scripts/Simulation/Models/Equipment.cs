@@ -10,6 +10,16 @@ public class Equipment {
   public string Name { get; set; }
   public SlotType SlotType { get; set; }
 
-  public List<Stat> Stats = new List<Stat>();
+  public Dictionary<string, Stat> Stats = new Dictionary<string, Stat>();
+
+
+  public float StatValue (string key) {
+    if (!Stats.ContainsKey(key)) {
+      return 0f;
+    }
+
+    var stat = Stats[key];
+    return stat.Value;
+  }
 
 }

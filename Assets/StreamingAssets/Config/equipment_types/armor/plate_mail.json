@@ -1,5 +1,6 @@
 {
   "type": "EquipmentType",
   "key": "plate_mail",
-  "name": "Plate Mail"
+  "name": "Plate Mail",
+  "slots": ["chest"]
 }
