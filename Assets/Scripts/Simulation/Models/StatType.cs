@@ -9,6 +9,7 @@ public class StatType {
 
   public string Key { get; set; }
   public string Name { get; set; }
+  public string Abbr { get; set; }
 
   public static Dictionary<string, StatType> all = new Dictionary<string, StatType>();
 
@@ -25,5 +26,6 @@ public class StatType {
   public StatType (JSONNode json) {
     Key = json["key"].Value;
     Name = json["name"].Value;
+    Abbr = json["abbr"].Value;
   }
 }

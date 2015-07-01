@@ -33,7 +33,22 @@ public class EventEquipmentView : EventView {
       var str = string.Format("[{0}]", playerEvent.Content); 
       title.text = str;
       title.color = eq.Rarity.Color;
+      description.text = StatsString();
     }
+  }
+
+  string StatsString () {
+    string str = "";
+    foreach (KeyValuePair<string, Stat> p in eq.Stats) {
+      var stat = p.Value;
+      var pol = "+";
+      if (stat.Value < 0f) {
+        pol = "-";
+      }
+      str += string.Format("{1} {2}", pol, stat.Value, stat.Abbr);
+    }
+
+    return str;
   }
 
   void OnUpdateEvents (Notification n) {

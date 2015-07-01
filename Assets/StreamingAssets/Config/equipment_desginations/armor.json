@@ -1,0 +1,7 @@
+{
+  "type": "EquipmentDesignation",
+  "key": "armor",
+  "name": "Armor",
+  "primary_stats": ["phys_def"],
+  "special_stats": ["fire_def", "ice_def", "pois_def"]
+}
