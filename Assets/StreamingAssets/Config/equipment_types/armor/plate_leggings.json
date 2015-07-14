@@ -2,5 +2,6 @@
   "type": "EquipmentType",
   "key": "plate_leggings",
   "name": "Plate Leggings",
-  "slots": ["legs"]
+  "slots": ["legs"],
+  "designation": "armor"
 }

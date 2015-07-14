@@ -12,6 +12,12 @@ public class Equipment {
 
   public Dictionary<string, Stat> Stats = new Dictionary<string, Stat>();
 
+  public EquipmentDesignation Designation {
+    get {
+      return Type.Designation;
+    }
+  }
+
 
   public float StatValue (string key) {
     if (!Stats.ContainsKey(key)) {

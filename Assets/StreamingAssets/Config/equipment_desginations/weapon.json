@@ -2,6 +2,5 @@
   "type": "EquipmentDesignation",
   "key": "weapon",
   "name": "Weapon",
-  "primary_stats": ["phys_atk"],
-  "special_stats": ["fire_atk", "ice_atk", "pois_atk"]
+  "base_stats": ["phys_atk"]
 }

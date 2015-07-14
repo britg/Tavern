@@ -2,5 +2,6 @@
   "type": "EquipmentType",
   "key": "one_handed_mace",
   "name": "One Handed Mace",
-  "slots": ["main_hand"]
+  "slots": ["main_hand"],
+  "designation": "weapon"
 }

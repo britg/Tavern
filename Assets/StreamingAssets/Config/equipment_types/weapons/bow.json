@@ -2,5 +2,6 @@
   "type": "EquipmentType",
   "key": "bow",
   "name": "Bow",
-  "slots": ["main_hand"]
+  "slots": ["main_hand"],
+  "designation": "weapon"
 }

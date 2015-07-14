@@ -2,5 +2,6 @@
   "type": "EquipmentType",
   "key": "leather_tunic",
   "name": "Leather Tunic",
-  "slots": ["chest"]
+  "slots": ["chest"],
+  "designation": "armor"
 }

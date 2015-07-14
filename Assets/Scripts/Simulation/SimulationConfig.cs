@@ -106,6 +106,7 @@ public class SimulationConfig {
     Name.type,
 
     // Tier 2
+    EquipmentDesignation.type,
     EquipmentType.type,
     SimulationConfig.type
   };
@@ -143,6 +144,9 @@ public class SimulationConfig {
       break;
       case SlotType.type:
         SlotType.Cache(config);
+      break;
+      case EquipmentDesignation.type:
+        EquipmentDesignation.Cache(config);
       break;
       case EquipmentType.type:
         EquipmentType.Cache(config);

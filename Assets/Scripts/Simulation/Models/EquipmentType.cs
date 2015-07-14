@@ -32,7 +32,7 @@ public class EquipmentType {
   public EquipmentType (JSONNode json) {
     Key = json["key"].Value;
     Name = json["name"].Value;
-    Designation = ParseDesignation(json["designation"].Value);
+    Designation = EquipmentDesignation.all[json["designation"].Value];
 
     SlotTypes = new Dictionary<string, SlotType>();
     var slotTypeArr = json["slots"].AsArray;
@@ -41,23 +41,6 @@ public class EquipmentType {
       var key = slotType.Value;
       SlotTypes.Add(key, SlotType.all[key]);
     }
-  }
-
-  public static EquipmentDesignation ParseDesignation (string desig) {
-    var d = EquipmentDesignation.Weapon;
-    switch (desig) {
-    case "weapon":
-      d = EquipmentDesignation.Weapon;
-      break;
-    case "armor":
-      d = EquipmentDesignation.Armor;
-      break;
-    case "accessory":
-      d = EquipmentDesignation.Accessory;
-      break;
-    }
-
-    return d;
   }
 
   public SlotType FirstSlotType () {

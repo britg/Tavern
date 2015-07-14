@@ -2,5 +2,6 @@
   "type": "EquipmentType",
   "key": "plate_mail",
   "name": "Plate Mail",
-  "slots": ["chest"]
+  "slots": ["chest"],
+  "designation": "armor"
 }

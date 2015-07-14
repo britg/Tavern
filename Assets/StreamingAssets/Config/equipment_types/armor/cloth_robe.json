@@ -2,5 +2,6 @@
   "type": "EquipmentType",
   "key": "cloth_robe",
   "name": "Cloth Robe",
-  "slots": ["chest"]
+  "slots": ["chest"],
+  "designation": "armor"
 }
