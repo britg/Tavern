@@ -26,6 +26,7 @@ public class EquipmentDesignation {
     BaseStats = new Dictionary<string, StatType>();
     foreach (JSONNode item in json["base_stats"].AsArray) {
       var statKey = item.Value;
+      Debug.Log ("Attempting to load base stat " + statKey);
       BaseStats[statKey] = StatType.all[statKey];
     }
   }
