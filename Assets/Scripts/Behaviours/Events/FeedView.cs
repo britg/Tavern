@@ -107,8 +107,12 @@ public class FeedView : BaseBehaviour {
     var layoutElem = lastEventTrans.GetComponent<LayoutElement>();
     layoutElem.preferredHeight = height;
 
-    var eventInfoView = lastEventTrans.GetComponent<EventInfoView>();
+    var layoutGroup = lastEventTrans.GetComponent<VerticalLayoutGroup>();
+    Destroy(layoutGroup);
+
+    var eventInfoView = lastEventTrans.GetComponent<EventView>();
     Destroy(eventInfoView);
+
   }
 
 }
