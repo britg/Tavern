@@ -2,5 +2,5 @@
   "type": "EquipmentDesignation",
   "key": "acc",
   "name": "Accessory",
-  "base_stats": ["luck"],
+  "base_stats": ["luck", "res", "hit"],
 }

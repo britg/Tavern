@@ -82,8 +82,6 @@ public class EventView : BaseBehaviour {
       return;
     }
     
-    var inbounds = false;
-    
     if (Input.GetMouseButtonDown(0) && DetectInBounds()) {
       CaptureStartOfHorizontalSwipe(Input.mousePosition);
     }

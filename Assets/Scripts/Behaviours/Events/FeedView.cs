@@ -13,6 +13,7 @@ public class FeedView : BaseBehaviour {
   public GameObject eventInfoPrefab;
   public GameObject eventTransitionPrefab;
   public GameObject eventEquipmentPrefab;
+  public GameObject eventChoicePrefab;
   public int numEvents = 20;
   public float refreshDelay = 1f;
   public string pullAnchorDefaultText = "Pull to Quest";
@@ -39,7 +40,7 @@ public class FeedView : BaseBehaviour {
   }
 
   void DoRefresh () {
-    List<PlayerEvent> newEvents = sim.eventEngine.Input();
+    List<PlayerEvent> newEvents = sim.eventEngine.Continue();
     List<GameObject> eventObjs = new List<GameObject>();
     foreach (var playerEvent in newEvents) {
       eventObjs.Add(CreatePlayerEventView(playerEvent));
@@ -63,6 +64,8 @@ public class FeedView : BaseBehaviour {
       prefab = eventTransitionPrefab;
     } else if (playerEvent.type == PlayerEvent.Type.Equipment) {
       prefab = eventEquipmentPrefab;
+    } else if (playerEvent.type == PlayerEvent.Type.Choice) {
+      prefab = eventChoicePrefab;
     }
 
 

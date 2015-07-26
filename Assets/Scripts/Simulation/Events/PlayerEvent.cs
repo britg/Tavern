@@ -7,7 +7,8 @@ public class PlayerEvent {
   public enum Type {
     Info,
     Equipment,
-    Transition
+    Transition,
+    Choice
   }
 
   public int Id { get; set; }
@@ -17,6 +18,9 @@ public class PlayerEvent {
 
   public Equipment Equipment { get; set; }
   public List<Trigger> Triggers = new List<Trigger>();
+
+  public Choice firstChoice;
+  public Choice secondChoice;
 
   public bool hasTriggered = false;
 
@@ -36,6 +40,14 @@ public class PlayerEvent {
     PlayerEvent ev = new PlayerEvent(e.Name);
     ev.type = Type.Equipment;
     ev.Equipment = e;
+    return ev;
+  }
+
+  public static PlayerEvent Choice (string text, Choice firstChoice, Choice secondChoice) {
+    PlayerEvent ev = new PlayerEvent(text);
+    ev.type = Type.Choice;
+    ev.firstChoice = firstChoice;
+    ev.secondChoice = secondChoice;
     return ev;
   }
 

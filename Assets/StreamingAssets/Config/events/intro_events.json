@@ -1,24 +1,13 @@
 {
 	"type": "IntroEvents",
 	"events": [
-		"\"The wayword soul climbs through the night drawn by the tower light...\"",
-		"You get the eerie feeling that you've been in this tower before.",
-		"But you can't remember when or why.",
-		"In fact you can't remember why you're here now, or how you arrived.",
-		"The tower doors shut behind you but you don't notice or care.",
-		"There is a hallway ahead."
-	],
-	"transition": "Hallway",
-	"equipmentMessages": [
-		"Rudimentary weapons and armor stand on racks along the walls of the corridor."
-	],
-	"equipmentTypes": [
-		"one_handed_sword"
-	],
-	"exitMessages": [
-		"The hallway leads to a flight of stairs rising into darkness.",
-		"Something compells you to climb upwards... always upwards."
-	],
-	"levelTransition": "Floor 1"
-
+    "Hushed conversations around the tavern tables tell of a mysterious tower deep within the badlands.",
+    "They spin a story of ancient riches and powerful artifacts guarded by foul denizens.",
+    "Most adventurers who have journeyed to the tower have never returned...",
+    "Those who have are addled and defeated, muttering of neverending staircases and nightmare constructs.",
+    "It is widely regarded that only the most foolish of adventurer dare venture to the tower...",
+    "...",
+		"A dark tower atop a hill rises before you, its summit somewhere above the clouds.",
+    "A few hastily constructed shops and stands huddle a safe distance from tower entrance."
+	]
 }

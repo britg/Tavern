@@ -2,5 +2,5 @@
   "type": "EquipmentDesignation",
   "key": "armor",
   "name": "Armor",
-  "base_stats": ["phys_res"]
+  "base_stats": ["def"]
 }

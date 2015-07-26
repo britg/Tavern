@@ -14,6 +14,7 @@ public class ScrollView : BaseBehaviour, IEndDragHandler {
 
   public GameObject eventList;
   public GameObject pullTriggerView;
+  public Text pullTriggerText;
   FeedView feedView;
   ScrollRect scrollRect;
   Rect screenRect;
@@ -25,6 +26,7 @@ public class ScrollView : BaseBehaviour, IEndDragHandler {
 	void Start () {
     scrollRect = GetComponent<ScrollRect>();
     feedView = eventList.GetComponent<FeedView>();
+    pullTriggerText = pullTriggerView.transform.Find("Title").GetComponent<Text>();
     screenRect = new Rect(0f, 0f, 
                           Screen.width + 1, 
                           Screen.height - Screen.height*pullTriggerMargin);
@@ -75,6 +77,10 @@ public class ScrollView : BaseBehaviour, IEndDragHandler {
   }
 
   void InitiateRefresh () {
+    if (!sim.eventEngine.canContinue) {
+      pullTriggerText.text = "You must make a choice to continue...";
+      return;
+    }
     Debug.Log ("Initiating refresh...");
     state = State.Refreshing;
     scrollRect.movementType = ScrollRect.MovementType.Clamped;
