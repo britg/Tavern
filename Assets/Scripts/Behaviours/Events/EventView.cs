@@ -140,6 +140,8 @@ public class EventView : BaseBehaviour {
   }
 
   void EndHorizontalSwipe () {
+    leftAction.hasTriggered = false;
+    rightAction.hasTriggered = false;
     isSwiping = false;
   }
 

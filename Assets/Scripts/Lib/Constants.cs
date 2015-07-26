@@ -16,5 +16,11 @@ public class Constants {
   // Layers
   public const string GroundLayer = "Ground";
 
+  // Choices
+  public const string c_Equip = "equip";
+  public const string c_Pickup = "pickup";
+  public const string c_Shop = "shop";
+  public const string c_Tower = "tower";
+
 
 }

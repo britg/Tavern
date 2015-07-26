@@ -21,7 +21,6 @@ public class LootProcessor {
     var prevEquipment = playerSlot.Equipment;
     playerSlot.Equipment = eq;
     ev.Equipment = prevEquipment;
-    NotificationCenter.PostNotification(Constants.OnUpdateEvents);
     NotificationCenter.PostNotification(Constants.OnUpdateStats);
   }
 

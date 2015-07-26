@@ -19,6 +19,9 @@ public class EventChoiceView : EventView {
       return;
     }
 
+    leftActionConfirmation = null;
+    rightActionConfirmation = null;
+
     NotificationCenter.AddObserver(this, Constants.OnUpdateEvents);
     title.text = playerEvent.Content;
 

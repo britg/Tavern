@@ -441,8 +441,8 @@ MonoBehaviour:
   swipeFactor: .150000006
   leftAction: {fileID: 11434106}
   rightAction: {fileID: 11497544}
-  leftActionConfirmation: {fileID: 145432}
-  rightActionConfirmation: {fileID: 141596}
+  leftActionConfirmation: {fileID: 0}
+  rightActionConfirmation: {fileID: 0}
   title: {fileID: 11473004}
   pullRightLabel: {fileID: 11450048}
   pullLeftLabel: {fileID: 11464046}
@@ -615,7 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b40d86d8bc4f4dfaa5aad3bd74e5d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: pickUp
+  actionName: pull_right
   hasTriggered: 0
 --- !u!114 &11434978
 MonoBehaviour:
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b40d86d8bc4f4dfaa5aad3bd74e5d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: equip
+  actionName: pull_left
   hasTriggered: 0
 --- !u!114 &11497884
 MonoBehaviour:

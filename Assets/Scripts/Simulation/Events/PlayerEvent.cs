@@ -22,6 +22,8 @@ public class PlayerEvent {
   public Choice firstChoice;
   public Choice secondChoice;
 
+  public string chosenKey;
+
   public bool hasTriggered = false;
   public bool conditionsSatisfied = true;
 
