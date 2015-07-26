@@ -23,6 +23,7 @@ public class PlayerEvent {
   public Choice secondChoice;
 
   public bool hasTriggered = false;
+  public bool conditionsSatisfied = true;
 
   public PlayerEvent (string content) {
     Content = content;
@@ -48,6 +49,7 @@ public class PlayerEvent {
     ev.type = Type.Choice;
     ev.firstChoice = firstChoice;
     ev.secondChoice = secondChoice;
+    ev.conditionsSatisfied = false;
     return ev;
   }
 

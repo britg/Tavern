@@ -794,7 +794,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Pull right text
+  m_Text: Pick up
 --- !u!114 &11438746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -820,7 +820,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Swapped
+  m_Text: Equipped
 --- !u!114 &11439778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -843,7 +843,7 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 7
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Picked Up
@@ -988,7 +988,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Pull left text
+  m_Text: Equip
 --- !u!114 &11448774
 MonoBehaviour:
   m_ObjectHideFlags: 1

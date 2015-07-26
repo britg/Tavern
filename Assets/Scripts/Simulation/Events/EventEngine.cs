@@ -15,7 +15,7 @@ public class EventEngine {
       if (lastEvent == null) {
         return true;
       }
-      return lastEvent.type != PlayerEvent.Type.Choice;
+      return lastEvent.conditionsSatisfied;
     }
   }
 
@@ -55,6 +55,10 @@ public class EventEngine {
       lootProcessor.PickUp(ev);
     } else if (actionName == "equip") {
       lootProcessor.Equip(ev);
+    } else {
+
+      // TODO actually parse the action name and do something
+      ev.conditionsSatisfied = true;
     }
   }
 
@@ -92,10 +96,16 @@ public class EventEngine {
   }
 
   PlayerEvent Consider () {
-    var first = new Choice();
-    var second = new Choice();
+    var pullLeft = new Choice();
+    pullLeft.label = "Shop";
+    pullLeft.key = "shop";
+    pullLeft.direction = Choice.Direction.Left;
+    var pullRight = new Choice();
+    pullRight.label = "Enter Tower";
+    pullRight.key = "tower";
+    pullRight.direction = Choice.Direction.Right;
     var msg = "You consider your next course of action...";
-    return PlayerEvent.Choice(msg, first, second);
+    return PlayerEvent.Choice(msg, pullLeft, pullRight);
   }
 
 }
