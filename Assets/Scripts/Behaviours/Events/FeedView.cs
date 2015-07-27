@@ -25,6 +25,7 @@ public class FeedView : BaseBehaviour {
 	void Start () {
     pullAnchorTitle = pullAnchor.transform.Find("Title").GetComponent<Text>();
     pullAnchorTitle.text = pullAnchorDefaultText;
+    NotificationCenter.AddObserver(this, Constants.OnUpdateEvents);
 	}
 
 	// Update is called once per frame
@@ -116,6 +117,10 @@ public class FeedView : BaseBehaviour {
     var eventInfoView = lastEventTrans.GetComponent<EventView>();
     Destroy(eventInfoView);
 
+  }
+
+  void OnUpdateEvents (Notification n) {
+    pullAnchorTitle.text = pullAnchorDefaultText;
   }
 
 }
