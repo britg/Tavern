@@ -1,0 +1,6 @@
+{
+	"type": "MobTemplate",
+	"key": "rat",
+	"name": "Rat of Unusual Size",
+	"hitpoints": [10, 15]
+}

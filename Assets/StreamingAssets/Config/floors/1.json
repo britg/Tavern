@@ -1,0 +1,12 @@
+{
+	"type": "FloorTemplate",
+	"floors": [1, 10],
+	"atmosphere": [
+		"floor 1 atmosphere text 1",
+		"floor 1 atmosphere text 2",
+		"floor 1 atmosphere text 3"
+	],
+	"mobs": [
+		"rat"
+	]
+}
