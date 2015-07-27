@@ -108,6 +108,8 @@ public class SimulationConfig {
     // Tier 2
     EquipmentDesignation.type,
     EquipmentType.type,
+    FloorTemplate.type,
+    MobTemplate.type,
     SimulationConfig.type
   };
   void ParseLoadedConfigs () {
@@ -129,28 +131,34 @@ public class SimulationConfig {
     switch (type) {
       case ResourceType.type:
         ResourceType.Cache(config);
-      break;
+        break;
       case AdventurerClass.type:
         AdventurerClass.Cache(config);
-      break;
+        break;
       case BuildingType.type:
         BuildingType.Cache(config);
-      break;
+        break;
       case QuestType.type:
         QuestType.Cache(config);
-      break;
+        break;
       case StatType.type:
         StatType.Cache(config);
-      break;
+        break;
       case SlotType.type:
         SlotType.Cache(config);
-      break;
+        break;
       case EquipmentDesignation.type:
         EquipmentDesignation.Cache(config);
-      break;
+        break;
       case EquipmentType.type:
         EquipmentType.Cache(config);
-      break;
+        break;
+      case FloorTemplate.type:
+        FloorTemplate.Cache(config);
+        break;
+      case MobTemplate.type:
+        MobTemplate.Cache(config);
+        break;
       case SimulationConfig.type:
         LoadSelf(config);
       break;

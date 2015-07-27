@@ -137,6 +137,8 @@ public class EventEngine {
     var newEvents = new List<PlayerEvent>();
     newEvents.Add(new PlayerEvent("[Debug] Entering tower"));
     sim.player.location = Player.Location.Tower;
+
+    NotificationCenter.PostNotification(Constants.OnUpdateStats);
     return newEvents;
   }
 
@@ -144,6 +146,7 @@ public class EventEngine {
     var newEvents = new List<PlayerEvent>();
     newEvents.Add(new PlayerEvent("[Debug] Entering store"));
     sim.player.location = Player.Location.Shop;
+    NotificationCenter.PostNotification(Constants.OnUpdateStats);
     return newEvents;
   }
 
