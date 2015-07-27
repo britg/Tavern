@@ -62,9 +62,11 @@ public class EventEngine {
 
   void HandleEquipmentTrigger (PlayerEvent ev, string actionName) {
     var lootProcessor = new LootProcessor(sim);
-    if (actionName == "pickUp") {
+    if (actionName == Constants.c_Pickup) {
+      ev.chosenKey = Constants.c_Pickup;
       lootProcessor.PickUp(ev);
-    } else if (actionName == "equip") {
+    } else if (actionName == Constants.c_Equip) {
+      ev.chosenKey = Constants.c_Equip;
       lootProcessor.Equip(ev);
     }
   }
@@ -78,6 +80,7 @@ public class EventEngine {
       list.Add(new PlayerEvent(eventStr));
     }
 
+    list.AddRange(Dev_RandomLoot());
     list.Add(Consider());
 
     return list;
@@ -88,10 +91,10 @@ public class EventEngine {
     var eqGen = new EquipmentGenerator(sim);
     var rand = Random.Range(7, 15);
     var eRand = Random.Range(1, 4);
-    for (int i = 0; i < rand; i++) {
+    for (int i = 0; i < 1; i++) {
       var eq = eqGen.Generate();
       var ev = PlayerEvent.Loot(eq);
-      var fill = new PlayerEvent("Killed [Giant Rat]");
+//      var fill = new PlayerEvent("Killed [Giant Rat]");
 
       for (int j = 0; j < eRand; j++) {
         //        list.Add(fill);

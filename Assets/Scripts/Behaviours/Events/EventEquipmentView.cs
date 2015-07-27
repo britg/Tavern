@@ -8,6 +8,7 @@ public class EventEquipmentView : EventView {
 
   public Text title;
   public Text description;
+  public GameObject choicesObj;
 
   public Equipment eq {
     get {
@@ -53,6 +54,9 @@ public class EventEquipmentView : EventView {
 
   void OnUpdateEvents (Notification n) {
     UpdateEquipment();
+    if (playerEvent.chosenKey != null) {
+      choicesObj.SetActive(false);
+    }
   }
 
 	
