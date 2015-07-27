@@ -172,4 +172,18 @@ public class EventView : BaseBehaviour {
       enableRightAction = false;
     }
   }
+
+  public bool isLastEvent () {
+    int i = 0;
+    foreach (Transform child in transform.parent) {
+      if (transform == child) {
+        break;
+      }
+      i++;
+    }
+
+    Debug.Log ("Current position is " + i);
+    return i == 1;
+
+  }
 }

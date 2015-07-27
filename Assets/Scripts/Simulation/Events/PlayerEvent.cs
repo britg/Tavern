@@ -11,7 +11,7 @@ public class PlayerEvent {
     Choice
   }
 
-  public int Id { get; set; }
+  public string Id { get; set; }
   public string Title { get; set; }
   public string Content { get; set; }
   public Type type = Type.Info;
@@ -28,6 +28,7 @@ public class PlayerEvent {
   public bool conditionsSatisfied = true;
 
   public PlayerEvent (string content) {
+    Id = System.Guid.NewGuid().ToString();
     Content = content;
     type = Type.Info;
   }

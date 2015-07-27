@@ -10,6 +10,12 @@ public class EventChoiceView : EventView {
   public Text pullRightLabel;
   public Text pullLeftLabel;
 
+  Sprite originalPullRightSprite;
+  Sprite originalPullLeftSprite;
+  public Image pullRightIcon;
+  public Image pullLeftIcon;
+  public Sprite checkSprite;
+
   Choice leftChoice;
   Choice rightChoice;
 
@@ -33,6 +39,9 @@ public class EventChoiceView : EventView {
 
     pullLeftLabel.text = leftChoice.label;
     pullRightLabel.text = rightChoice.label;
+
+    originalPullLeftSprite = pullLeftIcon.sprite;
+    originalPullRightSprite = pullRightIcon.sprite;
   }
 
   void AssignChoice (Choice choice) {
@@ -46,7 +55,22 @@ public class EventChoiceView : EventView {
   }
 
   void OnUpdateEvents (Notification n) {
+    if (playerEvent.chosenKey != null) {
 
+      if (leftChoice.key == playerEvent.chosenKey) {
+        pullLeftIcon.sprite = checkSprite;
+        pullRightIcon.sprite = originalPullRightSprite;
+      } else {
+        pullRightIcon.sprite = checkSprite;
+        pullLeftIcon.sprite = originalPullLeftSprite;
+      }
+
+    }
+
+    if (!isLastEvent()) {
+      enableLeftAction = false;
+      enableRightAction = false;
+    }
   }
 
 }
