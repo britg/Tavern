@@ -89,6 +89,7 @@ public class ScrollView : BaseBehaviour, IEndDragHandler {
   }
 
   void OnRefreshFinished () {
+    NotificationCenter.PostNotification(Constants.OnUpdateEvents);
     Debug.Log ("Refresh finished");
     Invoke ("Reset", 0.1f);
   }
