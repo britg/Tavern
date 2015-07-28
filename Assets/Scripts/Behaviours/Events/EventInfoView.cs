@@ -4,11 +4,10 @@ using System.Collections;
 
 public class EventInfoView : EventView {
 
-  Text description;
+  public Text description;
 
   // Use this for initialization
   void Start () {
-    description = transform.Find("Description").GetComponent<Text>();
     description.text = playerEvent.Content;
   }
 

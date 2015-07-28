@@ -40,7 +40,7 @@ public class TowerEventEngine {
     
 
     Mob mob = floor.RandomMob();
-    newEvents.Add(new PlayerEvent("Mob encountered" + mob.template.name));
+    newEvents.Add(new PlayerEvent("Enemies encountered: [" + mob.template.name + "]"));
 
     return newEvents;
   }

@@ -424,7 +424,7 @@ GameObject:
   - 114: {fileID: 11407924}
   - 114: {fileID: 11488288}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Sep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_Color: {r: .800000012, g: .800000012, b: .800000012, a: 1}
+  m_Color: {r: .956862748, g: .956862748, b: .956862748, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
