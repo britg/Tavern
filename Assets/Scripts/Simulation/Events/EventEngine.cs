@@ -94,7 +94,6 @@ public class EventEngine {
     for (int i = 0; i < 1; i++) {
       var eq = eqGen.Generate();
       var ev = PlayerEvent.Loot(eq);
-//      var fill = new PlayerEvent("Killed [Giant Rat]");
 
       for (int j = 0; j < eRand; j++) {
         //        list.Add(fill);

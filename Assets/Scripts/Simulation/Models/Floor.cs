@@ -71,5 +71,25 @@ public class FloorTemplate {
     return mob;
   }
 
+  public string GetHappening () {
+    /* chance for:
+          - mob 
+          - room
+          - interactible
+            - chest
+            - dead body
+            - set of vases against the walll
+
+    */
+
+    var happenings = iTween.Hash(
+      "mob_group", 50,
+      "interactible", 25,
+      "room", 25
+      );
+
+    int rand = Random.Range(0, 100);
+  }
+
 
 }

@@ -23,20 +23,9 @@ public class TowerEventEngine {
       newEvents.AddRange(EntranceEvents());
     }
 
-    /* chance for:
-          - mob 
-          - room
-          - interactible
-            - chest
-            - dead body
-            - set of vases against the walll
 
-    */
 
-    int roomChance = 25;
-    int intChance = 25;
 
-    int rand = Random.Range(0, 100);
     
 
     Mob mob = floor.RandomMob();
