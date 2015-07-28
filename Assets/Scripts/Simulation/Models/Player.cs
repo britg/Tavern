@@ -17,8 +17,8 @@ public class Player {
   public Dictionary<string, Slot> Slots { get; set; }
 
   public Location location;
-
   public TowerState tower;
+  public PlayerEvent lastEvent;
 
   public Player () {
     Resources = new Dictionary<string, Resource>();
@@ -30,6 +30,8 @@ public class Player {
     // TODO: Load this from persistent storage
     location = Location.Town;
     tower = new TowerState();
+    tower.floorNum = 1;
+    tower.hasEnteredTower = false;
   }
 
   public Stat GetStat (string key) {
@@ -62,15 +64,16 @@ public class Player {
 
   public string LocationName () {
     if (location == Player.Location.Town) {
-      return "Town";
+      return "";
     }
 
     if (location == Player.Location.Shop) {
-      return "Town";
+      return "Shops";
     }
 
     if (location == Player.Location.Tower) {
-      return string.Format("Floor {0}", tower.floor);
+      var floor = FloorTemplate.GetFloor(tower.floorNum);
+      return string.Format("{0}, floor {1}", floor.name, tower.floorNum);
     }
 
     return "";

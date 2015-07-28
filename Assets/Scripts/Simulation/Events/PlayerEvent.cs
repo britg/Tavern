@@ -27,6 +27,18 @@ public class PlayerEvent {
   public bool hasTriggered = false;
   public bool conditionsSatisfied = true;
 
+  public bool hasActions {
+    get {
+      return type == Type.Equipment;
+    }
+  }
+
+  public bool hasChoices {
+    get {
+      return type == Type.Choice;
+    }
+  }
+
   public PlayerEvent (string content) {
     Id = System.Guid.NewGuid().ToString();
     Content = content;

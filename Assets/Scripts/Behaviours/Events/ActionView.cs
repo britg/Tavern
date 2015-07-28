@@ -41,6 +41,13 @@ public class ActionView : BaseBehaviour {
     }
 
     hasTriggered = true;
-    sim.eventEngine.TriggerAction(playerEvent, actionName);
+
+    if (playerEvent.hasActions) {
+      sim.eventEngine.TriggerAction(playerEvent, actionName);
+    }
+
+    if (playerEvent.hasChoices) {
+      sim.eventEngine.TriggerChoice(playerEvent, actionName);
+    }
   }
 }

@@ -1,6 +1,9 @@
 {
   "type": "Simulation",
-  
+
+  // Pull to Quest
+
+  // Old config for Tavernlight
   "updateIntervalSeconds": 1,
   "startSeconds": 28800,
   "dayStartHour": 7,

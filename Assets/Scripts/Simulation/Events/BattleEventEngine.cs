@@ -2,17 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ShopEventEngine {
+public class BattleEventEngine {
 
   Simulation sim;
 
-  public ShopEventEngine (Simulation _sim) {
+  public BattleEventEngine (Simulation _sim) {
     sim = _sim;
   }
 
   public List<PlayerEvent> Continue () {
     var newEvents = new List<PlayerEvent>();
-    newEvents.Add(new PlayerEvent("shop event engine"));
     return newEvents;
   }
 

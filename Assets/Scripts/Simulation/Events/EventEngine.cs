@@ -6,15 +6,18 @@ using SimpleJSON;
 public class EventEngine {
 
   Simulation sim;
-
-  PlayerEvent lastEvent;
+  Player player {
+    get {
+      return sim.player;
+    }
+  }
 
   public bool canContinue {
     get {
-      if (lastEvent == null) {
+      if (player.lastEvent == null) {
         return true;
       }
-      return lastEvent.conditionsSatisfied;
+      return player.lastEvent.conditionsSatisfied;
     }
   }
 
@@ -26,14 +29,14 @@ public class EventEngine {
 
     List<PlayerEvent> newEvents = new List<PlayerEvent>();
 
-    if (lastEvent == null) {
+    if (player.lastEvent == null) {
       newEvents = IntroSequence();
-    } else if (lastEvent.chosenKey != null) {
-      newEvents = ExecuteChoice(lastEvent.chosenKey);
+    } else if (player.lastEvent.chosenKey != null) {
+      newEvents = ExecuteChoice(player.lastEvent);
     }
 
     newEvents.AddRange(EventsForPlayer());
-    lastEvent = newEvents[newEvents.Count - 1];
+    player.lastEvent = newEvents[newEvents.Count - 1];
 
     return newEvents;
   }
@@ -51,24 +54,21 @@ public class EventEngine {
     Debug.Log ("Trigger action " + actionName + " for event " + ev.Content);
 
     if (ev.type == PlayerEvent.Type.Equipment) {
-      HandleEquipmentTrigger(ev, actionName);
-    } else {
-      ev.chosenKey = actionName;
-      ev.conditionsSatisfied = true;
-    }
+      var lootProcessor = new LootProcessor(sim);
+      lootProcessor.HandleAction(ev, actionName);
+    } 
 
     NotificationCenter.PostNotification(Constants.OnUpdateEvents);
   }
 
-  void HandleEquipmentTrigger (PlayerEvent ev, string actionName) {
-    var lootProcessor = new LootProcessor(sim);
-    if (actionName == Constants.c_Pickup) {
-      ev.chosenKey = Constants.c_Pickup;
-      lootProcessor.PickUp(ev);
-    } else if (actionName == Constants.c_Equip) {
-      ev.chosenKey = Constants.c_Equip;
-      lootProcessor.Equip(ev);
-    }
+  public void TriggerChoice (PlayerEvent ev, string choiceKey) {
+    Debug.Log ("Trigger action " + choiceKey + " for event " + ev.Content);
+
+    // TODO: Refactor into a choice processor when necessary
+    ev.chosenKey = choiceKey;
+    ev.conditionsSatisfied = true;
+
+    NotificationCenter.PostNotification(Constants.OnUpdateEvents);
   }
 
   List<PlayerEvent> IntroSequence () {
@@ -80,7 +80,7 @@ public class EventEngine {
       list.Add(new PlayerEvent(eventStr));
     }
 
-    //list.AddRange(Dev_RandomLoot());
+//    list.AddRange(Dev_RandomLoot());
     list.Add(Consider());
 
     return list;
@@ -117,10 +117,10 @@ public class EventEngine {
     return PlayerEvent.Choice(msg, pullLeft, pullRight);
   }
 
-  List<PlayerEvent> ExecuteChoice (string choiceKey) {
+  List<PlayerEvent> ExecuteChoice (PlayerEvent ev) {
     List<PlayerEvent> newEvents = new List<PlayerEvent>();
 
-    switch (choiceKey) {
+    switch (ev.chosenKey) {
       case Constants.c_Tower:
         newEvents.AddRange(EnterTower());
         break;
@@ -128,7 +128,7 @@ public class EventEngine {
         newEvents.AddRange(EnterShop());
         break;
       default:
-        Debug.Log("Unhandled choice " + choiceKey);
+        Debug.Log("Unhandled choice " + ev.chosenKey);
         break;
     }
 
@@ -158,10 +158,10 @@ public class EventEngine {
     if (sim.player.location == Player.Location.Shop) {
       // do store events
       var shopEventEngine = new ShopEventEngine(sim);
-      newEvents.AddRange(shopEventEngine.Events());
+      newEvents.AddRange(shopEventEngine.Continue());
     } else if (sim.player.location == Player.Location.Tower) {
       var towerEventEngine = new TowerEventEngine(sim);
-      newEvents.AddRange(towerEventEngine.Events());
+      newEvents.AddRange(towerEventEngine.Continue());
     }
 
     return newEvents;

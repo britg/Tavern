@@ -9,6 +9,16 @@ public class LootProcessor {
     sim = _sim;
   }
 
+  public void HandleAction (PlayerEvent ev, string actionName) {
+    if (actionName == Constants.c_Pickup) {
+      ev.chosenKey = Constants.c_Pickup;
+      PickUp(ev);
+    } else if (actionName == Constants.c_Equip) {
+      ev.chosenKey = Constants.c_Equip;
+      Equip(ev);
+    }
+  }
+
   public void PickUp (PlayerEvent ev) {
     Debug.Log ("Loot processor is picking up " + ev.Equipment.Name);
   }

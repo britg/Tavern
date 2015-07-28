@@ -7,29 +7,33 @@ public class TowerEventEngine {
   Simulation sim;
   FloorTemplate floor;
 
-  TowerState state;
+  TowerState state {
+    get {
+      return sim.player.tower;
+    }
+  }
 
   public TowerEventEngine (Simulation _sim) {
     sim = _sim;
-    state = sim.player.tower;
-    floor = FloorTemplate.GetFloor(state.floor);
+    floor = FloorTemplate.GetFloor(state.floorNum);
   }
 
-  public List<PlayerEvent> Events () {
+  public List<PlayerEvent> Continue () {
     var newEvents = new List<PlayerEvent>();
 
+    // Just entered tower this session
     if (!state.hasEnteredTower) {
       state.hasEnteredTower = true;
       newEvents.AddRange(EntranceEvents());
     }
 
+    // Continuing a battle
+    if (state.currentMobGroup != null) {
+      var battleEventEngine = new BattleEventEngine(sim);
+      newEvents.AddRange(battleEventEngine.Continue());
+    }
 
-
-
-    
-
-    Mob mob = floor.RandomMob();
-    newEvents.Add(new PlayerEvent("Enemies encountered: [" + mob.template.name + "]"));
+    string happening = GetHappening();
 
     return newEvents;
   }
@@ -38,10 +42,8 @@ public class TowerEventEngine {
     var newEvents = new List<PlayerEvent>();
     newEvents.Add(TowerEntranceEvent());
     newEvents.Add(AtmosphereEvent());
-    newEvents.Add(HallwayEvent());
     return newEvents;
   }
-
 
   PlayerEvent TowerEntranceEvent () {
     return new PlayerEvent("You step into the tower.");
@@ -51,10 +53,27 @@ public class TowerEventEngine {
     return new PlayerEvent(floor.RandomAtmosphereText());
   }
 
-  PlayerEvent HallwayEvent () {
-    return new PlayerEvent("A dark hallway stretches before you. You venture forth in search of stairs...");
-  }
+  public string GetHappening () {
+    /* chance for:
+          - mob 
+          - room
+          - interactible
+            - chest
+            - dead body
+            - set of vases against the walll
 
+    */
+    
+    var happenings = iTween.Hash(
+      "mob_group", 50,
+      "interactible", 25,
+      "room", 25
+      );
+    
+    int rand = Random.Range(0, 100);
+
+    return "mob_group";
+  }
 
   /* Event Flow
 

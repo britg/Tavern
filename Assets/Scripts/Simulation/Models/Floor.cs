@@ -7,6 +7,7 @@ public class FloorTemplate {
 
   public const string type = "FloorTemplate";
 
+  public string name;
   public int minFloor;
   public int maxFloor;
   public List<string> atmosphereText;
@@ -25,6 +26,8 @@ public class FloorTemplate {
   }
 
   public FloorTemplate (JSONNode json) {
+
+    name = json["name"].Value;
 
     var floors = json["floors"].AsArray;
     minFloor = floors[0].AsInt;
@@ -71,25 +74,7 @@ public class FloorTemplate {
     return mob;
   }
 
-  public string GetHappening () {
-    /* chance for:
-          - mob 
-          - room
-          - interactible
-            - chest
-            - dead body
-            - set of vases against the walll
 
-    */
-
-    var happenings = iTween.Hash(
-      "mob_group", 50,
-      "interactible", 25,
-      "room", 25
-      );
-
-    int rand = Random.Range(0, 100);
-  }
 
 
 }
