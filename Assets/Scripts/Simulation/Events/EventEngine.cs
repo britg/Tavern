@@ -36,7 +36,9 @@ public class EventEngine {
     }
 
     newEvents.AddRange(EventsForPlayer());
-    player.lastEvent = newEvents[newEvents.Count - 1];
+    if (newEvents.Count > 0) {
+      player.lastEvent = newEvents[newEvents.Count - 1];
+    }
 
     return newEvents;
   }

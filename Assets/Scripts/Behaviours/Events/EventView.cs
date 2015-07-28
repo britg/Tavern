@@ -14,6 +14,9 @@ public class EventView : BaseBehaviour {
   public GameObject leftActionConfirmation;
   public GameObject rightActionConfirmation;
 
+  float leftActionWidth;
+  float rightActionWidth;
+
   PlayerEvent _playerEvent;
   public PlayerEvent playerEvent {
     get {
@@ -31,6 +34,13 @@ public class EventView : BaseBehaviour {
   void Awake () {
     screenRect = new Rect(0f, 0f, Screen.width + 1, Screen.height + 1);
     rectTrans = GetComponent<RectTransform>();
+    if (leftAction != null) {
+      leftActionWidth = leftAction.gameObject.GetComponent<RectTransform>().rect.width;
+    }
+
+    if (rightAction != null) {
+      rightActionWidth = rightAction.gameObject.GetComponent<RectTransform>().rect.width;
+    }
   }
 
   void SetPlayerEvent (PlayerEvent ev) {
@@ -126,6 +136,10 @@ public class EventView : BaseBehaviour {
       pos.x += delta.x * swipeFactor;
       rectTrans.localPosition = pos;
       hSwipeStart = currPosition;
+
+      if (pos.x > 0 && pos.x > leftAction) {
+        leftAction.hasTriggered = true;
+      }
 
       HandleActionTrigger();
     }

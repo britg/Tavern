@@ -16,7 +16,7 @@ public class ActionView : BaseBehaviour {
   
   // Update is called once per frame
   void Update () {
-    DetectVisibleTrigger();
+    //DetectVisibleTrigger();
   }
 
   void DetectVisibleTrigger () {
