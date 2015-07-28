@@ -2,9 +2,9 @@
 	"type": "FloorTemplate",
 	"floors": [1, 10],
 	"atmosphere": [
-		"floor 1 atmosphere text 1",
-		"floor 1 atmosphere text 2",
-		"floor 1 atmosphere text 3"
+		"Large stone walls surround you. Torches, lit by some magical incantation, flicker slowly and cast ominous shadows.",
+		"Stone walls enclose a dimly lit set of corridoors and rooms. Ancient containers and vases are strewn about, and the dried skeletons of long-dead adventurers lay about.",
+		"Dimly lit, torn and dilapidated tapestries line stone walls. What little light there is flickers around you."
 	],
 	"mobs": [
 		"rat"

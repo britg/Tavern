@@ -63,7 +63,7 @@ public class TowerEventEngine {
   }
 
   PlayerEvent HallwayEvent () {
-    return new PlayerEvent("A dark hallway stretches before you. You venture forth...");
+    return new PlayerEvent("A dark hallway stretches before you. You venture forth in search of stairs...");
   }
 
 

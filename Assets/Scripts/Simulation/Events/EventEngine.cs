@@ -80,7 +80,7 @@ public class EventEngine {
       list.Add(new PlayerEvent(eventStr));
     }
 
-    list.AddRange(Dev_RandomLoot());
+    //list.AddRange(Dev_RandomLoot());
     list.Add(Consider());
 
     return list;
