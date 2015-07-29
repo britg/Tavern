@@ -2,22 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class BattleEventEngine {
+public class InteractibleEventEngine {
 
   Simulation sim;
 
-  public BattleEventEngine (Simulation _sim) {
+  public InteractibleEventEngine (Simulation _sim) {
     sim = _sim;
-  }
-
-  public List<PlayerEvent> StartBattle (Mob mob) {
-    var newEvents = new List<PlayerEvent>();
-    return newEvents;
   }
 
   public List<PlayerEvent> Continue () {
     var newEvents = new List<PlayerEvent>();
     return newEvents;
   }
-
 }

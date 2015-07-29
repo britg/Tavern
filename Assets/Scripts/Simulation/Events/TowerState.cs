@@ -17,6 +17,7 @@ public class TowerState {
   public int minBossesPerRoom; //= 0;
   public int maxBossesPerRoom; //= 1;
 
-  public List<Mob> currentMobGroup;
+  public Mob currentMob;
+  public Interactible currentInteractible;
 
 }

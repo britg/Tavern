@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 public class TowerEventEngine {
 
+  const string _mob = "mob";
+  const string _interactible = "interactible";
+  const string _room = "room";
+
   Simulation sim;
   FloorTemplate floor;
 
@@ -27,13 +31,31 @@ public class TowerEventEngine {
       newEvents.AddRange(EntranceEvents());
     }
 
-    // Continuing a battle
-    if (state.currentMobGroup != null) {
-      var battleEventEngine = new BattleEventEngine(sim);
+    var battleEventEngine = new BattleEventEngine(sim);
+    if (state.currentMob != null) {
       newEvents.AddRange(battleEventEngine.Continue());
     }
 
-    string happening = GetHappening();
+    var interactibleEventEngine = new InteractibleEventEngine(sim);
+    if (state.currentInteractible != null) {
+      newEvents.AddRange(interactibleEventEngine.Continue());
+    }
+
+    // if our events don't end with a choice
+    if (!newEvents[newEvents.Count - 1].hasChoices) {
+
+      string happening = GetHappening();
+      
+      if (happening == _mob) {
+        var mob = floor.RandomMob();
+        newEvents.AddRange(battleEventEngine.StartBattle(mob));
+      }
+
+      if (happening == _interactible) {
+
+      }
+    }
+
 
     return newEvents;
   }
@@ -64,15 +86,29 @@ public class TowerEventEngine {
 
     */
     
-    var happenings = iTween.Hash(
-      "mob_group", 50,
-      "interactible", 25,
-      "room", 25
-      );
-    
-    int rand = Random.Range(0, 100);
+    var proportions = iTween.Hash(
+      _mob, 50,
+      _interactible, 25,
+      _room, 25
+    );
 
-    return "mob_group";
+    int sum = 0;
+    foreach (KeyValuePair<string, int> pair in proportions) {
+      sum += pair.Value;
+    }
+
+    int rand = Random.Range(0, sum);
+
+    int running = 0;
+    string chosen = null;
+    foreach (KeyValuePair<string, int> pair in proportions) {
+      running += pair.Value;
+      if (rand <= running) {
+        chosen = pair.Key;
+      }
+    }
+
+    return chosen;
   }
 
   /* Event Flow

@@ -16,30 +16,7 @@ public class ActionView : BaseBehaviour {
   
   // Update is called once per frame
   void Update () {
-    //DetectVisibleTrigger();
   }
 
-  void DetectVisibleTrigger () {
-
-    if (hasTriggered) {
-      return;
-    } else {
-      if (playerEvent == null) {
-        hasTriggered = true;
-        return;
-      }
-    }
-
-    Vector3[] corners = new Vector3[4];
-
-    this.GetComponent<RectTransform>().GetWorldCorners(corners);
-
-    foreach (Vector3 corner in corners) {
-      if (!screenRect.Contains(corner)) {
-        return;
-      }
-    }
-
-    hasTriggered = true; 
-  }
+ 
 }

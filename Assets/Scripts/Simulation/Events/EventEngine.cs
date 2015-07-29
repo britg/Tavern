@@ -31,11 +31,26 @@ public class EventEngine {
 
     if (player.lastEvent == null) {
       newEvents = IntroSequence();
-    } else if (player.lastEvent.chosenKey != null) {
-      newEvents = ExecuteChoice(player.lastEvent);
     }
 
-    newEvents.AddRange(EventsForPlayer());
+    if (player.lastEvent.chosenKey == Constants.c_Tower) {
+      newEvents.AddRange(EnterTower());
+    }
+
+    if (player.lastEvent.chosenKey == Constants.c_Shop) {
+      newEvents.AddRange(EnterShop());
+    }
+
+    if (sim.player.location == Player.Location.Shop) {
+      var shopEventEngine = new ShopEventEngine(sim);
+      newEvents.AddRange(shopEventEngine.Continue());
+    }
+
+    if (sim.player.location == Player.Location.Tower) {
+      var towerEventEngine = new TowerEventEngine(sim);
+      newEvents.AddRange(towerEventEngine.Continue());
+    }
+
     if (newEvents.Count > 0) {
       player.lastEvent = newEvents[newEvents.Count - 1];
     }
@@ -82,7 +97,7 @@ public class EventEngine {
       list.Add(new PlayerEvent(eventStr));
     }
 
-//    list.AddRange(Dev_RandomLoot());
+    //list.AddRange(Dev_RandomLoot());
     list.Add(Consider());
 
     return list;
@@ -122,24 +137,13 @@ public class EventEngine {
   List<PlayerEvent> ExecuteChoice (PlayerEvent ev) {
     List<PlayerEvent> newEvents = new List<PlayerEvent>();
 
-    switch (ev.chosenKey) {
-      case Constants.c_Tower:
-        newEvents.AddRange(EnterTower());
-        break;
-      case Constants.c_Shop:
-        newEvents.AddRange(EnterShop());
-        break;
-      default:
-        Debug.Log("Unhandled choice " + ev.chosenKey);
-        break;
-    }
+    
 
     return newEvents;
   }
 
   List<PlayerEvent> EnterTower () {
     var newEvents = new List<PlayerEvent>();
-    newEvents.Add(new PlayerEvent("[Debug] Entering tower"));
     sim.player.location = Player.Location.Tower;
 
     NotificationCenter.PostNotification(Constants.OnUpdateStats);
@@ -148,24 +152,8 @@ public class EventEngine {
 
   List<PlayerEvent> EnterShop () {
     var newEvents = new List<PlayerEvent>();
-    newEvents.Add(new PlayerEvent("[Debug] Entering store"));
     sim.player.location = Player.Location.Shop;
     NotificationCenter.PostNotification(Constants.OnUpdateStats);
-    return newEvents;
-  }
-
-  List<PlayerEvent> EventsForPlayer () {
-    var newEvents = new List<PlayerEvent>();
-
-    if (sim.player.location == Player.Location.Shop) {
-      // do store events
-      var shopEventEngine = new ShopEventEngine(sim);
-      newEvents.AddRange(shopEventEngine.Continue());
-    } else if (sim.player.location == Player.Location.Tower) {
-      var towerEventEngine = new TowerEventEngine(sim);
-      newEvents.AddRange(towerEventEngine.Continue());
-    }
-
     return newEvents;
   }
 

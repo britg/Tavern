@@ -9,5 +9,8 @@
 	],
 	"mobs": [
 		"rat"
+	],
+	"interactibles": [
+		"skeletal_remains"
 	]
 }
