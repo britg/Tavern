@@ -34,6 +34,10 @@ public class EventView : BaseBehaviour {
   void Awake () {
     screenRect = new Rect(0f, 0f, Screen.width + 1, Screen.height + 1);
     rectTrans = GetComponent<RectTransform>();
+    Invoke("GetActionWidths", 1f);
+  }
+
+  void GetActionWidths () {
     if (leftAction != null) {
       leftActionWidth = leftAction.gameObject.GetComponent<RectTransform>().rect.width;
     }
@@ -116,6 +120,7 @@ public class EventView : BaseBehaviour {
   Vector3 hSwipeStart;
   Vector3 originalPos;
   bool isSwiping = false;
+  bool triggeredThisSession = false;
   void CaptureStartOfHorizontalSwipe (Vector3 startPos) {
     if (isSwiping) {
       return;
@@ -137,11 +142,17 @@ public class EventView : BaseBehaviour {
       rectTrans.localPosition = pos;
       hSwipeStart = currPosition;
 
-      if (pos.x > 0 && pos.x > leftAction) {
+      if (pos.x > 0 && pos.x > leftActionWidth) {
         leftAction.hasTriggered = true;
       }
 
-      HandleActionTrigger();
+      if (pos.x < 0 && pos.x < -rightActionWidth) {
+        rightAction.hasTriggered = true;
+      }
+
+      if (!triggeredThisSession) {
+        HandleActionTrigger();
+      }
     }
   }
   
@@ -154,18 +165,36 @@ public class EventView : BaseBehaviour {
   }
 
   void EndHorizontalSwipe () {
+    triggeredThisSession = false;
     leftAction.hasTriggered = false;
     rightAction.hasTriggered = false;
     isSwiping = false;
   }
 
   void HandleActionTrigger () {
+
+    string actionName = null;
+
     if (enableLeftAction && leftAction.hasTriggered) {
       TriggerLeftAction();
+      actionName = leftAction.actionName;
     }
 
     if (enableRightAction && rightAction.hasTriggered) {
       TriggerRightAction();
+      actionName = rightAction.actionName;
+    }
+
+    if (actionName != null) {
+      triggeredThisSession = true;
+
+      if (playerEvent.hasActions) {
+        sim.eventEngine.TriggerAction(playerEvent, actionName);
+      }
+
+      if (playerEvent.hasChoices) {
+        sim.eventEngine.TriggerChoice(playerEvent, actionName);
+      }
     }
   }
 
