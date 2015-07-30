@@ -2,11 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class InteractionEventEngine {
+public class InteractionProcessor {
 
   Simulation sim;
 
-  public InteractionEventEngine (Simulation _sim) {
+  public InteractionProcessor (Simulation _sim) {
     sim = _sim;
   }
 

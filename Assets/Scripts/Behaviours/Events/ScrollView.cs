@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
@@ -77,7 +77,7 @@ public class ScrollView : BaseBehaviour, IEndDragHandler {
   }
 
   void InitiateRefresh () {
-    if (!sim.eventEngine.canContinue) {
+    if (!sim.inputProcessor.canContinue) {
       pullTriggerText.text = "You must make a choice to continue...";
       return;
     }

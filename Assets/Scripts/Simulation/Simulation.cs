@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -11,7 +11,7 @@ public class Simulation {
   public List<Quest> questList = new List<Quest>();
 
   List<IProcessor> processorRegistry;
-  public EventEngine eventEngine;
+  public InputProcessor inputProcessor;
 
   float previousSpeed;
   public float CurrentSpeed { get; set; }
@@ -20,7 +20,7 @@ public class Simulation {
 
   public void Setup() {
     SetupConfig();
-    eventEngine = new EventEngine(this);
+    inputProcessor = new InputProcessor(this);
     SetupGameTime();
     SetupMap();
     SetupPlayer();

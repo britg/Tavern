@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class TowerEventEngine {
+public class TowerProcessor {
 
   const string _mob = "mob";
   const string _interactible = "interactible";
@@ -17,7 +17,7 @@ public class TowerEventEngine {
     }
   }
 
-  public TowerEventEngine (Simulation _sim) {
+  public TowerProcessor (Simulation _sim) {
     sim = _sim;
     floor = FloorTemplate.GetFloor(state.floorNum);
   }
@@ -32,13 +32,13 @@ public class TowerEventEngine {
     }
 
     if (state.currentMob != null) {
-      var battleEventEngine = new BattleEventEngine(sim);
-      newEvents.AddRange(battleEventEngine.Continue());
+      var battleProcessor = new BattleProcessor(sim);
+      newEvents.AddRange(battleProcessor.Continue());
     }
 
     if (state.currentInteractible != null) {
-      var interactionEventEngine = new InteractionEventEngine(sim);
-      newEvents.AddRange(interactionEventEngine.Continue());
+      var interactionProcessor = new InteractionProcessor(sim);
+      newEvents.AddRange(interactionProcessor.Continue());
     }
 
     // if our events don't end with a choice
@@ -77,16 +77,16 @@ public class TowerEventEngine {
     // TODO: Inject atmosphere text randomly
     
     if (happening == _mob) {
-      var battleEventEngine = new BattleEventEngine(sim);
+      var battleProcessor = new BattleProcessor(sim);
       var mob = floor.RandomMob();
       newEvents.AddRange(EncounterMob(mob));
-      newEvents.AddRange(battleEventEngine.StartBattle(mob));
+      newEvents.AddRange(battleProcessor.StartBattle(mob));
     }
     
     if (happening == _interactible) {
-      var interactionEventEngine = new InteractionEventEngine(sim);
+      var interactionProcessor = new InteractionProcessor(sim);
       var interactible = floor.RandomInteractible(); 
-      newEvents.AddRange(interactionEventEngine.StartInteraction(interactible));
+      newEvents.AddRange(interactionProcessor.StartInteraction(interactible));
     }
 
     return newEvents;

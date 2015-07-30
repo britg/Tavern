@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -86,7 +86,7 @@ public class EventView : BaseBehaviour {
     }
 
     hasTriggered = true;
-    sim.eventEngine.TriggerEvent(playerEvent);
+    sim.inputProcessor.TriggerEvent(playerEvent);
   }
 
   
@@ -189,11 +189,11 @@ public class EventView : BaseBehaviour {
       triggeredThisSession = true;
 
       if (playerEvent.hasActions) {
-        sim.eventEngine.TriggerAction(playerEvent, actionName);
+        sim.inputProcessor.TriggerAction(playerEvent, actionName);
       }
 
       if (playerEvent.hasChoices) {
-        sim.eventEngine.TriggerChoice(playerEvent, actionName);
+        sim.inputProcessor.TriggerChoice(playerEvent, actionName);
       }
     }
   }

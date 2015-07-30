@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class BattleEventEngine {
+public class BattleProcessor {
 
   Simulation sim;
 
@@ -12,7 +12,7 @@ public class BattleEventEngine {
     }
   }
 
-  public BattleEventEngine (Simulation _sim) {
+  public BattleProcessor (Simulation _sim) {
     sim = _sim;
   }
 

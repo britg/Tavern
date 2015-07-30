@@ -2,11 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ShopEventEngine {
+public class ShopProcessor {
 
   Simulation sim;
 
-  public ShopEventEngine (Simulation _sim) {
+  public ShopProcessor (Simulation _sim) {
     sim = _sim;
   }
 

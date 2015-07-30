@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using SimpleJSON;
 
-public class EventEngine {
+public class InputProcessor {
 
   Simulation sim;
   Player player {
@@ -21,7 +21,7 @@ public class EventEngine {
     }
   }
 
-  public EventEngine (Simulation _sim) {
+  public InputProcessor (Simulation _sim) {
     sim = _sim;
   }
 
@@ -43,13 +43,13 @@ public class EventEngine {
     }
 
     if (sim.player.location == Player.Location.Shop) {
-      var shopEventEngine = new ShopEventEngine(sim);
+      var shopEventEngine = new ShopProcessor(sim);
       newEvents.AddRange(shopEventEngine.Continue());
     }
 
     if (sim.player.location == Player.Location.Tower) {
-      var towerEventEngine = new TowerEventEngine(sim);
-      newEvents.AddRange(towerEventEngine.Continue());
+      var towerProcessor = new TowerProcessor(sim);
+      newEvents.AddRange(towerProcessor.Continue());
     }
 
     if (newEvents.Count > 0) {

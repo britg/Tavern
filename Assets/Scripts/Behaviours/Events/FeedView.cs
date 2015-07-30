@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -41,7 +41,7 @@ public class FeedView : BaseBehaviour {
   }
 
   void DoRefresh () {
-    List<PlayerEvent> newEvents = sim.eventEngine.Continue();
+    List<PlayerEvent> newEvents = sim.inputProcessor.Continue();
     List<GameObject> eventObjs = new List<GameObject>();
     foreach (var playerEvent in newEvents) {
       eventObjs.Add(CreatePlayerEventView(playerEvent));
