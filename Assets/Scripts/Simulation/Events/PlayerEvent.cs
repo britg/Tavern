@@ -45,6 +45,12 @@ public class PlayerEvent {
     type = Type.Info;
   }
 
+  public static PlayerEvent Info (string text) {
+    PlayerEvent ev = new PlayerEvent(text);
+    ev.type = Type.Info;
+    return ev;
+  }
+
   public static PlayerEvent Transition (string name) {
     PlayerEvent ev = new PlayerEvent(name);
     ev.type = Type.Transition;

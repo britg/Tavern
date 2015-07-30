@@ -42,9 +42,11 @@ public class TowerEventEngine {
     }
 
     // if our events don't end with a choice
-    if (!newEvents[newEvents.Count - 1].hasChoices) {
+    if (newEvents.Count < 1 || !newEvents[newEvents.Count - 1].hasChoices) {
 
       string happening = GetHappening();
+
+      Debug.Log ("Chose happening " + happening);
       
       if (happening == _mob) {
         var mob = floor.RandomMob();
@@ -93,18 +95,19 @@ public class TowerEventEngine {
     );
 
     int sum = 0;
-    foreach (KeyValuePair<string, int> pair in proportions) {
-      sum += pair.Value;
+    foreach (DictionaryEntry pair in proportions) {
+      sum += (int)pair.Value;
     }
 
     int rand = Random.Range(0, sum);
 
     int running = 0;
     string chosen = null;
-    foreach (KeyValuePair<string, int> pair in proportions) {
-      running += pair.Value;
+    foreach (DictionaryEntry pair in proportions) {
+      running += (int)pair.Value;
       if (rand <= running) {
-        chosen = pair.Key;
+        chosen = (string)pair.Key;
+        break;
       }
     }
 

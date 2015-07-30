@@ -67,9 +67,7 @@ public class FloorTemplate {
     int rand = Random.Range(0, mobKeys.Count - 1);
     string key = mobKeys[rand];
     MobTemplate template = MobTemplate.all[key];
-    Mob mob = new Mob();
-    mob.template = template;
-    mob.hitpoints = Random.Range(template.minHitpoints, template.maxHitpoints);
+    Mob mob = Mob.FromTemplate(template);
 
     return mob;
   }

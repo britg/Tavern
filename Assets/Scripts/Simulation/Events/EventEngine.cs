@@ -30,8 +30,8 @@ public class EventEngine {
     List<PlayerEvent> newEvents = new List<PlayerEvent>();
 
     if (player.lastEvent == null) {
-      newEvents = IntroSequence();
-      return newEvents;
+//      return IntroSequence();
+      return Dev_StraightToTower();
     }
 
     if (player.lastEvent.chosenKey == Constants.c_Tower) {
@@ -101,6 +101,8 @@ public class EventEngine {
     //list.AddRange(Dev_RandomLoot());
     list.Add(Consider());
 
+    player.lastEvent = list[list.Count - 1];
+
     return list;
   }
 
@@ -120,6 +122,13 @@ public class EventEngine {
     }
 
     return list;
+  }
+
+  List<PlayerEvent> Dev_StraightToTower () {
+    var ev = PlayerEvent.Info("[DEV] entering tower...");
+    ev.chosenKey = "tower";
+    player.lastEvent = ev;
+    return new List<PlayerEvent>(){ ev };
   }
 
   PlayerEvent Consider () {
