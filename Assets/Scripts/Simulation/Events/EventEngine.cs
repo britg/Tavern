@@ -31,6 +31,7 @@ public class EventEngine {
 
     if (player.lastEvent == null) {
       newEvents = IntroSequence();
+      return newEvents;
     }
 
     if (player.lastEvent.chosenKey == Constants.c_Tower) {
