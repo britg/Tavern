@@ -13,6 +13,12 @@ public class MobTemplate {
   public int minHitpoints;
   public int maxHitpoints;
 
+  public int minAp;
+  public int maxAp;
+
+  public int minDps;
+  public int maxDps;
+
   public static Dictionary<string, MobTemplate> all = new Dictionary<string, MobTemplate>();
 
   public static void Cache (JSONNode json) {

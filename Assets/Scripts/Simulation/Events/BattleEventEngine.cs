@@ -20,7 +20,7 @@ public class BattleEventEngine {
     var newEvents = new List<PlayerEvent>();
 
     sim.player.tower.currentMob = mob;
-    newEvents.Add(new PlayerEvent("Starting battle with mob " + mob.name));
+//    newEvents.Add(new PlayerEvent("Starting battle with mob " + mob.name));
 
     newEvents.AddRange(Continue ());
 
@@ -30,7 +30,13 @@ public class BattleEventEngine {
   public List<PlayerEvent> Continue () {
     var newEvents = new List<PlayerEvent>();
 
-    newEvents.Add(PlayerEvent.Info("Continuing battle with mob " + currentMob.name));
+//    newEvents.Add(PlayerEvent.Info("Continuing battle with mob " + currentMob.name));
+    /*
+     * while (palyerAlive && mobAlive && !lastEvent.hasChoice)
+     *    currentMove = initiativeProcessor.NextMove()
+     *    if (playerMove)
+     *        playerCombatProc(mob).
+     */
 
     newEvents.Add(PlayerEvent.Info("Deal damage"));
     newEvents.Add(PlayerEvent.Info("Deal damage"));
