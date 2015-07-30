@@ -72,6 +72,12 @@ public class FloorTemplate {
     return mob;
   }
 
+  public Interactible RandomInteractible () {
+    var interactible = new Interactible();
+    interactible.name = "skeletal remains";
+    return interactible;
+  }
+
 
 
 

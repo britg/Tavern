@@ -31,36 +31,24 @@ public class TowerEventEngine {
       newEvents.AddRange(EntranceEvents());
     }
 
-    var battleEventEngine = new BattleEventEngine(sim);
     if (state.currentMob != null) {
+      var battleEventEngine = new BattleEventEngine(sim);
       newEvents.AddRange(battleEventEngine.Continue());
     }
 
-    var interactibleEventEngine = new InteractibleEventEngine(sim);
     if (state.currentInteractible != null) {
-      newEvents.AddRange(interactibleEventEngine.Continue());
+      var interactionEventEngine = new InteractionEventEngine(sim);
+      newEvents.AddRange(interactionEventEngine.Continue());
     }
 
     // if our events don't end with a choice
     if (newEvents.Count < 1 || !newEvents[newEvents.Count - 1].hasChoices) {
-
-      string happening = GetHappening();
-
-      Debug.Log ("Chose happening " + happening);
-      
-      if (happening == _mob) {
-        var mob = floor.RandomMob();
-        newEvents.AddRange(battleEventEngine.StartBattle(mob));
-      }
-
-      if (happening == _interactible) {
-
-      }
+      newEvents.AddRange(VentureForth());
     }
-
 
     return newEvents;
   }
+
 
   List<PlayerEvent> EntranceEvents () {
     var newEvents = new List<PlayerEvent>();
@@ -77,17 +65,35 @@ public class TowerEventEngine {
     return new PlayerEvent(floor.RandomAtmosphereText());
   }
 
-  public string GetHappening () {
-    /* chance for:
-          - mob 
-          - room
-          - interactible
-            - chest
-            - dead body
-            - set of vases against the walll
+  List<PlayerEvent> VentureForth () {
+    var newEvents = new List<PlayerEvent>();
 
-    */
+    newEvents.Add(PlayerEvent.Info ("You venture forth..."));
+
+    string happening = GetHappening();
     
+    Debug.Log ("Chose happening " + happening);
+    
+    // TODO: Inject atmosphere text randomly
+    
+    if (happening == _mob) {
+      var battleEventEngine = new BattleEventEngine(sim);
+      var mob = floor.RandomMob();
+      newEvents.AddRange(EncounterMob(mob));
+      newEvents.AddRange(battleEventEngine.StartBattle(mob));
+    }
+    
+    if (happening == _interactible) {
+      var interactionEventEngine = new InteractionEventEngine(sim);
+      var interactible = floor.RandomInteractible(); 
+      newEvents.AddRange(interactionEventEngine.StartInteraction(interactible));
+    }
+
+    return newEvents;
+  }
+
+  public string GetHappening () {
+
     var proportions = iTween.Hash(
       _mob, 50,
       _interactible, 25,
@@ -112,6 +118,15 @@ public class TowerEventEngine {
     }
 
     return chosen;
+  }
+
+  List<PlayerEvent> EncounterMob (Mob mob) {
+    if (sim.player.encounteredMobs.Contains(mob.template.Key)) {
+      return new List<PlayerEvent>();
+    }
+
+    sim.player.encounteredMobs.Add(mob.template.Key);
+    return new List<PlayerEvent>(){ PlayerEvent.Info("New enemy discovered! " + mob.name) };
   }
 
   /* Event Flow

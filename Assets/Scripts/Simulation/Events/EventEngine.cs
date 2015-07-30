@@ -34,11 +34,11 @@ public class EventEngine {
       return Dev_StraightToTower();
     }
 
-    if (player.lastEvent.chosenKey == Constants.c_Tower) {
+    if (player.lastEvent.chosenKey == Choice.Tower) {
       newEvents.AddRange(EnterTower());
     }
 
-    if (player.lastEvent.chosenKey == Constants.c_Shop) {
+    if (player.lastEvent.chosenKey == Choice.Shop) {
       newEvents.AddRange(EnterShop());
     }
 

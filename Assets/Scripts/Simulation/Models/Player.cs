@@ -19,6 +19,7 @@ public class Player {
   public Location location;
   public TowerState tower;
   public PlayerEvent lastEvent;
+  public List<string> encounteredMobs;
 
   public Player () {
     Resources = new Dictionary<string, Resource>();
@@ -32,6 +33,7 @@ public class Player {
     tower = new TowerState();
     tower.floorNum = 1;
     tower.hasEnteredTower = false;
+    encounteredMobs = new List<string>();
   }
 
   public Stat GetStat (string key) {
