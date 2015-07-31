@@ -20,6 +20,24 @@ public class Player {
   public TowerState tower;
   public PlayerEvent lastEvent;
   public List<string> encounteredMobs;
+
+  public int baseHp;
+  public int hp;
+  public int baseAp;
+  public int ap;
+  public int baseDps;
+  public int dps;
+  public int baseDef;
+  public int def;
+  public int baseHit;
+  public int hit;
+  public int baseRes;
+  public int res;
+  public int baseLuck;
+  public int luck;
+  public int baseGold;
+  public int gold;
+
   public int currentInitiative;
 
   public Player () {

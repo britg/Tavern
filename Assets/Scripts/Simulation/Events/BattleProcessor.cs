@@ -35,7 +35,9 @@ public class BattleProcessor {
      * while (palyerAlive && mobAlive && !lastEvent.hasChoice)
      *    currentMove = initiativeProcessor.NextMove()
      *    if (playerMove)
-     *        playerCombatProc(mob).
+     *        newEvents.AddRange(playerCombatProcessor(player, mob).TakeAction())
+     *    else
+     *        newEvents.AddRange(mobCombatProcessor(player, mob).TakeAction())
      */
 
     newEvents.Add(PlayerEvent.Info("Deal damage"));
