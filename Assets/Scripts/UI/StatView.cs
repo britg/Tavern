@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -49,7 +49,7 @@ public class StatView : BaseBehaviour {
     var val = sim.player.GetStatValue(statKey);
     string txt = "";
     if (includeMax) {
-      txt = string.Format("{0}/{1}", val, stat.MaxValue);
+      txt = string.Format("{0}/{1}", val, stat.Base);
     } else {
       txt = val.ToString();
     }

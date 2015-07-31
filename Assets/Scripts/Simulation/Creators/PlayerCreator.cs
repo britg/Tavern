@@ -56,21 +56,6 @@ public class PlayerCreator {
       var value = playerStat["value"].AsInt;
       var stat = new Stat(statKey, value);
       player.Stats[statKey] = stat;
-
-      // do inline properties instead of lookup hash
-      if (statKey == "hp") {
-        player.baseHp = value;
-      } 
-
-      if (statKey == "ap") {
-        player.baseAp = value;
-      } 
-
-      if (statKey == "dps") {
-        
-      }
-
-      
     }
   }
 

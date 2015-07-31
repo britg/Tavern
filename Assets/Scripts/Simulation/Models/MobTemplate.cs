@@ -10,14 +10,7 @@ public class MobTemplate {
   public string Key;
   public string name;
 
-  public int minHitpoints;
-  public int maxHitpoints;
-
-  public int minAp;
-  public int maxAp;
-
-  public int minDps;
-  public int maxDps;
+  public Dictionary<string, Stat> Stats { get; set; }
 
   public static Dictionary<string, MobTemplate> all = new Dictionary<string, MobTemplate>();
 
@@ -34,8 +27,18 @@ public class MobTemplate {
   public MobTemplate (JSONNode json) {
     Key = json["key"].Value;
     name = json["name"].Value;
-    var hpArr = json["hitpoints"].AsArray;
-    minHitpoints = hpArr[0].AsInt;
-    maxHitpoints = hpArr[1].AsInt;
+
+    Stats = new Dictionary<string, Stat>();
+    var stats = json["stats"].AsArray;
+
+    foreach (JSONNode statJson in stats) {
+      var key = statJson["key"].Value;
+      var range = statJson["range"].AsArray;
+
+      var stat = new Stat(key, range[0].AsFloat, range[1].AsFloat);
+      Stats[key] = stat;
+    }
+
   }
+
 }

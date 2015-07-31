@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LootProcessor {
 
@@ -31,7 +32,26 @@ public class LootProcessor {
     var prevEquipment = playerSlot.Equipment;
     playerSlot.Equipment = eq;
     ev.Equipment = prevEquipment;
+
+    SubtractPrevEquipment(prevEquipment);
+    AddNewEquipment(eq);
+
     NotificationCenter.PostNotification(Constants.OnUpdateStats);
   }
 
+  void SubtractPrevEquipment (Equipment prev) {
+    foreach (KeyValuePair<string, Stat> pair in prev.Stats) {
+      var stat = pair.Value;
+      var playerStat = sim.player.GetStat(stat.Key);
+      playerStat.Change(-stat.Value);
+    }
+  }
+
+  void AddNewEquipment (Equipment eq) {
+    foreach (KeyValuePair<string, Stat> pair in eq.Stats) {
+      var stat = pair.Value;
+      var playerStat = sim.player.GetStat(stat.Key);
+      playerStat.Change(stat.Value);
+    }
+  }
 }

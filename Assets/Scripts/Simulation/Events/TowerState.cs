@@ -21,5 +21,6 @@ public class TowerState {
 
   // battle
   public Mob currentMob;
+  public string lastBattleMove;
 
 }

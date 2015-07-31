@@ -43,8 +43,8 @@ public class InputProcessor {
     }
 
     if (sim.player.location == Player.Location.Shop) {
-      var shopEventEngine = new ShopProcessor(sim);
-      newEvents.AddRange(shopEventEngine.Continue());
+      var shopProcessor = new ShopProcessor(sim);
+      newEvents.AddRange(shopProcessor.Continue());
     }
 
     if (sim.player.location == Player.Location.Tower) {

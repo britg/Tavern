@@ -30,6 +30,15 @@ public class BattleProcessor {
   public List<PlayerEvent> Continue () {
     var newEvents = new List<PlayerEvent>();
 
+    if (!PlayerAlive()) {
+      // hand player dead situation
+    }
+
+    if (!MobAlive()) {
+      return Victory();
+    }
+
+
 //    newEvents.Add(PlayerEvent.Info("Continuing battle with mob " + currentMob.name));
     /*
      * while (palyerAlive && mobAlive && !lastEvent.hasChoice)
@@ -48,6 +57,17 @@ public class BattleProcessor {
     newEvents.AddRange(Victory());
 
     return newEvents;
+  }
+
+  bool PlayerAlive () {
+    var hp = sim.player.GetStat("hp");
+    return hp.Value > 0f;
+  }
+
+  bool MobAlive () {
+    Mob mob = sim.player.tower.currentMob;
+    var hp = mob.GetStat("hp");
+    return hp.Value > 0f;
   }
 
   public List<PlayerEvent> Victory () {

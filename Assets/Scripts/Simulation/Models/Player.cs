@@ -21,24 +21,7 @@ public class Player {
   public PlayerEvent lastEvent;
   public List<string> encounteredMobs;
 
-  public int baseHp;
-  public int hp;
-  public int baseAp;
-  public int ap;
-  public int baseDps;
-  public int dps;
-  public int baseDef;
-  public int def;
-  public int baseHit;
-  public int hit;
-  public int baseRes;
-  public int res;
-  public int baseLuck;
-  public int luck;
-  public int baseGold;
-  public int gold;
-
-  public int currentInitiative;
+  public float currentInitiative;
 
   public Player () {
     Resources = new Dictionary<string, Resource>();
@@ -69,19 +52,7 @@ public class Player {
 
   public float GetStatValue (string key) {
     var stat = GetStat(key);
-    return stat.Value + StatAdditionsFromEquipment(key);
-  }
-
-  public float StatAdditionsFromEquipment (string key) {
-    float sum = 0f;
-    foreach (KeyValuePair<string, Slot> p in Slots) {
-      var e = p.Value.Equipment;
-      if (e != null) {
-        sum += e.StatValue(key);
-      }
-    }
-
-    return sum;
+    return stat.Value;
   }
 
   public string LocationName () {

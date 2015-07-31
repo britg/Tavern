@@ -2,5 +2,22 @@
 	"type": "MobTemplate",
 	"key": "rat",
 	"name": "Rat of Unusual Size",
-	"hitpoints": [10, 15]
+  "stats": [
+    {
+      "key": "hp",
+      "range": [10, 15]
+    },
+    {
+      "key": "dps",
+      "range": [7, 15]
+    },
+    {
+      "key": "crit",
+      "range": [0, 5]
+    },
+    {
+      "key": "speed",
+      "range": [10, 10]
+    }
+  ]
 }

@@ -1,19 +1,15 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Mob {
 
   public MobTemplate template;
   public string name;
 
-  public int currentHitpoints;
-  public int maxHitpoints;
+  public Dictionary<string, Stat> Stats { get; set; }
 
-  public int currentAp;
-  public int maxAp;
-  public int currentInitiative;
-
-  public float dps;
+  public float currentInitiative;
 
   public static Mob FromTemplate (MobTemplate template) {
     var mob = new Mob();
@@ -21,15 +17,30 @@ public class Mob {
     mob.template = template;
     mob.name = template.name;
 
-    mob.maxHitpoints = Random.Range(template.minHitpoints, template.maxHitpoints);
-    mob.currentHitpoints = mob.maxHitpoints;
+    mob.Stats = template.Stats;
 
-    mob.maxAp = Random.Range(template.minAp, template.maxAp);
-    mob.currentAp = mob.maxAp;
-
-    mob.dps = Random.Range(template.minDps, template.maxDps);
+    foreach (KeyValuePair<string, Stat> pair in mob.Stats) {
+      var stat = pair.Value;
+      stat.RollBase();
+    }
 
     return mob;
+  }
+
+  public Stat GetStat (string key) {
+    var mobStat = new Stat(key, 0f);
+    if (Stats.ContainsKey(key)) {
+      mobStat = Stats[key];
+    } else {
+      Stats[key] = mobStat;
+    }
+    
+    return mobStat;
+  }
+
+  public float GetStatValue (string key) {
+    var stat = GetStat(key);
+    return stat.Value;
   }
 	
 }
