@@ -16,8 +16,14 @@
       "range": [0, 5]
     },
     {
-      "key": "speed",
+      "key": "spd",
       "range": [10, 10]
     }
+  ],
+  "combat": [
+  	{
+  		"key": "basic",
+  		"chance": 100
+  	}
   ]
 }

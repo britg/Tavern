@@ -36,18 +36,17 @@ public class Stat {
     Key = statKey;
     Type = StatType.all[statKey];
     Min = min;
-    Max = Max;
+    Max = max;
   }
 
   public Stat (string statKey, float value) {
-    Debug.Log ("Attempting to instantiate stat of type " + statKey);
     Key = statKey;
     Type = StatType.all[statKey];
     ChangeBase(value);
   }
 
   public void RollBase () {
-    Base = Random.Range(Min, Max);
+    ChangeBase(Random.Range(Min, Max));
   }
 
   public void ChangeBase (float change) {

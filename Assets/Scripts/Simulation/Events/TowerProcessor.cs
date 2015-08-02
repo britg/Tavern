@@ -70,7 +70,15 @@ public class TowerProcessor {
 
     newEvents.Add(PlayerEvent.Info ("You venture forth..."));
 
-    string happening = GetHappening();
+    var proportions = iTween.Hash(
+      _mob, 100f
+      /*
+      _interactible, 25,
+      _room, 25
+      */
+    );
+
+    string happening = Roll.Hash(proportions);
     
     Debug.Log ("Chose happening " + happening);
     
@@ -95,29 +103,14 @@ public class TowerProcessor {
   public string GetHappening () {
 
     var proportions = iTween.Hash(
-      _mob, 50,
+      _mob, 100
+      /*
       _interactible, 25,
       _room, 25
+      */
     );
 
-    int sum = 0;
-    foreach (DictionaryEntry pair in proportions) {
-      sum += (int)pair.Value;
-    }
-
-    int rand = Random.Range(0, sum);
-
-    int running = 0;
-    string chosen = null;
-    foreach (DictionaryEntry pair in proportions) {
-      running += (int)pair.Value;
-      if (rand <= running) {
-        chosen = (string)pair.Key;
-        break;
-      }
-    }
-
-    return chosen;
+    return Roll.Hash(proportions);
   }
 
   List<PlayerEvent> EncounterMob (Mob mob) {

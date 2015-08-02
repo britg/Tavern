@@ -3,7 +3,12 @@ using System.Collections;
 
 public class InitiativeProcessor {
 
+  public static string playerIdent = "player";
+  public static string mobIdent = "mob";
+
   static float requiredInitiative = 100f;
+  int iterationCount = 0;
+  int iterationLimit = 50;
 
   Player player;
   Mob mob;
@@ -13,29 +18,41 @@ public class InitiativeProcessor {
     mob = _mob;
   }
 
-  public string nextMove () {
+  public string NextMove () {
     float playerSpd = player.GetStatValue(Stat.spd);
+
+    if (playerSpd == 0f) {
+      Debug.Log("Player speed is 0!!!");
+      return mobIdent;
+    }
+
     float mobSpd = mob.GetStatValue(Stat.spd);
 
     string lastMove = player.tower.lastBattleMove;
+    player.currentInitiative += playerSpd;
+    mob.currentInitiative += mobSpd;
 
-    if (lastMove == null || lastMove == "mob") {
-      player.currentInitiative += playerSpd;
-
+    if (lastMove == null || lastMove == mobIdent) {
       if (player.currentInitiative >= requiredInitiative) {
         player.currentInitiative = (player.currentInitiative - requiredInitiative);
-        return "player";
+        player.tower.lastBattleMove = playerIdent;
+        return playerIdent;
       }
     } else {
-      mob.currentInitiative += mobSpd;
-
       if (mob.currentInitiative >= requiredInitiative) {
         mob.currentInitiative = (mob.currentInitiative - requiredInitiative);
-        return "mob";
+        player.tower.lastBattleMove = mobIdent;
+        return mobIdent;
       }
     }
 
-    return nextMove();
+    if (iterationCount >= iterationLimit) {
+      Debug.Log("Initiative processor unable to determine initiative");
+      Debug.Assert(false);
+    }
+
+    ++iterationCount;
+    return NextMove();
 
   }
 

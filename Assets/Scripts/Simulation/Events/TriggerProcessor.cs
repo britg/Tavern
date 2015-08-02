@@ -11,8 +11,17 @@ public class TriggerProcessor {
 
   public void Process (Trigger trigger) {
     if (trigger.type == Trigger.Type.NewFloor) {
-      var floorStat = sim.player.Stats["tower_floor"];
-      floorStat.Value += 1;
+      //TODO: update player's floor and all associatd
+      //stuff
+      sim.player.tower.floorNum += 1;
+    }
+
+    if (trigger.type == Trigger.Type.StatChange) {
+      var damage = (float)trigger.data[Trigger.damageKey];
+      var mob = (Mob)trigger.data[Trigger.targetKey];
+      mob.ChangeStat(Stat.hp, damage);
+
+      NotificationCenter.PostNotification(Constants.OnUpdateStats);
     }
   }
 }

@@ -4,17 +4,24 @@ using System.Collections.Generic;
 
 public class PlayerEvent {
 
+  public const string equipmentKey = "equipment";
+  public const string mobKey = "mob";
+  public const string damageKey = "damage";
+
   public enum Type {
     Info,
     Equipment,
     Transition,
-    Choice
+    Choice,
+    PlayerBasicAttack
   }
 
   public string Id { get; set; }
   public string Title { get; set; }
   public string Content { get; set; }
   public Type type = Type.Info;
+
+  public Hashtable data = new Hashtable();
 
   public Equipment Equipment { get; set; }
   public List<Trigger> Triggers = new List<Trigger>();
@@ -37,6 +44,10 @@ public class PlayerEvent {
     get {
       return type == Type.Choice;
     }
+  }
+
+  public PlayerEvent () {
+    Id = System.Guid.NewGuid().ToString();
   }
 
   public PlayerEvent (string content) {
@@ -73,6 +84,9 @@ public class PlayerEvent {
     ev.conditionsSatisfied = false;
     return ev;
   }
+
+  //public static PlayerEvent PlayerBasicAttack () {
+  //}
 
   public void Update () {
     // shim for when this gets persisted....

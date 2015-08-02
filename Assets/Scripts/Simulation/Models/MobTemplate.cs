@@ -11,6 +11,7 @@ public class MobTemplate {
   public string name;
 
   public Dictionary<string, Stat> Stats { get; set; }
+  public Hashtable combatProfile = new Hashtable();
 
   public static Dictionary<string, MobTemplate> all = new Dictionary<string, MobTemplate>();
 
@@ -31,12 +32,24 @@ public class MobTemplate {
     Stats = new Dictionary<string, Stat>();
     var stats = json["stats"].AsArray;
 
+    // Loading stats
     foreach (JSONNode statJson in stats) {
       var key = statJson["key"].Value;
       var range = statJson["range"].AsArray;
 
+      Debug.Log("Loading mob stat " + key);
+
       var stat = new Stat(key, range[0].AsFloat, range[1].AsFloat);
       Stats[key] = stat;
+    }
+
+    // Loading combat profile
+    var combat = json["combat"].AsArray;
+    foreach (JSONNode combatNode in combat) {
+      var key = combatNode["key"].Value;
+      var chance = combatNode["chance"].AsFloat;
+
+      combatProfile[key] = chance;
     }
 
   }

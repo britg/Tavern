@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class BattleProcessor {
 
   Simulation sim;
+  int iterationCount = 0;
+  int iterationLimit = 20;
 
   Mob currentMob {
     get {
@@ -20,9 +22,10 @@ public class BattleProcessor {
     var newEvents = new List<PlayerEvent>();
 
     sim.player.tower.currentMob = mob;
-//    newEvents.Add(new PlayerEvent("Starting battle with mob " + mob.name));
-
-    newEvents.AddRange(Continue ());
+    sim.player.currentInitiative = 0f;
+    mob.currentInitiative = 0f;
+    newEvents.Add(new PlayerEvent("! [" + mob.name + "]"));
+    newEvents.AddRange(Continue());
 
     return newEvents;
   }
@@ -35,39 +38,48 @@ public class BattleProcessor {
     }
 
     if (!MobAlive()) {
-      return Victory();
+      newEvents.AddRange(Victory());
+      return newEvents;
     }
 
+    var initiativeProcessor = new InitiativeProcessor(sim.player, sim.player.tower.currentMob);
+    string nextMove = initiativeProcessor.NextMove();
 
-//    newEvents.Add(PlayerEvent.Info("Continuing battle with mob " + currentMob.name));
-    /*
-     * while (palyerAlive && mobAlive && !lastEvent.hasChoice)
-     *    currentMove = initiativeProcessor.NextMove()
-     *    if (playerMove)
-     *        newEvents.AddRange(playerCombatProcessor(player, mob).TakeAction())
-     *    else
-     *        newEvents.AddRange(mobCombatProcessor(player, mob).TakeAction())
-     */
+    if (nextMove == InitiativeProcessor.playerIdent) {
+      var playerCombatProcessor = new PlayerCombatProcessor(sim.player, sim.player.tower.currentMob);
+      var events = playerCombatProcessor.TakeAction();
+      newEvents.AddRange(events);
+    } else {
+      var mobCombatProcessor = new MobCombatProcessor(sim.player, sim.player.tower.currentMob);
+      var events = mobCombatProcessor.TakeAction();
+      newEvents.AddRange(events);
+    }
 
-    newEvents.Add(PlayerEvent.Info("Deal damage"));
-    newEvents.Add(PlayerEvent.Info("Deal damage"));
-    newEvents.Add(PlayerEvent.Info("Take damage"));
-    newEvents.Add(PlayerEvent.Info("Deal damage"));
+    if (iterationCount >= iterationLimit) {
+      newEvents.Add(PlayerEvent.Info("[DEV] Iteration limit reached! Something went wrong."));
+      return newEvents;
+    }
 
-    newEvents.AddRange(Victory());
-
-    return newEvents;
+    if (newEvents.Count > 0 && newEvents[newEvents.Count - 1].hasChoices) {
+      return newEvents;
+    } else {
+      Debug.Log("Iterating battle processor continue");
+      ++iterationCount;
+      newEvents.AddRange(Continue());
+      return newEvents;
+    }
   }
 
   bool PlayerAlive () {
-    var hp = sim.player.GetStat("hp");
+    var hp = sim.player.GetStat(Stat.hp);
     return hp.Value > 0f;
   }
 
   bool MobAlive () {
     Mob mob = sim.player.tower.currentMob;
-    var hp = mob.GetStat("hp");
-    return hp.Value > 0f;
+    var hp = mob.GetStatValue(Stat.hp);
+    Debug.Log("mob's hp is " + hp);
+    return hp > 0f;
   }
 
   public List<PlayerEvent> Victory () {
@@ -76,13 +88,13 @@ public class BattleProcessor {
 
     newEvents.Add(PlayerEvent.Info("Victory!"));
     newEvents.Add(PlayerEvent.Info("Experience gain"));
-    sim.player.tower.currentMob = null;
 
     newEvents.Add(PlayerEvent.Info("Loot"));
     newEvents.Add(PlayerEvent.Info("Loot"));
 
 //    newEvents.AddRange(AfterBattleChoices());
 
+    sim.player.tower.currentMob = null;
     return newEvents;
   }
 

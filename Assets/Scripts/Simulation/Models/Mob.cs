@@ -8,7 +8,7 @@ public class Mob {
   public string name;
 
   public Dictionary<string, Stat> Stats { get; set; }
-
+  public Hashtable combatProfile;
   public float currentInitiative;
 
   public static Mob FromTemplate (MobTemplate template) {
@@ -18,6 +18,7 @@ public class Mob {
     mob.name = template.name;
 
     mob.Stats = template.Stats;
+    mob.combatProfile = template.combatProfile;
 
     foreach (KeyValuePair<string, Stat> pair in mob.Stats) {
       var stat = pair.Value;
@@ -41,6 +42,12 @@ public class Mob {
   public float GetStatValue (string key) {
     var stat = GetStat(key);
     return stat.Value;
+  }
+
+  public void ChangeStat (string key, float amount) {
+    var s = GetStat(key);
+    s.Change(amount);
+    Stats[key] = s;
   }
 	
 }
