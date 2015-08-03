@@ -1,12 +1,12 @@
 {
-	"type": "MobTemplate",
-	"key": "rat",
-	"name": "Rat of Unusual Size",
+  "type": "MobTemplate",
+  "key": "slime",
+  "name": "Slime + Bone",
   "level": 1,
   "stats": [
     {
       "key": "hp",
-      "range": [10, 15]
+      "range": [15, 25]
     },
     {
       "key": "dps",
@@ -18,13 +18,13 @@
     },
     {
       "key": "spd",
-      "range": [20, 30]
+      "range": [5, 10]
     }
   ],
   "combat": [
-  	{
-  		"key": "basic",
-  		"chance": 100
-  	}
+    {
+      "key": "basic",
+      "chance": 100
+    }
   ]
 }

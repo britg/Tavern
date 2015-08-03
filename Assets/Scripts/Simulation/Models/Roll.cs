@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Roll {
 
@@ -30,5 +31,31 @@ public class Roll {
     }
 
     return chosen;
+  }
+
+  public static string Hash (Dictionary<string, float> dict) {
+    float sum = 0f;
+    foreach (KeyValuePair<string, float> pair in dict) {
+      sum += (float)pair.Value;
+    }
+
+    float rand = Random.Range(0f, sum);
+
+    float running = 0;
+    string chosen = null;
+    foreach (KeyValuePair<string, float> pair in dict) {
+      running += (float)pair.Value;
+      if (rand <= running) {
+        chosen = (string)pair.Key;
+        break;
+      }
+    }
+
+    return chosen;
+  }
+
+  public static bool Percent (float chance) {
+    float rand = Random.Range(0f, 100f);
+    return rand < chance;
   }
 }

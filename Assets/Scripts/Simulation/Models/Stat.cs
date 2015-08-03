@@ -10,6 +10,7 @@ public class Stat {
   public static string spd = "spd";
   public static string luck = "luck";
   public static string res = "res";
+  public static string crit = "crit";
 
 
   public string Key { get; set; }

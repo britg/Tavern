@@ -39,19 +39,67 @@ public class PlayerCombatProcessor  {
     var newEvents = new List<PlayerEvent>();
 
     // Calc damage
-    // TODO: Miss chance?
-    // TODO: Crit chance
+    HitType hitType = HitType.Hit;
+    var damage = AddVariance(player.GetStatValue(Stat.dps));
+
+    if (Roll.Percent(ChanceToMiss())) {
+      hitType = HitType.Miss;
+      damage = 0f;
+    } else if (Roll.Percent(ChanceToGlance ())) {
+      hitType = HitType.Glance;
+      damage *= 0.5f;
+    } else if (Roll.Percent(ChanceToCrit())) {
+      hitType = HitType.Crit;
+      damage *= 2f;
+    }
+
     // TODO: Adjust value up and down for def
-    var damage = player.GetStatValue(Stat.dps);
     mob.ChangeStat(Stat.hp, -damage);
 
     var ev = new PlayerEvent();
     ev.type = PlayerEvent.Type.PlayerBasicAttack;
     ev.data[PlayerEvent.mobKey] = mob;
     ev.data[PlayerEvent.damageKey] = damage;
+    ev.data[PlayerEvent.hitTypeKey] = hitType;
 
     newEvents.Add(ev);
     return newEvents;
+  }
+
+  /*
+   * Compare speeds
+   */
+  float ChanceToMiss () {
+    var playerSpd = player.Stats[Stat.spd].Value;
+    var mobSpd = mob.Stats[Stat.spd].Value;
+
+    float baseChance = 10f;
+    var diff = playerSpd - mobSpd;
+
+    return baseChance - diff;
+  }
+
+  float ChanceToGlance () {
+    var playerSpd = player.Stats[Stat.spd].Value;
+    var mobSpd = mob.Stats[Stat.spd].Value;
+
+    float baseChance = 20f;
+    var diff = playerSpd - mobSpd;
+
+    return baseChance - diff;
+  }
+
+  float ChanceToCrit () {
+    var playerCrit = player.Stats[Stat.crit].Value;
+    // TODO: do some other stuff?
+
+    return playerCrit;
+  }
+
+  float AddVariance (float damage) {
+    var rand = Random.Range(-.2f, .2f);
+
+    return damage + (damage * rand);
   }
 
 }

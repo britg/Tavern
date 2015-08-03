@@ -8,7 +8,18 @@
 		"Dimly lit, torn and dilapidated tapestries line stone walls. What little light there is flickers around you."
 	],
 	"mobs": [
-		"rat"
+		{
+			"key": "rat",
+			"chance": 100
+		},
+		{
+			"key": "slime",
+			"chance": 100
+		},
+		{
+			"key": "boss_rat",
+			"chance": 20
+		}
 	],
 	"interactibles": [
 		"skeletal_remains"

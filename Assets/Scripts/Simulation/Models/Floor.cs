@@ -11,7 +11,7 @@ public class FloorTemplate {
   public int minFloor;
   public int maxFloor;
   public List<string> atmosphereText;
-  public List<string> mobKeys;
+  public Dictionary<string, float> mobChances;
 
   public static Dictionary<int, FloorTemplate> all = new Dictionary<int, FloorTemplate>();
 
@@ -33,7 +33,6 @@ public class FloorTemplate {
     minFloor = floors[0].AsInt;
     maxFloor = floors[1].AsInt;
     atmosphereText = new List<string>();
-    mobKeys = new List<string>();
 
     var atmArr = json["atmosphere"].AsArray;
     foreach (JSONNode atmNode in atmArr) {
@@ -41,8 +40,11 @@ public class FloorTemplate {
     }
 
     var mobArr = json["mobs"].AsArray;
+    mobChances = new Dictionary<string, float>();
     foreach (JSONNode mobNode in mobArr) {
-      mobKeys.Add(mobNode.Value);
+      var mobKey = mobNode["key"].Value;
+      var mobChance = mobNode["chance"].AsFloat;
+      mobChances[mobKey] = mobChance;
     }
 
   }
@@ -64,9 +66,8 @@ public class FloorTemplate {
   }
 
   public Mob RandomMob () {
-    int rand = Random.Range(0, mobKeys.Count - 1);
-    string key = mobKeys[rand];
-    MobTemplate template = MobTemplate.all[key];
+    var mobKey = Roll.Hash(mobChances);
+    MobTemplate template = MobTemplate.all[mobKey];
     Mob mob = Mob.FromTemplate(template);
 
     return mob;

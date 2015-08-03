@@ -40,19 +40,20 @@ public class BattleProcessor {
     }
 
     if (!MobAlive()) {
+      newEvents.AddRange(MobDeath());
       newEvents.AddRange(Victory());
       return newEvents;
     }
 
-    var initiativeProcessor = new InitiativeProcessor(sim.player, sim.player.tower.currentMob);
+    var initiativeProcessor = new InitiativeProcessor(sim.player, currentMob);
     string nextMove = initiativeProcessor.NextMove();
 
     if (nextMove == InitiativeProcessor.playerIdent) {
-      var playerCombatProcessor = new PlayerCombatProcessor(sim.player, sim.player.tower.currentMob);
+      var playerCombatProcessor = new PlayerCombatProcessor(sim.player, currentMob);
       var events = playerCombatProcessor.TakeAction();
       newEvents.AddRange(events);
     } else {
-      var mobCombatProcessor = new MobCombatProcessor(sim.player, sim.player.tower.currentMob);
+      var mobCombatProcessor = new MobCombatProcessor(sim.player, currentMob);
       var events = mobCombatProcessor.TakeAction();
       newEvents.AddRange(events);
     }
@@ -78,10 +79,15 @@ public class BattleProcessor {
   }
 
   bool MobAlive () {
-    Mob mob = sim.player.tower.currentMob;
-    var hp = mob.GetStatValue(Stat.hp);
+    var hp = currentMob.GetStatValue(Stat.hp);
     Debug.Log("mob's hp is " + hp);
     return hp > 0f;
+  }
+
+  public List<PlayerEvent> MobDeath () {
+    var newEvents = new List<PlayerEvent>();
+    newEvents.Add (PlayerEvent.Info(currentMob.name + " dies!"));
+    return newEvents;
   }
 
   public List<PlayerEvent> Victory () {

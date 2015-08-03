@@ -3,6 +3,9 @@ using System.Collections;
 
 public class DamageShake : MonoBehaviour {
 
+  public float amount = 100f;
+  public float duration = 0.3f;
+
   void Start () {
     NotificationCenter.AddObserver(this, Constants.OnTakeDamage);
   }
@@ -12,6 +15,6 @@ public class DamageShake : MonoBehaviour {
   }
 
   void Shake () {
-    iTween.ShakePosition(gameObject, Vector3.right*100, 0.2f);
+    iTween.ShakePosition(gameObject, Vector3.right*amount, duration);
   }
 }

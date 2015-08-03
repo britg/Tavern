@@ -9,6 +9,7 @@ public class MobTemplate {
 
   public string Key;
   public string name;
+  public int level;
 
   public Dictionary<string, Stat> Stats { get; set; }
   public Hashtable combatProfile = new Hashtable();
@@ -28,6 +29,7 @@ public class MobTemplate {
   public MobTemplate (JSONNode json) {
     Key = json["key"].Value;
     name = json["name"].Value;
+    level = json["level"].AsInt;
 
     Stats = new Dictionary<string, Stat>();
     var stats = json["stats"].AsArray;

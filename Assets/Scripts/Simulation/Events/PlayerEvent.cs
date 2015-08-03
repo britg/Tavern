@@ -7,6 +7,7 @@ public class PlayerEvent {
   public const string equipmentKey = "equipment";
   public const string mobKey = "mob";
   public const string damageKey = "damage";
+  public const string hitTypeKey = "hitType";
 
   public enum Type {
     Info,
