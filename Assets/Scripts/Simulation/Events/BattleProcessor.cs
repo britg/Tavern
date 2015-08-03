@@ -22,8 +22,10 @@ public class BattleProcessor {
     var newEvents = new List<PlayerEvent>();
 
     sim.player.tower.currentMob = mob;
+    sim.player.tower.lastBattleMove = null;
     sim.player.currentInitiative = 0f;
     mob.currentInitiative = 0f;
+
     newEvents.Add(new PlayerEvent("! [" + mob.name + "]"));
     newEvents.AddRange(Continue());
 

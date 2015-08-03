@@ -12,6 +12,7 @@ public class Constants {
   public const string OnWorldSelection = "OnWorldSelection";
   public const string OnUpdateEvents = "OnUpdateEvents";
   public const string OnUpdateStats = "OnUpdateStats";
+  public const string OnTakeDamage = "OnTakeDamage";
 
   // Layers
   public const string GroundLayer = "Ground";

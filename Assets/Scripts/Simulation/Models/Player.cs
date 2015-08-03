@@ -55,6 +55,12 @@ public class Player {
     return stat.Value;
   }
 
+  public void ChangeStat (string key, float amount) {
+    var s = GetStat(key);
+    s.Change(amount);
+    Stats[key] = s;
+  }
+
   public string LocationName () {
     if (location == Player.Location.Town) {
       return "";

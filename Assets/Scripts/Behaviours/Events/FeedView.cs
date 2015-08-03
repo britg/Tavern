@@ -15,6 +15,8 @@ public class FeedView : BaseBehaviour {
   public GameObject eventEquipmentPrefab;
   public GameObject eventChoicePrefab;
   public GameObject eventPlayerBasicAttackPrefab;
+  public GameObject eventMobBasicAttackPrefab;
+
   public int numEvents = 20;
   public float refreshDelay = 1f;
   public string pullAnchorDefaultText = "Pull to Quest";
@@ -70,6 +72,8 @@ public class FeedView : BaseBehaviour {
       prefab = eventChoicePrefab;
     } else if (playerEvent.type == PlayerEvent.Type.PlayerBasicAttack) {
       prefab = eventPlayerBasicAttackPrefab;
+    } else if (playerEvent.type == PlayerEvent.Type.MobBasicAttack) {
+      prefab = eventMobBasicAttackPrefab;
     }
 
     eventObj = (GameObject)Instantiate(prefab);

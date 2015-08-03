@@ -49,7 +49,7 @@ public class StatView : BaseBehaviour {
     var val = sim.player.GetStatValue(statKey);
     string txt = "";
     if (includeMax) {
-      txt = string.Format("{0}/{1}", val, stat.Base);
+      txt = string.Format("{0:0}/{1}", val, stat.Base);
     } else {
       txt = val.ToString();
     }

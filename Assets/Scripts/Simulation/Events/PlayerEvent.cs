@@ -13,7 +13,8 @@ public class PlayerEvent {
     Equipment,
     Transition,
     Choice,
-    PlayerBasicAttack
+    PlayerBasicAttack,
+    MobBasicAttack
   }
 
   public string Id { get; set; }

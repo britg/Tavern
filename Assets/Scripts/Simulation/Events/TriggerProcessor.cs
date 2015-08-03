@@ -16,10 +16,15 @@ public class TriggerProcessor {
       sim.player.tower.floorNum += 1;
     }
 
-    if (trigger.type == Trigger.Type.StatChange) {
-      var damage = (float)trigger.data[Trigger.damageKey];
-      var mob = (Mob)trigger.data[Trigger.targetKey];
-      mob.ChangeStat(Stat.hp, damage);
+    if (trigger.type == Trigger.Type.PlayerStatChange) {
+      var statKey = (string)trigger.data[Trigger.statKey];
+      var amount = (float)trigger.data[Trigger.statChangeAmountKey];
+
+      sim.player.ChangeStat(statKey, amount);
+
+      if (statKey == Stat.hp && amount < 0) {
+        NotificationCenter.PostNotification(Constants.OnTakeDamage);
+      }
 
       NotificationCenter.PostNotification(Constants.OnUpdateStats);
     }
