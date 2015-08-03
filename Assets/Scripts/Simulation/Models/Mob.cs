@@ -17,13 +17,14 @@ public class Mob {
     mob.template = template;
     mob.name = template.name;
 
-    mob.Stats = template.Stats;
-    mob.combatProfile = template.combatProfile;
-
-    foreach (KeyValuePair<string, Stat> pair in mob.Stats) {
-      var stat = pair.Value;
-      stat.RollBase();
+    mob.Stats = new Dictionary<string, Stat>();
+    foreach (KeyValuePair<string, Stat> pair in template.Stats) {
+      var statKey = pair.Key;
+      var templateStat = pair.Value;
+      templateStat.RollBase();
+      mob.Stats[statKey] = new Stat(statKey, templateStat.Value);
     }
+    mob.combatProfile = template.combatProfile;
 
     return mob;
   }

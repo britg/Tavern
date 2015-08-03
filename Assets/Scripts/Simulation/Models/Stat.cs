@@ -46,7 +46,9 @@ public class Stat {
   }
 
   public void RollBase () {
-    ChangeBase(Random.Range(Min, Max));
+    Base = Random.Range(Min, Max);
+    RecalcValue();
+    Debug.Log ("Rolling base " + Type + " " + Min + " " + Max + " " + Base);
   }
 
   public void ChangeBase (float change) {
