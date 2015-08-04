@@ -94,8 +94,7 @@ public class BattleProcessor {
 
     var newEvents = new List<PlayerEvent>();
 
-    newEvents.Add(PlayerEvent.Info("Victory!"));
-    newEvents.Add(PlayerEvent.Info("Experience gain"));
+    newEvents.AddRange(GainExperience());
 
     newEvents.Add(PlayerEvent.Info("Loot"));
     newEvents.Add(PlayerEvent.Info("Loot"));
@@ -106,6 +105,16 @@ public class BattleProcessor {
     return newEvents;
   }
 
+  public List<PlayerEvent> GainExperience () {
+    var experienceProcessor = new ExperienceProcessor(sim.player, currentMob);
+    var amount = experienceProcessor.ExperienceGain();
+    var ev = PlayerEvent.Info(string.Format("Experience: +{0}", amount));
+    var trigger = new Trigger(Trigger.Type.PlayerStatChange);
+    trigger.data[Trigger.statKey] = Stat.xp;
+    trigger.data[Trigger.statChangeAmountKey] = amount;
+
+    return new List<PlayerEvent>(){ ev };
+  }
 
   public List<PlayerEvent> AfterBattleChoices () {
     var pullLeft = Choice.PullLeft(Choice.Potion, "Drink Potion");

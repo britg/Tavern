@@ -5,6 +5,7 @@ public class Stat {
 
   public static string hp = "hp";
   public static string ap = "ap";
+  public static string xp = "exp";
   public static string dps = "dps";
   public static string def = "def";
   public static string spd = "spd";
