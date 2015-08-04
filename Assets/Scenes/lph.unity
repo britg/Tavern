@@ -930,7 +930,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2107577352}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -126.5, y: -19.9000053}
@@ -1115,6 +1115,7 @@ MonoBehaviour:
   statKey: level
   prefix: 
   suffix: 
+  includeBase: 0
   includeMax: 0
 --- !u!1 &301228780
 GameObject:
@@ -1165,6 +1166,7 @@ MonoBehaviour:
   statKey: pois_atk
   prefix: 
   suffix: 
+  includeBase: 0
   includeMax: 0
 --- !u!114 &301228783
 MonoBehaviour:
@@ -1313,6 +1315,7 @@ MonoBehaviour:
   statKey: dps
   prefix: 
   suffix: 
+  includeBase: 0
   includeMax: 0
 --- !u!114 &370799859
 MonoBehaviour:
@@ -1395,6 +1398,7 @@ MonoBehaviour:
   statKey: pois_atk
   prefix: 
   suffix: 
+  includeBase: 0
   includeMax: 0
 --- !u!114 &372518215
 MonoBehaviour:
@@ -1754,7 +1758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &648055283
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1766,10 +1770,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2107577352}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 18.2000046, y: -2.44999981}
+  m_AnchoredPosition: {x: 23.0500183, y: -3.15250206}
   m_SizeDelta: {x: 69.3000031, y: 25.8999996}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &648055284
@@ -1786,18 +1790,18 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: eff57a4259680422080cf6ab6f1bec3b, type: 3}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: 16a2bc4ecc992439eb813594652ec493, type: 3}
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 7
+    m_Alignment: 6
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 0/100
 --- !u!222 &648055285
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1815,10 +1819,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8d74c9e6d02c145a90d5d8ca32882d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statKey: tower_floor
+  statKey: exp
   prefix: 
   suffix: 
-  includeMax: 0
+  includeBase: 0
+  includeMax: 1
 --- !u!1 &682796088 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 121840, guid: 7daa4cc462352457cb730bed215b486f, type: 2}
@@ -2373,6 +2378,7 @@ MonoBehaviour:
   statKey: res
   prefix: 
   suffix: '%'
+  includeBase: 0
   includeMax: 0
 --- !u!114 &920397279
 MonoBehaviour:
@@ -3011,6 +3017,7 @@ MonoBehaviour:
   statKey: crit
   prefix: 
   suffix: '%'
+  includeBase: 0
   includeMax: 0
 --- !u!114 &1003458986
 MonoBehaviour:
@@ -3361,7 +3368,8 @@ MonoBehaviour:
   statKey: hp
   prefix: ' HP '
   suffix: 
-  includeMax: 1
+  includeBase: 1
+  includeMax: 0
 --- !u!224 &1252149724 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22413280, guid: e6512a27b0c1b1c4d8d528a0ae5a0f3b,
@@ -3527,7 +3535,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2107577352}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -112.199997, y: -19.9000015}
@@ -3670,6 +3678,7 @@ MonoBehaviour:
   statKey: spd
   prefix: 
   suffix: 
+  includeBase: 0
   includeMax: 0
 --- !u!114 &1411283927
 MonoBehaviour:
@@ -3818,6 +3827,7 @@ MonoBehaviour:
   statKey: pois_atk
   prefix: 
   suffix: 
+  includeBase: 0
   includeMax: 0
 --- !u!114 &1414654486
 MonoBehaviour:
@@ -4061,6 +4071,7 @@ MonoBehaviour:
   statKey: luck
   prefix: 
   suffix: 
+  includeBase: 0
   includeMax: 0
 --- !u!114 &1505676040
 MonoBehaviour:
@@ -4544,7 +4555,8 @@ MonoBehaviour:
   statKey: ap
   prefix: 'AP '
   suffix: 
-  includeMax: 1
+  includeBase: 1
+  includeMax: 0
 --- !u!1001 &1707949450
 Prefab:
   m_ObjectHideFlags: 0
@@ -4775,6 +4787,7 @@ MonoBehaviour:
   statKey: def
   prefix: 
   suffix: 
+  includeBase: 0
   includeMax: 0
 --- !u!114 &1802024897
 MonoBehaviour:
@@ -5222,9 +5235,9 @@ RectTransform:
   - {fileID: 125493256}
   - {fileID: 232272440}
   - {fileID: 1513203045}
-  - {fileID: 648055283}
   - {fileID: 1394357017}
   - {fileID: 181876375}
+  - {fileID: 648055283}
   - {fileID: 1406025288}
   - {fileID: 1235002199}
   - {fileID: 48728619}

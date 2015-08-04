@@ -7,6 +7,7 @@ public class StatView : BaseBehaviour {
   public string statKey;
   public string prefix = "";
   public string suffix = "";
+  public bool includeBase = false;
   public bool includeMax = false;
 
   Stat _stat;
@@ -48,8 +49,10 @@ public class StatView : BaseBehaviour {
   void Display () {
     var val = sim.player.GetStatValue(statKey);
     string txt = "";
-    if (includeMax) {
+    if (includeBase) {
       txt = string.Format("{0:0}/{1}", val, stat.Base);
+    } else if (includeMax) {
+      txt = string.Format("{0:0}/{1}", val, stat.Max);
     } else {
       txt = val.ToString();
     }

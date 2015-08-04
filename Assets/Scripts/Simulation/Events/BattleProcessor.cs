@@ -112,6 +112,7 @@ public class BattleProcessor {
     var trigger = new Trigger(Trigger.Type.PlayerStatChange);
     trigger.data[Trigger.statKey] = Stat.xp;
     trigger.data[Trigger.statChangeAmountKey] = amount;
+    ev.Triggers.Add(trigger);
 
     return new List<PlayerEvent>(){ ev };
   }

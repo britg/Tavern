@@ -1,5 +1,6 @@
 {
 	"type": "PlayerStat",
 	"stat_key": "exp",
-	"value": 0
+	"value": 0,
+  "max": 100
 }
