@@ -3,6 +3,8 @@
   "key": "boss_rat",
   "name": "Even Larger Rat",
   "level": 2,
+  "consumable_chance": 100,
+  "loot_chance": 100,
   "stats": [
     {
       "key": "hp",

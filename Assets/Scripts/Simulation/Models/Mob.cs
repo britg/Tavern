@@ -10,12 +10,16 @@ public class Mob {
   public Dictionary<string, Stat> Stats { get; set; }
   public Hashtable combatProfile;
   public float currentInitiative;
+  public float consumableChance;
+  public float lootChance;
 
   public static Mob FromTemplate (MobTemplate template) {
     var mob = new Mob();
 
     mob.template = template;
     mob.name = template.name;
+    mob.consumableChance = template.consumableChance;
+    mob.lootChance = template.lootChance;
 
     mob.Stats = new Dictionary<string, Stat>();
     foreach (KeyValuePair<string, Stat> pair in template.Stats) {

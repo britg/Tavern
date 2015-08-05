@@ -3,6 +3,8 @@
 	"key": "rat",
 	"name": "Rat of Unusual Size",
   "level": 1,
+  "consumable_chance": 100,
+  "loot_chance": 100,
   "stats": [
     {
       "key": "hp",

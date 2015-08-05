@@ -10,6 +10,8 @@ public class MobTemplate {
   public string Key;
   public string name;
   public int level;
+  public float consumableChance;
+  public float lootChance;
 
   public Dictionary<string, Stat> Stats { get; set; }
   public Hashtable combatProfile = new Hashtable();
@@ -30,6 +32,8 @@ public class MobTemplate {
     Key = json["key"].Value;
     name = json["name"].Value;
     level = json["level"].AsInt;
+    consumableChance = json["consumable_chance"].AsFloat;
+    lootChance = json["loot_chance"].AsFloat;
 
     Stats = new Dictionary<string, Stat>();
     var stats = json["stats"].AsArray;

@@ -108,6 +108,7 @@ public class SimulationConfig {
     // Tier 2
     EquipmentDesignation.type,
     EquipmentType.type,
+    ConsumableType.type,
     FloorTemplate.type,
     MobTemplate.type,
     SimulationConfig.type
@@ -152,6 +153,9 @@ public class SimulationConfig {
         break;
       case EquipmentType.type:
         EquipmentType.Cache(config);
+        break;
+      case ConsumableType.type:
+        ConsumableType.Cache(config);
         break;
       case FloorTemplate.type:
         FloorTemplate.Cache(config);

@@ -96,8 +96,18 @@ public class BattleProcessor {
 
     newEvents.AddRange(GainExperience());
 
-    newEvents.Add(PlayerEvent.Info("Loot"));
-    newEvents.Add(PlayerEvent.Info("Loot"));
+    // Chance for loot
+    if (Roll.Percent(currentMob.lootChance)) {
+      var equipmentGenerator = new EquipmentGenerator(sim);
+      var eq = equipmentGenerator.Generate();
+      newEvents.Add(PlayerEvent.Loot(eq));
+    }
+
+    // Chance for consumable
+    if (Roll.Percent(currentMob.consumableChance)) {
+      newEvents.Add(PlayerEvent.Info("Consumable"));
+    }
+
 
 //    newEvents.AddRange(AfterBattleChoices());
 
