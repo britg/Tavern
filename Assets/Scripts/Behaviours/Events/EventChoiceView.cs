@@ -25,8 +25,8 @@ public class EventChoiceView : EventView {
       return;
     }
 
-    leftActionConfirmation = null;
-    rightActionConfirmation = null;
+    //leftActionConfirmation = null;
+    //rightActionConfirmation = null;
 
     NotificationCenter.AddObserver(this, Constants.OnUpdateEvents);
     title.text = playerEvent.Content;
@@ -34,8 +34,8 @@ public class EventChoiceView : EventView {
     AssignChoice(playerEvent.firstChoice);
     AssignChoice(playerEvent.secondChoice);
 
-    leftAction.actionName = rightChoice.key;
-    rightAction.actionName = leftChoice.key;
+    leftActionView.actionName = rightChoice.key;
+    rightActionView.actionName = leftChoice.key;
 
     pullLeftLabel.text = leftChoice.label;
     pullRightLabel.text = rightChoice.label;

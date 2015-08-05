@@ -8,7 +8,14 @@ public class EventEquipmentView : EventView {
 
   public Text title;
   public Text description;
-  public GameObject choicesObj;
+
+  Sprite originalPullRightSprite;
+  Sprite originalPullLeftSprite;
+  public Image pullRightIcon;
+  public Text pullRightLabel;
+  public Image pullLeftIcon;
+  public Text pullLeftLabel;
+  public Sprite checkSprite;
 
   public Equipment eq {
     get {
@@ -22,10 +29,18 @@ public class EventEquipmentView : EventView {
       return;
     }
 
+    originalPullLeftSprite = pullLeftIcon.sprite;
+    originalPullRightSprite = pullRightIcon.sprite;
+
     UpdateEquipment();
     NotificationCenter.AddObserver(this, Constants.OnUpdateEvents);
 
 	}
+
+  void OnUpdateEvents (Notification n) {
+    UpdateEquipment();
+    UpdateActions();
+  }
 
   public void UpdateEquipment () {
     if (playerEvent.Equipment == null) {
@@ -52,12 +67,30 @@ public class EventEquipmentView : EventView {
     return str;
   }
 
-  void OnUpdateEvents (Notification n) {
-    UpdateEquipment();
+  void UpdateActions () {
     if (playerEvent.chosenKey != null) {
-      choicesObj.SetActive(false);
+
+      // Pulled left
+      if (rightActionView.actionName == playerEvent.chosenKey) {
+        pullLeftIcon.sprite = checkSprite;
+        pullLeftLabel.text = "Equipped";
+        pullRightIcon.sprite = null;
+        pullRightLabel.text = "";
+      } 
+      
+      // pulled right
+      else {
+        pullRightIcon.sprite = checkSprite;
+        pullRightLabel.text = "Picked Up";
+        pullLeftIcon.sprite = null;
+        pullLeftLabel.text = "";
+      }
+
+      enableLeftAction = false;
+      enableRightAction = false;
+
     }
   }
 
-	
+
 }

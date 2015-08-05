@@ -40,6 +40,10 @@ public class LootProcessor {
   }
 
   void SubtractPrevEquipment (Equipment prev) {
+    if (prev == null) {
+      return;
+    }
+
     foreach (KeyValuePair<string, Stat> pair in prev.Stats) {
       var stat = pair.Value;
       var playerStat = sim.player.GetStat(stat.Key);

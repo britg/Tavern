@@ -8,11 +8,8 @@ public class EventView : BaseBehaviour {
   public bool enableRightAction = false;
   public float swipeFactor = 0.5f;
 
-  public ActionView leftAction;
-  public ActionView rightAction;
-
-  public GameObject leftActionConfirmation;
-  public GameObject rightActionConfirmation;
+  public ActionView leftActionView;
+  public ActionView rightActionView;
 
   float leftActionWidth;
   float rightActionWidth;
@@ -38,22 +35,22 @@ public class EventView : BaseBehaviour {
   }
 
   void GetActionWidths () {
-    if (leftAction != null) {
-      leftActionWidth = leftAction.gameObject.GetComponent<RectTransform>().rect.width;
+    if (leftActionView != null) {
+      leftActionWidth = leftActionView.gameObject.GetComponent<RectTransform>().rect.width;
     }
 
-    if (rightAction != null) {
-      rightActionWidth = rightAction.gameObject.GetComponent<RectTransform>().rect.width;
+    if (rightActionView != null) {
+      rightActionWidth = rightActionView.gameObject.GetComponent<RectTransform>().rect.width;
     }
   }
 
   void SetPlayerEvent (PlayerEvent ev) {
     _playerEvent = ev;
-    if (leftAction != null) {
-      leftAction.playerEvent = ev;
+    if (leftActionView != null) {
+      leftActionView.playerEvent = ev;
     }
-    if (rightAction != null) {
-      rightAction.playerEvent = ev;
+    if (rightActionView != null) {
+      rightActionView.playerEvent = ev;
     }
   }
 
@@ -143,11 +140,11 @@ public class EventView : BaseBehaviour {
       hSwipeStart = currPosition;
 
       if (pos.x > 0 && pos.x > leftActionWidth) {
-        leftAction.hasTriggered = true;
+        leftActionView.hasTriggered = true;
       }
 
       if (pos.x < 0 && pos.x < -rightActionWidth) {
-        rightAction.hasTriggered = true;
+        rightActionView.hasTriggered = true;
       }
 
       if (!triggeredThisSession) {
@@ -166,8 +163,8 @@ public class EventView : BaseBehaviour {
 
   void EndHorizontalSwipe () {
     triggeredThisSession = false;
-    leftAction.hasTriggered = false;
-    rightAction.hasTriggered = false;
+    leftActionView.hasTriggered = false;
+    rightActionView.hasTriggered = false;
     isSwiping = false;
   }
 
@@ -175,18 +172,21 @@ public class EventView : BaseBehaviour {
 
     string actionName = null;
 
-    if (enableLeftAction && leftAction.hasTriggered) {
-      TriggerLeftAction();
-      actionName = leftAction.actionName;
+    if (enableLeftAction && leftActionView.hasTriggered) {
+      ResetHorizontalSwipe();
+      actionName = leftActionView.actionName;
     }
 
-    if (enableRightAction && rightAction.hasTriggered) {
-      TriggerRightAction();
-      actionName = rightAction.actionName;
+    if (enableRightAction && rightActionView.hasTriggered) {
+      ResetHorizontalSwipe();
+      actionName = rightActionView.actionName;
     }
 
     if (actionName != null) {
       triggeredThisSession = true;
+      if (playerEvent == null) {
+        return;
+      }
 
       if (playerEvent.hasActions) {
         sim.inputProcessor.TriggerAction(playerEvent, actionName);
@@ -195,24 +195,6 @@ public class EventView : BaseBehaviour {
       if (playerEvent.hasChoices) {
         sim.inputProcessor.TriggerChoice(playerEvent, actionName);
       }
-    }
-  }
-
-  void TriggerLeftAction () {
-    ResetHorizontalSwipe();
-    if (leftActionConfirmation != null) {
-      leftActionConfirmation.SetActive(true);
-      enableLeftAction = false;
-      enableRightAction = false;
-    }
-  }
-
-  void TriggerRightAction () {
-    ResetHorizontalSwipe();
-    if (rightActionConfirmation != null) {
-      rightActionConfirmation.SetActive(true);
-      enableLeftAction = false;
-      enableRightAction = false;
     }
   }
 

@@ -30,8 +30,9 @@ public class InputProcessor {
     List<PlayerEvent> newEvents = new List<PlayerEvent>();
 
     if (player.lastEvent == null) {
-//      return IntroSequence();
-      return Dev_StraightToTower();
+      //return IntroSequence();
+      //return Dev_StraightToTower();
+      return Dev_RandomLoot();
     }
 
     if (player.lastEvent.chosenKey == Choice.Tower) {
@@ -80,7 +81,7 @@ public class InputProcessor {
   }
 
   public void TriggerChoice (PlayerEvent ev, string choiceKey) {
-    Debug.Log ("Trigger action " + choiceKey + " for event " + ev.Content);
+    Debug.Log ("Trigger choice " + choiceKey + " for event " + ev.Content);
 
     // TODO: Refactor into a choice processor when necessary
     ev.chosenKey = choiceKey;
