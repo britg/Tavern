@@ -73,8 +73,8 @@ public class InputProcessor {
     Debug.Log ("Trigger action " + actionName + " for event " + ev.Content);
 
     if (ev.type == PlayerEvent.Type.Equipment) {
-      var lootProcessor = new LootProcessor(sim);
-      lootProcessor.HandleAction(ev, actionName);
+      var equipmentActionProcessor = new EquipmentActionProcessor(sim);
+      equipmentActionProcessor.HandleAction(ev, actionName);
     } 
 
     NotificationCenter.PostNotification(Constants.OnUpdateEvents);

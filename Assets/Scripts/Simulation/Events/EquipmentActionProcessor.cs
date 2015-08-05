@@ -2,11 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class LootProcessor {
+public class EquipmentActionProcessor {
 
   Simulation sim;
 
-  public LootProcessor (Simulation _sim) {
+  public EquipmentActionProcessor (Simulation _sim) {
     sim = _sim;
   }
 
