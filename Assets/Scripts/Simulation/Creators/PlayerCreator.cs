@@ -25,8 +25,6 @@ public class PlayerCreator {
 
   public void Bootstrap () {
     BootstrapResources();
-    //BootstrapBuildings();
-    //BootstrapAdventurers();
     BootstrapStats();
     BootstrapAllSlots();
   }
@@ -39,14 +37,6 @@ public class PlayerCreator {
       var resource = new Resource(resourceKey, amount);
       player.Resources[resourceKey] = resource;
     }
-  }
-
-  void BootstrapAdventurers () {
-   
-  }
-
-  void BootstrapBuildings () {
-    // to be implemented in a similar manner to others.
   }
 
   void BootstrapStats () {
@@ -77,11 +67,6 @@ public class PlayerCreator {
       var slot = new Slot(p.Key);
       player.Slots[p.Key] = slot;
     }
-  }
-
-  void CreateBuilding (string buildingKey) {
-    var buildingCreator = new BuildingCreator(sim);
-    buildingCreator.Create(buildingKey);
   }
 
 }

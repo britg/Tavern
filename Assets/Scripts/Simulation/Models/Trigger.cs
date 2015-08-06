@@ -3,15 +3,19 @@ using System.Collections;
 
 public class Trigger {
 
-  public static string damageKey = "damage";
-  public static string targetKey = "target";
-  public static string statKey = "stat";
-  public static string statChangeAmountKey = "statChangeAmount";
-  public static string statChangeTargetKey = "statChangeTarget";
+  public const string damageKey = "damage";
+  public const string targetKey = "target";
+  public const string statKey = "stat";
+  public const string statChangeAmountKey = "statChangeAmount";
+  public const string statChangeTargetKey = "statChangeTarget";
+
+  public const string resourceKey = "resource";
+  public const string resourceAmountKey = "resourceAmount";
 
   public enum Type {
     NewFloor,
-    PlayerStatChange
+    PlayerStatChange,
+    PlayerResourceChange
   }
 
   public Type type { get; set; }

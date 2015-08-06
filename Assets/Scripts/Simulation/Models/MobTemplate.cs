@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using SimpleJSON;
 
 public class MobTemplate {
-  
+
   public const string type = "MobTemplate";
 
   public string Key;
@@ -12,6 +12,7 @@ public class MobTemplate {
   public int level;
   public float consumableChance;
   public float lootChance;
+  public float goldChance;
 
   public Dictionary<string, Stat> Stats { get; set; }
   public Hashtable combatProfile = new Hashtable();
@@ -34,6 +35,7 @@ public class MobTemplate {
     level = json["level"].AsInt;
     consumableChance = json["consumable_chance"].AsFloat;
     lootChance = json["loot_chance"].AsFloat;
+    goldChance = json["gold_chance"].AsFloat;
 
     Stats = new Dictionary<string, Stat>();
     var stats = json["stats"].AsArray;

@@ -12,6 +12,7 @@ public class Mob {
   public float currentInitiative;
   public float consumableChance;
   public float lootChance;
+  public float goldChance;
 
   public static Mob FromTemplate (MobTemplate template) {
     var mob = new Mob();
@@ -20,6 +21,7 @@ public class Mob {
     mob.name = template.name;
     mob.consumableChance = template.consumableChance;
     mob.lootChance = template.lootChance;
+    mob.goldChance = template.goldChance;
 
     mob.Stats = new Dictionary<string, Stat>();
     foreach (KeyValuePair<string, Stat> pair in template.Stats) {
@@ -40,7 +42,7 @@ public class Mob {
     } else {
       Stats[key] = mobStat;
     }
-    
+
     return mobStat;
   }
 
@@ -54,5 +56,5 @@ public class Mob {
     s.Change(amount);
     Stats[key] = s;
   }
-	
+
 }

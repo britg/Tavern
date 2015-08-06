@@ -95,6 +95,36 @@ public class BattleProcessor {
     var newEvents = new List<PlayerEvent>();
 
     newEvents.AddRange(GainExperience());
+    newEvents.AddRange(Gold());
+    newEvents.AddRange(Equipment());
+    newEvents.AddRange(Consumables());
+
+//    newEvents.AddRange(AfterBattleChoices());
+
+    sim.player.tower.currentMob = null;
+    return newEvents;
+  }
+
+  public List<PlayerEvent> Gold () {
+    var newEvents = new List<PlayerEvent>();
+    // Gold
+    if (Roll.Percent(currentMob.goldChance)) {
+      var goldGenerator = new GoldGenerator(sim.player, currentMob);
+      var amount = goldGenerator.Mob();
+      var ev = PlayerEvent.Info(string.Format("{0} gold", amount));
+      var trigger = new Trigger(Trigger.Type.PlayerResourceChange);
+      trigger.data[Trigger.resourceKey] = Resource.Gold;
+      trigger.data[Trigger.resourceAmountKey] = amount;
+
+      ev.Triggers.Add(trigger);
+      newEvents.Add(ev);
+    }
+
+    return newEvents;
+  }
+
+  public List<PlayerEvent> Equipment () {
+    var newEvents = new List<PlayerEvent>();
 
     // Chance for loot
     if (Roll.Percent(currentMob.lootChance)) {
@@ -103,22 +133,22 @@ public class BattleProcessor {
       newEvents.Add(PlayerEvent.Loot(eq));
     }
 
+    return newEvents;
+  }
+
+  public List<PlayerEvent> Consumables () {
+    var newEvents = new List<PlayerEvent>();
     // Chance for consumable
     if (Roll.Percent(currentMob.consumableChance)) {
       newEvents.Add(PlayerEvent.Info("Consumable"));
     }
-
-
-//    newEvents.AddRange(AfterBattleChoices());
-
-    sim.player.tower.currentMob = null;
     return newEvents;
   }
 
   public List<PlayerEvent> GainExperience () {
     var experienceProcessor = new ExperienceProcessor(sim.player, currentMob);
     var amount = experienceProcessor.ExperienceGain();
-    var ev = PlayerEvent.Info(string.Format("Experience: +{0}", amount));
+    var ev = PlayerEvent.Info(string.Format("+{0} experience", amount));
     var trigger = new Trigger(Trigger.Type.PlayerStatChange);
     trigger.data[Trigger.statKey] = Stat.xp;
     trigger.data[Trigger.statChangeAmountKey] = amount;

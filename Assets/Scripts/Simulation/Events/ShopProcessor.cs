@@ -12,7 +12,8 @@ public class ShopProcessor {
 
   public List<PlayerEvent> Continue () {
     var newEvents = new List<PlayerEvent>();
-    newEvents.Add(new PlayerEvent("shop event engine"));
+    newEvents.Add(new PlayerEvent("You look around the hastily constructed stalls..."));
+    newEvents.Add(new PlayerEvent("List the actions you can take:\nSell your equipment (Blacksmith?)\nPay to heal completely (Healer?)\n"));
     return newEvents;
   }
 

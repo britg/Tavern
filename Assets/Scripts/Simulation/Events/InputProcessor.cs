@@ -30,9 +30,9 @@ public class InputProcessor {
     List<PlayerEvent> newEvents = new List<PlayerEvent>();
 
     if (player.lastEvent == null) {
-      //return IntroSequence();
+      return IntroSequence();
       //return Dev_StraightToTower();
-      return Dev_RandomLoot();
+//      return Dev_RandomLoot();
     }
 
     if (player.lastEvent.chosenKey == Choice.Tower) {
@@ -46,6 +46,8 @@ public class InputProcessor {
     if (sim.player.location == Player.Location.Shop) {
       var shopProcessor = new ShopProcessor(sim);
       newEvents.AddRange(shopProcessor.Continue());
+      // DEV
+      newEvents.Add(Consider());
     }
 
     if (sim.player.location == Player.Location.Tower) {
@@ -61,9 +63,9 @@ public class InputProcessor {
   }
 
   public void TriggerEvent (PlayerEvent ev) {
-    var triggerProcessor = new TriggerProcessor(sim);
     foreach (Trigger trigger in ev.Triggers) {
-      triggerProcessor.Process(trigger);
+      var triggerProcessor = new TriggerProcessor(sim, trigger);
+      triggerProcessor.Process();
       ev.hasTriggered = true;
       ev.Update();
     }
@@ -75,7 +77,7 @@ public class InputProcessor {
     if (ev.type == PlayerEvent.Type.Equipment) {
       var equipmentActionProcessor = new EquipmentActionProcessor(sim);
       equipmentActionProcessor.HandleAction(ev, actionName);
-    } 
+    }
 
     NotificationCenter.PostNotification(Constants.OnUpdateEvents);
   }
@@ -148,7 +150,7 @@ public class InputProcessor {
   List<PlayerEvent> ExecuteChoice (PlayerEvent ev) {
     List<PlayerEvent> newEvents = new List<PlayerEvent>();
 
-    
+
 
     return newEvents;
   }

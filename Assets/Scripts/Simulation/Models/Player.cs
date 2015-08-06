@@ -61,6 +61,12 @@ public class Player {
     Stats[key] = s;
   }
 
+  public void ChangeResource (string key, int amount) {
+    var r = Resources[key];
+    r.Amount += amount;
+    Resources[key] = r;
+  }
+
   public string LocationName () {
     if (location == Player.Location.Town) {
       return "";
