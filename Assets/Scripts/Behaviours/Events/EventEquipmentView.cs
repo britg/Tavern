@@ -61,7 +61,9 @@ public class EventEquipmentView : EventView {
       if (stat.Value < 0f) {
         pol = "-";
       }
-      str += string.Format("{1} {2}", pol, stat.Value, stat.Abbr);
+
+      // TODO: Calc diff and show diffs instead of absolute value
+      str += string.Format("{0}{1} {2}", pol, stat.Value, stat.Key);
     }
 
     return str;

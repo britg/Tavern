@@ -35,9 +35,16 @@ public class EquipmentGenerator {
   }
 
   void AssignAttributes (Equipment e) {
-    // Based on rarity, assign stat bonuses
-    var stat = new Stat(Stat.dps, 1f);
-    e.Stats[stat.Type.Key] = stat;
+
+    // Get base stat from equipment designation
+    foreach (KeyValuePair<string, StatType> pair in e.Designation.BaseStats) {
+      var statType = pair.Value;
+      e.Stats[statType.Key] = new Stat(statType.Key, Random.Range (1f, 5f));
+    }
+
+
+//    var stat = new Stat(Stat.dps, 1f);
+//    e.Stats[stat.Type.Key] = stat;
   }
 
 }

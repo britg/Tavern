@@ -30,9 +30,9 @@ public class InputProcessor {
     List<PlayerEvent> newEvents = new List<PlayerEvent>();
 
     if (player.lastEvent == null) {
-      return IntroSequence();
-      //return Dev_StraightToTower();
-//      return Dev_RandomLoot();
+//      return IntroSequence();
+//      return Dev_StraightToTower();
+      return Dev_RandomLoot();
     }
 
     if (player.lastEvent.chosenKey == Choice.Tower) {
@@ -114,7 +114,7 @@ public class InputProcessor {
     var eqGen = new EquipmentGenerator(sim);
     var rand = Random.Range(7, 15);
     var eRand = Random.Range(1, 4);
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < rand; i++) {
       var eq = eqGen.Generate();
       var ev = PlayerEvent.Loot(eq);
 
