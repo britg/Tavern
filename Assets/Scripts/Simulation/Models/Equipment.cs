@@ -10,6 +10,9 @@ public class Equipment {
   public string Name { get; set; }
   public SlotType SlotType { get; set; }
 
+  public EquipmentModifier Prefix;
+  public EquipmentModifier Suffix;
+
   public Dictionary<string, Stat> Stats = new Dictionary<string, Stat>();
 
   public EquipmentDesignation Designation {

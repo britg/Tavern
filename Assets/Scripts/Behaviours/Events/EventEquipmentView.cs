@@ -63,7 +63,7 @@ public class EventEquipmentView : EventView {
       }
 
       // TODO: Calc diff and show diffs instead of absolute value
-      str += string.Format("{0}{1} {2}", pol, stat.Value, stat.Key);
+      str += string.Format("{0}{1:0.0} {2} ", pol, stat.Value, stat.Key);
     }
 
     return str;

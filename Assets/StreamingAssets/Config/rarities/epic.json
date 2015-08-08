@@ -3,5 +3,7 @@
 	"key": "epic",
 	"name": "Epic",
   "chance": 0.5,
-  "color": "A23788"
+  "color": "A23788",
+  "multiplier": [4.5, 8],
+  "modifier_chances": [0, 0]
 }

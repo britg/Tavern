@@ -3,5 +3,7 @@
 	"key": "rare",
 	"name": "Rare",
   "chance": 2,
-  "color": "0000FF"
+  "color": "0000FF",
+  "multiplier": [2.5, 5],
+  "modifier_chances": [100, 100] // [prefix, suffix]
 }

@@ -3,5 +3,15 @@
   "key": "plate_leggings",
   "name": "Plate Leggings",
   "slots": ["legs"],
-  "designation": "armor"
+  "designation": "armor",
+  "stat_multipliers": [
+  	{
+  		"key": "def",
+  		"multiplier": 2,
+  	},
+  	{
+  		"key": "spd",
+  		"multiplier": -2
+  	}
+  ]
 }

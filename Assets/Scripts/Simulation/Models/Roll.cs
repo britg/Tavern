@@ -58,4 +58,8 @@ public class Roll {
     float rand = Random.Range(0f, 100f);
     return rand < chance;
   }
+
+  public static float Range (RangeAttribute range) {
+    return Random.Range(range.min, range.max);
+  }
 }

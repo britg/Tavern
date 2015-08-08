@@ -9,6 +9,8 @@ public class EquipmentType {
 
   public string Key { get; set; }
   public string Name { get; set; }
+  public Dictionary<string, float> StatMultipliers;
+
   public Dictionary<string, SlotType> SlotTypes { get; set; }
   public SlotType PrimarySlotType {
     get {
@@ -34,6 +36,14 @@ public class EquipmentType {
     Name = json["name"].Value;
     Designation = EquipmentDesignation.all[json["designation"].Value];
 
+    StatMultipliers = new Dictionary<string, float>();
+    var multipliers = json["stat_multipliers"].AsArray;
+    foreach (JSONNode mult in multipliers) {
+      string statKey = mult["key"].Value;
+      float val = mult["multiplier"].AsFloat;
+      StatMultipliers[statKey] = val;
+    }
+
     SlotTypes = new Dictionary<string, SlotType>();
     var slotTypeArr = json["slots"].AsArray;
     
@@ -49,5 +59,13 @@ public class EquipmentType {
     }
 
     return null;
+  }
+
+  public float MultiplierForStat (string key) {
+    if (StatMultipliers.ContainsKey(key)) {
+      return StatMultipliers[key];
+    }
+
+    return 1f;
   }
 }

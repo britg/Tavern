@@ -3,5 +3,7 @@
   "key": "trash",
   "name": "Trash",
   "chance": 30,
-  "color": "CCCCCC"
+  "color": "CCCCCC",
+  "multiplier": [0.1, 0.8],
+  "modifier_chances": [0, 0]
 }

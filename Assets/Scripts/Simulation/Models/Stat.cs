@@ -3,6 +3,11 @@ using System.Collections;
 
 public class Stat {
 
+  public enum Sign {
+    Positive,
+    Negative
+  }
+
   public static string hp = "hp";
   public static string ap = "ap";
   public static string xp = "exp";
@@ -12,6 +17,15 @@ public class Stat {
   public static string luck = "luck";
   public static string res = "res";
   public static string crit = "crit";
+  public static string lvl = "level";
+
+
+  public static Sign SignForValue (float val) {
+    if (val < 0) {
+      return Sign.Negative;
+    }
+    return Sign.Positive;
+  }
 
 
   public string Key { get; set; }
@@ -66,6 +80,5 @@ public class Stat {
   void RecalcValue () {
     Value = Base + CurrentChange;
   }
-
 
 }

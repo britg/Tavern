@@ -3,5 +3,7 @@
 	"key": "uncommon",
 	"name": "Uncommon",
   "chance": 7,
-  "color": "00FF00"
+  "color": "00FF00",
+  "multiplier": [1.5, 3],
+  "modifier_chances": [50, 50]
 }
