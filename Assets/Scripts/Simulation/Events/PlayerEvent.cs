@@ -15,7 +15,8 @@ public class PlayerEvent {
     Transition,
     Choice,
     PlayerBasicAttack,
-    MobBasicAttack
+    MobBasicAttack,
+    Story
   }
 
   public string Id { get; set; }
@@ -61,6 +62,12 @@ public class PlayerEvent {
   public static PlayerEvent Info (string text) {
     PlayerEvent ev = new PlayerEvent(text);
     ev.type = Type.Info;
+    return ev;
+  }
+
+  public static PlayerEvent Story (string text) {
+    PlayerEvent ev = new PlayerEvent(text);
+    ev.type = Type.Story;
     return ev;
   }
 

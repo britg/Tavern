@@ -10,6 +10,7 @@ public class FeedView : BaseBehaviour {
 
   public GameObject pullAnchor;
   public GameObject eventPrefab;
+  public GameObject eventStoryPrefab;
   public GameObject eventInfoPrefab;
   public GameObject eventTransitionPrefab;
   public GameObject eventEquipmentPrefab;
@@ -74,6 +75,8 @@ public class FeedView : BaseBehaviour {
       prefab = eventPlayerBasicAttackPrefab;
     } else if (playerEvent.type == PlayerEvent.Type.MobBasicAttack) {
       prefab = eventMobBasicAttackPrefab;
+    } else if (playerEvent.type == PlayerEvent.Type.Story) {
+      prefab = eventStoryPrefab;
     }
 
     eventObj = (GameObject)Instantiate(prefab);

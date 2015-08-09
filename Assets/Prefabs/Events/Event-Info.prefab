@@ -117,7 +117,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Pull to Quest
+  m_Text: This is some info about the game state
 --- !u!114 &11433800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,10 +173,8 @@ MonoBehaviour:
   enableLeftAction: 0
   enableRightAction: 0
   swipeFactor: .5
-  leftAction: {fileID: 0}
-  rightAction: {fileID: 0}
-  leftActionConfirmation: {fileID: 0}
-  rightActionConfirmation: {fileID: 0}
+  leftActionView: {fileID: 0}
+  rightActionView: {fileID: 0}
   description: {fileID: 11422444}
 --- !u!114 &11446150
 MonoBehaviour:

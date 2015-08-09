@@ -30,9 +30,10 @@ public class InputProcessor {
     List<PlayerEvent> newEvents = new List<PlayerEvent>();
 
     if (player.lastEvent == null) {
-//      return IntroSequence();
+      EnterTower();
+      return IntroSequence();
 //      return Dev_StraightToTower();
-      return Dev_RandomLoot();
+//      return Dev_RandomLoot();
     }
 
     if (player.lastEvent.chosenKey == Choice.Tower) {
@@ -98,7 +99,7 @@ public class InputProcessor {
     var eventsJson = intro["events"];
     foreach (JSONNode node in eventsJson.AsArray) {
       var eventStr = node.Value;
-      list.Add(new PlayerEvent(eventStr));
+      list.Add(PlayerEvent.Story(eventStr));
     }
 
     //list.AddRange(Dev_RandomLoot());
