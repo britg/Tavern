@@ -68,7 +68,7 @@ public class TowerProcessor {
   List<PlayerEvent> VentureForth () {
     var newEvents = new List<PlayerEvent>();
 
-    newEvents.Add(PlayerEvent.Info ("You venture forth..."));
+    //newEvents.Add(PlayerEvent.Info ("You venture forth..."));
 
     var proportions = iTween.Hash(
       _mob, 100f

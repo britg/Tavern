@@ -11,16 +11,33 @@ public class ScreenManager : MonoBehaviour {
   public GameObject feedMenuView;
   public GameObject characterMenuView;
 
+  public GameObject statusView;
+
+  void Awake () {
+    NotificationCenter.AddObserver(this, Constants.OnFirstPull);
+  }
+
 	// Use this for initialization
 	void Start () {
-//    SwitchToCharacterView();
-    SwitchToFeedView();
+    //    SwitchToCharacterView();
+    //SwitchToFeedView();
+    OnNewGame();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+
+  public void OnNewGame () {
+    feedMenuView.SetActive(false);
+    characterMenuView.SetActive(false);
+    statusView.SetActive(false);
+  }
+
+  public void OnFirstPull () {
+    SwitchToFeedView();
+  }
 
   public void OnCharacterButtonTapped () {
     SwitchToCharacterView();
@@ -60,6 +77,7 @@ public class ScreenManager : MonoBehaviour {
 
   void SwitchToFeedView () {
     ActivateFeedMenu();
+    statusView.SetActive(true);
 
     feedView.SetActive(true);
 
@@ -70,6 +88,7 @@ public class ScreenManager : MonoBehaviour {
 
   void SwitchToQuestView () {
     ActivateCharacterMenu();
+    statusView.SetActive(true);
 
     questView.SetActive(true);
 
@@ -80,6 +99,7 @@ public class ScreenManager : MonoBehaviour {
 
   void SwitchToInventoryView () {
     ActivateCharacterMenu();
+    statusView.SetActive(true);
 
     inventoryView.SetActive(true);
 

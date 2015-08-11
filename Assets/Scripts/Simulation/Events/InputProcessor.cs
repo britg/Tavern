@@ -30,6 +30,7 @@ public class InputProcessor {
     List<PlayerEvent> newEvents = new List<PlayerEvent>();
 
     if (player.lastEvent == null) {
+      NotificationCenter.PostNotification(Constants.OnFirstPull);
       EnterTower();
       return IntroSequence();
 //      return Dev_StraightToTower();

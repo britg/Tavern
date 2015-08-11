@@ -13,6 +13,8 @@ public class Constants {
   public const string OnUpdateEvents = "OnUpdateEvents";
   public const string OnUpdateStats = "OnUpdateStats";
   public const string OnTakeDamage = "OnTakeDamage";
+  public const string OnNewGame = "OnNewGame";
+  public const string OnFirstPull = "OnFirstPull";
 
   // Layers
   public const string GroundLayer = "Ground";
