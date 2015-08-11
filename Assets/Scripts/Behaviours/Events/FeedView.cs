@@ -17,6 +17,7 @@ public class FeedView : BaseBehaviour {
   public GameObject eventChoicePrefab;
   public GameObject eventPlayerBasicAttackPrefab;
   public GameObject eventMobBasicAttackPrefab;
+  public GameObject eventConsumablePrefab;
 
   public int numEvents = 20;
   public float refreshDelay = 1f;
@@ -77,7 +78,10 @@ public class FeedView : BaseBehaviour {
       prefab = eventMobBasicAttackPrefab;
     } else if (playerEvent.type == PlayerEvent.Type.Story) {
       prefab = eventStoryPrefab;
+    } else if (playerEvent.type == PlayerEvent.Type.Consumable) {
+      prefab = eventConsumablePrefab;
     }
+
 
     eventObj = (GameObject)Instantiate(prefab);
     eventObj.GetComponent<EventView>().playerEvent = playerEvent;

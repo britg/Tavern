@@ -81,6 +81,11 @@ public class InputProcessor {
       equipmentActionProcessor.HandleAction(ev, actionName);
     }
 
+    if (ev.type == PlayerEvent.Type.Consumable) {
+      var consumableActionProcessor = new ConsumableActionProcessor(sim);
+      consumableActionProcessor.HandleAction(ev, actionName);
+    }
+
     NotificationCenter.PostNotification(Constants.OnUpdateEvents);
   }
 
