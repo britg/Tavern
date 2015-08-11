@@ -21,7 +21,16 @@
 			"chance": 20
 		}
 	],
+	"consumables": [
+		{
+			"key": "minor_health_potion",
+			"chance": 100
+		}
+	],
 	"interactibles": [
-		"skeletal_remains"
+		{
+			"key": "skeletal_remains",
+			"chance": 100
+		}
 	]
 }

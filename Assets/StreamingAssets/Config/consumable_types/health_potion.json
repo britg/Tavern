@@ -1,5 +1,11 @@
 {
 	"type": "ConsumableType",
-	"key": "health_potion",
-	"name": "Health Potion"
+	"key": "minor_health_potion",
+	"name": "Minor Health Potion",
+  "stat_effects": [
+    {
+      "key": "hp",
+      "range": [10, 20]
+    }
+  ]
 }

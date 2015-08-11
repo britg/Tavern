@@ -9,6 +9,8 @@ public class ConsumableType {
   public string Key { get; set; }
   public string Name { get; set; }
 
+  public Dictionary<string, RangeAttribute> statEffects;
+
   public static Dictionary<string, ConsumableType> all = new Dictionary<string, ConsumableType>();
 
   public static void Cache (JSONNode json) {
@@ -24,5 +26,16 @@ public class ConsumableType {
   public ConsumableType (JSONNode json) {
     Key = json["key"].Value;
     Name = json["name"].Value;
+
+    statEffects = new Dictionary<string, RangeAttribute>();
+    var statEffectsJson = json["stat_effects"].AsArray;
+    foreach (JSONNode statEffectJson in statEffectsJson) {
+      var statKey = statEffectJson["key"].Value;
+      var min = statEffectJson["range"].AsArray[0].AsFloat;
+      var max = statEffectJson["range"].AsArray[1].AsFloat;
+
+      statEffects[statKey] = new RangeAttribute(min, max);
+    }
+
   }
 }

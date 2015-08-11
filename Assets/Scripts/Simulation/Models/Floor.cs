@@ -12,6 +12,8 @@ public class FloorTemplate {
   public int maxFloor;
   public List<string> atmosphereText;
   public Dictionary<string, float> mobChances;
+  public Dictionary<string, float> consumableChances;
+  public Dictionary<string, float> interactibleChances;
 
   public static Dictionary<int, FloorTemplate> all = new Dictionary<int, FloorTemplate>();
 
@@ -41,12 +43,23 @@ public class FloorTemplate {
 
     var mobArr = json["mobs"].AsArray;
     mobChances = new Dictionary<string, float>();
-    foreach (JSONNode mobNode in mobArr) {
-      var mobKey = mobNode["key"].Value;
-      var mobChance = mobNode["chance"].AsFloat;
-      mobChances[mobKey] = mobChance;
-    }
+    ExtractChances(mobArr, ref mobChances);
 
+    var consumablesArr = json["consumables"].AsArray;
+    consumableChances = new Dictionary<string, float>();
+    ExtractChances(consumablesArr, ref consumableChances);
+
+    var interactibleArr = json["interactibles"].AsArray;
+    interactibleChances = new Dictionary<string, float>();
+    ExtractChances(interactibleArr, ref interactibleChances);
+  }
+
+  void ExtractChances (JSONArray arr, ref Dictionary<string, float> dict) {
+    foreach (JSONNode node in arr) {
+      var key = node["key"].Value;
+      var chance = node["chance"].AsFloat;
+      dict[key] = chance;
+    }
   }
 
   public static FloorTemplate GetFloor (int floorNum) {
