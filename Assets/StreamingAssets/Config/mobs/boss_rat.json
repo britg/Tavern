@@ -1,7 +1,7 @@
 {
   "type": "MobTemplate",
   "key": "boss_rat",
-  "name": "Even Larger Rat",
+  "name": "Rat of Very Unusual Size",
   "level": 2,
   "consumable_chance": 100,
   "loot_chance": 100,

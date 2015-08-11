@@ -17,9 +17,13 @@ public class EventEquipmentView : EventView {
   public Text pullLeftLabel;
   public Sprite checkSprite;
 
+  Equipment _eq;
   public Equipment eq {
     get {
-      return playerEvent.Equipment;
+      if (_eq == null) {
+        _eq = (Equipment)playerEvent.data[PlayerEvent.equipmentKey];
+      }
+      return _eq;
     }
   }
 
@@ -43,7 +47,7 @@ public class EventEquipmentView : EventView {
   }
 
   public void UpdateEquipment () {
-    if (playerEvent.Equipment == null) {
+    if (eq == null) {
       title.color = Color.gray;
     } else {
       var str = string.Format("[{0}]", playerEvent.Content); 

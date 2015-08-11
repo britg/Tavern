@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PlayerEvent {
 
   public const string equipmentKey = "equipment";
+  public const string consumableKey = "consumable";
   public const string mobKey = "mob";
   public const string damageKey = "damage";
   public const string hitTypeKey = "hitType";
@@ -12,6 +13,7 @@ public class PlayerEvent {
   public enum Type {
     Info,
     Equipment,
+    Consumable,
     Transition,
     Choice,
     PlayerBasicAttack,
@@ -24,9 +26,10 @@ public class PlayerEvent {
   public string Content { get; set; }
   public Type type = Type.Info;
 
+  // data can contain:
+  //    equipment
+  //    consumable
   public Hashtable data = new Hashtable();
-
-  public Equipment Equipment { get; set; }
   public List<Trigger> Triggers = new List<Trigger>();
 
   public Choice firstChoice;
@@ -39,7 +42,7 @@ public class PlayerEvent {
 
   public bool hasActions {
     get {
-      return type == Type.Equipment;
+      return (type == Type.Equipment || type == Type.Consumable);
     }
   }
 
@@ -81,7 +84,14 @@ public class PlayerEvent {
   public static PlayerEvent Loot (Equipment e) {
     PlayerEvent ev = new PlayerEvent(e.Name);
     ev.type = Type.Equipment;
-    ev.Equipment = e;
+    ev.data[equipmentKey] = e;
+    return ev;
+  }
+
+  public static PlayerEvent Consumable (Consumable consumable) {
+    PlayerEvent ev = new PlayerEvent(consumable.name);
+    ev.type = Type.Consumable;
+    ev.data[consumableKey] = consumable;
     return ev;
   }
 

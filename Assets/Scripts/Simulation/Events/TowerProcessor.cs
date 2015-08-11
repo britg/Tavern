@@ -52,8 +52,8 @@ public class TowerProcessor {
 
   List<PlayerEvent> EntranceEvents () {
     var newEvents = new List<PlayerEvent>();
-    newEvents.Add(TowerEntranceEvent());
-    newEvents.Add(AtmosphereEvent());
+//    newEvents.Add(TowerEntranceEvent());
+//    newEvents.Add(AtmosphereEvent());
     return newEvents;
   }
 
@@ -87,7 +87,7 @@ public class TowerProcessor {
     if (happening == _mob) {
       var battleProcessor = new BattleProcessor(sim);
       var mob = floor.RandomMob();
-      newEvents.AddRange(EncounterMob(mob));
+//      newEvents.AddRange(EncounterMob(mob));
       newEvents.AddRange(battleProcessor.StartBattle(mob));
     }
     

@@ -5,28 +5,42 @@ using System.Collections.Generic;
 public class EquipmentActionProcessor {
 
   Simulation sim;
+  PlayerEvent ev;
+  string actionKey;
+
+  Equipment _eq;
+  Equipment eq {
+    get {
+      if (_eq == null) {
+        _eq = (Equipment)ev.data[PlayerEvent.equipmentKey];
+      }
+      return _eq;
+    }
+  }
 
   public EquipmentActionProcessor (Simulation _sim) {
     sim = _sim;
   }
 
-  public void HandleAction (PlayerEvent ev, string actionName) {
-    if (actionName == Constants.c_Pickup) {
+  public void HandleAction (PlayerEvent _ev, string _actionKey) {
+    ev = _ev;
+    actionKey = _actionKey;
+
+    if (actionKey == Constants.c_Pickup) {
       ev.chosenKey = Constants.c_Pickup;
       PickUp(ev);
-    } else if (actionName == Constants.c_Equip) {
+    } else if (actionKey == Constants.c_Equip) {
       ev.chosenKey = Constants.c_Equip;
       Equip(ev);
     }
   }
 
   public void PickUp (PlayerEvent ev) {
-    Debug.Log ("Loot processor is picking up " + ev.Equipment.Name);
+    Debug.Log ("Loot processor is picking up " + eq.Name);
   }
 
   public void Equip (PlayerEvent ev) {
-    Debug.Log ("Loot processor is equipping " + ev.Equipment.Name);
-    var eq = ev.Equipment;
+    Debug.Log ("Loot processor is equipping " + eq.Name);
     SlotType slotType = eq.SlotType;
     Slot playerSlot = sim.player.Slots[slotType.Key];
     var prevEquipment = playerSlot.Equipment;

@@ -140,13 +140,16 @@ public class BattleProcessor {
     var newEvents = new List<PlayerEvent>();
 
     if (Roll.Percent(currentMob.consumableChance)) {
-      var ev = PlayerEvent.Info("[Minor Health Potion]");
 
-      var trigger = new Trigger(Trigger.Type.PlayerStatChange);
-      trigger.data[Trigger.statKey] = Stat.hp;
-      trigger.data[Trigger.statChangeAmountKey] = Random.Range(5f, 15f);
+      var consumable = new Consumable();
+      var ev = PlayerEvent.Consumable(consumable);
 
-      ev.Triggers.Add(trigger);
+        // Trigger based health potion
+//      var trigger = new Trigger(Trigger.Type.PlayerStatChange);
+//      trigger.data[Trigger.statKey] = Stat.hp;
+//      trigger.data[Trigger.statChangeAmountKey] = Random.Range(5f, 15f);
+//      ev.Triggers.Add(trigger);
+
       newEvents.Add(ev);
     }
     return newEvents;

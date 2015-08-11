@@ -99,11 +99,17 @@ public class InputProcessor {
     var eventsJson = intro["events"];
     foreach (JSONNode node in eventsJson.AsArray) {
       var eventStr = node.Value;
-      list.Add(PlayerEvent.Story(eventStr));
+
+      if (eventStr == "battle") {
+        var towerProcessor = new TowerProcessor(sim);
+        list.AddRange(towerProcessor.Continue());
+      } else {
+        list.Add(PlayerEvent.Story(eventStr));
+      }
     }
 
     //list.AddRange(Dev_RandomLoot());
-    list.Add(Consider());
+//    list.Add(Consider());
 
     player.lastEvent = list[list.Count - 1];
 
