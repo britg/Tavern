@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e62804304d278a45a06cfadf42e2979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableLeftAction: 0
+  enableLeftAction: 1
   enableRightAction: 1
   swipeFactor: .150000006
   leftActionView: {fileID: 11474792}

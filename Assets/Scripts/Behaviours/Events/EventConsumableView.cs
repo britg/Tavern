@@ -61,6 +61,8 @@ public class EventConsumableView : EventView {
       enableRightAction = false;
       pullLeftLabel.text = "";
       pullLeftIcon.sprite = null;
+      pullRightLabel.text = "";
+      pullRightIcon.sprite = null;
     }
   }
 

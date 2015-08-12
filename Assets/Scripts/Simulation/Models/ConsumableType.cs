@@ -8,6 +8,7 @@ public class ConsumableType {
 
   public string Key { get; set; }
   public string Name { get; set; }
+  public string UsedName { get; set; }
 
   public Dictionary<string, RangeAttribute> statEffects;
 
@@ -26,6 +27,7 @@ public class ConsumableType {
   public ConsumableType (JSONNode json) {
     Key = json["key"].Value;
     Name = json["name"].Value;
+    UsedName = json["used_name"].Value;
 
     statEffects = new Dictionary<string, RangeAttribute>();
     var statEffectsJson = json["stat_effects"].AsArray;
@@ -43,6 +45,7 @@ public class ConsumableType {
     var consumable = new Consumable();
     consumable.key = Key;
     consumable.name = Name;
+    consumable.usedName = UsedName;
 
     consumable.statEffects = new Dictionary<string, float>();
     foreach (KeyValuePair<string, RangeAttribute> statEffect in statEffects) {

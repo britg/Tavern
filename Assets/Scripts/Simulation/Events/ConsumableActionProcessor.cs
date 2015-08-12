@@ -7,6 +7,7 @@ public class ConsumableActionProcessor {
   Simulation sim;
   PlayerEvent ev;
   string actionKey;
+  Consumable consumable;
 
   Equipment _eq;
   Equipment eq {
@@ -26,17 +27,30 @@ public class ConsumableActionProcessor {
     ev = _ev;
     actionKey = _actionKey;
     ev.chosenKey = actionKey;
+    consumable = (Consumable)ev.data[PlayerEvent.consumableKey];
 
-    var consumable = (Consumable)ev.data[PlayerEvent.consumableKey];
-    // Only action right now is to drink
+    if (actionKey == "consume") {
+      Consume();
+    }
+
+    if (actionKey == "pickup") {
+      PickUp();
+    }
+
+    NotificationCenter.PostNotification(Constants.OnUpdateStats);
+    NotificationCenter.PostNotification(Constants.OnUpdateEvents);
+  }
+
+  void PickUp () {
+    // TODO: Add to inventory
+    ev.Content = "Picked Up";
+  }
+
+  void Consume () {
     foreach (KeyValuePair<string, float> statEffect in consumable.statEffects) {
       sim.player.ChangeStat(statEffect.Key, statEffect.Value);
     }
 
-    ev.Content = "Empty Flask";
-
-    NotificationCenter.PostNotification(Constants.OnUpdateStats);
-    NotificationCenter.PostNotification(Constants.OnUpdateEvents);
-
+    ev.Content = consumable.usedName;
   }
 }
