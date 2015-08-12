@@ -70,8 +70,8 @@ public class PlayerCombatProcessor  {
    * Compare speeds
    */
   float ChanceToMiss () {
-    var playerSpd = player.Stats[Stat.spd].Value;
-    var mobSpd = mob.Stats[Stat.spd].Value;
+    var playerSpd = player.Stats[Stat.spd].current;
+    var mobSpd = mob.Stats[Stat.spd].current;
 
     float baseChance = 10f;
     var diff = playerSpd - mobSpd;
@@ -80,8 +80,8 @@ public class PlayerCombatProcessor  {
   }
 
   float ChanceToGlance () {
-    var playerSpd = player.Stats[Stat.spd].Value;
-    var mobSpd = mob.Stats[Stat.spd].Value;
+    var playerSpd = player.Stats[Stat.spd].current;
+    var mobSpd = mob.Stats[Stat.spd].current;
 
     float baseChance = 20f;
     var diff = playerSpd - mobSpd;
@@ -90,7 +90,7 @@ public class PlayerCombatProcessor  {
   }
 
   float ChanceToCrit () {
-    var playerCrit = player.Stats[Stat.crit].Value;
+    var playerCrit = player.Stats[Stat.crit].current;
     // TODO: do some other stuff?
 
     return playerCrit;

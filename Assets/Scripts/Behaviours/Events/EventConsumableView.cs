@@ -62,12 +62,12 @@ public class EventConsumableView : EventView {
     foreach (KeyValuePair<string, Stat> p in eq.Stats) {
       var stat = p.Value;
       var pol = "+";
-      if (stat.Value < 0f) {
+      if (stat.current < 0f) {
         pol = "-";
       }
 
       // TODO: Calc diff and show diffs instead of absolute value
-      str += string.Format("{0}{1:0.0} {2} ", pol, stat.Value, stat.Key);
+      str += string.Format("{0}{1:0.0} {2} ", pol, stat.current, stat.Key);
     }
 
     return str;

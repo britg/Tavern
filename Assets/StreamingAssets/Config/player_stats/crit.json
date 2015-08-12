@@ -1,5 +1,7 @@
 {
   "type": "PlayerStat",
   "stat_key": "crit",
-  "value": 5 
+  "current": 5,
+  "min": 0,
+  "max": 100
 }

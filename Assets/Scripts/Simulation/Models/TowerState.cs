@@ -23,4 +23,14 @@ public class TowerState {
   public Mob currentMob;
   public string lastBattleMove;
 
+  FloorTemplate _currentFloor;
+  public FloorTemplate CurrentFloor {
+    get {
+      if (_currentFloor == null) {
+        _currentFloor = FloorTemplate.GetFloor(floorNum);
+      }
+      return _currentFloor;
+    }
+  }
+
 }

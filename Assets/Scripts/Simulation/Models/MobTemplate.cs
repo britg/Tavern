@@ -14,7 +14,7 @@ public class MobTemplate {
   public float lootChance;
   public float goldChance;
 
-  public Dictionary<string, Stat> Stats { get; set; }
+  public Dictionary<string, RangeAttribute> StatRanges { get; set; }
   public Hashtable combatProfile = new Hashtable();
 
   public static Dictionary<string, MobTemplate> all = new Dictionary<string, MobTemplate>();
@@ -37,7 +37,7 @@ public class MobTemplate {
     lootChance = json["loot_chance"].AsFloat;
     goldChance = json["gold_chance"].AsFloat;
 
-    Stats = new Dictionary<string, Stat>();
+    StatRanges = new Dictionary<string, RangeAttribute>();
     var stats = json["stats"].AsArray;
 
     // Loading stats
@@ -45,10 +45,7 @@ public class MobTemplate {
       var key = statJson["key"].Value;
       var range = statJson["range"].AsArray;
 
-      Debug.Log("Loading mob stat " + key);
-
-      var stat = new Stat(key, range[0].AsFloat, range[1].AsFloat);
-      Stats[key] = stat;
+      StatRanges[key] = new RangeAttribute(range[0].AsFloat, range[1].AsFloat);
     }
 
     // Loading combat profile

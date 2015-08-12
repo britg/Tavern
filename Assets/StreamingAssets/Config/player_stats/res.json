@@ -1,5 +1,7 @@
 {
   "type": "PlayerStat",
   "stat_key": "res",
-  "value":  0
+  "current":  0,
+  "min": 0,
+  "max": 100
 }

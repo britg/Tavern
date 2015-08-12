@@ -1,5 +1,7 @@
 {
 	"type": "PlayerStat",
 	"stat_key": "ap",
-	"value": 100
+	"current": 100,
+	"min": 0,
+	"max": 100
 }

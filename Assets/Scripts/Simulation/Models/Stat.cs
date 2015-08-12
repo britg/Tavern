@@ -31,11 +31,17 @@ public class Stat {
   public string Key { get; set; }
 
   public StatType Type { get; set; }
-  public float Min { get; set; }
-  public float Max { get; set; }
-  public float Base { get; set; }
-  public float CurrentChange { get; set; }
-  public float Value { get; set; }
+
+  // Need to refactor to min/max/current!
+  public float min;
+  public float max;
+  public float current;
+
+  //public float Min { get; set; }
+  //public float Max { get; set; }
+  //public float Base { get; set; }
+  //public float CurrentChange { get; set; }
+  //public float Value { get; set; }
 
   public string Abbr {
     get {
@@ -48,37 +54,25 @@ public class Stat {
     Type = StatType.all[statKey];
   }
 
-  public Stat (string statKey, float min, float max) {
+  public Stat (string statKey, float _min, float _max, float _current) {
     Key = statKey;
     Type = StatType.all[statKey];
-    Min = min;
-    Max = max;
+    min = _min;
+    max = _max;
+    current = _current;
   }
 
   public Stat (string statKey, float value) {
     Key = statKey;
     Type = StatType.all[statKey];
-    ChangeBase(value);
+    current = value;
+    min = 0;
+    max = current;
   }
 
-  public void RollBase () {
-    Base = Random.Range(Min, Max);
-    RecalcValue();
-//    Debug.Log ("Rolling base " + Type + " " + Min + " " + Max + " " + Base);
-  }
-
-  public void ChangeBase (float change) {
-    Base += change;
-    RecalcValue();
-  }
-
-  public void Change (float change) {
-    CurrentChange += change;
-    RecalcValue();
-  }
-
-  void RecalcValue () {
-    Value = Base + CurrentChange;
+  public float Change (float amount) {
+    current = Mathf.Clamp(current + amount, min, max);
+    return current;
   }
 
 }

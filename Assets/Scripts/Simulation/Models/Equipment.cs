@@ -28,7 +28,7 @@ public class Equipment {
     }
 
     var stat = Stats[key];
-    return stat.Value;
+    return stat.current;
   }
 
 }

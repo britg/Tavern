@@ -24,11 +24,10 @@ public class Mob {
     mob.goldChance = template.goldChance;
 
     mob.Stats = new Dictionary<string, Stat>();
-    foreach (KeyValuePair<string, Stat> pair in template.Stats) {
+    foreach (KeyValuePair<string, RangeAttribute> pair in template.StatRanges) {
       var statKey = pair.Key;
-      var templateStat = pair.Value;
-      templateStat.RollBase();
-      mob.Stats[statKey] = new Stat(statKey, templateStat.Value);
+      var range = pair.Value;
+      mob.Stats[statKey] = new Stat(statKey, Random.Range(range.min, range.max));
     }
     mob.combatProfile = template.combatProfile;
 
@@ -48,13 +47,12 @@ public class Mob {
 
   public float GetStatValue (string key) {
     var stat = GetStat(key);
-    return stat.Value;
+    return stat.current;
   }
 
   public void ChangeStat (string key, float amount) {
     var s = GetStat(key);
     s.Change(amount);
-    Stats[key] = s;
   }
 
 }

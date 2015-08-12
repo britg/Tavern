@@ -75,7 +75,7 @@ public class BattleProcessor {
 
   bool PlayerAlive () {
     var hp = sim.player.GetStat(Stat.hp);
-    return hp.Value > 0f;
+    return hp.current > 0f;
   }
 
   bool MobAlive () {
@@ -140,8 +140,10 @@ public class BattleProcessor {
     var newEvents = new List<PlayerEvent>();
 
     if (Roll.Percent(currentMob.consumableChance)) {
-
-      var consumable = new Consumable();
+      var floor = sim.player.tower.CurrentFloor;
+      var consumableKey = Roll.Hash(floor.consumableChances);
+      var consumableType = ConsumableType.all[consumableKey];
+      var consumable = consumableType.Consumable();
       var ev = PlayerEvent.Consumable(consumable);
 
         // Trigger based health potion

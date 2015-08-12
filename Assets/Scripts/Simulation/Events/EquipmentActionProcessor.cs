@@ -60,7 +60,7 @@ public class EquipmentActionProcessor {
     foreach (KeyValuePair<string, Stat> pair in prev.Stats) {
       var stat = pair.Value;
       var playerStat = sim.player.GetStat(stat.Key);
-      playerStat.Change(-stat.Value);
+      playerStat.Change(-stat.current);
     }
   }
 
@@ -68,7 +68,7 @@ public class EquipmentActionProcessor {
     foreach (KeyValuePair<string, Stat> pair in eq.Stats) {
       var stat = pair.Value;
       var playerStat = sim.player.GetStat(stat.Key);
-      playerStat.Change(stat.Value);
+      playerStat.Change(stat.current);
     }
   }
 }

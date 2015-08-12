@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ConsumableActionProcessor {
 
@@ -29,6 +30,11 @@ public class ConsumableActionProcessor {
     // Only action right now is to drink
     Debug.Log("Drinking potion");
 
+    foreach (KeyValuePair<string, float> statEffect in consumable.statEffects) {
+      sim.player.ChangeStat(statEffect.Key, statEffect.Value);
+    }
+
+    NotificationCenter.PostNotification(Constants.OnUpdateStats);
 
   }
 }

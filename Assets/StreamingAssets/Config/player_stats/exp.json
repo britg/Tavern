@@ -1,6 +1,7 @@
 {
-	"type": "PlayerStat",
-	"stat_key": "exp",
-	"value": 0,
+  "type": "PlayerStat",
+  "stat_key": "exp",
+  "current": 0,
+  "min": 0,
   "max": 100
 }

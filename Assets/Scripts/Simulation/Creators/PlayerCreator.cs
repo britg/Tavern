@@ -43,12 +43,12 @@ public class PlayerCreator {
     List<JSONNode> statsToLoad = sim.config.jsonCache[PlayerStatType];
     foreach (JSONNode playerStat in statsToLoad) {
       var statKey = playerStat["stat_key"].Value;
-      var value = playerStat["value"].AsFloat;
-      var stat = new Stat(statKey, value);
+
+      var current = playerStat["current"].AsFloat;
+      var min = playerStat["min"].AsFloat;
       var max = playerStat["max"].AsFloat;
-      if (max > 0) {
-        stat.Max = max;
-      }
+
+      var stat = new Stat(statKey, min, max, current);
       player.Stats[statKey] = stat;
     }
   }

@@ -19,7 +19,7 @@ public class TowerProcessor {
 
   public TowerProcessor (Simulation _sim) {
     sim = _sim;
-    floor = FloorTemplate.GetFloor(state.floorNum);
+    floor = sim.player.tower.CurrentFloor;
   }
 
   public List<PlayerEvent> Continue () {

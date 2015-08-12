@@ -38,4 +38,20 @@ public class ConsumableType {
     }
 
   }
+
+  public Consumable Consumable () {
+    var consumable = new Consumable();
+    consumable.key = Key;
+    consumable.name = Name;
+
+    consumable.statEffects = new Dictionary<string, float>();
+    foreach (KeyValuePair<string, RangeAttribute> statEffect in statEffects) {
+      var statKey = statEffect.Key;
+      var range = statEffect.Value;
+
+      consumable.statEffects[statKey] = Random.Range(range.min, range.max);
+    }
+
+    return consumable;
+  }
 }

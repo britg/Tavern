@@ -52,7 +52,7 @@ public class Player {
 
   public float GetStatValue (string key) {
     var stat = GetStat(key);
-    return stat.Value;
+    return stat.current;
   }
 
   public void ChangeStat (string key, float amount) {

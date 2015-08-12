@@ -1,5 +1,7 @@
 {
   "type": "PlayerStat",
   "stat_key": "luck",
-  "value": 0
+  "current": 0,
+  "min": 0,
+  "max": 1000
 }
