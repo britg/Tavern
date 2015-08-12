@@ -140,17 +140,12 @@ public class BattleProcessor {
     var newEvents = new List<PlayerEvent>();
 
     if (Roll.Percent(currentMob.consumableChance)) {
+      //if (true) {
       var floor = sim.player.tower.CurrentFloor;
       var consumableKey = Roll.Hash(floor.consumableChances);
       var consumableType = ConsumableType.all[consumableKey];
       var consumable = consumableType.Consumable();
       var ev = PlayerEvent.Consumable(consumable);
-
-        // Trigger based health potion
-//      var trigger = new Trigger(Trigger.Type.PlayerStatChange);
-//      trigger.data[Trigger.statKey] = Stat.hp;
-//      trigger.data[Trigger.statChangeAmountKey] = Random.Range(5f, 15f);
-//      ev.Triggers.Add(trigger);
 
       newEvents.Add(ev);
     }

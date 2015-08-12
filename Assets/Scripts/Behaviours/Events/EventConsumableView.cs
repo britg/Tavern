@@ -17,13 +17,13 @@ public class EventConsumableView : EventView {
   public Text pullLeftLabel;
   public Sprite checkSprite;
 
-  Equipment _eq;
-  public Equipment eq {
+  Consumable _con;
+  public Consumable con {
     get {
-      if (_eq == null) {
-        _eq = (Equipment)playerEvent.data[PlayerEvent.equipmentKey];
+      if (_con == null) {
+        _con = (Consumable)playerEvent.data[PlayerEvent.consumableKey];
       }
-      return _eq;
+      return _con;
     }
   }
 
@@ -36,65 +36,31 @@ public class EventConsumableView : EventView {
     originalPullLeftSprite = pullLeftIcon.sprite;
     originalPullRightSprite = pullRightIcon.sprite;
 
-    UpdateEquipment();
+    UpdateConsumable();
     NotificationCenter.AddObserver(this, Constants.OnUpdateEvents);
 
   }
 
   void OnUpdateEvents (Notification n) {
-    UpdateEquipment();
+    UpdateConsumable();
     UpdateActions();
   }
 
-  public void UpdateEquipment () {
-    if (eq == null) {
+  public void UpdateConsumable () {
+    if (playerEvent.chosenKey != null) {
       title.color = Color.gray;
-    } else {
-      var str = string.Format("[{0}]", playerEvent.Content);
-      title.text = str;
-      title.color = eq.Rarity.Color;
-      description.text = StatsString();
-    }
-  }
-
-  string StatsString () {
-    string str = "";
-    foreach (KeyValuePair<string, Stat> p in eq.Stats) {
-      var stat = p.Value;
-      var pol = "+";
-      if (stat.current < 0f) {
-        pol = "-";
-      }
-
-      // TODO: Calc diff and show diffs instead of absolute value
-      str += string.Format("{0}{1:0.0} {2} ", pol, stat.current, stat.Key);
     }
 
-    return str;
+    var str = string.Format("[{0}]", playerEvent.Content);
+    title.text = str;
   }
 
   void UpdateActions () {
     if (playerEvent.chosenKey != null) {
-
-      // Pulled left
-      if (rightActionView.actionName == playerEvent.chosenKey) {
-        pullLeftIcon.sprite = checkSprite;
-        pullLeftLabel.text = "Equipped";
-        pullRightIcon.sprite = null;
-        pullRightLabel.text = "";
-      }
-
-      // pulled right
-      else {
-        pullRightIcon.sprite = checkSprite;
-        pullRightLabel.text = "Picked Up";
-        pullLeftIcon.sprite = null;
-        pullLeftLabel.text = "";
-      }
-
       enableLeftAction = false;
       enableRightAction = false;
-
+      pullLeftLabel.text = "";
+      pullLeftIcon.sprite = null;
     }
   }
 
