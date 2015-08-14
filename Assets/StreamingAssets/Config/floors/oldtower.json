@@ -1,12 +1,12 @@
 {
 	"type": "FloorTemplate",
 	"name": "The Old Tower",
-	"floors": [1, 10],
 	"atmosphere": [
 		"Large stone walls surround you. Torches, lit by some magical incantation, flicker slowly and cast ominous shadows.",
 		"Stone walls enclose a dimly lit set of corridoors and rooms. Ancient containers and vases are strewn about, and the dried skeletons of long-dead adventurers lay against the walls.",
 		"Dimly lit, torn and dilapidated tapestries line stone walls. What little light there is flickers around you."
 	],
+
 	"mobs": [
 		{
 			"key": "rat",
@@ -21,16 +21,29 @@
 			"chance": 20
 		}
 	],
+
 	"consumables": [
 		{
 			"key": "minor_health_potion",
 			"chance": 100
 		}
 	],
+
 	"interactibles": [
 		{
 			"key": "skeletal_remains",
 			"chance": 100
+		}
+	],
+
+	"floors": [
+		{
+			"number": 1,
+			"flow": [
+				{
+					
+				}
+			]
 		}
 	]
 }
