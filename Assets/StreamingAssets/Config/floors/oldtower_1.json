@@ -1,0 +1,17 @@
+{
+  "type": "Floor",
+  "number": 1,
+
+  "manifest": [
+    {
+      "type": "story",
+      "conditions": [],
+      "messages": [
+        "The massive tower doors slam behind you. You get the feeling you couldn't open the again if you tried.",
+        "A corridor stretches ahead dimly lit by unnatural flickering light.",
+        "You venture forth..."
+      ]
+    }
+  ]
+
+}
