@@ -9,7 +9,7 @@ public class TowerProcessor {
   const string _room = "room";
 
   Simulation sim;
-  FloorTemplate floor;
+  Floor floor;
 
   TowerState state {
     get {
@@ -28,7 +28,7 @@ public class TowerProcessor {
     // Just entered tower this session
     if (!state.hasEnteredTower) {
       state.hasEnteredTower = true;
-      newEvents.AddRange(EntranceEvents());
+      //newEvents.AddRange(EntranceEvents());
     }
 
     if (state.currentMob != null) {
@@ -52,8 +52,8 @@ public class TowerProcessor {
 
   List<PlayerEvent> EntranceEvents () {
     var newEvents = new List<PlayerEvent>();
-//    newEvents.Add(TowerEntranceEvent());
-//    newEvents.Add(AtmosphereEvent());
+    newEvents.Add(TowerEntranceEvent());
+    newEvents.Add(AtmosphereEvent());
     return newEvents;
   }
 

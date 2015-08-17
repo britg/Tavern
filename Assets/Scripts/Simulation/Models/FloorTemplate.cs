@@ -8,19 +8,18 @@ public class FloorTemplate {
   public const string type = "FloorTemplate";
 
   public string name;
-  public int minFloor;
-  public int maxFloor;
+  public string key;
   public List<string> atmosphereText;
   public Dictionary<string, float> mobChances;
   public Dictionary<string, float> consumableChances;
   public Dictionary<string, float> interactibleChances;
 
-  public static Dictionary<int, FloorTemplate> all = new Dictionary<int, FloorTemplate>();
+  public static Dictionary<string, FloorTemplate> all = new Dictionary<string, FloorTemplate>();
 
   public static void Cache (JSONNode json) {
-    var floor = new FloorTemplate(json);
-    all[floor.minFloor] = floor;
-    Debug.Log("Loaded floor " + floor.minFloor + " - " + floor.maxFloor);
+    var floorTemplate = new FloorTemplate(json);
+    all[floorTemplate.key] = floorTemplate;
+    Debug.Log("Loaded floor template " + floorTemplate.name);
   }
 
   public FloorTemplate () {
@@ -30,10 +29,9 @@ public class FloorTemplate {
   public FloorTemplate (JSONNode json) {
 
     name = json["name"].Value;
+    key = json["key"].Value;
 
     var floors = json["floors"].AsArray;
-    minFloor = floors[0].AsInt;
-    maxFloor = floors[1].AsInt;
     atmosphereText = new List<string>();
 
     var atmArr = json["atmosphere"].AsArray;
@@ -60,17 +58,6 @@ public class FloorTemplate {
       var chance = node["chance"].AsFloat;
       dict[key] = chance;
     }
-  }
-
-  public static FloorTemplate GetFloor (int floorNum) {
-    foreach (KeyValuePair<int, FloorTemplate> pair in all) {
-      var floor = pair.Value;
-      if (floor.minFloor <= floorNum && floor.maxFloor >= floorNum) {
-        return floor;
-      }
-    }
-
-    return null;
   }
 
   public string RandomAtmosphereText () {

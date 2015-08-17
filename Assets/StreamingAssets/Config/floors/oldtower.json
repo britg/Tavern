@@ -1,6 +1,7 @@
 {
 	"type": "FloorTemplate",
 	"name": "The Old Tower",
+	"key": "old_tower",
 
 	"atmosphere": [
 		"Large stone walls surround you. Torches, lit by some magical incantation, flicker slowly and cast ominous shadows.",

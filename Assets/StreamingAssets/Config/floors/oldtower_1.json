@@ -1,6 +1,7 @@
 {
   "type": "Floor",
   "number": 1,
+  "template": "old_tower",
 
   "manifest": [
     {
