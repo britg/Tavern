@@ -3,10 +3,12 @@ using System.Collections;
 
 public class Choice {
 
-  public static string Tower = "tower";
-  public static string Shop = "shop";
-  public static string Potion = "potion";
-  public static string Continue = "continue";
+  public const string Tower = "tower";
+  public const string Shop = "shop";
+  public const string Potion = "potion";
+  public const string Continue = "continue";
+  public const string OpenDoor = "open_door";
+  public const string LeaveDoor = "leave_door";
 
   public enum Direction {
     Left,

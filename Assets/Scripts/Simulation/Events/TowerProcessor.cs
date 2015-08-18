@@ -9,50 +9,21 @@ public class TowerProcessor {
 
   TowerState state {
     get {
-      return sim.player.tower;
+      return sim.player.towerState;
     }
   }
 
   public TowerProcessor (Simulation _sim) {
     sim = _sim;
-    floor = sim.player.tower.CurrentFloor;
+    floor = sim.player.towerState.floor;
   }
 
   public List<PlayerEvent> Continue () {
     var newEvents = new List<PlayerEvent>();
 
-    if (state.currentMob != null) {
-      var battleProcessor = new BattleProcessor(sim);
-      newEvents.AddRange(battleProcessor.Continue());
-    }
-
-    if (state.currentInteractible != null) {
-      var interactionProcessor = new InteractionProcessor(sim);
-      newEvents.AddRange(interactionProcessor.Continue());
-    }
-
-    // if our events don't end with a choice
-    if (newEvents.Count < 1 || !newEvents[newEvents.Count - 1].hasChoices) {
-      newEvents.AddRange(VentureForth());
-    }
+    newEvents.AddRange(VentureForth());
 
     return newEvents;
-  }
-
-
-  List<PlayerEvent> EntranceEvents () {
-    var newEvents = new List<PlayerEvent>();
-    newEvents.Add(TowerEntranceEvent());
-    newEvents.Add(AtmosphereEvent());
-    return newEvents;
-  }
-
-  PlayerEvent TowerEntranceEvent () {
-    return new PlayerEvent("You step into the tower.");
-  }
-
-  PlayerEvent AtmosphereEvent () {
-    return new PlayerEvent(floor.RandomAtmosphereText());
   }
 
   List<PlayerEvent> VentureForth () {
@@ -60,7 +31,7 @@ public class TowerProcessor {
 
     //newEvents.Add(PlayerEvent.Info ("You venture forth..."));
 
-    string content = Roll.Hash(state.content);
+    string content = Roll.Hash(sim.player.floor.content);
     Debug.Log ("Chose content " + content);
     
     // TODO: Inject atmosphere text randomly
@@ -68,7 +39,7 @@ public class TowerProcessor {
     if (content == Constants.mobContentKey) {
       var battleProcessor = new BattleProcessor(sim);
       var mob = floor.RandomMob();
-//      newEvents.AddRange(EncounterMob(mob));
+      newEvents.AddRange(EncounterMob(mob));
       newEvents.AddRange(battleProcessor.StartBattle(mob));
     }
     
@@ -79,10 +50,26 @@ public class TowerProcessor {
     }
 
     if (content == Constants.roomContentKey) {
-      newEvents.Add(PlayerEvent.Info("[Room choice]");
+      var roomProcessor = new RoomProcessor(sim);
+      newEvents.AddRange(roomProcessor.DoorChoice());
     }
 
     return newEvents;
+  }
+
+  List<PlayerEvent> EntranceEvents () {
+    var newEvents = new List<PlayerEvent>();
+    newEvents.Add(TowerEntranceEvent());
+    newEvents.Add(AtmosphereEvent());
+    return newEvents;
+  }
+  
+  PlayerEvent TowerEntranceEvent () {
+    return new PlayerEvent("You step into the tower.");
+  }
+  
+  PlayerEvent AtmosphereEvent () {
+    return new PlayerEvent(floor.RandomAtmosphereText());
   }
 
   List<PlayerEvent> EncounterMob (Mob mob) {
@@ -91,7 +78,7 @@ public class TowerProcessor {
     }
 
     sim.player.encounteredMobs.Add(mob.template.Key);
-    return new List<PlayerEvent>(){ PlayerEvent.Info("New enemy discovered! " + mob.name) };
+    return new List<PlayerEvent>(){ PlayerEvent.Story("[New enemy discovered] " + mob.name) };
   }
 
 }

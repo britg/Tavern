@@ -14,10 +14,10 @@ public class InputProcessor {
 
   public bool canContinue {
     get {
-      if (player.lastEvent == null) {
+      if (player.currentEvent == null) {
         return true;
       }
-      return player.lastEvent.conditionsSatisfied;
+      return player.currentEvent.conditionsSatisfied;
     }
   }
 
@@ -29,7 +29,7 @@ public class InputProcessor {
 
     List<PlayerEvent> newEvents = new List<PlayerEvent>();
 
-    if (player.lastEvent == null) {
+    if (player.currentEvent == null) {
       NotificationCenter.PostNotification(Constants.OnFirstPull);
       //EnterTower();
       //return IntroSequence();
@@ -37,28 +37,33 @@ public class InputProcessor {
 //      return Dev_RandomLoot();
     }
 
-    //if (player.lastEvent.chosenKey == Choice.Tower) {
-    //  newEvents.AddRange(EnterTower());
-    //}
+    if (player.currentChoice == Choice.OpenDoor) {
+      var roomProcessor = new RoomProcessor(sim);
+      newEvents.AddRange(roomProcessor.OpenDoor());
+    }
 
-    //if (player.lastEvent.chosenKey == Choice.Shop) {
-    //  newEvents.AddRange(EnterShop());
-    //} 
+    if (player.currentRoom != null) {
+      var roomProcessor = new RoomProcessor(sim);
+      newEvents.AddRange(roomProcessor.Continue());
+    }
 
-    //if (sim.player.location == Player.Location.Shop) {
-    //  var shopProcessor = new ShopProcessor(sim);
-    //  newEvents.AddRange(shopProcessor.Continue());
-    //  // DEV
-    //  newEvents.Add(Consider());
-    //}
+    if (player.currentMob != null) {
+      var battleProcessor = new BattleProcessor(sim);
+      newEvents.AddRange(battleProcessor.Continue());
+    }
+    
+    if (player.currentInteractible != null) {
+      var interactionProcessor = new InteractionProcessor(sim);
+      newEvents.AddRange(interactionProcessor.Continue());
+    }
 
-    if (sim.player.location == Player.Location.Tower) {
+    if (!player.currentlyOccupied) {
       var towerProcessor = new TowerProcessor(sim);
       newEvents.AddRange(towerProcessor.Continue());
     }
 
     if (newEvents.Count > 0) {
-      player.lastEvent = newEvents[newEvents.Count - 1];
+      player.currentEvent = newEvents[newEvents.Count - 1];
     }
 
     return newEvents;
@@ -95,6 +100,7 @@ public class InputProcessor {
     // TODO: Refactor into a choice processor when necessary
     ev.chosenKey = choiceKey;
     ev.conditionsSatisfied = true;
+    player.currentChoice = choiceKey;
 
     NotificationCenter.PostNotification(Constants.OnUpdateEvents);
   }
@@ -117,7 +123,7 @@ public class InputProcessor {
     //list.AddRange(Dev_RandomLoot());
 //    list.Add(Consider());
 
-    player.lastEvent = list[list.Count - 1];
+    player.currentEvent = list[list.Count - 1];
 
     return list;
   }
@@ -143,7 +149,7 @@ public class InputProcessor {
   List<PlayerEvent> Dev_StraightToTower () {
     var ev = PlayerEvent.Info("[DEV] entering tower...");
     ev.chosenKey = "tower";
-    player.lastEvent = ev;
+    player.currentEvent = ev;
     return new List<PlayerEvent>(){ ev };
   }
 

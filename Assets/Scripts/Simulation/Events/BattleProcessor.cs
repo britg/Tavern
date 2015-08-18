@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,7 +10,7 @@ public class BattleProcessor {
 
   Mob currentMob {
     get {
-      return sim.player.tower.currentMob;
+      return sim.player.currentMob;
     }
   }
 
@@ -21,8 +21,8 @@ public class BattleProcessor {
   public List<PlayerEvent> StartBattle (Mob mob) {
     var newEvents = new List<PlayerEvent>();
 
-    sim.player.tower.currentMob = mob;
-    sim.player.tower.lastBattleMove = null;
+    sim.player.currentMob = mob;
+    sim.player.towerState.lastBattleMove = null;
     sim.player.currentInitiative = 0f;
     mob.currentInitiative = 0f;
 
@@ -101,7 +101,7 @@ public class BattleProcessor {
 
 //    newEvents.AddRange(AfterBattleChoices());
 
-    sim.player.tower.currentMob = null;
+    sim.player.currentMob = null;
     return newEvents;
   }
 
@@ -141,7 +141,7 @@ public class BattleProcessor {
 
     if (Roll.Percent(currentMob.consumableChance)) {
       //if (true) {
-      var floor = sim.player.tower.CurrentFloor;
+      var floor = sim.player.towerState.floor;
       var consumableKey = Roll.Hash(floor.consumableChances);
       var consumableType = ConsumableType.all[consumableKey];
       var consumable = consumableType.Consumable();

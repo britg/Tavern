@@ -9,6 +9,8 @@
 		"Dimly lit, torn and dilapidated tapestries line stone walls. What little light there is flickers around you."
 	],
 
+	"room_count": [5, 10],
+
 	"content": [
 		{
 			"key": "mob",
@@ -20,7 +22,7 @@
 		},
 		{
 			"key": "room",
-			"chance": 25
+			"chance":10000
 		}
 	],
 
@@ -49,6 +51,13 @@
 	"interactibles": [
 		{
 			"key": "skeletal_remains",
+			"chance": 100
+		}
+	],
+
+	"rooms": [
+		{
+			"key": "standard",
 			"chance": 100
 		}
 	]

@@ -24,10 +24,8 @@ public class RoomTemplate {
   }
 
   public RoomTemplate (JSONNode json) {
-
     key = json["key"].Value;
     CascadeContent(json["content"].AsArray);
-
   }
 
   void CascadeContent (JSONArray contentJson) {
@@ -39,6 +37,5 @@ public class RoomTemplate {
       content[key] = chance;
     }
   }
-
 
 }

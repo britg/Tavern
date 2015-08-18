@@ -10,12 +10,5 @@
   ],
 
   "content": [
-  ],
-
-  "rooms": [
-    {
-      "key": "one",
-      "type": "random"
-    }
   ]
 }

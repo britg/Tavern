@@ -9,11 +9,16 @@ public class Room {
   }
 
   public string key;
+  public Type type;
   public RoomTemplate roomTemplate;
   public Dictionary<string, float> content;
 
   public Room () {
 
+  }
+
+  public Room (Type _type) {
+    type = _type;
   }
 
 

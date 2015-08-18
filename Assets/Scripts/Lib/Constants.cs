@@ -24,6 +24,8 @@ public class Constants {
   public const string c_Pickup = "pickup";
   public const string c_Shop = "shop";
   public const string c_Tower = "tower";
+  public const string c_OpenDoor = "open_door";
+  public const string c_LeaveDoor = "leave_door";
 
   // Content
   public const string mobContentKey = "mob";

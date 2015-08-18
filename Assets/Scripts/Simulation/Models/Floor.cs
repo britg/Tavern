@@ -55,17 +55,25 @@ public class Floor {
     return string.Format("{0} {1} Floor", floorTemplate.name, NumberUtilities.AddOrdinal(num));
   }
 
+  // TODO: Refactor to cascade mob chances locally
   public Mob RandomMob () {
     return floorTemplate.RandomMob();
   }
 
+  // TODO: Refactor to cascade atmosphere locally
   public string RandomAtmosphereText () {
     return floorTemplate.RandomAtmosphereText();
   }
 
+  // TODO: Refactor to cascade interactible chances locally
   public Interactible RandomInteractible () {
     return floorTemplate.RandomInteractible();
   }
 
-  
+  public Room RandomRoom () {
+    var roomTemplateKey = Roll.Hash(floorTemplate.roomTemplateChances);
+    var roomGenerator = new RoomGenerator(roomTemplateKey, this);
+    return roomGenerator.CreateRoom();
+  }
+
 }

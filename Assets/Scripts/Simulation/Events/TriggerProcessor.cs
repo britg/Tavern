@@ -29,7 +29,7 @@ public class TriggerProcessor {
   void ChangeFloor () {
     //TODO: update player's floor and all associatd
     //stuff
-    sim.player.tower.floorNum += 1;
+//    sim.player.tower.floorNum += 1;
   }
 
   void ChangePlayerStat () {

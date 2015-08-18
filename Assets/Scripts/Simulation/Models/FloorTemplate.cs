@@ -9,8 +9,10 @@ public class FloorTemplate {
 
   public string name;
   public string key;
+  public RangeAttribute roomCountRange;
   public List<string> atmosphereText;
   public Dictionary<string, float> content;
+  public Dictionary<string, float> roomTemplateChances;
   public Dictionary<string, float> mobChances;
   public Dictionary<string, float> consumableChances;
   public Dictionary<string, float> interactibleChances;
@@ -39,9 +41,16 @@ public class FloorTemplate {
       atmosphereText.Add(atmNode.Value);
     }
 
+    var roomCountArr = json["room_count"].AsArray;
+    roomCountRange = new RangeAttribute(roomCountArr[0].AsInt, roomCountArr[1].AsInt);
+
     var contentArr = json["content"].AsArray;
     content = new Dictionary<string, float>();
     ExtractChances(contentArr, ref content);
+
+    var roomArr = json["rooms"].AsArray;
+    roomTemplateChances = new Dictionary<string, float>();
+    ExtractChances(roomArr, ref roomTemplateChances);
 
     var mobArr = json["mobs"].AsArray;
     mobChances = new Dictionary<string, float>();
@@ -81,9 +90,12 @@ public class FloorTemplate {
     var interactible = new Interactible();
     interactible.name = "skeletal remains";
     return interactible;
+
+    /*  This should be refactored to InteractibleTemplate
+
+    var interactibleKey = Roll.Hash(interactibleChances);
+    Interactible interactible = 
+    */
   }
-
-
-
 
 }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class InitiativeProcessor {
@@ -28,20 +28,20 @@ public class InitiativeProcessor {
 
     float mobSpd = mob.GetStatValue(Stat.spd);
 
-    string lastMove = player.tower.lastBattleMove;
+    string lastMove = player.towerState.lastBattleMove;
     player.currentInitiative += playerSpd;
     mob.currentInitiative += mobSpd;
 
     if (lastMove == null || lastMove == mobIdent) {
       if (player.currentInitiative >= requiredInitiative) {
         player.currentInitiative = (player.currentInitiative - requiredInitiative);
-        player.tower.lastBattleMove = playerIdent;
+        player.towerState.lastBattleMove = playerIdent;
         return playerIdent;
       }
     } else {
       if (mob.currentInitiative >= requiredInitiative) {
         mob.currentInitiative = (mob.currentInitiative - requiredInitiative);
-        player.tower.lastBattleMove = mobIdent;
+        player.towerState.lastBattleMove = mobIdent;
         return mobIdent;
       }
     }

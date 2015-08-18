@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,13 +12,13 @@ public class InteractionProcessor {
 
   public List<PlayerEvent> StartInteraction (Interactible interactible) {
     var newEvents = new List<PlayerEvent>();
-    sim.player.tower.currentInteractible = interactible;
+    sim.player.currentInteractible = interactible;
 
     newEvents.Add (PlayerEvent.Info ("[DEV] You find " + interactible.name + " and must make a choice about it."));
 
     // DEV
     newEvents.Add (PlayerEvent.Info ("[DEV] ending interaction...."));
-    sim.player.tower.currentInteractible = null;
+    sim.player.currentInteractible = null;
 
     return newEvents;
   }
