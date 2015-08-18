@@ -4,10 +4,6 @@ using System.Collections.Generic;
 
 public class TowerProcessor {
 
-  const string _mob = "mob";
-  const string _interactible = "interactible";
-  const string _room = "room";
-
   Simulation sim;
   Floor floor;
 
@@ -24,12 +20,6 @@ public class TowerProcessor {
 
   public List<PlayerEvent> Continue () {
     var newEvents = new List<PlayerEvent>();
-
-    // Just entered tower this session
-    if (!state.hasEnteredTower) {
-      state.hasEnteredTower = true;
-      //newEvents.AddRange(EntranceEvents());
-    }
 
     if (state.currentMob != null) {
       var battleProcessor = new BattleProcessor(sim);
@@ -70,38 +60,29 @@ public class TowerProcessor {
 
     //newEvents.Add(PlayerEvent.Info ("You venture forth..."));
 
-    string happening = Roll.Hash(state.content);
-    Debug.Log ("Chose happening " + happening);
+    string content = Roll.Hash(state.content);
+    Debug.Log ("Chose content " + content);
     
     // TODO: Inject atmosphere text randomly
     
-    if (happening == _mob) {
+    if (content == Constants.mobContentKey) {
       var battleProcessor = new BattleProcessor(sim);
       var mob = floor.RandomMob();
 //      newEvents.AddRange(EncounterMob(mob));
       newEvents.AddRange(battleProcessor.StartBattle(mob));
     }
     
-    if (happening == _interactible) {
+    if (content == Constants.interactibleContentKey) {
       var interactionProcessor = new InteractionProcessor(sim);
       var interactible = floor.RandomInteractible(); 
       newEvents.AddRange(interactionProcessor.StartInteraction(interactible));
     }
 
+    if (content == Constants.roomContentKey) {
+      newEvents.Add(PlayerEvent.Info("[Room choice]");
+    }
+
     return newEvents;
-  }
-
-  public string GetHappening () {
-
-    var proportions = iTween.Hash(
-      _mob, 100
-      /*
-      _interactible, 25,
-      _room, 25
-      */
-    );
-
-    return Roll.Hash(proportions);
   }
 
   List<PlayerEvent> EncounterMob (Mob mob) {
@@ -112,18 +93,5 @@ public class TowerProcessor {
     sim.player.encounteredMobs.Add(mob.template.Key);
     return new List<PlayerEvent>(){ PlayerEvent.Info("New enemy discovered! " + mob.name) };
   }
-
-  /* Event Flow
-
-    - Tower entrance message.
-    - Hallway message
-    - Hallway battles
-    - Room message
-      - optional closed door prompt
-      - locked rooms
-    - once cleared enough rooms find stairs up
-
-
-  */
 
 }

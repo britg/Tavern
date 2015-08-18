@@ -6,6 +6,7 @@
   "consumable_chance": 50,
   "loot_chance": 20,
   "gold_chance": 20,
+
   "stats": [
     {
       "key": "hp",

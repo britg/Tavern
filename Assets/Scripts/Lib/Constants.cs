@@ -25,5 +25,9 @@ public class Constants {
   public const string c_Shop = "shop";
   public const string c_Tower = "tower";
 
+  // Content
+  public const string mobContentKey = "mob";
+  public const string interactibleContentKey = "interactible";
+  public const string roomContentKey = "room";
 
 }

@@ -6,6 +6,7 @@ public class Mob {
 
   public MobTemplate template;
   public string name;
+  public int level;
 
   public Dictionary<string, Stat> Stats { get; set; }
   public Hashtable combatProfile;
@@ -18,6 +19,7 @@ public class Mob {
     var mob = new Mob();
 
     mob.template = template;
+    mob.level = template.level;
     mob.name = template.name;
     mob.consumableChance = template.consumableChance;
     mob.lootChance = template.lootChance;

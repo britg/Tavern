@@ -32,7 +32,6 @@ public class FloorTemplate {
     name = json["name"].Value;
     key = json["key"].Value;
 
-    var floors = json["floors"].AsArray;
     atmosphereText = new List<string>();
 
     var atmArr = json["atmosphere"].AsArray;

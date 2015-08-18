@@ -31,7 +31,7 @@ public class Player {
     Slots = new Dictionary<string, Slot>();
 
     // TODO: Load this from persistent storage
-    location = Location.Town;
+    location = Location.Tower;
     tower = new TowerState();
     tower.floorNum = 1;
     tower.hasEnteredTower = false;

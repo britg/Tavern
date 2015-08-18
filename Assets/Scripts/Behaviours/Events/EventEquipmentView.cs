@@ -9,8 +9,6 @@ public class EventEquipmentView : EventView {
   public Text title;
   public Text description;
 
-  Sprite originalPullRightSprite;
-  Sprite originalPullLeftSprite;
   public Image pullRightIcon;
   public Text pullRightLabel;
   public Image pullLeftIcon;
@@ -32,9 +30,6 @@ public class EventEquipmentView : EventView {
     if (playerEvent == null) {
       return;
     }
-
-    originalPullLeftSprite = pullLeftIcon.sprite;
-    originalPullRightSprite = pullRightIcon.sprite;
 
     UpdateEquipment();
     NotificationCenter.AddObserver(this, Constants.OnUpdateEvents);

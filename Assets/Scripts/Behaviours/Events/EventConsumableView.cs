@@ -9,8 +9,6 @@ public class EventConsumableView : EventView {
   public Text title;
   public Text description;
 
-  Sprite originalPullRightSprite;
-  Sprite originalPullLeftSprite;
   public Image pullRightIcon;
   public Text pullRightLabel;
   public Image pullLeftIcon;
@@ -32,9 +30,6 @@ public class EventConsumableView : EventView {
     if (playerEvent == null) {
       return;
     }
-
-    originalPullLeftSprite = pullLeftIcon.sprite;
-    originalPullRightSprite = pullRightIcon.sprite;
 
     UpdateConsumable();
     NotificationCenter.AddObserver(this, Constants.OnUpdateEvents);

@@ -31,8 +31,8 @@ public class InputProcessor {
 
     if (player.lastEvent == null) {
       NotificationCenter.PostNotification(Constants.OnFirstPull);
-      EnterTower();
-      return IntroSequence();
+      //EnterTower();
+      //return IntroSequence();
 //      return Dev_StraightToTower();
 //      return Dev_RandomLoot();
     }
