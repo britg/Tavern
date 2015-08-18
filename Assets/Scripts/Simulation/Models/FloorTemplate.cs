@@ -10,6 +10,7 @@ public class FloorTemplate {
   public string name;
   public string key;
   public List<string> atmosphereText;
+  public Dictionary<string, float> content;
   public Dictionary<string, float> mobChances;
   public Dictionary<string, float> consumableChances;
   public Dictionary<string, float> interactibleChances;
@@ -38,6 +39,10 @@ public class FloorTemplate {
     foreach (JSONNode atmNode in atmArr) {
       atmosphereText.Add(atmNode.Value);
     }
+
+    var contentArr = json["content"].AsArray;
+    content = new Dictionary<string, float>();
+    ExtractChances(contentArr, ref content);
 
     var mobArr = json["mobs"].AsArray;
     mobChances = new Dictionary<string, float>();

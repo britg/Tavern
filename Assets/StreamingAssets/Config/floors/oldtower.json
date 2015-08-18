@@ -9,6 +9,21 @@
 		"Dimly lit, torn and dilapidated tapestries line stone walls. What little light there is flickers around you."
 	],
 
+	"content": [
+		{
+			"key": "mob",
+			"chance": 100
+		},
+		{
+			"key": "interactible",
+			"chance": 100
+		},
+		{
+			"key": "room",
+			"chance": 25
+		}
+	],
+
 	"mobs": [
 		{
 			"key": "rat",

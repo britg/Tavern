@@ -3,16 +3,19 @@
   "number": 1,
   "template": "old_tower",
 
-  "manifest": [
+  "atmosphere": [
+    "The massive tower doors slam behind you. You get the feeling you couldn't open the again if you tried.",
+    "A corridor stretches ahead dimly lit by unnatural flickering light.",
+    "You venture forth..."
+  ],
+
+  "content": [
+  ],
+
+  "rooms": [
     {
-      "type": "story",
-      "conditions": [],
-      "messages": [
-        "The massive tower doors slam behind you. You get the feeling you couldn't open the again if you tried.",
-        "A corridor stretches ahead dimly lit by unnatural flickering light.",
-        "You venture forth..."
-      ]
+      "key": "one",
+      "type": "random"
     }
   ]
-
 }

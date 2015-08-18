@@ -11,6 +11,7 @@ public class Floor {
 
   public int num;
   public FloorTemplate floorTemplate;
+  public Dictionary<string, float> content;
 
   public Dictionary<string, float> consumableChances {
     get {
@@ -35,6 +36,18 @@ public class Floor {
   public Floor (JSONNode json) {
     num = json["number"].AsInt;
     floorTemplate = FloorTemplate.all[json["template"].Value];
+
+    CascadeContent(json["content"].AsArray);
+  }
+
+  void CascadeContent (JSONArray contentJson) {
+    // Cascade content from FloorTemplate
+    content = floorTemplate.content;
+    foreach (JSONNode item in contentJson) {
+      var key = item["key"].Value;
+      var chance = item["chance"].AsFloat;
+      content[key] = chance;
+    }
   }
 
 

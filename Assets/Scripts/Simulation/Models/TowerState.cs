@@ -7,16 +7,10 @@ public class TowerState {
   public bool hasEnteredTower; //= false;
 
   public int floorNum; //= 1;
-  public int rooms; //= 10;
-  public int roomsCleared; //= 0;
-  public int currentRoom; //= 0;
+  public List<string> roomsCleared; //= 0;
+  public Room currentRoom; //= 0;
 
-  public int minEnemiesPerRoom; //= 3;
-  public int maxEnemiesPerRoom; //= 6;
-
-  public int minBossesPerRoom; //= 0;
-  public int maxBossesPerRoom; //= 1;
-
+  // Interactible
   public Interactible currentInteractible;
 
   // battle
@@ -30,6 +24,16 @@ public class TowerState {
         _currentFloor = Floor.GetFloor(floorNum);
       }
       return _currentFloor;
+    }
+  }
+
+  public Dictionary<string, float> content {
+    get {
+      if (currentRoom != null) {
+        return currentRoom.content;
+      }
+
+      return CurrentFloor.content;
     }
   }
 

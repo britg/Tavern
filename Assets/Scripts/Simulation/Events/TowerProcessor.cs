@@ -70,16 +70,7 @@ public class TowerProcessor {
 
     //newEvents.Add(PlayerEvent.Info ("You venture forth..."));
 
-    var proportions = iTween.Hash(
-      _mob, 100f
-      /*
-      _interactible, 25,
-      _room, 25
-      */
-    );
-
-    string happening = Roll.Hash(proportions);
-    
+    string happening = Roll.Hash(state.content);
     Debug.Log ("Chose happening " + happening);
     
     // TODO: Inject atmosphere text randomly

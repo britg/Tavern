@@ -37,20 +37,20 @@ public class InputProcessor {
 //      return Dev_RandomLoot();
     }
 
-    if (player.lastEvent.chosenKey == Choice.Tower) {
-      newEvents.AddRange(EnterTower());
-    }
+    //if (player.lastEvent.chosenKey == Choice.Tower) {
+    //  newEvents.AddRange(EnterTower());
+    //}
 
-    if (player.lastEvent.chosenKey == Choice.Shop) {
-      newEvents.AddRange(EnterShop());
-    }
+    //if (player.lastEvent.chosenKey == Choice.Shop) {
+    //  newEvents.AddRange(EnterShop());
+    //} 
 
-    if (sim.player.location == Player.Location.Shop) {
-      var shopProcessor = new ShopProcessor(sim);
-      newEvents.AddRange(shopProcessor.Continue());
-      // DEV
-      newEvents.Add(Consider());
-    }
+    //if (sim.player.location == Player.Location.Shop) {
+    //  var shopProcessor = new ShopProcessor(sim);
+    //  newEvents.AddRange(shopProcessor.Continue());
+    //  // DEV
+    //  newEvents.Add(Consider());
+    //}
 
     if (sim.player.location == Player.Location.Tower) {
       var towerProcessor = new TowerProcessor(sim);
