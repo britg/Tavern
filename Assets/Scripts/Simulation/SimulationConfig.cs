@@ -111,6 +111,7 @@ public class SimulationConfig {
     ConsumableType.type,
     FloorTemplate.type,
     Floor.type,
+    RoomTemplate.type,
     MobTemplate.type,
     SimulationConfig.type
   };
@@ -163,6 +164,9 @@ public class SimulationConfig {
         break;
       case Floor.type:
         Floor.Cache(config);
+        break;
+      case RoomTemplate.type:
+        RoomTemplate.Cache(config);
         break;
       case MobTemplate.type:
         MobTemplate.Cache(config);

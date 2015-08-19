@@ -10,8 +10,7 @@ public class RoomTemplate {
   public static Dictionary<string, RoomTemplate> all = new Dictionary<string, RoomTemplate>();
 
   public string key;
-  public Floor floor;
-  public Dictionary<string, float> content;
+  public Dictionary<string, float> contentOverrides;
 
   public static void Cache (JSONNode json) {
     var roomTemplate = new RoomTemplate(json);
@@ -25,17 +24,25 @@ public class RoomTemplate {
 
   public RoomTemplate (JSONNode json) {
     key = json["key"].Value;
-    CascadeContent(json["content"].AsArray);
+    contentOverrides = new Dictionary<string, float>();
+    var contentJson = json["content"].AsArray;
+    foreach (JSONNode item in contentJson) {
+      var contentType = item["key"].Value;
+      var chance = item["chance"].AsFloat;
+      contentOverrides[contentType] = chance;
+    }
   }
 
-  void CascadeContent (JSONArray contentJson) {
+  public Dictionary<string, float> CascadeContent (Dictionary<string, float> content) {
     // Cascade content from Floor
-    content = floor.content;
-    foreach (JSONNode item in contentJson) {
-      var key = item["key"].Value;
-      var chance = item["chance"].AsFloat;
-      content[key] = chance;
+    var final = content;
+    foreach (KeyValuePair<string, float> ov in contentOverrides) {
+      var key = ov.Key;
+      var chance = ov.Value;
+      final[key] = chance;
     }
+
+    return final;
   }
 
 }

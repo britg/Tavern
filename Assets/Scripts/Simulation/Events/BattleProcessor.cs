@@ -141,7 +141,7 @@ public class BattleProcessor {
 
     if (Roll.Percent(currentMob.consumableChance)) {
       //if (true) {
-      var floor = sim.player.towerState.floor;
+      var floor = sim.player.currentFloor;
       var consumableKey = Roll.Hash(floor.consumableChances);
       var consumableType = ConsumableType.all[consumableKey];
       var consumable = consumableType.Consumable();

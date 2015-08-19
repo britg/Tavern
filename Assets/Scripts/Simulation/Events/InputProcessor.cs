@@ -40,6 +40,7 @@ public class InputProcessor {
     if (player.currentChoice == Choice.OpenDoor) {
       var roomProcessor = new RoomProcessor(sim);
       newEvents.AddRange(roomProcessor.OpenDoor());
+      player.currentChoice = null;
     }
 
     if (player.currentRoom != null) {
@@ -171,21 +172,6 @@ public class InputProcessor {
 
 
 
-    return newEvents;
-  }
-
-  List<PlayerEvent> EnterTower () {
-    var newEvents = new List<PlayerEvent>();
-    sim.player.location = Player.Location.Tower;
-
-    NotificationCenter.PostNotification(Constants.OnUpdateStats);
-    return newEvents;
-  }
-
-  List<PlayerEvent> EnterShop () {
-    var newEvents = new List<PlayerEvent>();
-    sim.player.location = Player.Location.Shop;
-    NotificationCenter.PostNotification(Constants.OnUpdateStats);
     return newEvents;
   }
 

@@ -5,17 +5,9 @@ using System.Collections.Generic;
 public class TowerProcessor {
 
   Simulation sim;
-  Floor floor;
-
-  TowerState state {
-    get {
-      return sim.player.towerState;
-    }
-  }
 
   public TowerProcessor (Simulation _sim) {
     sim = _sim;
-    floor = sim.player.towerState.floor;
   }
 
   public List<PlayerEvent> Continue () {
@@ -31,21 +23,21 @@ public class TowerProcessor {
 
     //newEvents.Add(PlayerEvent.Info ("You venture forth..."));
 
-    string content = Roll.Hash(sim.player.floor.content);
+    string content = Roll.Hash(sim.player.currentFloor.content);
     Debug.Log ("Chose content " + content);
     
     // TODO: Inject atmosphere text randomly
     
     if (content == Constants.mobContentKey) {
       var battleProcessor = new BattleProcessor(sim);
-      var mob = floor.RandomMob();
+      var mob = sim.player.currentFloor.RandomMob();
       newEvents.AddRange(EncounterMob(mob));
       newEvents.AddRange(battleProcessor.StartBattle(mob));
     }
     
     if (content == Constants.interactibleContentKey) {
       var interactionProcessor = new InteractionProcessor(sim);
-      var interactible = floor.RandomInteractible(); 
+      var interactible = sim.player.currentFloor.RandomInteractible(); 
       newEvents.AddRange(interactionProcessor.StartInteraction(interactible));
     }
 
@@ -69,7 +61,7 @@ public class TowerProcessor {
   }
   
   PlayerEvent AtmosphereEvent () {
-    return new PlayerEvent(floor.RandomAtmosphereText());
+    return new PlayerEvent(sim.player.currentFloor.RandomAtmosphereText());
   }
 
   List<PlayerEvent> EncounterMob (Mob mob) {

@@ -14,7 +14,7 @@ public class RoomGenerator {
   public Room CreateRoom () {
     var room = new Room();
     room.roomTemplate = RoomTemplate.all[roomTemplateKey];
-
+    room.content = room.roomTemplate.CascadeContent(floor.content);
     return room;
   }
 

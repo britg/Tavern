@@ -31,7 +31,7 @@ public class RoomProcessor  {
   public List<PlayerEvent> OpenDoor () {
     List<PlayerEvent> newEvents = new List<PlayerEvent>();
     newEvents.Add (PlayerEvent.Info ("[Open door]"));
-    sim.player.currentRoom = sim.player.towerState.floor.RandomRoom();
+    sim.player.currentRoom = sim.player.currentFloor.RandomRoom();
     return newEvents;
   }
 

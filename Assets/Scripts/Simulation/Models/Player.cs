@@ -4,20 +4,14 @@ using System.Collections.Generic;
 
 public class Player {
 
-  public enum Location {
-    Town,
-    Shop,
-    Tower
-  }
-
   public Dictionary<string, Resource> Resources { get; set; }
   public Dictionary<string, Adventurer> Adventurers { get; set; }
   public Dictionary<string, Building> Buildings { get; set; }
   public Dictionary<string, Stat> Stats { get; set; }
   public Dictionary<string, Slot> Slots { get; set; }
 
-  public Location location;
   public TowerState towerState;
+  public Floor currentFloor;
   public Room currentRoom;
   public Interactible currentInteractible;
   public Mob currentMob;
@@ -28,7 +22,9 @@ public class Player {
 
   public bool currentlyOccupied {
     get {
-      return (currentRoom == null && currentInteractible == null && currentMob == null);
+      return (currentRoom != null 
+        || currentInteractible != null 
+        || currentMob != null);
     }
   }
 
@@ -40,9 +36,8 @@ public class Player {
     Slots = new Dictionary<string, Slot>();
 
     // TODO: Load this from persistent storage
-    location = Location.Tower;
     towerState = new TowerState();
-    towerState.floor = Floor.all[1];
+    currentFloor = Floor.all[1];
     towerState.hasEnteredTower = false;
     encounteredMobs = new List<string>();
     currentInitiative = 0;
@@ -77,19 +72,7 @@ public class Player {
   }
 
   public string LocationName () {
-    if (location == Player.Location.Town) {
-      return "";
-    }
-
-    if (location == Player.Location.Shop) {
-      return "Shops";
-    }
-
-    if (location == Player.Location.Tower) {
-      return string.Format("{0}", towerState.floor.Name());
-    }
-
-    return "";
+    return string.Format("{0}", currentFloor.Name());
   }
 
   
