@@ -14,7 +14,7 @@
 	"content": [
 		{
 			"key": "mob",
-			"chance": 100
+			"chance": 10000
 		},
 		{
 			"key": "interactible",
@@ -22,7 +22,7 @@
 		},
 		{
 			"key": "room",
-			"chance":10000
+			"chance": 25
 		}
 	],
 

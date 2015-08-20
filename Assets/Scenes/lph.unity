@@ -1275,7 +1275,6 @@ MonoBehaviour:
   statKey: level
   prefix: 
   suffix: 
-  includeBase: 0
   includeMax: 0
 --- !u!1 &301228780
 GameObject:
@@ -1326,7 +1325,6 @@ MonoBehaviour:
   statKey: pois_atk
   prefix: 
   suffix: 
-  includeBase: 0
   includeMax: 0
 --- !u!114 &301228783
 MonoBehaviour:
@@ -1540,7 +1538,6 @@ MonoBehaviour:
   statKey: dps
   prefix: 
   suffix: 
-  includeBase: 0
   includeMax: 0
 --- !u!114 &370799859
 MonoBehaviour:
@@ -1623,7 +1620,6 @@ MonoBehaviour:
   statKey: pois_atk
   prefix: 
   suffix: 
-  includeBase: 0
   includeMax: 0
 --- !u!114 &372518215
 MonoBehaviour:
@@ -2508,7 +2504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &648055283
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2572,7 +2568,6 @@ MonoBehaviour:
   statKey: exp
   prefix: 
   suffix: 
-  includeBase: 0
   includeMax: 1
 --- !u!1 &682796088 stripped
 GameObject:
@@ -2710,7 +2705,6 @@ MonoBehaviour:
   statKey: res
   prefix: 
   suffix: '%'
-  includeBase: 0
   includeMax: 0
 --- !u!114 &920397279
 MonoBehaviour:
@@ -3093,7 +3087,6 @@ MonoBehaviour:
   statKey: crit
   prefix: 
   suffix: '%'
-  includeBase: 0
   includeMax: 0
 --- !u!114 &1003458986
 MonoBehaviour:
@@ -3488,7 +3481,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1235002197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3552,7 +3545,6 @@ MonoBehaviour:
   statKey: hp
   prefix: ' HP '
   suffix: 
-  includeBase: 1
   includeMax: 0
 --- !u!1001 &1245110223
 Prefab:
@@ -4232,7 +4224,6 @@ MonoBehaviour:
   statKey: spd
   prefix: 
   suffix: 
-  includeBase: 0
   includeMax: 0
 --- !u!114 &1411283927
 MonoBehaviour:
@@ -4560,7 +4551,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22447170, guid: 7daa4cc462352457cb730bed215b486f, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -22.4271851
+      value: -22.8428116
       objectReference: {fileID: 0}
     - target: {fileID: 22447170, guid: 7daa4cc462352457cb730bed215b486f, type: 2}
       propertyPath: m_SizeDelta.x
@@ -4568,7 +4559,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22447170, guid: 7daa4cc462352457cb730bed215b486f, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 44.8543701
+      value: 45.6856232
       objectReference: {fileID: 0}
     - target: {fileID: 22447170, guid: 7daa4cc462352457cb730bed215b486f, type: 2}
       propertyPath: m_AnchorMin.x
@@ -4608,7 +4599,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22404208, guid: 7daa4cc462352457cb730bed215b486f, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -16.2135925
+      value: -16.4214058
       objectReference: {fileID: 0}
     - target: {fileID: 22404208, guid: 7daa4cc462352457cb730bed215b486f, type: 2}
       propertyPath: m_SizeDelta.x
@@ -4616,7 +4607,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22404208, guid: 7daa4cc462352457cb730bed215b486f, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 12.4271841
+      value: 12.8428097
       objectReference: {fileID: 0}
     - target: {fileID: 22410340, guid: 7daa4cc462352457cb730bed215b486f, type: 2}
       propertyPath: m_AnchorMin.y
@@ -4632,7 +4623,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22410340, guid: 7daa4cc462352457cb730bed215b486f, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -28.6407776
+      value: -29.2642136
       objectReference: {fileID: 0}
     - target: {fileID: 22410340, guid: 7daa4cc462352457cb730bed215b486f, type: 2}
       propertyPath: m_SizeDelta.x
@@ -4640,7 +4631,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22410340, guid: 7daa4cc462352457cb730bed215b486f, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 12.4271841
+      value: 12.8428097
       objectReference: {fileID: 0}
     - target: {fileID: 11491824, guid: 7daa4cc462352457cb730bed215b486f, type: 2}
       propertyPath: m_FontData.m_Font
@@ -4725,7 +4716,6 @@ MonoBehaviour:
   statKey: luck
   prefix: 
   suffix: 
-  includeBase: 0
   includeMax: 0
 --- !u!114 &1505676040
 MonoBehaviour:
@@ -5452,7 +5442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1662221277
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5516,7 +5506,6 @@ MonoBehaviour:
   statKey: ap
   prefix: 'AP '
   suffix: 
-  includeBase: 1
   includeMax: 0
 --- !u!1001 &1707949450
 Prefab:
@@ -5563,7 +5552,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22433636, guid: 69adf1fe943e5694b97d8f2d1d7f06c2, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -298.85437
+      value: -299.685608
       objectReference: {fileID: 0}
     - target: {fileID: 22433636, guid: 69adf1fe943e5694b97d8f2d1d7f06c2, type: 2}
       propertyPath: m_SizeDelta.x
@@ -5916,7 +5905,6 @@ MonoBehaviour:
   statKey: def
   prefix: 
   suffix: 
-  includeBase: 0
   includeMax: 0
 --- !u!114 &1802024897
 MonoBehaviour:

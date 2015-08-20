@@ -22,9 +22,10 @@
     },
     {
       "key": "spd",
-      "range": [20, 30]
+      "range": [5, 10]
     }
   ],
+
   "combat": [
   	{
   		"key": "basic",
