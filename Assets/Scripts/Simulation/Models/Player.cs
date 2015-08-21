@@ -13,6 +13,7 @@ public class Player {
   public const string currentChoiceKey = "currentChoice";
   public const string currentInitiativeKey = "currentInitiative";
   public const string encounteredMobsKey = "encounteredMobs";
+  public const string lastBattleMoveKey = "lastBattleMove";
 
   public Dictionary<string, Resource> Resources { get; set; }
   public Dictionary<string, Stat> Stats { get; set; }
@@ -44,7 +45,7 @@ public class Player {
     Slots = new Dictionary<string, Slot>();
 
     // TODO: Load this from persistent storage
-    currentFloor = Floor.all[1];
+//    currentFloor = Floor.all[1];
     encounteredMobs = new List<string>();
     currentInitiative = 0;
   }

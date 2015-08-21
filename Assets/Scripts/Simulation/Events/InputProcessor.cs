@@ -29,12 +29,10 @@ public class InputProcessor {
 
     List<PlayerEvent> newEvents = new List<PlayerEvent>();
 
-    if (player.currentEvent == null) {
+    if (player.currentFloor == null) {
       NotificationCenter.PostNotification(Constants.OnFirstPull);
-      //EnterTower();
-      //return IntroSequence();
-//      return Dev_StraightToTower();
-//      return Dev_RandomLoot();
+      var floorProcessor = new FloorProcessor(sim);
+      newEvents.AddRange(floorProcessor.EnterFloor(1));
     }
 
     if (player.currentChoice == Choice.OpenDoor) {
@@ -106,28 +104,6 @@ public class InputProcessor {
     NotificationCenter.PostNotification(Constants.OnUpdateEvents);
   }
 
-  List<PlayerEvent> IntroSequence () {
-    var list = new List<PlayerEvent>();
-    var intro = sim.config.jsonCache["IntroEvents"][0];
-    var eventsJson = intro["events"];
-    foreach (JSONNode node in eventsJson.AsArray) {
-      var eventStr = node.Value;
-
-      if (eventStr == "battle") {
-        var towerProcessor = new TowerProcessor(sim);
-        list.AddRange(towerProcessor.Continue());
-      } else {
-        list.Add(PlayerEvent.Story(eventStr));
-      }
-    }
-
-    //list.AddRange(Dev_RandomLoot());
-//    list.Add(Consider());
-
-    player.currentEvent = list[list.Count - 1];
-
-    return list;
-  }
 
   List<PlayerEvent> Dev_RandomLoot () {
     var list = new List<PlayerEvent>();

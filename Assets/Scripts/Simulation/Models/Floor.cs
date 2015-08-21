@@ -12,6 +12,8 @@ public class Floor {
   public int num;
   public FloorTemplate floorTemplate;
   public Dictionary<string, float> content;
+  public List<string> atmosphere;
+  public Dictionary<string, JSONNode> branches;
 
   public Dictionary<string, float> consumableChances {
     get {
@@ -36,6 +38,18 @@ public class Floor {
   public Floor (JSONNode json) {
     num = json["number"].AsInt;
     floorTemplate = FloorTemplate.all[json["template"].Value];
+
+    atmosphere = new List<string>();
+    var atmosphereArr = json["atmosphere"].AsArray;
+    foreach (JSONNode atm in atmosphereArr) {
+      atmosphere.Add(atm.Value);
+    }
+
+    branches = new Dictionary<string, JSONNode>();
+    var branchesArr = json["branches"].AsArray;
+    foreach (JSONNode branchNode in branchesArr) {
+      branches[branchNode["key"].Value] = branchNode;
+    }
 
     CascadeContent(json["content"].AsArray);
   }

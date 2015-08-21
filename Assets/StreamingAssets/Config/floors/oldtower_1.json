@@ -4,9 +4,33 @@
   "template": "old_tower",
 
   "atmosphere": [
-    "The massive tower doors slam behind you. You get the feeling you couldn't open the again if you tried.",
-    "A corridor stretches ahead dimly lit by unnatural flickering light.",
-    "You venture forth..."
+    "The massive tower doors slam behind you with a clang.",
+    "You get the feeling you couldn't open the again if you tried...",
+    "__TOWER_DOOR_CHOICE__"
+  ],
+
+  "branches": [
+    {
+      "key": "__TOWER_DOOR_CHOICE__",
+      "text": "You consider trying the door",
+      "choices": [
+        {
+          "key": "attempt",
+          "results": [
+            "The door won't budge. You think you hear a faint raspy cackling from somewhere in the tower.",
+            "Looks like the only way out is deeper in..."
+          ]
+        },
+
+        {
+          "key": "venture_forth",
+          "results": [
+            "A corridor stretches ahead dimly lit by unnatural flickering light.",
+            "You venture forth..."
+          ]
+        }
+      ]
+    }
   ],
 
   "content": [

@@ -28,7 +28,6 @@ public class InitiativeProcessor {
 
     float mobSpd = mob.GetStatValue(Stat.spd);
 
-    string lastMove = player.lastBattleMove;
     player.currentInitiative += playerSpd;
     mob.currentInitiative += mobSpd;
 
