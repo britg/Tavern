@@ -13,7 +13,6 @@ public class AdventurerCreator {
     var adventurer = new Adventurer(classKey);
     SetDefaults(adventurer);
 
-    sim.player.Adventurers[adventurer.id] = adventurer;
 
     var data = new Hashtable();
     data["adventurer"] = adventurer;

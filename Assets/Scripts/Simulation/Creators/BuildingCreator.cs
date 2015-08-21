@@ -11,7 +11,6 @@ public class BuildingCreator {
 
   public Building Create (string buildingKey) {
     var building = new Building(buildingKey);
-    sim.player.Buildings[buildingKey] = building;
 
     
     return building;

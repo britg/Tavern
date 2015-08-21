@@ -18,10 +18,12 @@ public class RoomProcessor  {
     pullLeft.label = "Enter";
     pullLeft.key = Choice.OpenDoor;
     pullLeft.direction = Choice.Direction.Left;
+
     var pullRight = new Choice();
     pullRight.label = "Leave";
     pullRight.key = Choice.LeaveDoor;
     pullRight.direction = Choice.Direction.Right;
+
     var msg = "You consider your next course of action...";
     newEvents.Add(PlayerEvent.Choice(msg, pullLeft, pullRight));
 

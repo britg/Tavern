@@ -28,22 +28,20 @@ public class InitiativeProcessor {
 
     float mobSpd = mob.GetStatValue(Stat.spd);
 
-    string lastMove = player.towerState.lastBattleMove;
+    string lastMove = player.lastBattleMove;
     player.currentInitiative += playerSpd;
     mob.currentInitiative += mobSpd;
 
-    if (lastMove == null || lastMove == mobIdent) {
-      if (player.currentInitiative >= requiredInitiative) {
-        player.currentInitiative = (player.currentInitiative - requiredInitiative);
-        player.towerState.lastBattleMove = playerIdent;
-        return playerIdent;
-      }
-    } else {
-      if (mob.currentInitiative >= requiredInitiative) {
-        mob.currentInitiative = (mob.currentInitiative - requiredInitiative);
-        player.towerState.lastBattleMove = mobIdent;
-        return mobIdent;
-      }
+    if (player.currentInitiative >= requiredInitiative) {
+      player.currentInitiative = (player.currentInitiative - requiredInitiative);
+      player.lastBattleMove = playerIdent;
+      return playerIdent;
+    }
+
+    if (mob.currentInitiative >= requiredInitiative) {
+      mob.currentInitiative = (mob.currentInitiative - requiredInitiative);
+      player.lastBattleMove = mobIdent;
+      return mobIdent;
     }
 
     if (iterationCount >= iterationLimit) {

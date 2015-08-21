@@ -22,7 +22,7 @@ public class BattleProcessor {
     var newEvents = new List<PlayerEvent>();
 
     sim.player.currentMob = mob;
-    sim.player.towerState.lastBattleMove = null;
+    sim.player.lastBattleMove = null;
     sim.player.currentInitiative = 0f;
     mob.currentInitiative = 0f;
 

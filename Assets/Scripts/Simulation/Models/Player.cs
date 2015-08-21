@@ -4,13 +4,22 @@ using System.Collections.Generic;
 
 public class Player {
 
+  // data keys for persistence
+  public const string currentFloorKey = "currentFloor";
+  public const string currentRoomKey = "currentRoom";
+  public const string currentInteractibleKey = "currentInteractible";
+  public const string currentMobKey = "currentMob";
+  public const string currentEventKey = "currentEvent";
+  public const string currentChoiceKey = "currentChoice";
+  public const string currentInitiativeKey = "currentInitiative";
+  public const string encounteredMobsKey = "encounteredMobs";
+
   public Dictionary<string, Resource> Resources { get; set; }
-  public Dictionary<string, Adventurer> Adventurers { get; set; }
-  public Dictionary<string, Building> Buildings { get; set; }
   public Dictionary<string, Stat> Stats { get; set; }
   public Dictionary<string, Slot> Slots { get; set; }
 
-  public TowerState towerState;
+  public Hashtable data;
+
   public Floor currentFloor;
   public Room currentRoom;
   public Interactible currentInteractible;
@@ -19,6 +28,7 @@ public class Player {
   public string currentChoice;
   public List<string> encounteredMobs;
   public float currentInitiative;
+  public string lastBattleMove;
 
   public bool currentlyOccupied {
     get {
@@ -30,15 +40,11 @@ public class Player {
 
   public Player () {
     Resources = new Dictionary<string, Resource>();
-    Adventurers = new Dictionary<string, Adventurer>();
-    Buildings = new Dictionary<string, Building>();
     Stats = new Dictionary<string, Stat>();
     Slots = new Dictionary<string, Slot>();
 
     // TODO: Load this from persistent storage
-    towerState = new TowerState();
     currentFloor = Floor.all[1];
-    towerState.hasEnteredTower = false;
     encounteredMobs = new List<string>();
     currentInitiative = 0;
   }
