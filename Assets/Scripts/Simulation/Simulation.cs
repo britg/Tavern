@@ -10,7 +10,6 @@ public class Simulation {
   public Player player;
   public List<Quest> questList = new List<Quest>();
 
-  List<IProcessor> processorRegistry;
   public InputProcessor inputProcessor;
 
   float previousSpeed;
@@ -35,10 +34,6 @@ public class Simulation {
   void SetupGameTime() {
     CurrentSpeed = config.initialSpeed;
     GameTime = new GameTime(config);
-    GameTime.MinuteChange += OnMinute;
-    GameTime.HourChange += OnHour;
-    GameTime.DayChange += OnDay;
-    GameTime.NightChange += OnNight;
   }
 
   void SetupMap () {
@@ -50,9 +45,7 @@ public class Simulation {
   }
 
   void SetupProcessors () {
-    processorRegistry = new List<IProcessor>();
-    var adventurerCollectionProcessor = new AdventurerCollectionProcessor(this);
-    processorRegistry.Add(adventurerCollectionProcessor);
+
   }
 
   public void Start() {
@@ -62,40 +55,9 @@ public class Simulation {
     UpdateDelta = deltaTime * CurrentSpeed;
     GameTime.AddTime(UpdateDelta);
 
-    foreach (IProcessor processor in processorRegistry) {
-      processor.Update(UpdateDelta);
-    }
+   
   }
 
-  public void OnSecond() {
-    foreach (IProcessor processor in processorRegistry) {
-      processor.OnSecond();
-    }
-  }
-
-  public void OnMinute() {
-    foreach (IProcessor processor in processorRegistry) {
-      processor.OnMinute();
-    }
-  }
-
-  public void OnHour() {
-    foreach (IProcessor processor in processorRegistry) {
-      processor.OnHour();
-    }
-  }
-
-  public void OnDay() {
-    foreach (IProcessor processor in processorRegistry) {
-      processor.OnDay();
-    }
-  }
-
-  public void OnNight() {
-    foreach (IProcessor processor in processorRegistry) {
-      processor.OnDay();
-    }
-  }
 
   public void Pause() {
     previousSpeed = CurrentSpeed;

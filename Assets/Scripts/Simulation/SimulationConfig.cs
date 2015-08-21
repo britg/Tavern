@@ -98,7 +98,6 @@ public class SimulationConfig {
     // Tier 1
     Rarity.type,
     ResourceType.type,
-    AdventurerClass.type,
     BuildingType.type,
     QuestType.type,
     StatType.type,
@@ -134,9 +133,6 @@ public class SimulationConfig {
     switch (type) {
       case ResourceType.type:
         ResourceType.Cache(config);
-        break;
-      case AdventurerClass.type:
-        AdventurerClass.Cache(config);
         break;
       case BuildingType.type:
         BuildingType.Cache(config);
