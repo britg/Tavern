@@ -111,8 +111,6 @@ public class Simulation {
   }
 
   public void CreateExplorationQuest (Vector3 location) {
-    var explorationQuestCreator = new ExplorationQuestCreator(this);
-    explorationQuestCreator.Create(location);
   }
 
 }
