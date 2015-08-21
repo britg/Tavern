@@ -21,7 +21,6 @@ public class SimulationRepresenter : BaseBehaviour {
     Adventurer adv = (Adventurer)n.data["adventurer"];
     GameObject advObj = (GameObject)Instantiate(adventurerPrefab);
     advObj.transform.SetParent(transform);
-    advObj.GetComponent<AdventurerView>().SetAdventurer(adv);
   }
 
   void OnTavernCreated (Notification n) {
