@@ -35,10 +35,14 @@ public class InputProcessor {
       newEvents.AddRange(floorProcessor.EnterFloor(1));
     }
 
-    if (player.currentChoice == Choice.OpenDoor) {
-      var roomProcessor = new RoomProcessor(sim);
-      newEvents.AddRange(roomProcessor.OpenDoor());
-      player.currentChoice = null;
+//    if (player.currentChoice == Choice.OpenDoor) {
+//      var roomProcessor = new RoomProcessor(sim);
+//      newEvents.AddRange(roomProcessor.OpenDoor());
+//      player.currentChoice = null;
+//    }
+
+    if (player.currentChoiceKey != null) {
+      Debug.Log ("Current choice key " + player.currentChoiceKey);
     }
 
     if (player.currentRoom != null) {
@@ -54,6 +58,10 @@ public class InputProcessor {
     if (player.currentInteractible != null) {
       var interactionProcessor = new InteractionProcessor(sim);
       newEvents.AddRange(interactionProcessor.Continue());
+    }
+
+    if (newEvents.Count > 0) {
+      player.currentEvent = newEvents[newEvents.Count - 1];
     }
 
     if (!player.currentlyOccupied) {
@@ -99,7 +107,6 @@ public class InputProcessor {
     // TODO: Refactor into a choice processor when necessary
     ev.chosenKey = choiceKey;
     ev.conditionsSatisfied = true;
-    player.currentChoice = choiceKey;
 
     NotificationCenter.PostNotification(Constants.OnUpdateEvents);
   }
@@ -121,34 +128,6 @@ public class InputProcessor {
     }
 
     return list;
-  }
-
-  List<PlayerEvent> Dev_StraightToTower () {
-    var ev = PlayerEvent.Info("[DEV] entering tower...");
-    ev.chosenKey = "tower";
-    player.currentEvent = ev;
-    return new List<PlayerEvent>(){ ev };
-  }
-
-  PlayerEvent Consider () {
-    var pullLeft = new Choice();
-    pullLeft.label = "Shop";
-    pullLeft.key = Constants.c_Shop;
-    pullLeft.direction = Choice.Direction.Left;
-    var pullRight = new Choice();
-    pullRight.label = "Enter Tower";
-    pullRight.key = Constants.c_Tower;
-    pullRight.direction = Choice.Direction.Right;
-    var msg = "You consider your next course of action...";
-    return PlayerEvent.Choice(msg, pullLeft, pullRight);
-  }
-
-  List<PlayerEvent> ExecuteChoice (PlayerEvent ev) {
-    List<PlayerEvent> newEvents = new List<PlayerEvent>();
-
-
-
-    return newEvents;
   }
 
 }

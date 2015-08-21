@@ -19,7 +19,7 @@ public class FloorProcessor {
 
     newEvents = new List<PlayerEvent>();
 
-    foreach (var atmTxt in sim.player.currentFloor.atmosphere) {
+    foreach (var atmTxt in sim.player.currentFloor.entranceEvents) {
       if (DetectBranch(atmTxt)) {
         ExecuteBranch(atmTxt);
       } else {
@@ -35,6 +35,7 @@ public class FloorProcessor {
 
   void ExecuteBranch (string key) {
     JSONNode branch = sim.player.currentFloor.branches[key];
+    newEvents.Add(PlayerEvent.PromptChoice(branch));
   }
 
 }

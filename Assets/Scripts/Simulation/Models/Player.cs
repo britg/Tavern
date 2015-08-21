@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using SimpleJSON;
 
 public class Player {
 
@@ -10,7 +11,6 @@ public class Player {
   public const string currentInteractibleKey = "currentInteractible";
   public const string currentMobKey = "currentMob";
   public const string currentEventKey = "currentEvent";
-  public const string currentChoiceKey = "currentChoice";
   public const string currentInitiativeKey = "currentInitiative";
   public const string encounteredMobsKey = "encounteredMobs";
   public const string lastBattleMoveKey = "lastBattleMove";
@@ -26,8 +26,7 @@ public class Player {
   public Interactible currentInteractible;
   public Mob currentMob;
   public PlayerEvent currentEvent;
-  public string currentChoice;
-  public List<string> encounteredMobs;
+  public List<string> encounteredMobKeys;
   public float currentInitiative;
   public string lastBattleMove;
 
@@ -35,7 +34,19 @@ public class Player {
     get {
       return (currentRoom != null 
         || currentInteractible != null 
-        || currentMob != null);
+        || currentMob != null
+        || currentEvent.blocksContinue
+      );
+    }
+  }
+
+  public string currentChoiceKey {
+    get {
+      if (currentEvent == null) {
+        return null;
+      } else {
+        return currentEvent.chosenKey;
+      }
     }
   }
 
@@ -46,7 +57,7 @@ public class Player {
 
     // TODO: Load this from persistent storage
 //    currentFloor = Floor.all[1];
-    encounteredMobs = new List<string>();
+    encounteredMobKeys = new List<string>();
     currentInitiative = 0;
   }
 

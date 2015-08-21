@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -11,21 +11,29 @@ public class RoomProcessor  {
   }
 
   public List<PlayerEvent> DoorChoice () {
+
+    // TODO: Roll for what type of room this is
+    string roomKey = "standard"; 
+    var roomTemplate = RoomTemplate.all[roomKey];
+
     List<PlayerEvent> newEvents = new List<PlayerEvent>();
-    newEvents.Add (PlayerEvent.Info ("[Door choice atmosphere text]"));
 
-    var pullLeft = new Choice();
-    pullLeft.label = "Enter";
-    pullLeft.key = Choice.OpenDoor;
-    pullLeft.direction = Choice.Direction.Left;
+    newEvents.Add (PlayerEvent.PromptChoice(roomTemplate.entranceChoice));
 
-    var pullRight = new Choice();
-    pullRight.label = "Leave";
-    pullRight.key = Choice.LeaveDoor;
-    pullRight.direction = Choice.Direction.Right;
-
-    var msg = "You consider your next course of action...";
-    newEvents.Add(PlayerEvent.Choice(msg, pullLeft, pullRight));
+//    newEvents.Add (PlayerEvent.Info ("[Door choice atmosphere text]"));
+//
+//    var pullLeft = new Choice();
+//    pullLeft.label = "Enter";
+//    pullLeft.key = Choice.OpenDoor;
+//    pullLeft.direction = Choice.Direction.Left;
+//
+//    var pullRight = new Choice();
+//    pullRight.label = "Leave";
+//    pullRight.key = Choice.LeaveDoor;
+//    pullRight.direction = Choice.Direction.Right;
+//
+//    var msg = "You consider your next course of action...";
+//    newEvents.Add(PlayerEvent.PromptChoice(msg, pullLeft, pullRight));
 
     return newEvents;
   }

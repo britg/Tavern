@@ -65,11 +65,11 @@ public class TowerProcessor {
   }
 
   List<PlayerEvent> EncounterMob (Mob mob) {
-    if (sim.player.encounteredMobs.Contains(mob.template.Key)) {
+    if (sim.player.encounteredMobKeys.Contains(mob.template.Key)) {
       return new List<PlayerEvent>();
     }
 
-    sim.player.encounteredMobs.Add(mob.template.Key);
+    sim.player.encounteredMobKeys.Add(mob.template.Key);
     return new List<PlayerEvent>(){ PlayerEvent.Story("[New enemy discovered] " + mob.name) };
   }
 

@@ -12,7 +12,7 @@ public class Floor {
   public int num;
   public FloorTemplate floorTemplate;
   public Dictionary<string, float> content;
-  public List<string> atmosphere;
+  public List<string> entranceEvents;
   public Dictionary<string, JSONNode> branches;
 
   public Dictionary<string, float> consumableChances {
@@ -39,10 +39,10 @@ public class Floor {
     num = json["number"].AsInt;
     floorTemplate = FloorTemplate.all[json["template"].Value];
 
-    atmosphere = new List<string>();
-    var atmosphereArr = json["atmosphere"].AsArray;
-    foreach (JSONNode atm in atmosphereArr) {
-      atmosphere.Add(atm.Value);
+    entranceEvents = new List<string>();
+    var entranceArr = json["entrance_events"].AsArray;
+    foreach (JSONNode ent in entranceArr) {
+      entranceEvents.Add(ent.Value);
     }
 
     branches = new Dictionary<string, JSONNode>();

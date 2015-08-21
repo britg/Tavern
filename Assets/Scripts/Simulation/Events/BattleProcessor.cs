@@ -164,11 +164,4 @@ public class BattleProcessor {
     return new List<PlayerEvent>(){ ev };
   }
 
-  public List<PlayerEvent> AfterBattleChoices () {
-    var pullLeft = Choice.PullLeft(Choice.Potion, "Drink Potion");
-    var pullRight = Choice.PullRight(Choice.Continue, "Continue");
-    var msg = "You catch you breath after battle...";
-    return new List<PlayerEvent>(){ PlayerEvent.Choice(msg, pullLeft, pullRight) };
-  }
-
 }

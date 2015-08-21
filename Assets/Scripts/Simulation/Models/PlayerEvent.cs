@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using SimpleJSON;
 
 public class PlayerEvent {
 
@@ -9,6 +10,7 @@ public class PlayerEvent {
   public const string mobKey = "mob";
   public const string damageKey = "damage";
   public const string hitTypeKey = "hitType";
+  public const string branchKey = "branchKey";
 
   public enum Type {
     Info,
@@ -47,6 +49,12 @@ public class PlayerEvent {
   }
 
   public bool hasChoices {
+    get {
+      return type == Type.Choice;
+    }
+  }
+
+  public bool blocksContinue {
     get {
       return type == Type.Choice;
     }
@@ -95,13 +103,31 @@ public class PlayerEvent {
     return ev;
   }
 
-  public static PlayerEvent Choice (string text, Choice firstChoice, Choice secondChoice) {
+  static PlayerEvent PromptChoice (string text, Choice firstChoice, Choice secondChoice) {
     PlayerEvent ev = new PlayerEvent(text);
     ev.type = Type.Choice;
     ev.firstChoice = firstChoice;
     ev.secondChoice = secondChoice;
     ev.conditionsSatisfied = false;
     return ev;
+  }
+
+  public static PlayerEvent PromptChoice (JSONNode branch) {
+    string text = branch["text"].Value;
+    JSONArray choicesArr = branch["choices"].AsArray;
+    JSONNode firstNode = choicesArr[0];
+    JSONNode secondNode = choicesArr[1];
+    var firstChoice = CreateChoice(firstNode);
+    var secondChoice = CreateChoice(secondNode);
+    return PromptChoice(text, firstChoice, secondChoice);
+  }
+
+  public static Choice CreateChoice (JSONNode node) {
+    var dirStr = node["pull"].Value;
+    var key = node["key"].Value;
+    var label = node["label"].Value;
+    var choice = Choice.Swipe(dirStr, key, label);
+    return choice;
   }
 
   //public static PlayerEvent PlayerBasicAttack () {

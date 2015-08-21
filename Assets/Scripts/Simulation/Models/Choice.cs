@@ -19,7 +19,15 @@ public class Choice {
   public string label;
   public Direction direction;
 
-  public static Choice PullLeft (string key, string label) {
+  public static Choice Swipe (string directionStr, string key, string label) {
+    if (directionStr == "left") {
+      return SwipeLeft(key, label);
+    } else {
+      return SwipeRight(key, label);
+    }
+  }
+
+  public static Choice SwipeLeft (string key, string label) {
     var c = new Choice();
     c.key = key;
     c.label = label;
@@ -28,7 +36,7 @@ public class Choice {
     return c;
   }
 
-  public static Choice PullRight (string key, string label) {
+  public static Choice SwipeRight (string key, string label) {
     var c = new Choice();
     c.key = key;
     c.label = label;
