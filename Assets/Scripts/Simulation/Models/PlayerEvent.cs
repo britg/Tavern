@@ -103,7 +103,7 @@ public class PlayerEvent {
     return ev;
   }
 
-  static PlayerEvent PromptChoice (string text, Choice firstChoice, Choice secondChoice) {
+  private static PlayerEvent PromptChoice (string text, Choice firstChoice, Choice secondChoice) {
     PlayerEvent ev = new PlayerEvent(text);
     ev.type = Type.Choice;
     ev.firstChoice = firstChoice;
@@ -119,7 +119,10 @@ public class PlayerEvent {
     JSONNode secondNode = choicesArr[1];
     var firstChoice = CreateChoice(firstNode);
     var secondChoice = CreateChoice(secondNode);
-    return PromptChoice(text, firstChoice, secondChoice);
+    var ev = PromptChoice(text, firstChoice, secondChoice);
+
+    ev.data[PlayerEvent.branchKey] = branch;
+    return ev;
   }
 
   public static Choice CreateChoice (JSONNode node) {
